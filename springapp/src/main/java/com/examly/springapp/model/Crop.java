@@ -28,6 +28,65 @@ public class Crop {
     @JoinColumn(name = "userId", nullable = false)
     private User user;
 
+    public int getCropId() {
+        return cropId;
+    }
+
+    public Crop() {
+    }
+
+    public void setCropId(int cropId) {
+        this.cropId = cropId;
+    }
+
+    public String getCropName() {
+        return cropName;
+    }
+
+    public void setCropName(String cropName) {
+        this.cropName = cropName;
+    }
+
+    public String getCropType() {
+        return cropType;
+    }
+
+    public void setCropType(String cropType) {
+        this.cropType = cropType;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public LocalDateTime getPlantingDate() {
+        return plantingDate;
+    }
+
+    public void setPlantingDate(LocalDateTime plantingDate) {
+        this.plantingDate = plantingDate;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public ArrayList<Request> getRequests() {
+        return requests;
+    }
+
+    public void setRequests(ArrayList<Request> requests) {
+        this.requests = requests;
+    }
+
     @OneToMany(mappedBy = "crop")
     @JsonIgnore
     private ArrayList<Request> requests;

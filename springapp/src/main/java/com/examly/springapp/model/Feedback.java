@@ -21,4 +21,30 @@ public class Feedback {
 
     private String feedbackText;
     private LocalDateTime date;
+    public int getFeedbackId() {
+        return feedbackId;
+    }
+    public void setFeedbackId(int feedbackId) {
+        this.feedbackId = feedbackId;
+    }
+    public Feedback() {
+    }
+    public User getUser() {
+        return user;
+    }
+    public void setUser(User user) {
+        this.user = user;
+    }
+    public String getFeedbackText() {
+        return feedbackText;
+    }
+    public void setFeedbackText(String feedbackText) {
+        this.feedbackText = feedbackText;
+    }
+    public LocalDateTime getDate() {
+        return date;
+    }
+    public void setDate(LocalDateTime date) {
+        this.date = date;
+    }
 }
