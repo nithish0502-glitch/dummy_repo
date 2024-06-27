@@ -19,19 +19,21 @@ public class CropServiceImpl implements CropService {
 
     @Override
     public Crop getCropById(int cropId) {
-        return cropRepo.findById(cropId);
+        return cropRepo.findById(cropId).orElse(null);
     }
 
     @Override
-    public Crop updateCrop(Crop crop) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateCrop'");
+    public Crop updateCrop(int cropId,Crop crop) {
+        Crop oldCrop = cropRepo.findById(cropId).orElse(null);
+        crop.setCropId(cropId);
+        return cropRepo.save(crop);
     }
 
     @Override
     public Crop deleteCrop(int cropId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteCrop'");
+        Crop deleteCrop = cropRepo.findById(cropId).orElse(null);
+        cropRepo.deleteById(cropId);
+        return deleteCrop;
     }
     
 }

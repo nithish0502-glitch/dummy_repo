@@ -18,12 +18,19 @@ public class UserController {
 
     @PostMapping("/api/login")
     public ResponseEntity<User> Login(@RequestBody User user){
-        User users= userService.login(user);
-        return new ResponseEntity<>(user, HttpStatus.OK);
+        User user1= userService.login(user);
+        if(user1!=null)
+        return new ResponseEntity<>(user1, HttpStatus.OK);
+        else
+        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @PostMapping("/api/register")
-    public User register(@RequestBody User user){
-        return userService.register(user);
+    public ResponseEntity<User> register(@RequestBody User user){
+        User user2= userService.register(user);
+        if(user2!=null)
+        return new ResponseEntity<>(user2, HttpStatus.OK);
+        else
+        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

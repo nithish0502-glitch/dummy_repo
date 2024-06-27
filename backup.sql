@@ -157,7 +157,7 @@ CREATE TABLE `user` (
   `user_role` varchar(255) DEFAULT NULL,
   `username` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -166,6 +166,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'example@example.com','123-456-7890','SecurePassword123!','Farmer','exampleUser'),(2,'example@example.com','123-456-7890','SecurePassword123!','Farmer','exampleUser'),(3,'example@example.com','123-456-7890','SecurePassword123!','Farmer','exampleUser'),(4,'example@example.com','123-456-7890','SecurePassword123!','Farmer','exampleUser'),(5,'example@example.com','123-456-7890','SecurePassword123!','Farmer','exampleUser'),(6,'example@example.com','123-456-7890','SecurePassword123!','Farmer','exampleUser'),(7,'example@example.com','123-456-7890','SecurePassword123!','Farmer','exampleUser'),(8,'example@example.com','123-456-7890','SecurePassword123!','Farmer','exampleUser'),(9,'example@example.com','123-456-7890','SecurePassword123!','Farmer','exampleUser'),(10,'example@example.com','123-456-7890','SecurePassword123!','Farmer','exampleUser');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -178,4 +179,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-27  7:08:14
+-- Dump completed on 2024-06-27  7:23:14
