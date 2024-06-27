@@ -31,7 +31,7 @@ public class CropServiceImpl implements CropService {
 
     @Override
     public Crop updateCrop(int cropId,Crop crop) {
-        Crop oldCrop = cropRepo.findById(cropId).orElse(null);
+        //Crop oldCrop = cropRepo.findById(cropId).orElse(null);
         crop.setCropId(cropId);
         return cropRepo.save(crop);
     }

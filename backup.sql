@@ -69,7 +69,7 @@ CREATE TABLE `crop` (
   PRIMARY KEY (`crop_id`),
   KEY `FK76xv1sgky2q7kwe7g2elv05mp` (`user_id`),
   CONSTRAINT `FK76xv1sgky2q7kwe7g2elv05mp` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -78,6 +78,7 @@ CREATE TABLE `crop` (
 
 LOCK TABLES `crop` WRITE;
 /*!40000 ALTER TABLE `crop` DISABLE KEYS */;
+INSERT INTO `crop` VALUES (1,'Wheat','Grain','High-quality wheat for baking','2023-06-15 10:15:30.000000',1);
 /*!40000 ALTER TABLE `crop` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -179,4 +180,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-27  7:38:14
+-- Dump completed on 2024-06-27  7:53:14

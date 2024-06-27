@@ -1,6 +1,7 @@
 package com.examly.springapp.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -26,15 +27,15 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     @JsonIgnore
-    private ArrayList<Crop> crops;
+    private List<Crop> crops = new ArrayList<>();
 
     @OneToMany(mappedBy = "user")
     @JsonIgnore
-    private ArrayList<Request> requests;
+    private List<Request> requests = new ArrayList<>();
 
     @OneToMany(mappedBy = "user")
     @JsonIgnore
-    private ArrayList<Feedback> feedbacks;
+    private List<Feedback> feedbacks = new ArrayList<>();
 
     public int getUserId() {
         return userId;
@@ -84,24 +85,37 @@ public class User {
         this.userRole = userRole;
     }
 
-    public ArrayList<Crop> getCrops() {
-        return crops;
-    }
 
-    public void setCrops(ArrayList<Crop> crops) {
-        this.crops = crops;
-    }
 
-    public ArrayList<Request> getRequests() {
-        return requests;
-    }
 
     public void setRequests(ArrayList<Request> requests) {
         this.requests = requests;
     }
 
-    public ArrayList<Feedback> getFeedbacks() {
+
+
+    public List<Crop> getCrops() {
+        return crops;
+    }
+
+    public void setCrops(List<Crop> crops) {
+        this.crops = crops;
+    }
+
+    public List<Request> getRequests() {
+        return requests;
+    }
+
+    public void setRequests(List<Request> requests) {
+        this.requests = requests;
+    }
+
+    public List<Feedback> getFeedbacks() {
         return feedbacks;
+    }
+
+    public void setFeedbacks(List<Feedback> feedbacks) {
+        this.feedbacks = feedbacks;
     }
 
     public void setFeedbacks(ArrayList<Feedback> feedbacks) {

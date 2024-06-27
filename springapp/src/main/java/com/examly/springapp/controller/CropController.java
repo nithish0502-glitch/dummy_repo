@@ -29,7 +29,7 @@ public class CropController {
         return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @PutMapping("/api/crop")
+    @PutMapping("/api/crop/{cropId}")
     public ResponseEntity<Crop> updateCrop(@PathVariable int cropId, @RequestBody Crop crop){
         Crop updatedCrop = cropService.updateCrop(cropId, crop);
         if(updatedCrop!=null)

@@ -2,6 +2,7 @@ package com.examly.springapp.model;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -79,15 +80,15 @@ public class Crop {
         this.user = user;
     }
 
-    public ArrayList<Request> getRequests() {
+    @OneToMany(mappedBy = "crop")
+    @JsonIgnore
+    private List<Request> requests = new ArrayList<>();
+
+    public List<Request> getRequests() {
         return requests;
     }
 
-    public void setRequests(ArrayList<Request> requests) {
+    public void setRequests(List<Request> requests) {
         this.requests = requests;
     }
-
-    @OneToMany(mappedBy = "crop")
-    @JsonIgnore
-    private ArrayList<Request> requests;
 }
