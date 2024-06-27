@@ -1,6 +1,8 @@
 package com.examly.springapp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,8 +17,9 @@ public class UserController {
     UserService userService;
 
     @PostMapping("/api/login")
-    public User Login(@RequestBody User user){
-        return userService.login(user);
+    public ResponseEntity<User> Login(@RequestBody User user){
+        User users= userService.login(user);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     @PostMapping("/api/register")
