@@ -3,6 +3,8 @@ package com.examly.springapp.model;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,5 +29,6 @@ public class Crop {
     private User user;
 
     @OneToMany(mappedBy = "crop")
+    @JsonIgnore
     private ArrayList<Request> requests;
 }
