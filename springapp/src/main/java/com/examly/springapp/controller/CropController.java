@@ -1,8 +1,11 @@
 package com.examly.springapp.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -17,7 +20,7 @@ public class CropController {
     @Autowired
     CropService cropService;
 
-    @PostMapping
+    @PostMapping("/api/crop")
     public ResponseEntity<Crop> addCrop(@RequestBody Crop crop){
         Crop newCrop=cropService.addCrop(crop);
         if(newCrop!=null)
@@ -26,7 +29,7 @@ public class CropController {
         return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @PutMapping
+    @PutMapping("/api/crop")
     public ResponseEntity<Crop> updateCrop(@PathVariable int cropId, @RequestBody Crop crop){
         Crop updatedCrop = cropService.updateCrop(cropId, crop);
         if(updatedCrop!=null)
@@ -35,5 +38,12 @@ public class CropController {
         return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @GetMapping
+    @GetMapping("/api/crop/{userId}")
+    public ResponseEntity<List<Crop>> getCropByUserId(@PathVariable int userId){
+        List<Crop> crops=cropService.getCropByUserId(userId);
+        if(crops!=null)
+            return new ResponseEntity<>(crops,HttpStatus.OK);
+        else
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }
