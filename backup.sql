@@ -40,7 +40,7 @@ CREATE TABLE `agro_chemical` (
   `price_per_unit` decimal(38,2) DEFAULT NULL,
   `unit` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`agro_chemical_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -49,6 +49,7 @@ CREATE TABLE `agro_chemical` (
 
 LOCK TABLES `agro_chemical` WRITE;
 /*!40000 ALTER TABLE `agro_chemical` DISABLE KEYS */;
+INSERT INTO `agro_chemical` VALUES (1,' updated BrandA','updated Pesticide','A powerful pesticide for controlling pests.','https://example.com/images/pesticide_xyz.jpg','updated Pesticide XYZ',29.99,'Litre');
 /*!40000 ALTER TABLE `agro_chemical` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -180,4 +181,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-27  8:38:14
+-- Dump completed on 2024-06-27  8:48:04

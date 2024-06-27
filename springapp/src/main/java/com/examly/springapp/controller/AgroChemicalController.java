@@ -20,31 +20,31 @@ public class AgroChemicalController {
     @Autowired
     private AgroChemicalService agroChemicalService;
 
-    @PostMapping
+    @PostMapping("/api/agrochemical")
     public ResponseEntity<AgroChemical> createAgroChemical(@RequestBody AgroChemical agroChemical) {
         AgroChemical createdAgroChemical = agroChemicalService.createAgroChemical(agroChemical);
         return new ResponseEntity<>(createdAgroChemical,HttpStatus.CREATED);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/api/agrochemical/{id}")
     public ResponseEntity<AgroChemical> getAgroChemicalById(@PathVariable int id) {
         AgroChemical agroChemical = agroChemicalService.getAgroChemicalById(id);
         return ResponseEntity.ok(agroChemical);
     }
 
-    @GetMapping
+    @GetMapping("/api/agrochemical")
     public ResponseEntity<List<AgroChemical>> getAllAgroChemicals() {
         List<AgroChemical> agroChemicals = agroChemicalService.getAllAgroChemicals();
         return ResponseEntity.ok(agroChemicals);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/api/agrochemical/{id}")
     public ResponseEntity<AgroChemical> updateAgroChemical(@PathVariable int id, @RequestBody AgroChemical agroChemical) {
         AgroChemical updatedAgroChemical = agroChemicalService.updateAgroChemical(id, agroChemical);
         return ResponseEntity.ok(updatedAgroChemical);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/api/agrochemical/{id}")
     public ResponseEntity<Void> deleteAgroChemical(@PathVariable int id) {
         agroChemicalService.deleteAgroChemical(id);
         return ResponseEntity.noContent().build();

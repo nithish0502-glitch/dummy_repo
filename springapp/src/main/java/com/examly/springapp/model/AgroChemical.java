@@ -2,6 +2,9 @@ package com.examly.springapp.model;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -78,13 +81,6 @@ public class AgroChemical {
         this.image = image;
     }
 
-    public ArrayList<Request> getRequests() {
-        return requests;
-    }
-
-    public void setRequests(ArrayList<Request> requests) {
-        this.requests = requests;
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -99,5 +95,15 @@ public class AgroChemical {
     private String image;
 
     @OneToMany(mappedBy = "agroChemical")
-    private ArrayList<Request> requests;
+    @JsonIgnore
+    private List<Request> requests = new ArrayList<>();
+
+    public List<Request> getRequests() {
+        return requests;
+    }
+
+    public void setRequests(List<Request> requests) {
+        this.requests = requests;
+    }
+
 }
