@@ -27,9 +27,10 @@ public class User {
     private ArrayList<Crop> crops;
 
     @OneToMany(mappedBy = "user")
-    
+    @JsonIgnore
     private ArrayList<Request> requests;
 
     @OneToMany(mappedBy = "user")
+    @JsonIgnore
     private ArrayList<Feedback> feedbacks;
 }

@@ -75,6 +75,35 @@ INSERT INTO `admission_seq` VALUES (1);
 UNLOCK TABLES;
 
 --
+-- Table structure for table `agro_chemical`
+--
+
+DROP TABLE IF EXISTS `agro_chemical`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `agro_chemical` (
+  `agro_chemical_id` int(11) NOT NULL AUTO_INCREMENT,
+  `brand` varchar(255) DEFAULT NULL,
+  `category` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `price_per_unit` decimal(38,2) DEFAULT NULL,
+  `unit` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`agro_chemical_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `agro_chemical`
+--
+
+LOCK TABLES `agro_chemical` WRITE;
+/*!40000 ALTER TABLE `agro_chemical` DISABLE KEYS */;
+/*!40000 ALTER TABLE `agro_chemical` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `course`
 --
 
@@ -124,6 +153,58 @@ LOCK TABLES `course_seq` WRITE;
 /*!40000 ALTER TABLE `course_seq` DISABLE KEYS */;
 INSERT INTO `course_seq` VALUES (1);
 /*!40000 ALTER TABLE `course_seq` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `crop`
+--
+
+DROP TABLE IF EXISTS `crop`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `crop` (
+  `crop_id` int(11) NOT NULL AUTO_INCREMENT,
+  `crop_name` varchar(255) DEFAULT NULL,
+  `crop_type` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `planting_date` datetime(6) DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`crop_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `crop`
+--
+
+LOCK TABLES `crop` WRITE;
+/*!40000 ALTER TABLE `crop` DISABLE KEYS */;
+/*!40000 ALTER TABLE `crop` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `feedback`
+--
+
+DROP TABLE IF EXISTS `feedback`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `feedback` (
+  `feedback_id` int(11) NOT NULL AUTO_INCREMENT,
+  `date` datetime(6) DEFAULT NULL,
+  `feedback_text` varchar(255) DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`feedback_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `feedback`
+--
+
+LOCK TABLES `feedback` WRITE;
+/*!40000 ALTER TABLE `feedback` DISABLE KEYS */;
+/*!40000 ALTER TABLE `feedback` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -204,6 +285,38 @@ CREATE TABLE `player` (
 LOCK TABLES `player` WRITE;
 /*!40000 ALTER TABLE `player` DISABLE KEYS */;
 /*!40000 ALTER TABLE `player` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `request`
+--
+
+DROP TABLE IF EXISTS `request`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `request` (
+  `request_id` int(11) NOT NULL AUTO_INCREMENT,
+  `quantity` int(11) NOT NULL,
+  `request_date` datetime(6) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `agro_chemical_id` int(11) DEFAULT NULL,
+  `crop_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`request_id`),
+  KEY `FKff5lcgb8skaif9gt3qhc3w1ch` (`agro_chemical_id`),
+  KEY `FKknq6m20448wtkmenr75of15p2` (`crop_id`),
+  CONSTRAINT `FKff5lcgb8skaif9gt3qhc3w1ch` FOREIGN KEY (`agro_chemical_id`) REFERENCES `agro_chemical` (`agro_chemical_id`),
+  CONSTRAINT `FKknq6m20448wtkmenr75of15p2` FOREIGN KEY (`crop_id`) REFERENCES `crop` (`crop_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `request`
+--
+
+LOCK TABLES `request` WRITE;
+/*!40000 ALTER TABLE `request` DISABLE KEYS */;
+/*!40000 ALTER TABLE `request` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -349,4 +462,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-27  6:08:14
+-- Dump completed on 2024-06-27  6:23:15
