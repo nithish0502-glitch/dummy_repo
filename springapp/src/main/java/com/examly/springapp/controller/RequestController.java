@@ -55,6 +55,12 @@ public class RequestController {
         }
     }
 
+    @GetMapping("/requests/user")
+    public ResponseEntity<List<Request>> getRequestsByUser(@RequestBody User user) {
+        List<Request> requests = requestService.getRequestsByUser(user);
+        return ResponseEntity.ok(requests);
+    }
+
     @DeleteMapping("/request/{id}")
     public ResponseEntity<Void> deleteRequest(@PathVariable int id) {
         requestService.deleteRequest(id);

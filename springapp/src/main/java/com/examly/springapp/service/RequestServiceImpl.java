@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.examly.springapp.model.Request;
+import com.examly.springapp.model.User;
 import com.examly.springapp.repository.AgroChemicalRepo;
 import com.examly.springapp.repository.CropRepo;
 import com.examly.springapp.repository.RequestRepo;
@@ -78,5 +79,12 @@ public class RequestServiceImpl implements RequestService {
         Request request = requestRepository.findById(id)
             .orElseThrow(() -> new RuntimeException("Request not found"));
         requestRepository.delete(request);
+    }
+
+    @Override
+    public List<Request> getRequestsByUserId(int userId) {
+        User user=userRepo.findById(userId).orElse(null);
+        return requestRepository.findByUser(user);
+
     }
 }

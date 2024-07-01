@@ -29,24 +29,28 @@ public class AgroChemicalController {
     }
 
     @GetMapping("/api/agrochemical/{id}")
+    @PreAuthorize("hasAnyAuthority('SELLER', 'FARMER')")
     public ResponseEntity<AgroChemical> getAgroChemicalById(@PathVariable int id) {
         AgroChemical agroChemical = agroChemicalService.getAgroChemicalById(id);
         return ResponseEntity.ok(agroChemical);
     }
 
     @GetMapping("/api/agrochemical")
+    @PreAuthorize("hasAnyAuthority('SELLER', 'FARMER')")
     public ResponseEntity<List<AgroChemical>> getAllAgroChemicals() {
         List<AgroChemical> agroChemicals = agroChemicalService.getAllAgroChemicals();
         return ResponseEntity.ok(agroChemicals);
     }
 
     @PutMapping("/api/agrochemical/{id}")
+    @PreAuthorize("hasAnyAuthority('SELLER')")
     public ResponseEntity<AgroChemical> updateAgroChemical(@PathVariable int id, @RequestBody AgroChemical agroChemical) {
         AgroChemical updatedAgroChemical = agroChemicalService.updateAgroChemical(id, agroChemical);
         return ResponseEntity.ok(updatedAgroChemical);
     }
 
     @DeleteMapping("/api/agrochemical/{id}")
+    @PreAuthorize("hasAnyAuthority('SELLER')")
     public ResponseEntity<Void> deleteAgroChemical(@PathVariable int id) {
         agroChemicalService.deleteAgroChemical(id);
         return ResponseEntity.noContent().build();
