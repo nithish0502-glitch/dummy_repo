@@ -30,6 +30,7 @@ public class RequestServiceImpl implements RequestService {
         request.setCrop(cropRepo.findById(request.getCrop().getCropId()).orElse(null));
         request.setUser(userRepo.findById(request.getUser().getUserId()).orElse(null));
         request.setAgroChemical(agroChemicalRepo.findById(request.getAgroChemical().getAgroChemicalId()).orElse(null));
+        request.setStatus("Pending");
         return requestRepository.save(request);
     }
 
@@ -63,12 +64,14 @@ public class RequestServiceImpl implements RequestService {
         Request existingRequest = requestRepository.findById(id)
             .orElseThrow(() -> new RuntimeException("Request not found"));
             Request request = requestRepository.findById(id).orElse(null);
-
-       return  existingRequest.setStatus(request.setStatus(!request.getStatus()));
+        if(request.getStatus().equals("Pending"))
+        return request.setStatus("Approved");
+        else
+        return request.setStatus("Pending");
         
     }
 
-    @Override
+    @Override 
     public void deleteRequest(int id) {
         Request request = requestRepository.findById(id)
             .orElseThrow(() -> new RuntimeException("Request not found"));
