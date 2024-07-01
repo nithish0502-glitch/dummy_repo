@@ -40,7 +40,7 @@ CREATE TABLE `agro_chemical` (
   `price_per_unit` decimal(38,2) DEFAULT NULL,
   `unit` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`agro_chemical_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -49,7 +49,6 @@ CREATE TABLE `agro_chemical` (
 
 LOCK TABLES `agro_chemical` WRITE;
 /*!40000 ALTER TABLE `agro_chemical` DISABLE KEYS */;
-INSERT INTO `agro_chemical` VALUES (1,' updated BrandA','updated Pesticide','A powerful pesticide for controlling pests.','https://example.com/images/pesticide_xyz.jpg','updated Pesticide XYZ',29.99,'Litre');
 /*!40000 ALTER TABLE `agro_chemical` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -70,7 +69,7 @@ CREATE TABLE `crop` (
   PRIMARY KEY (`crop_id`),
   KEY `FK76xv1sgky2q7kwe7g2elv05mp` (`user_id`),
   CONSTRAINT `FK76xv1sgky2q7kwe7g2elv05mp` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -79,7 +78,6 @@ CREATE TABLE `crop` (
 
 LOCK TABLES `crop` WRITE;
 /*!40000 ALTER TABLE `crop` DISABLE KEYS */;
-INSERT INTO `crop` VALUES (2,'updatedWheat','Grain','High-quality wheat for baking','2023-06-15 10:15:30.000000',1);
 /*!40000 ALTER TABLE `crop` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -159,7 +157,7 @@ CREATE TABLE `user` (
   `user_role` varchar(255) DEFAULT NULL,
   `username` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -168,7 +166,6 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'example@example.com','123-456-7890','SecurePassword123!','Farmer','exampleUser'),(2,'example@example.com','123-456-7890','SecurePassword123!','Farmer','exampleUser'),(3,'example@example.com','123-456-7890','SecurePassword123!','Farmer','exampleUser'),(4,'example@example.com','123-456-7890','SecurePassword123!','Farmer','exampleUser'),(5,'example@example.com','123-456-7890','SecurePassword123!','Farmer','exampleUser'),(6,'example@example.com','123-456-7890','SecurePassword123!','Farmer','exampleUser'),(7,'example@example.com','123-456-7890','SecurePassword123!','Farmer','exampleUser'),(8,'example@example.com','123-456-7890','SecurePassword123!','Farmer','exampleUser'),(9,'example@example.com','123-456-7890','SecurePassword123!','Farmer','exampleUser'),(10,'example@example.com','123-456-7890','SecurePassword123!','Farmer','exampleUser');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -181,4 +178,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-01  8:01:38
+-- Dump completed on 2024-07-01  8:16:38
