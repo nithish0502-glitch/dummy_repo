@@ -29,7 +29,6 @@ public class RequestController {
         }
     }
 
-    // Get all requests
     @GetMapping
     public ResponseEntity<List<Request>> getAllRequests() {
         List<Request> requests = requestService.getAllRequests();
@@ -38,7 +37,7 @@ public class RequestController {
 
     // Update a request
     @PutMapping("/{id}")
-    public ResponseEntity<Void> updateRequest(@PathVariable("id") int id, @RequestBody Request request) {
+    public ResponseEntity<String> updateRequest(@PathVariable("id") int id, @RequestBody Request request) {
         boolean updated = requestService.updateRequest(id, request);
         if (updated) {
             return new ResponseEntity<>(HttpStatus.OK);
@@ -47,9 +46,8 @@ public class RequestController {
         }
     }
 
-    // Delete a request
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteRequest(@PathVariable("id") int id) {
+    public ResponseEntity<Void> deleteRequest(@PathVariable int id) {
         requestService.deleteRequest(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

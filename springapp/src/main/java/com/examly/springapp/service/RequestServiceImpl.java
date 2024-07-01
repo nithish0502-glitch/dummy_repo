@@ -60,17 +60,19 @@ public class RequestServiceImpl implements RequestService {
     // }
 
     @Override
-    public boolean updateRequest(int id) {
-        Request existingRequest = requestRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException("Request not found"));
-            Request request = requestRepository.findById(id).orElse(null);
-        if(request.getStatus().equals("Pending"))
-        return request.setStatus("Approved");
-        else
-        return request.setStatus("Pending");
+    public String updateRequest(int id) {
         
+            Request request = requestRepository.findById(id).orElse(null);
+        if(request.getStatus().equals("Pending")){
+        request.setStatus("Approved");
+        return request.getStatus();
     }
-
+        else{
+         request.setStatus("Pending");
+         return request.getStatus();
+        }  
+    } 
+          
     @Override 
     public void deleteRequest(int id) {
         Request request = requestRepository.findById(id)
