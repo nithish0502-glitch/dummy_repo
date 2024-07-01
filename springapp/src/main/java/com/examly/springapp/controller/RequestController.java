@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.examly.springapp.model.Request;
+import com.examly.springapp.model.User;
 import com.examly.springapp.service.RequestService;
 
 @RestController
@@ -55,9 +56,9 @@ public class RequestController {
         }
     }
 
-    @GetMapping("/requests/user")
-    public ResponseEntity<List<Request>> getRequestsByUser(@RequestBody User user) {
-        List<Request> requests = requestService.getRequestsByUser(user);
+    @GetMapping("/api/requests/user/{userId}")
+    public ResponseEntity<List<Request>> getRequestsByUser(@PathVariable int userId) {
+        List<Request> requests = requestService.getRequestsByUserId(userId);
         return ResponseEntity.ok(requests);
     }
 

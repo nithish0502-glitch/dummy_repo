@@ -22,14 +22,12 @@ public class UserController {
     private UserServiceImpl userService;
 
     @PostMapping("/api/login")
-    @PreAuthorize("permitAll()")
     public ResponseEntity<AuthUser> loginUser(@RequestParam String email, @RequestParam String password) throws UsernameNotFoundException{
         AuthUser u = userService.login(email, password);
         return new ResponseEntity<>(u, HttpStatus.OK);
     }
  
     @PostMapping("/api/register")
-    @PreAuthorize("permitAll()")
     public ResponseEntity<User> register(@RequestBody User user) throws RuntimeException {
         User u = userService.registerUser(user);
         return new ResponseEntity<>(u, HttpStatus.OK);
