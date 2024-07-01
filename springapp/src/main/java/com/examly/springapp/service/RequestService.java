@@ -8,6 +8,6 @@ public interface RequestService {
     Request createRequest(Request request);
     Request getRequestById(int id);
     List<Request> getAllRequests();
-    Request updateRequest(int id, Request request);
+    boolean updateRequest(int id, Request request);
     void deleteRequest(int id);
 }

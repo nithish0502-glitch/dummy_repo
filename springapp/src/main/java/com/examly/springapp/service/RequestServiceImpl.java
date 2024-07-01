@@ -43,19 +43,29 @@ public class RequestServiceImpl implements RequestService {
         return requestRepository.findAll();
     }
 
+    // @Override
+    // public Request updateRequest(int id, Request updatedRequest) {
+    //     Request existingRequest = requestRepository.findById(id)
+    //         .orElseThrow(() -> new RuntimeException("Request not found"));
+
+    //     existingRequest.setAgroChemical(updatedRequest.getAgroChemical());
+    //     existingRequest.setUser(updatedRequest.getUser());
+    //     existingRequest.setCrop(updatedRequest.getCrop());
+    //     existingRequest.setQuantity(updatedRequest.getQuantity());
+    //     existingRequest.setStatus(updatedRequest.getStatus());
+    //     existingRequest.setRequestDate(updatedRequest.getRequestDate());
+
+    //     return requestRepository.save(existingRequest);
+    // }
+
     @Override
-    public Request updateRequest(int id, Request updatedRequest) {
+    public boolean updateRequest(int id) {
         Request existingRequest = requestRepository.findById(id)
             .orElseThrow(() -> new RuntimeException("Request not found"));
+            Request request = requestRepository.findById(id).orElse(null);
 
-        existingRequest.setAgroChemical(updatedRequest.getAgroChemical());
-        existingRequest.setUser(updatedRequest.getUser());
-        existingRequest.setCrop(updatedRequest.getCrop());
-        existingRequest.setQuantity(updatedRequest.getQuantity());
-        existingRequest.setStatus(updatedRequest.getStatus());
-        existingRequest.setRequestDate(updatedRequest.getRequestDate());
-
-        return requestRepository.save(existingRequest);
+       return  existingRequest.setStatus(request.setStatus(!request.getStatus()));
+        
     }
 
     @Override
