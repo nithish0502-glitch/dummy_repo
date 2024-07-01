@@ -11,4 +11,5 @@ public interface FeedbackService {
     Feedback getFeedbackById(int id);
     List<Feedback> getAllFeedbacks();
     boolean deleteFeedback(int id);
+    List<Feedback> getFeedbacksByUserId(int userId);
 }

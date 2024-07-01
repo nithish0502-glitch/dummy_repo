@@ -44,6 +44,12 @@ public class FeedbackController {
         return new ResponseEntity<>(feedbacks, HttpStatus.OK);
     }
 
+    @GetMapping("/api/feedback/{userId}")
+    public ResponseEntity<List<Feedback>> getFeedbacksByUserId(@PathVariable int userId) {
+        List<Feedback> feedbacks = feedbackService.getFeedbacksByUserId(userId);
+        return new ResponseEntity<>(feedbacks, HttpStatus.OK);
+    }
+
     // Delete a feedback
     @DeleteMapping("/api/feedback/{id}")
     public ResponseEntity<Void> deleteFeedback(@PathVariable("id") int id) {
