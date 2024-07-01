@@ -40,7 +40,7 @@ CREATE TABLE `agro_chemical` (
   `price_per_unit` decimal(38,2) DEFAULT NULL,
   `unit` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`agro_chemical_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -49,6 +49,7 @@ CREATE TABLE `agro_chemical` (
 
 LOCK TABLES `agro_chemical` WRITE;
 /*!40000 ALTER TABLE `agro_chemical` DISABLE KEYS */;
+INSERT INTO `agro_chemical` VALUES (1,'Brand X','Fertilizer','Organic fertilizer for better crop growth.','https://example.com/images/fertilizer.jpg','Fertilizer A',25.99,'kg');
 /*!40000 ALTER TABLE `agro_chemical` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -157,7 +158,7 @@ CREATE TABLE `user` (
   `user_role` varchar(255) DEFAULT NULL,
   `username` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -166,6 +167,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'john.doe@example.com','+1234567890','hashed_password_here','Farmer','johndoe'),(2,'john.doe@example.com','+1234567890','hashed_password_here','Seller','johndoe');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -178,4 +180,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-01  8:16:38
+-- Dump completed on 2024-07-01  8:31:38
