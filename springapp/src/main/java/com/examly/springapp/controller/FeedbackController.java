@@ -21,13 +21,13 @@ public class FeedbackController {
     @Autowired
     FeedbackService feedbackService;
 
-    @PostMapping
+    @PostMapping("/api/feedback")
     public ResponseEntity<Feedback> createFeedback(@RequestBody Feedback feedback) {
         Feedback createdFeedback = feedbackService.createFeedback(feedback);
         return new ResponseEntity<>(createdFeedback, HttpStatus.CREATED);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/api/feedback/{id}")
     public ResponseEntity<Feedback> getFeedbackById(@PathVariable("id") int id) {
         Feedback feedback = feedbackService.getFeedbackById(id);
         if (feedback != null) {
@@ -38,14 +38,14 @@ public class FeedbackController {
     }
   
     // Get all feedbacks
-    @GetMapping
+    @GetMapping("/api/feedback")
     public ResponseEntity<List<Feedback>> getAllFeedbacks() {
         List<Feedback> feedbacks = feedbackService.getAllFeedbacks();
         return new ResponseEntity<>(feedbacks, HttpStatus.OK);
     }
 
     // Delete a feedback
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/api/feedback/{id}")
     public ResponseEntity<Void> deleteFeedback(@PathVariable("id") int id) {
         boolean deleted = feedbackService.deleteFeedback(id);
         if (deleted) {

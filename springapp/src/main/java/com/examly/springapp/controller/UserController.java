@@ -17,7 +17,7 @@ public class UserController {
     UserService userService;
 
     @PostMapping("/api/login")
-    public ResponseEntity<User> Login(@RequestBody User user){
+    public ResponseEntity<User> login(@RequestBody User user){
         User user1= userService.login(user);
         if(user1!=null)
         return new ResponseEntity<>(user1, HttpStatus.OK);
