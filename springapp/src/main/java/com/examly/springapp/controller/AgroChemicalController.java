@@ -3,6 +3,7 @@ package com.examly.springapp.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +22,7 @@ public class AgroChemicalController {
     private AgroChemicalService agroChemicalService;
 
     @PostMapping("/api/agrochemical")
+    @PreAuthorize("hasAuthority('SELLER')")
     public ResponseEntity<AgroChemical> createAgroChemical(@RequestBody AgroChemical agroChemical) {
         AgroChemical createdAgroChemical = agroChemicalService.createAgroChemical(agroChemical);
         return new ResponseEntity<>(createdAgroChemical,HttpStatus.CREATED);

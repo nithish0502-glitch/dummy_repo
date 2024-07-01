@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +23,7 @@ public class CropController {
     CropService cropService;
 
     @PostMapping("/api/crop")
+    @PreAuthorize("hasAuthority('FARMER')")
     public ResponseEntity<Crop> addCrop(@RequestBody Crop crop){
         Crop newCrop=cropService.addCrop(crop);
         if(newCrop!=null)
@@ -31,6 +33,7 @@ public class CropController {
     }
 
     @PutMapping("/api/crop/{cropId}")
+    @PreAuthorize("hasAuthority('FARMER')")
     public ResponseEntity<Crop> updateCrop(@PathVariable int cropId, @RequestBody Crop crop){
         Crop updatedCrop = cropService.updateCrop(cropId, crop);
         if(updatedCrop!=null)
@@ -40,6 +43,7 @@ public class CropController {
     }
 
     @GetMapping("/api/crop/{userId}")
+    @PreAuthorize("hasAuthority('FARMER')")
     public ResponseEntity<List<Crop>> getCropByUserId(@PathVariable int userId){
         List<Crop> crops=cropService.getCropByUserId(userId);
         if(crops!=null)
@@ -49,6 +53,7 @@ public class CropController {
     }
 
     @DeleteMapping("/api/crop/{cropId}")
+    @PreAuthorize("hasAuthority('FARMER')")
     public Crop deleteCrop(@PathVariable int cropId){
         return cropService.deleteCrop(cropId);
     }
