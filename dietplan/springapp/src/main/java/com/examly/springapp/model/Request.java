@@ -17,7 +17,7 @@ public class Request {
 
     @ManyToOne
     @JoinColumn(name = "agroChemicalId")
-    private AgroChemical agroChemical;
+    private DietPlan agroChemical;
 
     @ManyToOne
     @JoinColumn(name = "userId", nullable = false)
@@ -25,7 +25,7 @@ public class Request {
 
     @ManyToOne
     @JoinColumn(name = "cropId", nullable = false)
-    private Crop crop;
+    private DietPlanRequest crop;
 
     private int quantity;
     private String status;
@@ -38,10 +38,10 @@ public class Request {
     public void setRequestId(int requestId) {
         this.requestId = requestId;
     }
-    public AgroChemical getAgroChemical() {
+    public DietPlan getAgroChemical() {
         return agroChemical;
     }
-    public void setAgroChemical(AgroChemical agroChemical) {
+    public void setAgroChemical(DietPlan agroChemical) {
         this.agroChemical = agroChemical;
     }
     public User getUser() {
@@ -50,10 +50,10 @@ public class Request {
     public void setUser(User user) {
         this.user = user;
     }
-    public Crop getCrop() {
+    public DietPlanRequest getCrop() {
         return crop;
     }
-    public void setCrop(Crop crop) {
+    public void setCrop(DietPlanRequest crop) {
         this.crop = crop;
     }
     public int getQuantity() {

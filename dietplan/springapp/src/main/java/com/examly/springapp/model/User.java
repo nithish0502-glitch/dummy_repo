@@ -13,36 +13,42 @@ import jakarta.persistence.OneToMany;
 
 @Entity
 public class User {
-     @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int userId;
+
+    private Long userId;
+
+    private String username;
 
     private String email;
+
     private String password;
-    private String username;
-    private String mobileNumber;
-    private String userRole; // Farmer or Seller
 
-    public User(){}
+    private String role;
 
     @OneToMany(mappedBy = "user")
-    @JsonIgnore
-    private List<Crop> crops = new ArrayList<>();
+    private List<DietPlan> dietPlans;
 
     @OneToMany(mappedBy = "user")
-    @JsonIgnore
-    private List<Request> requests = new ArrayList<>();
+    private List<DietPlanRequest> dietPlanRequests;
 
     @OneToMany(mappedBy = "user")
-    @JsonIgnore
-    private List<Feedback> feedbacks = new ArrayList<>();
+    private List<Feedback> feedbacks;
 
-    public int getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {
@@ -61,53 +67,28 @@ public class User {
         this.password = password;
     }
 
-    public String getUsername() {
-        return username;
+    public String getRole() {
+        return role;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setRole(String role) {
+        this.role = role;
     }
 
-    public String getMobileNumber() {
-        return mobileNumber;
+    public List<DietPlan> getDietPlans() {
+        return dietPlans;
     }
 
-    public void setMobileNumber(String mobileNumber) {
-        this.mobileNumber = mobileNumber;
+    public void setDietPlans(List<DietPlan> dietPlans) {
+        this.dietPlans = dietPlans;
     }
 
-    public String getUserRole() {
-        return userRole;
+    public List<DietPlanRequest> getDietPlanRequests() {
+        return dietPlanRequests;
     }
 
-    public void setUserRole(String userRole) {
-        this.userRole = userRole;
-    }
-
-
-
-
-    public void setRequests(ArrayList<Request> requests) {
-        this.requests = requests;
-    }
-
-
-
-    public List<Crop> getCrops() {
-        return crops;
-    }
-
-    public void setCrops(List<Crop> crops) {
-        this.crops = crops;
-    }
-
-    public List<Request> getRequests() {
-        return requests;
-    }
-
-    public void setRequests(List<Request> requests) {
-        this.requests = requests;
+    public void setDietPlanRequests(List<DietPlanRequest> dietPlanRequests) {
+        this.dietPlanRequests = dietPlanRequests;
     }
 
     public List<Feedback> getFeedbacks() {
@@ -118,7 +99,5 @@ public class User {
         this.feedbacks = feedbacks;
     }
 
-    public void setFeedbacks(ArrayList<Feedback> feedbacks) {
-        this.feedbacks = feedbacks;
-    }
+    
 }
