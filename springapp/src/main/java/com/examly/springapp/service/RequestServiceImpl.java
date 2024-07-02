@@ -45,36 +45,36 @@ public class RequestServiceImpl implements RequestService {
         return requestRepository.findAll();
     }
 
-    // @Override
-    // public Request updateRequest(int id, Request updatedRequest) {
-    //     Request existingRequest = requestRepository.findById(id)
-    //         .orElseThrow(() -> new RuntimeException("Request not found"));
-
-    //     existingRequest.setAgroChemical(updatedRequest.getAgroChemical());
-    //     existingRequest.setUser(updatedRequest.getUser());
-    //     existingRequest.setCrop(updatedRequest.getCrop());
-    //     existingRequest.setQuantity(updatedRequest.getQuantity());
-    //     existingRequest.setStatus(updatedRequest.getStatus());
-    //     existingRequest.setRequestDate(updatedRequest.getRequestDate());
-
-    //     return requestRepository.save(existingRequest);
-    // }
-
     @Override
-    public String updateRequest(int id) {
-        
-            Request request = requestRepository.findById(id).orElse(null);
-        if(request.getStatus().equals("Pending")){
-        request.setStatus("Approved");
-        requestRepository.save(request);
-        return request.getStatus();
+    public Request updateRequest(int id, Request updatedRequest) {
+        Request existingRequest = requestRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Request not found"));
+
+        existingRequest.setAgroChemical(updatedRequest.getAgroChemical());
+        existingRequest.setUser(updatedRequest.getUser());
+        existingRequest.setCrop(updatedRequest.getCrop());
+        existingRequest.setQuantity(updatedRequest.getQuantity());
+        existingRequest.setStatus(updatedRequest.getStatus());
+        existingRequest.setRequestDate(updatedRequest.getRequestDate());
+
+        return requestRepository.save(existingRequest);
     }
-        else{
-         request.setStatus("Pending");
-         requestRepository.save(request);
-         return request.getStatus();
-        }  
-    } 
+
+    // @Override
+    // public String updateRequest(int id) {
+        
+    //         Request request = requestRepository.findById(id).orElse(null);
+    //     if(request.getStatus().equals("Pending")){
+    //     request.setStatus("Approved");
+    //     requestRepository.save(request);
+    //     return request.getStatus();
+    // }
+    //     else{
+    //      request.setStatus("Pending");
+    //      requestRepository.save(request);
+    //      return request.getStatus();
+    //     }  
+    // } 
           
     @Override 
     public Request deleteRequest(int id) {

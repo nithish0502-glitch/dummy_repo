@@ -8,7 +8,8 @@ public interface RequestService {
     Request createRequest(Request request);
     Request getRequestById(int id);
     List<Request> getAllRequests();
-    String updateRequest(int id);
+    // String updateRequest(int id);
+   Request updateRequest(int id,Request request);
     Request deleteRequest(int id);
     List<Request> getRequestsByUserId(int userId);
 }

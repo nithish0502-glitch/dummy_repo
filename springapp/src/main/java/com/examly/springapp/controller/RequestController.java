@@ -51,8 +51,8 @@ public class RequestController {
 
     @PutMapping("/api/request/{id}")
     @PreAuthorize("hasAnyAuthority('SELLER')")
-    public ResponseEntity<String> updateRequest(@PathVariable int id) {
-        String updated = requestService.updateRequest(id);
+    public ResponseEntity<Request> updateRequest(@PathVariable int id,@RequestBody Request request) {
+        Request updated = requestService.updateRequest(id,request);
         if (updated!=null) {
             return new ResponseEntity<>(updated,HttpStatus.OK);
         } else {
