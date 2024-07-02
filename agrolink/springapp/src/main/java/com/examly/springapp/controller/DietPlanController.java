@@ -12,33 +12,33 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
-import com.examly.springapp.model.AgroChemical;
+import com.examly.springapp.model.DietPlan;
 import com.examly.springapp.service.AgroChemicalService;
 
 @RestController
-public class AgroChemicalController {
+public class DietPlanController {
 
     @Autowired
     private AgroChemicalService agroChemicalService;
 
     @PostMapping("/api/agrochemical")
     @PreAuthorize("hasAuthority('SELLER')")
-    public ResponseEntity<AgroChemical> createAgroChemical(@RequestBody AgroChemical agroChemical) {
-        AgroChemical createdAgroChemical = agroChemicalService.createAgroChemical(agroChemical);
+    public ResponseEntity<DietPlan> createAgroChemical(@RequestBody DietPlan agroChemical) {
+        DietPlan createdAgroChemical = agroChemicalService.createAgroChemical(agroChemical);
         return new ResponseEntity<>(createdAgroChemical,HttpStatus.CREATED);
     }
 
     @GetMapping("/api/agrochemical/{id}")
     @PreAuthorize("hasAnyAuthority('SELLER', 'FARMER')")
-    public ResponseEntity<AgroChemical> getAgroChemicalById(@PathVariable int id) {
-        AgroChemical agroChemical = agroChemicalService.getAgroChemicalById(id);
+    public ResponseEntity<DietPlan> getAgroChemicalById(@PathVariable int id) {
+        DietPlan agroChemical = agroChemicalService.getAgroChemicalById(id);
         return ResponseEntity.ok(agroChemical);
     }
 
     @GetMapping("/api/agrochemical")
     @PreAuthorize("hasAnyAuthority('SELLER', 'FARMER')")
-    public ResponseEntity<List<AgroChemical>> getAllAgroChemicals() {
-        List<AgroChemical> agroChemicals = agroChemicalService.getAllAgroChemicals();
+    public ResponseEntity<List<DietPlan>> getAllAgroChemicals() {
+        List<DietPlan> agroChemicals = agroChemicalService.getAllAgroChemicals();
         if(agroChemicals != null) {
             return new ResponseEntity<>(agroChemicals, HttpStatus.OK);
         } else {
@@ -48,15 +48,15 @@ public class AgroChemicalController {
 
     @PutMapping("/api/agrochemical/{id}")
     @PreAuthorize("hasAnyAuthority('SELLER')")
-    public ResponseEntity<AgroChemical> updateAgroChemical(@PathVariable int id, @RequestBody AgroChemical agroChemical) {
-        AgroChemical updatedAgroChemical = agroChemicalService.updateAgroChemical(id, agroChemical);
+    public ResponseEntity<DietPlan> updateAgroChemical(@PathVariable int id, @RequestBody DietPlan agroChemical) {
+        DietPlan updatedAgroChemical = agroChemicalService.updateAgroChemical(id, agroChemical);
         return ResponseEntity.ok(updatedAgroChemical);
     }
 
     @DeleteMapping("/api/agrochemical/{id}")
     @PreAuthorize("hasAnyAuthority('SELLER')")
-    public ResponseEntity<AgroChemical> deleteAgroChemical(@PathVariable int id) {
-        AgroChemical deleted = agroChemicalService.deleteAgroChemical(id);
+    public ResponseEntity<DietPlan> deleteAgroChemical(@PathVariable int id) {
+        DietPlan deleted = agroChemicalService.deleteAgroChemical(id);
         return new ResponseEntity<>(deleted,HttpStatus.OK);
     }
 }

@@ -14,40 +14,5 @@ import com.examly.springapp.repository.UserRepo;
 @Service
 public class FeedbackServiceImpl implements FeedbackService {
 
-    @Autowired
-    FeedbackRepo feedbackRepo;
-
-    @Autowired
-    UserRepo userRepo;
-    @Override
-    public Feedback createFeedback(Feedback feedback) {
-        User user= userRepo.findById(feedback.getUser().getUserId()).orElse(null);
-        feedback.setUser(user);
-        return feedbackRepo.save(feedback);
-    }
-
-    @Override
-    public Feedback getFeedbackById(int id) {
-        Optional<Feedback> optionalFeedback = feedbackRepo.findById(id);
-        return optionalFeedback.orElse(null);
-    }
-
-    @Override
-    public List<Feedback> getAllFeedbacks() {
-        return feedbackRepo.findAll();
-    }
-
-  
-    @Override
-    public Feedback deleteFeedback(int id) {
-        Feedback feedback = feedbackRepo.findById(id).orElse(null);
-        feedbackRepo.deleteById(id);
-        return feedback;
-           
-    }
-
-    @Override
-    public List<Feedback> getFeedbacksByUserId(int userId) {
-        return feedbackRepo.findByUser(userRepo.findById(userId).orElse(null));
-    }
+   
 }

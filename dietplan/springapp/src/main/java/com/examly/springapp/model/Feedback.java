@@ -11,6 +11,7 @@ import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Feedback {
+    
       @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int feedbackId;
@@ -19,8 +20,8 @@ public class Feedback {
     @JoinColumn(name = "userId", nullable = false)
     private User user;
 
-    private String feedbackText;
-    private LocalDateTime date;
+    private String content;
+    private LocalDateTime datecreatedAt;
     public int getFeedbackId() {
         return feedbackId;
     }
@@ -35,16 +36,17 @@ public class Feedback {
     public void setUser(User user) {
         this.user = user;
     }
-    public String getFeedbackText() {
-        return feedbackText;
+   
+    public String getContent() {
+        return content;
     }
-    public void setFeedbackText(String feedbackText) {
-        this.feedbackText = feedbackText;
+    public void setContent(String content) {
+        this.content = content;
     }
-    public LocalDateTime getDate() {
-        return date;
+    public LocalDateTime getDatecreatedAt() {
+        return datecreatedAt;
     }
-    public void setDate(LocalDateTime date) {
-        this.date = date;
+    public void setDatecreatedAt(LocalDateTime datecreatedAt) {
+        this.datecreatedAt = datecreatedAt;
     }
 }

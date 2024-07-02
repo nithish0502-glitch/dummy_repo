@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.examly.springapp.model.AgroChemical;
 
 @Repository
-public interface AgroChemicalRepo extends JpaRepository<AgroChemical,Integer> {
+public interface DietPlanRepo extends JpaRepository<AgroChemical,Integer> {
     
 }

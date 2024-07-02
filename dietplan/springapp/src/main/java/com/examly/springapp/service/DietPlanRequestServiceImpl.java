@@ -1,0 +1,20 @@
+package com.examly.springapp.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.examly.springapp.model.DietPlan;
+import com.examly.springapp.model.Request;
+import com.examly.springapp.model.User;
+import com.examly.springapp.repository.AgroChemicalRepo;
+import com.examly.springapp.repository.CropRepo;
+import com.examly.springapp.repository.RequestRepo;
+import com.examly.springapp.repository.UserRepo;
+
+@Service
+public class DietPlanRequestServiceImpl implements DietPlanService {
+  
+}

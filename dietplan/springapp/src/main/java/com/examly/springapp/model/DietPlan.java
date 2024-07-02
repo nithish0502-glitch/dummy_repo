@@ -17,7 +17,7 @@ import jakarta.persistence.OneToMany;
 public class DietPlan {
    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long dietPlanId;
+    private int dietPlanId;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
@@ -33,7 +33,7 @@ public class DietPlan {
 
     private String status;
 
-    public Long getDietPlanId() {
+    public int getDietPlanId() {
         return dietPlanId;
     }
 
