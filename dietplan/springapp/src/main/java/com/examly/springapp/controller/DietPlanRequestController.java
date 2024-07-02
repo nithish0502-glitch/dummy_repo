@@ -25,7 +25,7 @@ public class DietPlanRequestController {
  
     @Autowired
     DietPlanRequestService dietPlanRequestService;
-    
+    `
    @GetMapping
     public ResponseEntity<List<DietPlanRequest>> getAllDietPlanRequests() {
         List<DietPlanRequest> dietPlanRequests = dietPlanRequestService.getAllDietPlanRequests();
