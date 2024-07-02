@@ -42,10 +42,14 @@ public class FeedbackController {
   
     // Get all feedbacks
     @GetMapping("/api/feedback")
-    @PreAuthorize("hasAuthority('SELLER')")
+    //@PreAuthorize("hasAuthority('SELLER')")
     public ResponseEntity<List<Feedback>> getAllFeedbacks() {
         List<Feedback> feedbacks = feedbackService.getAllFeedbacks();
-        return new ResponseEntity<>(feedbacks, HttpStatus.OK);
+        if(feedbacks != null) {
+            return new ResponseEntity<>(feedbacks, HttpStatus.OK);
+        } else {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
     @GetMapping("/api/feedback/user/{userId}")

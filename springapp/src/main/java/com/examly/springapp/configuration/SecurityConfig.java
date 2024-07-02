@@ -36,9 +36,9 @@ public class SecurityConfig {
                 .csrf().disable()
                 .authorizeHttpRequests((req) -> req
                         .requestMatchers(HttpMethod.OPTIONS).permitAll()
-                        .requestMatchers("/api/register", "/api/login").permitAll()
-                        .requestMatchers("/api/**").authenticated()
-                        .anyRequest().authenticated())
+                        .requestMatchers("/api/register", "/api/login").permitAll() // Permit access to specific endpoints
+                .requestMatchers("/api/**").permitAll() // Permit access to all endpoints under /api
+                .anyRequest().permitAll())
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
