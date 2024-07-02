@@ -10,4 +10,5 @@ public interface CropService {
     public List<Crop> getCropByUserId(int userId);
     public Crop updateCrop(int cropId,Crop crop);
     public Crop deleteCrop(int cropId);
+    public Crop getCropById(int cropId);
 }

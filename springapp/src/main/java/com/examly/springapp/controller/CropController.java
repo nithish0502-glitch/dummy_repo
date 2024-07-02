@@ -52,6 +52,12 @@ public class CropController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    @GetMapping("/api/crop/{cropId}")
+    @PreAuthorize("hasAuthority('FARMER')")
+    public Crop getCropById(@PathVariable int cropId) {
+        return cropService.getCropById(cropId);
+    }
+
     @DeleteMapping("/api/crop/{cropId}")
     @PreAuthorize("hasAuthority('FARMER')")
     public Crop deleteCrop(@PathVariable int cropId){

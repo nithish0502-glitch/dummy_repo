@@ -1,6 +1,7 @@
 package com.examly.springapp.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -71,6 +72,16 @@ public class CropServiceImpl implements CropService {
     public List<Crop> getCropByUserId(int userId) {
         User user = userRepo.findById(userId).orElse(null);
         return cropRepo.findByUser(user);
+    }
+
+    @Override
+    public Crop getCropById(int cropId) {
+        Optional<Crop> optionalCrop = cropRepository.findById(cropId);
+        if (optionalCrop.isPresent()) {
+            return optionalCrop.get();
+        } else {
+            throw new RuntimeException("Crop not found for id: " + cropId);
+        }
     }
     
 }

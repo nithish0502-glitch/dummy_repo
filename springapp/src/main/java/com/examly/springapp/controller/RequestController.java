@@ -23,6 +23,7 @@ public class RequestController {
     private RequestService requestService;
 
     @PostMapping("/api/request")
+    @PreAuthorize("hasAnyAuthority('FARMER')")
     public ResponseEntity<Request> createRequest(@RequestBody Request request) {
         Request createdRequest = requestService.createRequest(request);
         return new ResponseEntity<>(createdRequest, HttpStatus.CREATED);
@@ -30,6 +31,7 @@ public class RequestController {
 
     // Get a request by ID
     @GetMapping("/api/request/{id}")
+    @PreAuthorize("hasAnyAuthority('SELLER', 'FARMER')")
     public ResponseEntity<Request> getRequestById(@PathVariable("id") int id) {
         Request request = requestService.getRequestById(id);
         if (request != null) {
@@ -40,12 +42,12 @@ public class RequestController {
     }
 
     @GetMapping("/api/request")
+    @PreAuthorize("hasAnyAuthority('SELLER')")
     public ResponseEntity<List<Request>> getAllRequests() {
         List<Request> requests = requestService.getAllRequests();
         return new ResponseEntity<>(requests, HttpStatus.OK);
     }
 
-    // Update a request
     @PutMapping("/api/request/{id}")
     public ResponseEntity<String> updateRequest(@PathVariable int id) {
         String updated = requestService.updateRequest(id);
