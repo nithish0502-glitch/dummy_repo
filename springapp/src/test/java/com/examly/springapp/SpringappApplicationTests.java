@@ -57,13 +57,13 @@ class SpringappApplicationTests {
 	    }
 	    
 	    @Test
-	    public void backend_testDonationHasManyToOneAnnotation() {
+	    public void backend_testFeedbackHasManyToOneAnnotation() { 
 	        try {
 	            // Use reflection to get the Class object for the Course class
-	            Class<?> courseClass = Class.forName("com.examly.springapp.model.Donation");
+	            Class<?> feedbackClass = Class.forName("com.examly.springapp.model.Feedback");
 
 	            // Get all declared fields in the Course class
-	            Field[] declaredFields = courseClass.getDeclaredFields();
+	            Field[] declaredFields = feedbackClass.getDeclaredFields();
 
 	            // Check each field for the @OneToOne annotation
 	            boolean hasOneToOne = false;
@@ -73,8 +73,6 @@ class SpringappApplicationTests {
 	                    break; // Stop checking once we find one field with @OneToMany
 	                }
 	            }
-		
-		
 	            // If no field with @OneToMany is found, fail the test
 	            if (!hasOneToOne) {
 	                fail("No field with @ManyToOne annotation found in Feedback class.");
@@ -87,13 +85,13 @@ class SpringappApplicationTests {
 	    }
 	 
     @Test
-    public void backend_testFeedbackHasManyToOneAnnotation() {
+    public void backend_testRequestHasManyToOneAnnotation() {
         try {
             // Use reflection to get the Class object for the Course class
-            Class<?> courseClass = Class.forName("com.examly.springapp.model.Feedback");
+            Class<?> requestClass = Class.forName("com.examly.springapp.model.Request");
 
             // Get all declared fields in the Course class
-            Field[] declaredFields = courseClass.getDeclaredFields();
+            Field[] declaredFields = requestClass.getDeclaredFields();
 
             // Check each field for the @OneToMany annotation
             boolean hasManyToMany = false;
@@ -104,10 +102,9 @@ class SpringappApplicationTests {
                 }
             }
 	
-	
             // If no field with @OneToMany is found, fail the test
             if (!hasManyToMany) {
-                fail("No field with @ManyToOne annotation found in Feedback class.");
+                fail("No field with @ManyToOne annotation found in Request class.");
             }
 
         } catch (ClassNotFoundException e) {
@@ -117,10 +114,10 @@ class SpringappApplicationTests {
     }
 
     @Test
-    public void backend_testDonationInterfaceAndImplementation() {
+    public void backend_testFeedbackInterfaceAndImplementation() {
         try {
-            Class<?> interfaceClass = Class.forName("com.examly.springapp.service.DonationService");
-            Class<?> implementationClass = Class.forName("com.examly.springapp.service.DonationServiceImpl");
+            Class<?> interfaceClass = Class.forName("com.examly.springapp.service.FeedbackService");
+            Class<?> implementationClass = Class.forName("com.examly.springapp.service.FeedbackServiceImpl");
 
             assertTrue(interfaceClass.isInterface(), "The specified class is not an interface");
             assertTrue(interfaceClass.isAssignableFrom(implementationClass), "Implementation does not implement the interface");
@@ -130,10 +127,10 @@ class SpringappApplicationTests {
     }
 
     @Test
-    public void backend_testCharityInterfaceAndImplementation() {
+    public void backend_testRequestInterfaceAndImplementation() {
         try {
-            Class<?> interfaceClass = Class.forName("com.examly.springapp.service.CharityService");
-            Class<?> implementationClass = Class.forName("com.examly.springapp.service.CharityServiceImpl");
+            Class<?> interfaceClass = Class.forName("com.examly.springapp.service.RequestService");
+            Class<?> implementationClass = Class.forName("com.examly.springapp.service.RequestServiceImpl");
 
             assertTrue(interfaceClass.isInterface(), "The specified class is not an interface");
             assertTrue(interfaceClass.isAssignableFrom(implementationClass), "Implementation does not implement the interface");
@@ -155,22 +152,22 @@ class SpringappApplicationTests {
 
 	 @Test
    public void backend_testDonationControllerClassExists() {
-       checkClassExists("com.examly.springapp.controller.DonationController");
+       checkClassExists("com.examly.springapp.controller.FeedbackController");
    }
 	 
 	 @Test
 	   public void backend_testCharityControllerClassExists() {
-	       checkClassExists("com.examly.springapp.controller.CharityController");
+	       checkClassExists("com.examly.springapp.controller.FeedbackController");
 	   }
 	 
 	 @Test
 	   public void backend_testCharityModelClassExists() {
-	       checkClassExists("com.examly.springapp.model.Charity");
+	       checkClassExists("com.examly.springapp.model.Feedback");
 	   }
 	 
 	 @Test
 	   public void backend_testDonationModelClassExists() {
-	       checkClassExists("com.examly.springapp.model.Donation");
+	       checkClassExists("com.examly.springapp.model.Request");
 	   }
 	 
 	 @Test
@@ -180,7 +177,7 @@ class SpringappApplicationTests {
 	 
 	 @Test
 	   public void backend_testFeedbackModelClassExists() {
-	       checkClassExists("com.examly.springapp.model.Feedback");
+	       checkClassExists("com.examly.springapp.model.Crop");
 	   }
 
 }

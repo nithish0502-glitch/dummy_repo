@@ -39,7 +39,11 @@ public class AgroChemicalController {
     @PreAuthorize("hasAnyAuthority('SELLER', 'FARMER')")
     public ResponseEntity<List<AgroChemical>> getAllAgroChemicals() {
         List<AgroChemical> agroChemicals = agroChemicalService.getAllAgroChemicals();
-        return ResponseEntity.ok(agroChemicals);
+        if(agroChemicals != null) {
+            return new ResponseEntity<>(agroChemicals, HttpStatus.OK);
+        } else {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
     @PutMapping("/api/agrochemical/{id}")
