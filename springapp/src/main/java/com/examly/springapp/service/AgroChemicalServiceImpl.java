@@ -1,6 +1,7 @@
 package com.examly.springapp.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,10 +45,15 @@ public class AgroChemicalServiceImpl implements AgroChemicalService {
         return agroChemicalRepository.save(existingAgroChemical);
     }
 
-    @Override
-    public void deleteAgroChemical(int id) {
-        AgroChemical agroChemical = agroChemicalRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException("AgroChemical not found"));
-        agroChemicalRepository.delete(agroChemical);
+   @Override
+public boolean deleteAgroChemical(int id) {
+    Optional<AgroChemical> agroChemicalOptional = agroChemicalRepository.findById(id);
+    if (agroChemicalOptional.isPresent()) {
+        agroChemicalRepository.delete(agroChemicalOptional.get());
+        return true; // Deletion successful
+    } else {
+        return false; // AgroChemical with the given id not found
     }
+}
+
 }
