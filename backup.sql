@@ -40,7 +40,7 @@ CREATE TABLE `agro_chemical` (
   `price_per_unit` decimal(38,2) DEFAULT NULL,
   `unit` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`agro_chemical_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -49,7 +49,6 @@ CREATE TABLE `agro_chemical` (
 
 LOCK TABLES `agro_chemical` WRITE;
 /*!40000 ALTER TABLE `agro_chemical` DISABLE KEYS */;
-INSERT INTO `agro_chemical` VALUES (1,'AgroBrand','Fertilizer','Organic fertilizer for better crop growth','fertilizer_xyz.jpg','Fertilizer XYZ',25.99,'kg'),(2,'AgroTech','Pesticide','Effective pesticide for pest control','pesticide_abc.jpg','Pesticide ABC',39.99,'liters');
 /*!40000 ALTER TABLE `agro_chemical` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -70,7 +69,7 @@ CREATE TABLE `crop` (
   PRIMARY KEY (`crop_id`),
   KEY `FK76xv1sgky2q7kwe7g2elv05mp` (`user_id`),
   CONSTRAINT `FK76xv1sgky2q7kwe7g2elv05mp` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -79,7 +78,6 @@ CREATE TABLE `crop` (
 
 LOCK TABLES `crop` WRITE;
 /*!40000 ALTER TABLE `crop` DISABLE KEYS */;
-INSERT INTO `crop` VALUES (1,'Tomatoes','Vegetable','Organically grown tomatoes','2023-06-15 10:30:00.000000',1);
 /*!40000 ALTER TABLE `crop` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -132,7 +130,7 @@ CREATE TABLE `request` (
   CONSTRAINT `FKff5lcgb8skaif9gt3qhc3w1ch` FOREIGN KEY (`agro_chemical_id`) REFERENCES `agro_chemical` (`agro_chemical_id`),
   CONSTRAINT `FKknq6m20448wtkmenr75of15p2` FOREIGN KEY (`crop_id`) REFERENCES `crop` (`crop_id`),
   CONSTRAINT `FKqws2fdeknk90txm7qnm9bxd07` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -141,7 +139,6 @@ CREATE TABLE `request` (
 
 LOCK TABLES `request` WRITE;
 /*!40000 ALTER TABLE `request` DISABLE KEYS */;
-INSERT INTO `request` VALUES (1,3,'2024-07-02 15:45:00.000000','Pending',1,1,1);
 /*!40000 ALTER TABLE `request` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -160,7 +157,7 @@ CREATE TABLE `user` (
   `user_role` varchar(255) DEFAULT NULL,
   `username` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -169,7 +166,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'farmer1@example.com','1234567890','$2a$10$xCksmx0sJlTr9556x3gfKe9WomfjAxKKejTRpRKfWx5Qmz4/6pVMW','FARMER','farmer'),(2,'seller@example.com','1234567890','$2a$10$vMavWwvi3K8dqPVdZd19Sun7rB726kYra6jSs2qhMri5IO6nUcxzi','SELLER','seller'),(3,'farmer@example.com','1234567890','$2a$10$pXpVDe9UprU3mQL6CpiA7OpHZ2cd8Q0shguNI3hH/fywrzkHIIa3a','FARMER','farmer'),(4,'farmer2@example.com','1234567890','$2a$10$pVgJiB6lpW7emTKlm1pkru5.rixhv1PRWwqvxubUcjkZdnb5GJVku','FARMER','farmer'),(5,'farmer3@example.com','1234567890','$2a$10$5WSquAfYpzJtknJYpncUoON.nKRbuCZCwbs1Ttq1HKBqhU3Zuns4O','FARMER','farmer'),(6,'farmer4@example.com','1234567890','$2a$10$bJr1DqFypn6nLiElkC0vMOmkSMWctF3kPLlyDSumjehk54CngKLcW','FARMER','farmer'),(7,'farmer5@example.com','1234567890','$2a$10$hDPO.kwe3PzbT7Rb6U9B0efrKjdp5ycax8mUxFERSQPDg797hvty6','FARMER','farmer');
+INSERT INTO `user` VALUES (1,'farmer@example.com','1234567890','$2a$10$tk.Zw1xYkrMZ.diUvHYpMe21xKc8rmpgYaJKxksb4BiHIMzV74SDK','FARMER','johndoe');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -182,4 +179,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-02  8:34:31
+-- Dump completed on 2024-07-02  8:51:31

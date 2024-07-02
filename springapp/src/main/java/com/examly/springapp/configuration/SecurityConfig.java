@@ -29,43 +29,23 @@ public class SecurityConfig {
     @Autowired
     JwtAuthenticationFilter jwtAuthenticationFilter;
 
-    // @Bean
-    // public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-    //     http
-    //             .cors().disable()
-    //             .csrf().disable()
-    //             .authorizeHttpRequests((req) -> req
-    //                     .requestMatchers(HttpMethod.OPTIONS).permitAll()
-    //                     .requestMatchers("/api/register", "/api/login").permitAll()
-
-    //                     .requestMatchers("/api/**").permitAll()
-    //                     .anyRequest().authenticated())
-    //             .sessionManagement()
-    //             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-    //             .and()
-    //             .authenticationProvider(authenticationProvider())
-    //             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
-    //     return http
-    //             .build();
-    // }
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .cors().disable()
-            .csrf().disable()
-            .authorizeHttpRequests((req) -> req
-                .requestMatchers(HttpMethod.OPTIONS).permitAll()
-                .requestMatchers("/api/register", "/api/login").permitAll() // Permit access to specific endpoints
-                .requestMatchers("/api/**").permitAll() // Permit access to all endpoints under /api/
-                .anyRequest().authenticated()) // Require authentication for any other requests
-            .sessionManagement()
+                .cors().disable()
+                .csrf().disable()
+                .authorizeHttpRequests((req) -> req
+                        .requestMatchers(HttpMethod.OPTIONS).permitAll()
+                        .requestMatchers("/api/register", "/api/login").permitAll()
+                        .requestMatchers("/api/**").authenticated()
+                        .anyRequest().authenticated())
+                .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-            .and()
-            .authenticationProvider(authenticationProvider())
-            .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
-
-        return http.build();
+                .and()
+                .authenticationProvider(authenticationProvider())
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+        return http
+                .build();
     }
 
     @Bean
