@@ -160,7 +160,7 @@ CREATE TABLE `user` (
   `user_role` varchar(255) DEFAULT NULL,
   `username` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -169,7 +169,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'farmer1@example.com','1234567890','$2a$10$xCksmx0sJlTr9556x3gfKe9WomfjAxKKejTRpRKfWx5Qmz4/6pVMW','FARMER','farmer'),(2,'seller@example.com','1234567890','$2a$10$vMavWwvi3K8dqPVdZd19Sun7rB726kYra6jSs2qhMri5IO6nUcxzi','SELLER','seller');
+INSERT INTO `user` VALUES (1,'farmer1@example.com','1234567890','$2a$10$xCksmx0sJlTr9556x3gfKe9WomfjAxKKejTRpRKfWx5Qmz4/6pVMW','FARMER','farmer'),(2,'seller@example.com','1234567890','$2a$10$vMavWwvi3K8dqPVdZd19Sun7rB726kYra6jSs2qhMri5IO6nUcxzi','SELLER','seller'),(3,'farmer@example.com','1234567890','$2a$10$pXpVDe9UprU3mQL6CpiA7OpHZ2cd8Q0shguNI3hH/fywrzkHIIa3a','FARMER','farmer'),(4,'farmer2@example.com','1234567890','$2a$10$pVgJiB6lpW7emTKlm1pkru5.rixhv1PRWwqvxubUcjkZdnb5GJVku','FARMER','farmer'),(5,'farmer3@example.com','1234567890','$2a$10$5WSquAfYpzJtknJYpncUoON.nKRbuCZCwbs1Ttq1HKBqhU3Zuns4O','FARMER','farmer');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -182,4 +182,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-02  8:04:31
+-- Dump completed on 2024-07-02  8:19:31
