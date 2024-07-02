@@ -8,19 +8,29 @@ import org.springframework.stereotype.Service;
 
 import com.examly.springapp.model.DietPlan;
 import com.examly.springapp.repository.DietPlanRepo;
+import com.examly.springapp.repository.UserRepo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 @Service
 public class DietPlanServiceImpl implements DietPlanService {
 
-
-
      @Autowired
      DietPlanRepo dietPlanRepo;
+
+     @Autowired
+     UserRepo userRepo;
     @Override
     public List<DietPlan> getAllDietPlans() {
         return dietPlanRepo.findAll();
     }
+
+    @Override
+    public List<DietPlan> getDietPlanByUserId(int userId){
+        User user=userRepo.findById(userId).orElse(null);
+        return 
+
+    }
+
 
     @Override
     public Optional<DietPlan> getDietPlanById(int dietPlanId) {

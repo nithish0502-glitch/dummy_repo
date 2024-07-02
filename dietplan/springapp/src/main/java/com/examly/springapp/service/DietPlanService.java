@@ -12,6 +12,8 @@ public interface DietPlanService {
 
     DietPlan createDietPlan(DietPlan dietPlan);
 
+    DietPlan getDietPlanByUserId(int userId); 
+
     DietPlan updateDietPlan(int dietPlanId, DietPlan dietPlan);
 
     void deleteDietPlan(int dietPlanId);
