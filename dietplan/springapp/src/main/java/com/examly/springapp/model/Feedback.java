@@ -20,8 +20,14 @@ public class Feedback {
     @JoinColumn(name = "userId", nullable = false)
     private User user;
 
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
     private String content;
-    private LocalDateTime datecreatedAt;
+    private LocalDateTime createdAt;
     public int getFeedbackId() {
         return feedbackId;
     }
@@ -43,10 +49,5 @@ public class Feedback {
     public void setContent(String content) {
         this.content = content;
     }
-    public LocalDateTime getDatecreatedAt() {
-        return datecreatedAt;
-    }
-    public void setDatecreatedAt(LocalDateTime datecreatedAt) {
-        this.datecreatedAt = datecreatedAt;
-    }
+   
 }

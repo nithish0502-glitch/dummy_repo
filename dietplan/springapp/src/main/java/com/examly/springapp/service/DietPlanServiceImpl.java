@@ -7,31 +7,34 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.examly.springapp.model.DietPlan;
+import com.examly.springapp.repository.DietPlanRepo;
 
+import org.springframework.beans.factory.annotation.Autowired;
 @Service
 public class DietPlanServiceImpl implements DietPlanService {
 
 
 
-     @Auto
+     @Autowired
+     DietPlanRepo dietPlanRepo;
     @Override
     public List<DietPlan> getAllDietPlans() {
-        return dietPlanRepository.findAll();
+        return dietPlanRepo.findAll();
     }
 
     @Override
-    public Optional<DietPlan> getDietPlanById(Long dietPlanId) {
-        return dietPlanRepository.findById(dietPlanId);
+    public Optional<DietPlan> getDietPlanById(int dietPlanId) {
+        return dietPlanRepo.findById(dietPlanId);
     }
 
     @Override
     public DietPlan createDietPlan(DietPlan dietPlan) {
-        return dietPlanRepository.save(dietPlan);
+        return dietPlanRepo.save(dietPlan);
     }
 
     @Override
-    public DietPlan updateDietPlan(Long dietPlanId, DietPlan updatedDietPlan) {
-        DietPlan existingDietPlan = dietPlanRepository.findById(dietPlanId)
+    public DietPlan updateDietPlan(int dietPlanId, DietPlan updatedDietPlan) {
+        DietPlan existingDietPlan = dietPlanRepo.findById(dietPlanId)
                 .orElseThrow(() -> new RuntimeException("Diet Plan not found with id: " + dietPlanId));
 
         // Update fields
@@ -41,11 +44,11 @@ public class DietPlanServiceImpl implements DietPlanService {
         existingDietPlan.setStatus(updatedDietPlan.getStatus());
         // You can update createdAt if necessary, or keep it unchanged
 
-        return dietPlanRepository.save(existingDietPlan);
+        return dietPlanRepo.save(existingDietPlan);
     }
 
     @Override
     public void deleteDietPlan(int dietPlanId) {
-        dietPlanRepository.deleteById(dietPlanId);
+        dietPlanRepo.deleteById(dietPlanId);
     }
 }

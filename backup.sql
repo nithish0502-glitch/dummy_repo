@@ -24,61 +24,70 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/ `appdb` /*!40100 DEFAULT CHARACTER SET 
 USE `appdb`;
 
 --
--- Table structure for table `agro_chemical`
+-- Table structure for table `diet_plan`
 --
 
-DROP TABLE IF EXISTS `agro_chemical`;
+DROP TABLE IF EXISTS `diet_plan`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `agro_chemical` (
-  `agro_chemical_id` int(11) NOT NULL AUTO_INCREMENT,
-  `brand` varchar(255) DEFAULT NULL,
-  `category` varchar(255) DEFAULT NULL,
+CREATE TABLE `diet_plan` (
+  `diet_plan_id` int(11) NOT NULL AUTO_INCREMENT,
+  `created_at` datetime(6) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
-  `image` varchar(255) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `price_per_unit` decimal(38,2) DEFAULT NULL,
-  `unit` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`agro_chemical_id`)
+  `duration` varchar(255) DEFAULT NULL,
+  `plan_name` varchar(255) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `user_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`diet_plan_id`),
+  KEY `FKtchmmud9da85af0yr2wjpilga` (`user_id`),
+  CONSTRAINT `FKtchmmud9da85af0yr2wjpilga` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `agro_chemical`
+-- Dumping data for table `diet_plan`
 --
 
-LOCK TABLES `agro_chemical` WRITE;
-/*!40000 ALTER TABLE `agro_chemical` DISABLE KEYS */;
-/*!40000 ALTER TABLE `agro_chemical` ENABLE KEYS */;
+LOCK TABLES `diet_plan` WRITE;
+/*!40000 ALTER TABLE `diet_plan` DISABLE KEYS */;
+/*!40000 ALTER TABLE `diet_plan` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `crop`
+-- Table structure for table `diet_plan_request`
 --
 
-DROP TABLE IF EXISTS `crop`;
+DROP TABLE IF EXISTS `diet_plan_request`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `crop` (
-  `crop_id` int(11) NOT NULL AUTO_INCREMENT,
-  `crop_name` varchar(255) DEFAULT NULL,
-  `crop_type` varchar(255) DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `planting_date` datetime(6) DEFAULT NULL,
-  `user_id` int(11) NOT NULL,
-  PRIMARY KEY (`crop_id`),
-  KEY `FK76xv1sgky2q7kwe7g2elv05mp` (`user_id`),
-  CONSTRAINT `FK76xv1sgky2q7kwe7g2elv05mp` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
+CREATE TABLE `diet_plan_request` (
+  `request_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `activity_level` varchar(255) DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  `created_at` datetime(6) DEFAULT NULL,
+  `gender` varchar(255) DEFAULT NULL,
+  `goal` varchar(255) DEFAULT NULL,
+  `height` double DEFAULT NULL,
+  `medical_conditions` varchar(255) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `weight` double DEFAULT NULL,
+  `diet_plan_diet_plan_id` int(11) DEFAULT NULL,
+  `user_user_id` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`request_id`),
+  KEY `FKa34o696wriwjnaiu134dborcr` (`diet_plan_diet_plan_id`),
+  KEY `FKpe1ifyc72xmrdfs4vkbklxpek` (`user_user_id`),
+  CONSTRAINT `FKa34o696wriwjnaiu134dborcr` FOREIGN KEY (`diet_plan_diet_plan_id`) REFERENCES `diet_plan` (`diet_plan_id`),
+  CONSTRAINT `FKpe1ifyc72xmrdfs4vkbklxpek` FOREIGN KEY (`user_user_id`) REFERENCES `user` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `crop`
+-- Dumping data for table `diet_plan_request`
 --
 
-LOCK TABLES `crop` WRITE;
-/*!40000 ALTER TABLE `crop` DISABLE KEYS */;
-/*!40000 ALTER TABLE `crop` ENABLE KEYS */;
+LOCK TABLES `diet_plan_request` WRITE;
+/*!40000 ALTER TABLE `diet_plan_request` DISABLE KEYS */;
+/*!40000 ALTER TABLE `diet_plan_request` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -90,9 +99,9 @@ DROP TABLE IF EXISTS `feedback`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `feedback` (
   `feedback_id` int(11) NOT NULL AUTO_INCREMENT,
-  `date` datetime(6) DEFAULT NULL,
-  `feedback_text` varchar(255) DEFAULT NULL,
-  `user_id` int(11) NOT NULL,
+  `content` varchar(255) DEFAULT NULL,
+  `datecreated_at` datetime(6) DEFAULT NULL,
+  `user_id` bigint(20) NOT NULL,
   PRIMARY KEY (`feedback_id`),
   KEY `FK7k33yw505d347mw3avr93akao` (`user_id`),
   CONSTRAINT `FK7k33yw505d347mw3avr93akao` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
@@ -109,40 +118,6 @@ LOCK TABLES `feedback` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `request`
---
-
-DROP TABLE IF EXISTS `request`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `request` (
-  `request_id` int(11) NOT NULL AUTO_INCREMENT,
-  `quantity` int(11) NOT NULL,
-  `request_date` datetime(6) DEFAULT NULL,
-  `status` varchar(255) DEFAULT NULL,
-  `agro_chemical_id` int(11) DEFAULT NULL,
-  `crop_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  PRIMARY KEY (`request_id`),
-  KEY `FKff5lcgb8skaif9gt3qhc3w1ch` (`agro_chemical_id`),
-  KEY `FKknq6m20448wtkmenr75of15p2` (`crop_id`),
-  KEY `FKqws2fdeknk90txm7qnm9bxd07` (`user_id`),
-  CONSTRAINT `FKff5lcgb8skaif9gt3qhc3w1ch` FOREIGN KEY (`agro_chemical_id`) REFERENCES `agro_chemical` (`agro_chemical_id`),
-  CONSTRAINT `FKknq6m20448wtkmenr75of15p2` FOREIGN KEY (`crop_id`) REFERENCES `crop` (`crop_id`),
-  CONSTRAINT `FKqws2fdeknk90txm7qnm9bxd07` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `request`
---
-
-LOCK TABLES `request` WRITE;
-/*!40000 ALTER TABLE `request` DISABLE KEYS */;
-/*!40000 ALTER TABLE `request` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `user`
 --
 
@@ -150,14 +125,13 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
-  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `email` varchar(255) DEFAULT NULL,
-  `mobile_number` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
-  `user_role` varchar(255) DEFAULT NULL,
+  `role` varchar(255) DEFAULT NULL,
   `username` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -166,7 +140,6 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'farmer@example.com','1234567890','$2a$10$tk.Zw1xYkrMZ.diUvHYpMe21xKc8rmpgYaJKxksb4BiHIMzV74SDK','FARMER','johndoe');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -179,4 +152,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-02 11:45:52
+-- Dump completed on 2024-07-02 12:00:53
