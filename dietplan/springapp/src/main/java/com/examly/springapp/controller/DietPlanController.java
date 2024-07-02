@@ -28,7 +28,7 @@ public class DietPlanController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<DietPlan> getDietPlanById(@PathVariable Long dietPlanId) {
+    public ResponseEntity<DietPlan> getDietPlanById(@PathVariable int dietPlanId) {
         Optional<DietPlan> dietPlan = dietPlanService.getDietPlanById(dietPlanId);
         return dietPlan.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
@@ -40,14 +40,14 @@ public class DietPlanController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<DietPlan> updateDietPlan(@PathVariable("id") Long dietPlanId,
+    public ResponseEntity<DietPlan> updateDietPlan(@PathVariable("id") int dietPlanId,
                                                    @RequestBody DietPlan updatedDietPlan) {
         DietPlan updated = dietPlanService.updateDietPlan(dietPlanId, updatedDietPlan);
         return ResponseEntity.ok(updated);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteDietPlan(@PathVariable("id") Long dietPlanId) {
+    public ResponseEntity<Void> deleteDietPlan(@PathVariable("id") int dietPlanId) {
         dietPlanService.deleteDietPlan(dietPlanId);
         return ResponseEntity.noContent().build();
     }

@@ -11,7 +11,7 @@ import com.examly.springapp.model.DietPlan;
 @Service
 public class DietPlanServiceImpl implements DietPlanService {
 
-     
+     @Autowired
     @Override
     public List<DietPlan> getAllDietPlans() {
         return dietPlanRepository.findAll();
