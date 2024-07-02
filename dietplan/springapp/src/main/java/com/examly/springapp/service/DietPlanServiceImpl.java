@@ -9,12 +9,9 @@ import org.springframework.stereotype.Service;
 import com.examly.springapp.model.DietPlan;
 
 @Service
-public class DietPlanServiceImpl implements AgroChemicalService {
+public class DietPlanServiceImpl implements DietPlanService {
 
-    
-    
-
- 
+     
     @Override
     public List<DietPlan> getAllDietPlans() {
         return dietPlanRepository.findAll();
