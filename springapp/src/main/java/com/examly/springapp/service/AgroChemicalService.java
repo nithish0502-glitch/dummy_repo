@@ -9,5 +9,5 @@ public interface AgroChemicalService {
     AgroChemical getAgroChemicalById(int id);
     List<AgroChemical> getAllAgroChemicals();
     AgroChemical updateAgroChemical(int id, AgroChemical agroChemical);
-    boolean deleteAgroChemical(int id);
+    AgroChemical deleteAgroChemical(int id);
 }

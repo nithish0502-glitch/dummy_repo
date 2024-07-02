@@ -58,12 +58,8 @@ public class FeedbackController {
     // Delete a feedback
     @DeleteMapping("/api/feedback/{id}")
     @PreAuthorize("hasAuthority('FARMER')")
-    public ResponseEntity<Void> deleteFeedback(@PathVariable("id") int id) {
-        boolean deleted = feedbackService.deleteFeedback(id);
-        if (deleted) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    public ResponseEntity<Feedback> deleteFeedback(@PathVariable int id) {
+        Feedback deleted = feedbackService.deleteFeedback(id);
+        return new ResponseEntity<>(deleted, HttpStatus.OK);
     }
 }

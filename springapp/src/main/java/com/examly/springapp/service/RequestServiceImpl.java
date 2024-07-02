@@ -77,10 +77,10 @@ public class RequestServiceImpl implements RequestService {
     } 
           
     @Override 
-    public void deleteRequest(int id) {
-        Request request = requestRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException("Request not found"));
-        requestRepository.delete(request);
+    public Request deleteRequest(int id) {
+        Request request = requestRepository.findById(id).orElse(null);
+        requestRepository.deleteById(id);
+        return request;
     }
 
     @Override

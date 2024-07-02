@@ -51,8 +51,9 @@ public class AgroChemicalController {
 
     @DeleteMapping("/api/agrochemical/{id}")
     @PreAuthorize("hasAnyAuthority('SELLER')")
-    public ResponseEntity<Boolean> deleteAgroChemical(@PathVariable int id) {
-        boolean deleted = agroChemicalService.deleteAgroChemical(id);
-        return ResponseEntity.ok(deleted);
+    public ResponseEntity<AgroChemical> deleteAgroChemical(@PathVariable int id) {
+        AgroChemical deleted = agroChemicalService.deleteAgroChemical(id);
+        return new ResponseEntity<>(deleted,HttpStatus.OK);
     }
 }
+ 

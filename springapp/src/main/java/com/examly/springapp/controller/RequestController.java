@@ -69,9 +69,9 @@ public class RequestController {
 
     @DeleteMapping("/request/{id}")
     @PreAuthorize("hasAnyAuthority('FARMER')")
-    public ResponseEntity<Void> deleteRequest(@PathVariable int id) {
-        requestService.deleteRequest(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    public ResponseEntity<Request> deleteRequest(@PathVariable int id) {
+        Request request=requestService.deleteRequest(id);
+        return new ResponseEntity<>(request,HttpStatus.OK);
     }
 }
  

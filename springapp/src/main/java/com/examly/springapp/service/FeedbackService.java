@@ -10,6 +10,6 @@ public interface FeedbackService {
     Feedback createFeedback(Feedback feedback);
     Feedback getFeedbackById(int id);
     List<Feedback> getAllFeedbacks();
-    boolean deleteFeedback(int id);
+    Feedback deleteFeedback(int id);
     List<Feedback> getFeedbacksByUserId(int userId);
 }

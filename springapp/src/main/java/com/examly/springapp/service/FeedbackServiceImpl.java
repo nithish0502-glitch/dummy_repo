@@ -39,13 +39,11 @@ public class FeedbackServiceImpl implements FeedbackService {
 
   
     @Override
-    public boolean deleteFeedback(int id) {
-        Optional<Feedback> optionalFeedback = feedbackRepo.findById(id);
-        if (optionalFeedback.isPresent()) {
-            feedbackRepo.deleteById(id);
-            return true;
-        }
-        return false;
+    public Feedback deleteFeedback(int id) {
+        Feedback feedback = feedbackRepo.findById(id).orElse(null);
+        feedbackRepo.deleteById(id);
+        return feedback;
+           
     }
 
     @Override

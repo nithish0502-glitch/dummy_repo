@@ -46,14 +46,11 @@ public class AgroChemicalServiceImpl implements AgroChemicalService {
     }
 
    @Override
-public boolean deleteAgroChemical(int id) {
-    Optional<AgroChemical> agroChemicalOptional = agroChemicalRepository.findById(id);
-    if (agroChemicalOptional.isPresent()) {
-        agroChemicalRepository.delete(agroChemicalOptional.get());
-        return true; // Deletion successful
-    } else {
-        return false; // AgroChemical with the given id not found
+public AgroChemical deleteAgroChemical(int id) {
+    AgroChemical agroChemical = agroChemicalRepository.findById(id).orElse(null);
+  
+        agroChemicalRepository.deleteById(id);
+        return agroChemical;
+       
     }
-}
-
 }
