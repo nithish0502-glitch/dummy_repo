@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.examly.springapp.model.Feedback;
 import com.examly.springapp.service.FeedbackService;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 @RestController
 public class FeedbackController {
 

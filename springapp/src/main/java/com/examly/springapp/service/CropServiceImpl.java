@@ -76,7 +76,7 @@ public class CropServiceImpl implements CropService {
 
     @Override
     public Crop getCropById(int cropId) {
-        Optional<Crop> optionalCrop = cropRepository.findById(cropId);
+        Optional<Crop> optionalCrop = cropRepo.findById(cropId);
         if (optionalCrop.isPresent()) {
             return optionalCrop.get();
         } else {

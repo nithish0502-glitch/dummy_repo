@@ -40,7 +40,7 @@ CREATE TABLE `agro_chemical` (
   `price_per_unit` decimal(38,2) DEFAULT NULL,
   `unit` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`agro_chemical_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -49,7 +49,6 @@ CREATE TABLE `agro_chemical` (
 
 LOCK TABLES `agro_chemical` WRITE;
 /*!40000 ALTER TABLE `agro_chemical` DISABLE KEYS */;
-INSERT INTO `agro_chemical` VALUES (1,'Brand X','Fertilizer','Organic fertilizer for better crop growth.','https://example.com/images/fertilizer.jpg','Fertilizer A',25.99,'kg');
 /*!40000 ALTER TABLE `agro_chemical` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -70,7 +69,7 @@ CREATE TABLE `crop` (
   PRIMARY KEY (`crop_id`),
   KEY `FK76xv1sgky2q7kwe7g2elv05mp` (`user_id`),
   CONSTRAINT `FK76xv1sgky2q7kwe7g2elv05mp` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -79,7 +78,6 @@ CREATE TABLE `crop` (
 
 LOCK TABLES `crop` WRITE;
 /*!40000 ALTER TABLE `crop` DISABLE KEYS */;
-INSERT INTO `crop` VALUES (1,'Rice','Grain','Long-grain rice suitable for tropical climates.','2023-06-15 10:30:00.000000',1);
 /*!40000 ALTER TABLE `crop` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -98,7 +96,7 @@ CREATE TABLE `feedback` (
   PRIMARY KEY (`feedback_id`),
   KEY `FK7k33yw505d347mw3avr93akao` (`user_id`),
   CONSTRAINT `FK7k33yw505d347mw3avr93akao` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -107,7 +105,6 @@ CREATE TABLE `feedback` (
 
 LOCK TABLES `feedback` WRITE;
 /*!40000 ALTER TABLE `feedback` DISABLE KEYS */;
-INSERT INTO `feedback` VALUES (1,'2023-07-01 15:30:00.000000','Great service! Very satisfied with the product.',1);
 /*!40000 ALTER TABLE `feedback` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -133,7 +130,7 @@ CREATE TABLE `request` (
   CONSTRAINT `FKff5lcgb8skaif9gt3qhc3w1ch` FOREIGN KEY (`agro_chemical_id`) REFERENCES `agro_chemical` (`agro_chemical_id`),
   CONSTRAINT `FKknq6m20448wtkmenr75of15p2` FOREIGN KEY (`crop_id`) REFERENCES `crop` (`crop_id`),
   CONSTRAINT `FKqws2fdeknk90txm7qnm9bxd07` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -142,7 +139,6 @@ CREATE TABLE `request` (
 
 LOCK TABLES `request` WRITE;
 /*!40000 ALTER TABLE `request` DISABLE KEYS */;
-INSERT INTO `request` VALUES (1,5,'2023-07-01 14:00:00.000000','Pending',1,1,1);
 /*!40000 ALTER TABLE `request` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -161,7 +157,7 @@ CREATE TABLE `user` (
   `user_role` varchar(255) DEFAULT NULL,
   `username` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -170,7 +166,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'john.doe@example.com','+1234567890','hashed_password_here','Farmer','johndoe'),(2,'john.doe@example.com','+1234567890','hashed_password_here','Seller','johndoe'),(3,'deepak.doe@example.com','+1234567890','$2a$10$t/oduDUNTfd784mPB2R4Be4jeyxtTdcQlYPjnSapKed8pzsJAFMjC','Farmer','johndoe');
+INSERT INTO `user` VALUES (1,'farmer1@example.com','1234567890','$2a$10$xCksmx0sJlTr9556x3gfKe9WomfjAxKKejTRpRKfWx5Qmz4/6pVMW','FARMER','farmer'),(2,'seller@example.com','1234567890','$2a$10$vMavWwvi3K8dqPVdZd19Sun7rB726kYra6jSs2qhMri5IO6nUcxzi','SELLER','seller');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -183,4 +179,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-02  5:17:02
+-- Dump completed on 2024-07-02  5:32:01
