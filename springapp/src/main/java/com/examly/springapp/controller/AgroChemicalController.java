@@ -36,7 +36,7 @@ public class AgroChemicalController {
     }
 
     @GetMapping("/api/agrochemical")
-    //@PreAuthorize("hasAnyAuthority('SELLER', 'FARMER')")
+    @PreAuthorize("hasAnyAuthority('SELLER', 'FARMER')")
     public ResponseEntity<List<AgroChemical>> getAllAgroChemicals() {
         List<AgroChemical> agroChemicals = agroChemicalService.getAllAgroChemicals();
         if(agroChemicals != null) {

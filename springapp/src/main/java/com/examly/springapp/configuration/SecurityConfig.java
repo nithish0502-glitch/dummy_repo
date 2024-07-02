@@ -36,9 +36,9 @@ public class SecurityConfig {
                 .csrf().disable()
                 .authorizeHttpRequests((req) -> req
                         .requestMatchers(HttpMethod.OPTIONS).permitAll()
-                        .requestMatchers("/api/register", "/api/login").permitAll() // Permit access to specific endpoints
-                .requestMatchers("/api/**").permitAll() // Permit access to all endpoints under /api
-                .anyRequest().permitAll())
+                        .requestMatchers("/api/register", "/api/login").permitAll()
+                        .requestMatchers("/api/**").authenticated()
+                        .anyRequest().authenticated())
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
@@ -47,6 +47,25 @@ public class SecurityConfig {
         return http
                 .build();
     }
+
+    // @Bean
+    // public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    //     http
+    //             .cors().disable()
+    //             .csrf().disable()
+    //             .authorizeHttpRequests((req) -> req
+    //                     .requestMatchers(HttpMethod.OPTIONS).permitAll()
+    //                     .requestMatchers("/api/register", "/api/login").permitAll() // Permit access to specific endpoints
+    //             .requestMatchers("/api/**").permitAll() // Permit access to all endpoints under /api
+    //             .anyRequest().permitAll())
+    //             .sessionManagement()
+    //             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+    //             .and()
+    //             .authenticationProvider(authenticationProvider())
+    //             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+    //     return http
+    //             .build();
+    // }
 
     @Bean
     public PasswordEncoder passwordEncoder() {

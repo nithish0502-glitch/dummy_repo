@@ -42,7 +42,7 @@ public class FeedbackController {
   
     // Get all feedbacks
     @GetMapping("/api/feedback")
-    //@PreAuthorize("hasAuthority('SELLER')")
+    @PreAuthorize("hasAuthority('SELLER')")
     public ResponseEntity<List<Feedback>> getAllFeedbacks() {
         List<Feedback> feedbacks = feedbackService.getAllFeedbacks();
         if(feedbacks != null) {
