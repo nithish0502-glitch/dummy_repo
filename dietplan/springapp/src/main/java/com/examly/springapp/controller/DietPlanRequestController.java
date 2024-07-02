@@ -14,9 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import org.springframework.security.access.prepost.PreAuthorize;
-import com.examly.springapp.model.Request;
 import com.examly.springapp.model.User;
-import com.examly.springapp.service.RequestService;
 
 @RestController
 public class DietPlanRequestController {

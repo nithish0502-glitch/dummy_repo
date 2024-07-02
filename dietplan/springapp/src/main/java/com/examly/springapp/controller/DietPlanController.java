@@ -14,9 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.Optional;
 
-import com.examly.springapp.model.AgroChemical;
 import com.examly.springapp.model.DietPlan;
-import com.examly.springapp.service.AgroChemicalService;
 
 @RestController
 public class DietPlanController {

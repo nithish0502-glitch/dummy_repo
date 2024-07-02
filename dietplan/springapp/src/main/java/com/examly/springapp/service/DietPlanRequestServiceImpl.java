@@ -9,9 +9,6 @@ import org.springframework.stereotype.Service;
 import com.examly.springapp.model.DietPlan;
 import com.examly.springapp.model.Request;
 import com.examly.springapp.model.User;
-import com.examly.springapp.repository.AgroChemicalRepo;
-import com.examly.springapp.repository.CropRepo;
-import com.examly.springapp.repository.RequestRepo;
 import com.examly.springapp.repository.UserRepo;
 
 @Service
