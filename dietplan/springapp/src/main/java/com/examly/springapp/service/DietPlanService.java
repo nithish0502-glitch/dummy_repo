@@ -12,7 +12,7 @@ public interface DietPlanService {
 
     DietPlan createDietPlan(DietPlan dietPlan);
 
-    DietPlan getDietPlanByUserId(int userId); 
+    List<DietPlan> getDietPlanByUserId(int userId); 
 
     DietPlan updateDietPlan(int dietPlanId, DietPlan dietPlan);
 

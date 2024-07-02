@@ -27,10 +27,8 @@ public class DietPlanServiceImpl implements DietPlanService {
     @Override
     public List<DietPlan> getDietPlanByUserId(int userId){
         User user=userRepo.findById(userId).orElse(null);
-        return 
-
+        return dietPlanRepo.findByUser(user).orElse(null);
     }
-
 
     @Override
     public Optional<DietPlan> getDietPlanById(int dietPlanId) {
