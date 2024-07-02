@@ -13,11 +13,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.Optional;
-
+import com.examly.springapp.service.*;
 import com.examly.springapp.model.DietPlan;
 
 @RestController
 public class DietPlanController {
+
+    @Autowired
+    private DietPlanService dietPlanService;
 @GetMapping
     public ResponseEntity<List<DietPlan>> getAllDietPlans() {
         List<DietPlan> dietPlans = dietPlanService.getAllDietPlans();

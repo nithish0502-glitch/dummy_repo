@@ -45,7 +45,7 @@ public class UserServiceImpl implements UserService {
         if (authentication.isAuthenticated()) {
             User user = userRepo.findByEmail(email);
             String token = jwtUtils.generateToken(email);
-            return new AuthUser(user.getUserId(), user.getEmail(), token, user.getUserRole());
+            return new AuthUser(user.getUserId(), user.getEmail(), token, user.getRole());
         } else {
             throw new UsernameNotFoundException("Bad credentials");
         }

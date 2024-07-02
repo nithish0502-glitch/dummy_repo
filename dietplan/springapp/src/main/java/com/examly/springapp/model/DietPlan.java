@@ -13,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
 
 @Entity
 public class DietPlan {
@@ -38,7 +39,7 @@ public class DietPlan {
         return dietPlanId;
     }
 
-    public void setDietPlanId(Long dietPlanId) {
+    public void setDietPlanId(int dietPlanId) {
         this.dietPlanId = dietPlanId;
     }
 
