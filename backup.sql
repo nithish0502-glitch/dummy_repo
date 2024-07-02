@@ -132,7 +132,7 @@ CREATE TABLE `request` (
   CONSTRAINT `FKff5lcgb8skaif9gt3qhc3w1ch` FOREIGN KEY (`agro_chemical_id`) REFERENCES `agro_chemical` (`agro_chemical_id`),
   CONSTRAINT `FKknq6m20448wtkmenr75of15p2` FOREIGN KEY (`crop_id`) REFERENCES `crop` (`crop_id`),
   CONSTRAINT `FKqws2fdeknk90txm7qnm9bxd07` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -141,6 +141,7 @@ CREATE TABLE `request` (
 
 LOCK TABLES `request` WRITE;
 /*!40000 ALTER TABLE `request` DISABLE KEYS */;
+INSERT INTO `request` VALUES (1,3,'2024-07-02 15:45:00.000000','Pending',1,1,1);
 /*!40000 ALTER TABLE `request` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -181,4 +182,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-02  5:47:17
+-- Dump completed on 2024-07-02  6:02:17

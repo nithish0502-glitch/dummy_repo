@@ -66,10 +66,12 @@ public class RequestServiceImpl implements RequestService {
             Request request = requestRepository.findById(id).orElse(null);
         if(request.getStatus().equals("Pending")){
         request.setStatus("Approved");
+        requestRepository.save(request);
         return request.getStatus();
     }
         else{
          request.setStatus("Pending");
+         requestRepository.save(request);
          return request.getStatus();
         }  
     } 

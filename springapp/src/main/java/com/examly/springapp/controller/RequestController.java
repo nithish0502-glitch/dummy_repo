@@ -54,7 +54,7 @@ public class RequestController {
     public ResponseEntity<String> updateRequest(@PathVariable int id) {
         String updated = requestService.updateRequest(id);
         if (updated!=null) {
-            return new ResponseEntity<>(HttpStatus.OK);
+            return new ResponseEntity<>(updated,HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
