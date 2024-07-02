@@ -52,7 +52,7 @@ public class AgroChemicalController {
     @DeleteMapping("/api/agrochemical/{id}")
     @PreAuthorize("hasAnyAuthority('SELLER')")
     public ResponseEntity<Boolean> deleteAgroChemical(@PathVariable int id) {
-        agroChemicalService.deleteAgroChemical(id);
-        return ResponseEntity.noContent().build();
+        boolean deleted = agroChemicalService.deleteAgroChemical(id);
+        return ResponseEntity.ok(deleted);
     }
 }
