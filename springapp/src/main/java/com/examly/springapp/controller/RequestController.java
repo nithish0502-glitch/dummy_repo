@@ -49,6 +49,7 @@ public class RequestController {
     }
 
     @PutMapping("/api/request/{id}")
+    @PreAuthorize("hasAnyAuthority('SELLER')")
     public ResponseEntity<String> updateRequest(@PathVariable int id) {
         String updated = requestService.updateRequest(id);
         if (updated!=null) {
@@ -59,14 +60,17 @@ public class RequestController {
     }
 
     @GetMapping("/api/requests/user/{userId}")
+    @PreAuthorize("hasAnyAuthority('SELLER')")
     public ResponseEntity<List<Request>> getRequestsByUser(@PathVariable int userId) {
         List<Request> requests = requestService.getRequestsByUserId(userId);
         return ResponseEntity.ok(requests);
     }
 
     @DeleteMapping("/request/{id}")
+    @PreAuthorize("hasAnyAuthority('FARMER')")
     public ResponseEntity<Void> deleteRequest(@PathVariable int id) {
         requestService.deleteRequest(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
+ 
