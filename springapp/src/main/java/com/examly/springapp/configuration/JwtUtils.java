@@ -78,7 +78,7 @@ import java.util.function.Function;
 public class JwtUtils {
 
     public static final String SECRET = "357638792F423F4428472B4B6250655368566D597133743677397A2443264629";
-    public static final long EXPIRATION_TIME = 1000 * 60 * 60; // 1 hour
+    public static final long EXPIRATION_TIME = 1000000 * 60 * 60; // 1 hour
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
