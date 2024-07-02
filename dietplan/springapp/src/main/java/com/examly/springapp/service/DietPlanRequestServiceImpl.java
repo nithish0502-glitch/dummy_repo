@@ -11,6 +11,6 @@ import com.examly.springapp.model.User;
 import com.examly.springapp.repository.UserRepo;
  
 @Service
-public class DietPlanRequestServiceImpl implements DietPlanService {
+public class DietPlanRequestServiceImpl implements DietPlanRequestService {
   
 }

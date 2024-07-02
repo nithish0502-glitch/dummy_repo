@@ -11,7 +11,9 @@ import com.examly.springapp.model.DietPlan;
 @Service
 public class DietPlanServiceImpl implements DietPlanService {
 
-     @Autowired
+
+
+     @Auto
     @Override
     public List<DietPlan> getAllDietPlans() {
         return dietPlanRepository.findAll();
@@ -43,7 +45,7 @@ public class DietPlanServiceImpl implements DietPlanService {
     }
 
     @Override
-    public void deleteDietPlan(Long dietPlanId) {
+    public void deleteDietPlan(int dietPlanId) {
         dietPlanRepository.deleteById(dietPlanId);
     }
 }
