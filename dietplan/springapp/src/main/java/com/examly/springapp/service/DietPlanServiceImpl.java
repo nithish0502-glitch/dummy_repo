@@ -38,6 +38,8 @@ public class DietPlanServiceImpl implements DietPlanService {
 
     @Override
     public DietPlan createDietPlan(DietPlan dietPlan) {
+        User user= userRepo.findById(dietPlan.getUser().getUserId()).orElse(null);
+        dietPlan.setUser(user);
         return dietPlanRepo.save(dietPlan);
     }
 

@@ -37,11 +37,11 @@ CREATE TABLE `diet_plan` (
   `duration` varchar(255) DEFAULT NULL,
   `plan_name` varchar(255) DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
-  `user_id` bigint(20) NOT NULL,
+  `user_id` int(11) NOT NULL,
   PRIMARY KEY (`diet_plan_id`),
   KEY `FKtchmmud9da85af0yr2wjpilga` (`user_id`),
   CONSTRAINT `FKtchmmud9da85af0yr2wjpilga` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -50,7 +50,7 @@ CREATE TABLE `diet_plan` (
 
 LOCK TABLES `diet_plan` WRITE;
 /*!40000 ALTER TABLE `diet_plan` DISABLE KEYS */;
-INSERT INTO `diet_plan` VALUES (1,'2024-07-03 10:15:30.000000','This is a sample diet plan description.','1 month','Sample Diet Plan','active',3);
+INSERT INTO `diet_plan` VALUES (1,'2024-07-03 10:15:30.000000','This is a sample diet plan description.','1 month','Sample Diet Plan','active',2),(2,'2024-07-03 10:15:30.000000','This is a sample diet plan2 description.','1 month','Sample Diet Plan2','active',2);
 /*!40000 ALTER TABLE `diet_plan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -62,7 +62,7 @@ DROP TABLE IF EXISTS `diet_plan_request`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `diet_plan_request` (
-  `request_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `request_id` int(11) NOT NULL AUTO_INCREMENT,
   `activity_level` varchar(255) DEFAULT NULL,
   `age` int(11) DEFAULT NULL,
   `created_at` datetime(6) DEFAULT NULL,
@@ -73,7 +73,7 @@ CREATE TABLE `diet_plan_request` (
   `status` varchar(255) DEFAULT NULL,
   `weight` double DEFAULT NULL,
   `diet_plan_diet_plan_id` int(11) DEFAULT NULL,
-  `user_user_id` bigint(20) DEFAULT NULL,
+  `user_user_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`request_id`),
   KEY `FKa34o696wriwjnaiu134dborcr` (`diet_plan_diet_plan_id`),
   KEY `FKpe1ifyc72xmrdfs4vkbklxpek` (`user_user_id`),
@@ -101,9 +101,8 @@ DROP TABLE IF EXISTS `feedback`;
 CREATE TABLE `feedback` (
   `feedback_id` int(11) NOT NULL AUTO_INCREMENT,
   `content` varchar(255) DEFAULT NULL,
-  `datecreated_at` datetime(6) DEFAULT NULL,
-  `user_id` bigint(20) NOT NULL,
   `created_at` datetime(6) DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
   PRIMARY KEY (`feedback_id`),
   KEY `FK7k33yw505d347mw3avr93akao` (`user_id`),
   CONSTRAINT `FK7k33yw505d347mw3avr93akao` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
@@ -127,13 +126,13 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
-  `user_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `role` varchar(255) DEFAULT NULL,
   `username` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -142,7 +141,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'user1@example.com','$2a$10$2otThUo1XPx2c7qOloKWRuDjCccuwfpzAiHkoG9H8dhN9XSUM9ipC','user','user1'),(2,'nut@example.com','$2a$10$1whVEfiZqOHVV3Q1EXMYgOsr4XlC1G5NW23JXPwiWrbzb4gpWD.nK','NUTRITIONIST','nut'),(3,'user@example.com','$2a$10$sZZk2wo7iyfgx/HDQSrXWu0Ix5VgbOE.2gZDTg2h0dLdPpc9SthU.','USER','user');
+INSERT INTO `user` VALUES (1,'user@example.com','$2a$10$JEFrZFhR9.3.zGv8InS35.C39YHQVgG/d1vWnNbkVXIGSylUd10Sy','USER','user'),(2,'nut@example.com','$2a$10$SqoYfr2SkdobR82/Gae9LuZTnDeDb0SY/4QQvszthNr3aT8IvTYAa','NUTRITIONIST','nut');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -155,4 +154,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-03 10:35:10
+-- Dump completed on 2024-07-03 10:44:29
