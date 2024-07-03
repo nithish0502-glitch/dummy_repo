@@ -21,33 +21,33 @@ public class DietPlanController {
 
     @Autowired
     private DietPlanService dietPlanService;
-@GetMapping
+@GetMapping("/api/dietplan")
     public ResponseEntity<List<DietPlan>> getAllDietPlans() {
         List<DietPlan> dietPlans = dietPlanService.getAllDietPlans();
         return ResponseEntity.ok(dietPlans);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/api/dietplan/{id}")
     public ResponseEntity<DietPlan> getDietPlanById(@PathVariable int dietPlanId) {
         Optional<DietPlan> dietPlan = dietPlanService.getDietPlanById(dietPlanId);
         return dietPlan.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PostMapping
+    @PostMapping("/api/dietplan") 
     public ResponseEntity<DietPlan> createDietPlan(@RequestBody DietPlan dietPlan) {
         DietPlan createdDietPlan = dietPlanService.createDietPlan(dietPlan);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdDietPlan);
     }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<DietPlan> updateDietPlan(@PathVariable("id") int dietPlanId,
+ 
+    @PutMapping("/api/dietplan/{id}")
+    public ResponseEntity<DietPlan> updateDietPlan(@PathVariable int dietPlanId, 
                                                    @RequestBody DietPlan updatedDietPlan) {
         DietPlan updated = dietPlanService.updateDietPlan(dietPlanId, updatedDietPlan);
         return ResponseEntity.ok(updated);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteDietPlan(@PathVariable("id") int dietPlanId) {
+    @DeleteMapping("/api/dietplan/{id}")
+    public ResponseEntity<Void> deleteDietPlan(@PathVariable int dietPlanId) {
         dietPlanService.deleteDietPlan(dietPlanId);
         return ResponseEntity.noContent().build();
     }

@@ -26,35 +26,35 @@ public class DietPlanRequestController {
     @Autowired
     DietPlanRequestService dietPlanRequestService;
     
-   @GetMapping
+   @GetMapping("/api/dietplanrequest") 
     public ResponseEntity<List<DietPlanRequest>> getAllDietPlanRequests() {
         List<DietPlanRequest> dietPlanRequests = dietPlanRequestService.getAllDietPlanRequests();
         return ResponseEntity.ok(dietPlanRequests);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/api/dietplanrequest/{id}")
     public ResponseEntity<DietPlanRequest> getDietPlanRequestById(@PathVariable int requestId) {
         Optional<DietPlanRequest> dietPlanRequest = dietPlanRequestService.getDietPlanRequestById(requestId);
         return dietPlanRequest.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PostMapping
+    @PostMapping("/api/dietplanrequest")
     public ResponseEntity<DietPlanRequest> createDietPlanRequest(@RequestBody DietPlanRequest dietPlanRequest) {
         DietPlanRequest createdDietPlanRequest = dietPlanRequestService.createDietPlanRequest(dietPlanRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdDietPlanRequest);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/api/dietplanrequest/{id}")
     public ResponseEntity<DietPlanRequest> updateDietPlanRequest(@PathVariable int requestId,
                                                                  @RequestBody DietPlanRequest updatedDietPlanRequest) {
         DietPlanRequest updated = dietPlanRequestService.updateDietPlanRequest(requestId, updatedDietPlanRequest);
         return ResponseEntity.ok(updated);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/api/dietplanrequest/{id}")
     public ResponseEntity<Void> deleteDietPlanRequest(@PathVariable int requestId) {
         dietPlanRequestService.deleteDietPlanRequest(requestId);
         return ResponseEntity.noContent().build();
     }
 }
- 
+    
