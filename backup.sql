@@ -79,7 +79,7 @@ CREATE TABLE `diet_plan_request` (
   KEY `FKpe1ifyc72xmrdfs4vkbklxpek` (`user_user_id`),
   CONSTRAINT `FKa34o696wriwjnaiu134dborcr` FOREIGN KEY (`diet_plan_diet_plan_id`) REFERENCES `diet_plan` (`diet_plan_id`),
   CONSTRAINT `FKpe1ifyc72xmrdfs4vkbklxpek` FOREIGN KEY (`user_user_id`) REFERENCES `user` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -88,6 +88,7 @@ CREATE TABLE `diet_plan_request` (
 
 LOCK TABLES `diet_plan_request` WRITE;
 /*!40000 ALTER TABLE `diet_plan_request` DISABLE KEYS */;
+INSERT INTO `diet_plan_request` VALUES (1,'moderate',30,'2024-07-03 15:30:00.000000','male','lose_weight',175,'None','pending',70.5,1,1);
 /*!40000 ALTER TABLE `diet_plan_request` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -154,4 +155,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-03 10:44:29
+-- Dump completed on 2024-07-03 10:59:29
