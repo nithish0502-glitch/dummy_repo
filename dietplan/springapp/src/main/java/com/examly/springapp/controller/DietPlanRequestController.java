@@ -43,7 +43,7 @@ public class DietPlanRequestController {
     }
 
     @GetMapping("/api/dietplanrequest/{id}")
-    @PreAuthorize("hasAnyAuthority('SELLER', 'FARMER')")
+    @PreAuthorize("hasAnyAuthority('NUTRITIONIST','USER')")
     public ResponseEntity<DietPlanRequest> getDietPlanRequestById(@PathVariable int requestId) {
         Optional<DietPlanRequest> dietPlanRequest = dietPlanRequestService.getDietPlanRequestById(requestId);
         return dietPlanRequest.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
