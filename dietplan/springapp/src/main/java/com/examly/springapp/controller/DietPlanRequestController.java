@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 
+import com.examly.springapp.model.DietPlan;
 import com.examly.springapp.model.DietPlanRequest;
 import com.examly.springapp.model.User;
 import com.examly.springapp.service.DietPlanRequestService;
@@ -27,10 +28,18 @@ public class DietPlanRequestController {
     DietPlanRequestService dietPlanRequestService;
     
    @GetMapping("/api/dietplanrequest") 
-   @PreAuthorize("hasAnyAuthority('SELLER', 'FARMER')")
+   @PreAuthorize("hasAnyAuthority('NUTRITIONIST','USER')")
     public ResponseEntity<List<DietPlanRequest>> getAllDietPlanRequests() {
         List<DietPlanRequest> dietPlanRequests = dietPlanRequestService.getAllDietPlanRequests();
         return ResponseEntity.ok(dietPlanRequests);
+    }
+
+
+      @GetMapping("/api/dietplan/user/{userId}")
+    @PreAuthorize("hasAnyAuthority('NUTRITIONIST','USER')")
+    public ResponseEntity<List<DietPlanRequest>> getDietPlanRequestByUserId(@PathVariable int userId) {
+         
+        return ResponseEntity.status(HttpStatus.OK).body(dietPlanService.getDietPlanByUserId(userId));
     }
 
     @GetMapping("/api/dietplanrequest/{id}")

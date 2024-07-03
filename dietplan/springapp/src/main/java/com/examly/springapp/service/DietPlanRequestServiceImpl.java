@@ -29,6 +29,12 @@ public class DietPlanRequestServiceImpl implements DietPlanRequestService {
     }
 
     @Override
+    public List<DietPlanRequest> getDietPlanRequestByUserId(int userId){
+        User user=userRepo.findById(userId).orElse(null);
+        return dietPlanRepo.findByUser(user);
+    }
+
+    @Override
     public DietPlanRequest createDietPlanRequest(DietPlanRequest dietPlanRequest) {
         return dietPlanRequestRepo.save(dietPlanRequest);
     }
