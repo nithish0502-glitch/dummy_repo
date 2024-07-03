@@ -22,33 +22,36 @@ public class DietPlanController {
     @Autowired
     private DietPlanService dietPlanService;
 @GetMapping("/api/dietplan")
-@PreAuthorize("hasAuthority('FARMER')")
+@PreAuthorize("hasAnyAuthority('SELLER', 'FARMER')")
     public ResponseEntity<List<DietPlan>> getAllDietPlans() {
         List<DietPlan> dietPlans = dietPlanService.getAllDietPlans();
         return ResponseEntity.ok(dietPlans);
     }
 
     @GetMapping("/api/dietplan/{id}")
-    @PreAuthorize("hasAuthority('FARMER')")
+    @PreAuthorize("hasAnyAuthority('SELLER', 'FARMER')")
     public ResponseEntity<DietPlan> getDietPlanById(@PathVariable int dietPlanId) {
         Optional<DietPlan> dietPlan = dietPlanService.getDietPlanById(dietPlanId);
         return dietPlan.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping("/api/dietplan") 
+    @PreAuthorize("hasAnyAuthority('SELLER', 'FARMER')")
     public ResponseEntity<DietPlan> createDietPlan(@RequestBody DietPlan dietPlan) {
         DietPlan createdDietPlan = dietPlanService.createDietPlan(dietPlan);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdDietPlan);
     }
- 
+  
     @PutMapping("/api/dietplan/{id}")
+    @PreAuthorize("hasAnyAuthority('SELLER', 'FARMER')")
     public ResponseEntity<DietPlan> updateDietPlan(@PathVariable int dietPlanId, 
                                                    @RequestBody DietPlan updatedDietPlan) {
         DietPlan updated = dietPlanService.updateDietPlan(dietPlanId, updatedDietPlan);
         return ResponseEntity.ok(updated);
     }
-
+               
     @DeleteMapping("/api/dietplan/{id}")
+    @PreAuthorize("hasAnyAuthority('SELLER', 'FARMER')")
     public ResponseEntity<Void> deleteDietPlan(@PathVariable int dietPlanId) {
         dietPlanService.deleteDietPlan(dietPlanId);
         return ResponseEntity.noContent().build();
