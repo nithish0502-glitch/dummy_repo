@@ -22,12 +22,14 @@ public class DietPlanController {
     @Autowired
     private DietPlanService dietPlanService;
 @GetMapping("/api/dietplan")
+@PreAuthorize("hasAuthority('FARMER')")
     public ResponseEntity<List<DietPlan>> getAllDietPlans() {
         List<DietPlan> dietPlans = dietPlanService.getAllDietPlans();
         return ResponseEntity.ok(dietPlans);
     }
 
     @GetMapping("/api/dietplan/{id}")
+    @PreAuthorize("hasAuthority('FARMER')")
     public ResponseEntity<DietPlan> getDietPlanById(@PathVariable int dietPlanId) {
         Optional<DietPlan> dietPlan = dietPlanService.getDietPlanById(dietPlanId);
         return dietPlan.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
