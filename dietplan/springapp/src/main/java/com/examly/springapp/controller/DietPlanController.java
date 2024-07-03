@@ -38,8 +38,9 @@ public class DietPlanController {
 
     @GetMapping("/api/dietplan/user/{userId}")
     @PreAuthorize("hasAnyAuthority('NUTRITIONIST','USER')")
-    public ResponseEntity<DietPlan> getDietPlanByUserId(@PathVariable int dietPlanId) {
-        return dietPlanService.getDietPlanByUserId(userId);
+    public ResponseEntity<List<DietPlan>> getDietPlanByUserId(@PathVariable int userId) {
+         
+        return ResponseEntity.status(HttpStatus.OK).body(dietPlanService.getDietPlanByUserId(userId));
     }
 
 
