@@ -57,7 +57,9 @@ public class DietPlanServiceImpl implements DietPlanService {
     }
 
     @Override
-    public void deleteDietPlan(int dietPlanId) {
+    public DietPlan deleteDietPlan(int dietPlanId) {
+        DietPlan dietPlan=dietPlanRepo.findById(dietPlanId).orElse(null);
         dietPlanRepo.deleteById(dietPlanId);
+        return dietPlan;
     }
 }

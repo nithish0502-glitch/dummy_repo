@@ -41,7 +41,7 @@ public class DietPlanRequestController {
     }
 
     @PostMapping("/api/dietplanrequest")
-    @PreAuthorize("hasAnyAuthority('SELLER', 'FARMER')")
+    @PreAuthorize("hasAnyAuthority('USER')")
     public ResponseEntity<DietPlanRequest> createDietPlanRequest(@RequestBody DietPlanRequest dietPlanRequest) {
         DietPlanRequest createdDietPlanRequest = dietPlanRequestService.createDietPlanRequest(dietPlanRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdDietPlanRequest);
