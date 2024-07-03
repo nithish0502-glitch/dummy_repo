@@ -27,24 +27,28 @@ public class DietPlanRequestController {
     DietPlanRequestService dietPlanRequestService;
     
    @GetMapping("/api/dietplanrequest") 
+   @PreAuthorize("hasAnyAuthority('SELLER', 'FARMER')")
     public ResponseEntity<List<DietPlanRequest>> getAllDietPlanRequests() {
         List<DietPlanRequest> dietPlanRequests = dietPlanRequestService.getAllDietPlanRequests();
         return ResponseEntity.ok(dietPlanRequests);
     }
 
     @GetMapping("/api/dietplanrequest/{id}")
+    @PreAuthorize("hasAnyAuthority('SELLER', 'FARMER')")
     public ResponseEntity<DietPlanRequest> getDietPlanRequestById(@PathVariable int requestId) {
         Optional<DietPlanRequest> dietPlanRequest = dietPlanRequestService.getDietPlanRequestById(requestId);
         return dietPlanRequest.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping("/api/dietplanrequest")
+    @PreAuthorize("hasAnyAuthority('SELLER', 'FARMER')")
     public ResponseEntity<DietPlanRequest> createDietPlanRequest(@RequestBody DietPlanRequest dietPlanRequest) {
         DietPlanRequest createdDietPlanRequest = dietPlanRequestService.createDietPlanRequest(dietPlanRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdDietPlanRequest);
     }
 
     @PutMapping("/api/dietplanrequest/{id}")
+    @PreAuthorize("hasAnyAuthority('SELLER', 'FARMER')")
     public ResponseEntity<DietPlanRequest> updateDietPlanRequest(@PathVariable int requestId,
                                                                  @RequestBody DietPlanRequest updatedDietPlanRequest) {
         DietPlanRequest updated = dietPlanRequestService.updateDietPlanRequest(requestId, updatedDietPlanRequest);
@@ -52,6 +56,7 @@ public class DietPlanRequestController {
     }
 
     @DeleteMapping("/api/dietplanrequest/{id}")
+    @PreAuthorize("hasAnyAuthority('SELLER', 'FARMER')")
     public ResponseEntity<Void> deleteDietPlanRequest(@PathVariable int requestId) {
         dietPlanRequestService.deleteDietPlanRequest(requestId);
         return ResponseEntity.noContent().build();

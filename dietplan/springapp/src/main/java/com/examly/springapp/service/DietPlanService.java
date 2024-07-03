@@ -16,5 +16,6 @@ public interface DietPlanService {
 
     DietPlan updateDietPlan(int dietPlanId, DietPlan dietPlan);
 
+
     void deleteDietPlan(int dietPlanId);
 }

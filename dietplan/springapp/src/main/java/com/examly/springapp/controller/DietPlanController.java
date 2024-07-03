@@ -35,8 +35,15 @@ public class DietPlanController {
         return dietPlan.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/api/dietplan/user/{userId}")
+    @PreAuthorize("hasAnyAuthority('NUTRITIONIST','USER')")
+    public ResponseEntity<DietPlan> getDietPlanByUserId(@PathVariable int dietPlanId) {
+        return dietPlanService.getDietPlanByUserId(userId);
+    }
+
+
     @PostMapping("/api/dietplan") 
-    @PreAuthorize("hasAnyAuthority('SELLER', 'FARMER')")
+    @PreAuthorize("hasAnyAuthority('NUTRITIONIST')")
     public ResponseEntity<DietPlan> createDietPlan(@RequestBody DietPlan dietPlan) {
         DietPlan createdDietPlan = dietPlanService.createDietPlan(dietPlan);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdDietPlan);
@@ -51,7 +58,7 @@ public class DietPlanController {
     }
                
     @DeleteMapping("/api/dietplan/{id}")
-    @PreAuthorize("hasAnyAuthority('SELLER', 'FARMER')")
+    @PreAuthorize("hasAnyAuthority('USER', 'NUTRITIONIST')")
     public ResponseEntity<Void> deleteDietPlan(@PathVariable int dietPlanId) {
         dietPlanService.deleteDietPlan(dietPlanId);
         return ResponseEntity.noContent().build();

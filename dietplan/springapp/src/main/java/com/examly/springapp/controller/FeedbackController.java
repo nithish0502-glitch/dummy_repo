@@ -24,30 +24,35 @@ public class FeedbackController {
     private FeedbackService feedbackService;
 
     @PostMapping("/api/feedback")
+    @PreAuthorize("hasAnyAuthority('SELLER', 'FARMER')")
     public ResponseEntity<Feedback> createFeedback(@RequestBody Feedback feedback) {
         Feedback createdFeedback = feedbackService.createFeedback(feedback);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdFeedback);
     }
 
     @GetMapping("/api/feedback/{id}")
+    @PreAuthorize("hasAnyAuthority('SELLER', 'FARMER')")
     public ResponseEntity<Feedback> getFeedbackById(@PathVariable int id) {
         Optional<Feedback> feedback = feedbackService.getFeedbackById(id);
         return feedback.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @GetMapping("/api/feedback")
+    @PreAuthorize("hasAnyAuthority('SELLER', 'FARMER')")
     public ResponseEntity<List<Feedback>> getAllFeedbacks() {
         List<Feedback> feedbacks = feedbackService.getAllFeedbacks();
         return ResponseEntity.ok(feedbacks);
     }
 
     @PutMapping("/api/feedback/{id}")
+    @PreAuthorize("hasAnyAuthority('SELLER', 'FARMER')")
     public ResponseEntity<Feedback> updateFeedback(@PathVariable int id, @RequestBody Feedback updatedFeedback) {
         Feedback updated = feedbackService.updateFeedback(id, updatedFeedback);
         return ResponseEntity.ok(updated);
     }
 
     @DeleteMapping("/api/feedback/{id}")
+    @PreAuthorize("hasAnyAuthority('SELLER', 'FARMER')")
     public ResponseEntity<Feedback> deleteFeedback(@PathVariable int id) {
         Feedback feedback=feedbackService.deleteFeedback(id);
         return ResponseEntity.ok(feedback); 
