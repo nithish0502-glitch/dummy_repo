@@ -18,7 +18,7 @@ import jakarta.persistence.OneToMany;
 public class DietPlanRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long requestId;
+    private int requestId;
 
     @ManyToOne
     private User user;
@@ -35,10 +35,10 @@ public class DietPlanRequest {
     private String medicalConditions;
     private LocalDateTime createdAt;
     private String status;
-    public Long getRequestId() {
+    public int getRequestId() {
         return requestId;
     }
-    public void setRequestId(Long requestId) {
+    public void setRequestId(int requestId) {
         this.requestId = requestId;
     }
     public User getUser() {

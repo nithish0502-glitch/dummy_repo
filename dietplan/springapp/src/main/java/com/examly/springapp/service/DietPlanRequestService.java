@@ -8,11 +8,11 @@ import com.examly.springapp.model.DietPlanRequest;
 public interface DietPlanRequestService {
     List<DietPlanRequest> getAllDietPlanRequests();
 
-    Optional<DietPlanRequest> getDietPlanRequestById(Long requestId);
+    Optional<DietPlanRequest> getDietPlanRequestById(int requestId);
 
     DietPlanRequest createDietPlanRequest(DietPlanRequest dietPlanRequest);
 
-    DietPlanRequest updateDietPlanRequest(Long requestId, DietPlanRequest dietPlanRequest);
+    DietPlanRequest updateDietPlanRequest(int requestId, DietPlanRequest dietPlanRequest);
 
-    void deleteDietPlanRequest(Long requestId);
+    void deleteDietPlanRequest(int requestId);
 }

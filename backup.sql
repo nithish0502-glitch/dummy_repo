@@ -102,6 +102,7 @@ CREATE TABLE `feedback` (
   `content` varchar(255) DEFAULT NULL,
   `datecreated_at` datetime(6) DEFAULT NULL,
   `user_id` bigint(20) NOT NULL,
+  `created_at` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`feedback_id`),
   KEY `FK7k33yw505d347mw3avr93akao` (`user_id`),
   CONSTRAINT `FK7k33yw505d347mw3avr93akao` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
@@ -152,4 +153,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-03  4:56:08
+-- Dump completed on 2024-07-03  5:11:08

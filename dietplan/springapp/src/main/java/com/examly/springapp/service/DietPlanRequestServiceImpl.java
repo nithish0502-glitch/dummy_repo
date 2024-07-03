@@ -10,31 +10,32 @@ import com.examly.springapp.model.DietPlan;
 import com.examly.springapp.model.DietPlanRequest;
 import com.examly.springapp.model.User;
 import com.examly.springapp.repository.DietPlanRepo;
+import com.examly.springapp.repository.DietPlanRequestRepo;
 import com.examly.springapp.repository.UserRepo;
  
 @Service
 public class DietPlanRequestServiceImpl implements DietPlanRequestService {
 
     @Autowired
-    DietPlanRepo dietPlanRepo;
+    DietPlanRequestRepo dietPlanRequestRepo;
   @Override
     public List<DietPlanRequest> getAllDietPlanRequests() {
-        return dietPlanRepo.findAll();
+        return dietPlanRequestRepo.findAll();
     }
 
     @Override
-    public Optional<DietPlanRequest> getDietPlanRequestById(Long requestId) {
-        return dietPlanRepo.findById(requestId);
+    public Optional<DietPlanRequest> getDietPlanRequestById(int requestId) {
+        return dietPlanRequestRepo.findById(requestId);
     }
 
     @Override
     public DietPlanRequest createDietPlanRequest(DietPlanRequest dietPlanRequest) {
-        return dietPlanRepo.save(dietPlanRequest);
+        return dietPlanRequestRepo.save(dietPlanRequest);
     }
 
     @Override
-    public DietPlanRequest updateDietPlanRequest(Long requestId, DietPlanRequest updatedDietPlanRequest) {
-        DietPlanRequest existingDietPlanRequest = dietPlanRepo.findById(requestId)
+    public DietPlanRequest updateDietPlanRequest(int requestId, DietPlanRequest updatedDietPlanRequest) {
+        DietPlanRequest existingDietPlanRequest = dietPlanRequestRepo.findById(requestId)
                 .orElseThrow(() -> new RuntimeException("Diet Plan Request not found with id: " + requestId));
 
         // Update fields
@@ -48,11 +49,11 @@ public class DietPlanRequestServiceImpl implements DietPlanRequestService {
         existingDietPlanRequest.setStatus(updatedDietPlanRequest.getStatus());
         // You can update createdAt if necessary, or keep it unchanged
 
-        return dietPlanRepo.save(existingDietPlanRequest);
+        return dietPlanRequestRepo.save(existingDietPlanRequest);
     }
 
     @Override
-    public void deleteDietPlanRequest(Long requestId) {
-        dietPlanRepo.deleteById(requestId);
+    public void deleteDietPlanRequest(int requestId) {
+        dietPlanRequestRepo.deleteById(requestId);
     }
 }
