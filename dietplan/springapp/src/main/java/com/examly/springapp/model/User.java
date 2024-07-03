@@ -27,12 +27,15 @@ public class User {
     private String role;
 
     @OneToMany(mappedBy = "user")
+    @JsonIgnore
     private List<DietPlan> dietPlans;
 
     @OneToMany(mappedBy = "user")
+    @JsonIgnore
     private List<DietPlanRequest> dietPlanRequests;
 
     @OneToMany(mappedBy = "user")
+    @JsonIgnore
     private List<Feedback> feedbacks;
 
     public int getUserId() {

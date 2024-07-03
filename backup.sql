@@ -41,7 +41,7 @@ CREATE TABLE `diet_plan` (
   PRIMARY KEY (`diet_plan_id`),
   KEY `FKtchmmud9da85af0yr2wjpilga` (`user_id`),
   CONSTRAINT `FKtchmmud9da85af0yr2wjpilga` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -50,6 +50,7 @@ CREATE TABLE `diet_plan` (
 
 LOCK TABLES `diet_plan` WRITE;
 /*!40000 ALTER TABLE `diet_plan` DISABLE KEYS */;
+INSERT INTO `diet_plan` VALUES (1,'2024-07-03 10:15:30.000000','This is a sample diet plan description.','1 month','Sample Diet Plan','active',1);
 /*!40000 ALTER TABLE `diet_plan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -132,7 +133,7 @@ CREATE TABLE `user` (
   `role` varchar(255) DEFAULT NULL,
   `username` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -141,7 +142,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'user1@example.com','$2a$10$2otThUo1XPx2c7qOloKWRuDjCccuwfpzAiHkoG9H8dhN9XSUM9ipC','user','user1');
+INSERT INTO `user` VALUES (1,'user1@example.com','$2a$10$2otThUo1XPx2c7qOloKWRuDjCccuwfpzAiHkoG9H8dhN9XSUM9ipC','user','user1'),(2,'nut@example.com','$2a$10$1whVEfiZqOHVV3Q1EXMYgOsr4XlC1G5NW23JXPwiWrbzb4gpWD.nK','NUTRITIONIST','nut'),(3,'user@example.com','$2a$10$sZZk2wo7iyfgx/HDQSrXWu0Ix5VgbOE.2gZDTg2h0dLdPpc9SthU.','USER','user');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -154,4 +155,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-03 10:14:29
+-- Dump completed on 2024-07-03 10:29:29
