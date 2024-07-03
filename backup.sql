@@ -50,7 +50,7 @@ CREATE TABLE `diet_plan` (
 
 LOCK TABLES `diet_plan` WRITE;
 /*!40000 ALTER TABLE `diet_plan` DISABLE KEYS */;
-INSERT INTO `diet_plan` VALUES (1,'2024-07-03 10:15:30.000000','This is a sample diet plan description.','1 month','Sample Diet Plan','active',1);
+INSERT INTO `diet_plan` VALUES (1,'2024-07-03 10:15:30.000000','This is a sample diet plan description.','1 month','Sample Diet Plan','active',3);
 /*!40000 ALTER TABLE `diet_plan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -155,4 +155,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-03 10:29:29
+-- Dump completed on 2024-07-03 10:35:02
