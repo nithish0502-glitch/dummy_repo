@@ -44,7 +44,6 @@ CREATE TABLE `department` (
 
 LOCK TABLES `department` WRITE;
 /*!40000 ALTER TABLE `department` DISABLE KEYS */;
-INSERT INTO `department` VALUES (1,'Engineering','To innovate and lead in technology advancements.');
 /*!40000 ALTER TABLE `department` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -66,7 +65,7 @@ CREATE TABLE `department_seq` (
 
 LOCK TABLES `department_seq` WRITE;
 /*!40000 ALTER TABLE `department_seq` DISABLE KEYS */;
-INSERT INTO `department_seq` VALUES (51);
+INSERT INTO `department_seq` VALUES (1);
 /*!40000 ALTER TABLE `department_seq` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -95,7 +94,6 @@ CREATE TABLE `employee` (
 
 LOCK TABLES `employee` WRITE;
 /*!40000 ALTER TABLE `employee` DISABLE KEYS */;
-INSERT INTO `employee` VALUES (1,1,75000,'Software Engineer','John Doe');
 /*!40000 ALTER TABLE `employee` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -117,7 +115,7 @@ CREATE TABLE `employee_seq` (
 
 LOCK TABLES `employee_seq` WRITE;
 /*!40000 ALTER TABLE `employee_seq` DISABLE KEYS */;
-INSERT INTO `employee_seq` VALUES (51);
+INSERT INTO `employee_seq` VALUES (1);
 /*!40000 ALTER TABLE `employee_seq` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -130,4 +128,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-05  5:52:51
+-- Dump completed on 2024-07-05  6:09:12
