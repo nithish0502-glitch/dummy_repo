@@ -90,12 +90,26 @@ class SpringappApplicationTests {
                         .exists());
     }
 
+	@Test
+	@Order(5)
+	void testDuplicateException() throws Exception {
+		String jsonPayload ="{ \"id\": 1, \"departmentName\": \"Test Department\", \"visionStatement\": \"Test visionStatement\"}";
+
+		mockMvc.perform(MockMvcRequestBuilders.post("/department")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(jsonPayload)
+				.accept(MediaType.APPLICATION_JSON))
+				.andExpect(MockMvcResultMatchers.status().isInternalServerError())
+				.andExpect(content().string("Department with name Test Department already exists!"))
+				.andReturn();
+	}
+
 
 
   
 
 @Test
-@Order(5)
+@Order(6)
 void testDeleteEmployee() throws Exception {
     mockMvc.perform(MockMvcRequestBuilders.delete("/employee/1"))
             .andExpect(status().isOk())

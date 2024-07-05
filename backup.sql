@@ -39,7 +39,7 @@ CREATE TABLE `course` (
   PRIMARY KEY (`course_id`),
   KEY `FKi3n1ufkc1uifytn1m2aalh644` (`university_university_id`),
   CONSTRAINT `FKi3n1ufkc1uifytn1m2aalh644` FOREIGN KEY (`university_university_id`) REFERENCES `university` (`university_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -72,7 +72,7 @@ CREATE TABLE `department` (
 
 LOCK TABLES `department` WRITE;
 /*!40000 ALTER TABLE `department` DISABLE KEYS */;
-INSERT INTO `department` VALUES (1,'Marketing','To be the leading innovator in digital marketing strategies.');
+INSERT INTO `department` VALUES (1,'Test Department','Test visionStatement');
 /*!40000 ALTER TABLE `department` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -144,7 +144,7 @@ CREATE TABLE `employee_seq` (
 
 LOCK TABLES `employee_seq` WRITE;
 /*!40000 ALTER TABLE `employee_seq` DISABLE KEYS */;
-INSERT INTO `employee_seq` VALUES (1);
+INSERT INTO `employee_seq` VALUES (51);
 /*!40000 ALTER TABLE `employee_seq` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -170,7 +170,7 @@ CREATE TABLE `playlist` (
 
 LOCK TABLES `playlist` WRITE;
 /*!40000 ALTER TABLE `playlist` DISABLE KEYS */;
-INSERT INTO `playlist` VALUES (5,1,'A collection of my favorite songs.','My Favorite Songs');
+INSERT INTO `playlist` VALUES (15,1,'Test Song','Test Playlist');
 /*!40000 ALTER TABLE `playlist` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -191,7 +191,7 @@ CREATE TABLE `song` (
   PRIMARY KEY (`song_id`),
   KEY `FKsj6fhfnuq863tmvcp6jdwvkvs` (`playlist_playlist_id`),
   CONSTRAINT `FKsj6fhfnuq863tmvcp6jdwvkvs` FOREIGN KEY (`playlist_playlist_id`) REFERENCES `playlist` (`playlist_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -225,7 +225,7 @@ CREATE TABLE `university` (
 
 LOCK TABLES `university` WRITE;
 /*!40000 ALTER TABLE `university` DISABLE KEYS */;
-INSERT INTO `university` VALUES (15000,1,'City Name','Sample University');
+INSERT INTO `university` VALUES (1000,1,'Some Location','Test University');
 /*!40000 ALTER TABLE `university` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -238,4 +238,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-05  6:54:12
+-- Dump completed on 2024-07-05  7:09:12

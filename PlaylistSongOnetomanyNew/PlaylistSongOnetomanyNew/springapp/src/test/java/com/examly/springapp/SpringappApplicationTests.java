@@ -36,7 +36,7 @@ class SpringappApplicationTests {
 
 	@Autowired
 	private MockMvc mockMvc;
-
+  
 	@Test
 	@Order(1)
 	void testAddPlaylist() throws Exception {
@@ -89,12 +89,26 @@ class SpringappApplicationTests {
                         .exists());
     }
 
+	@Test
+	@Order(5)
+	void testDuplicateException() throws Exception {
+		String jsonPayload = "{ \"playlistId\": 1, \"name\": \"Test Playlist\", \"description\": \"Test Song\", \"numofSongs\": 15 }";
+
+		mockMvc.perform(MockMvcRequestBuilders.post("/playlist")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(jsonPayload)
+				.accept(MediaType.APPLICATION_JSON))
+				.andExpect(MockMvcResultMatchers.status().isInternalServerError())
+				.andExpect(content().string("Playlist with name Test Playlist already exists!"))
+				.andReturn();
+	}
+
 
 
   
 
 @Test
-@Order(5)
+@Order(6)
 void testDeleteSong() throws Exception {
     mockMvc.perform(MockMvcRequestBuilders.delete("/song/1"))
             .andExpect(status().isOk())

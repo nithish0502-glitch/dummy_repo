@@ -21,7 +21,6 @@ import org.springframework.data.jpa.repository.Query;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-
 import java.io.File;
 
 import org.junit.jupiter.api.MethodOrderer;
@@ -91,11 +90,22 @@ class SpringappApplicationTests {
                         .exists());
     }
 
+	@Test
+	@Order(5)
+	void testDuplicateException() throws Exception {
+		String jsonPayload = "{ \"universityId\": 1, \"universityName\": \"Test University\", \"location\": \"Some Location\", \"studentPopulation\": 1000 }";
 
-
+		mockMvc.perform(MockMvcRequestBuilders.post("/university")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(jsonPayload)
+				.accept(MediaType.APPLICATION_JSON))
+				.andExpect(MockMvcResultMatchers.status().isInternalServerError())
+				.andExpect(content().string("University with name Test University already exists!"))
+				.andReturn();
+	}
   
 @Test
-@Order(5)
+@Order(6)
 void testDeleteCourse() throws Exception {
     mockMvc.perform(MockMvcRequestBuilders.delete("/course/1"))
             .andExpect(status().isOk())
