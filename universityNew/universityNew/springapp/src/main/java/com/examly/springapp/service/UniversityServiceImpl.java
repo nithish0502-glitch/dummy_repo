@@ -3,7 +3,6 @@ package com.examly.springapp.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.examly.springapp.exception.DuplicatePlaylistException;
 import com.examly.springapp.exception.DuplicateUniversityException;
 import com.examly.springapp.model.University;
 import com.examly.springapp.repository.UniversityRepo;
@@ -18,12 +17,12 @@ public class UniversityServiceImpl {
     public University addUniversity(University university)
     {
        {
-        if (universityRepo.existsByUniversityName(department.getDepartmentName())) {
+        if (universityRepo.existsByUniversityName(university.getUniversityName())) {
             throw new DuplicateUniversityException("University with name " + university.getUniversityName() + " already exists!");
         }
         
         // If not exists, save the department
-        return universityRepo.save(department);
+        return universityRepo.save(university);
     }
     }
 

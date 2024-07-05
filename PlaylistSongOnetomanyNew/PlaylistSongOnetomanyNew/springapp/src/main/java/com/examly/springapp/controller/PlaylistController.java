@@ -20,7 +20,7 @@ public class PlaylistController {
     private PlaylistServiceImpl playlistserviceImpl;
     
     @PostMapping("playlist")
-    public ResponseEntity<Playlist> addPlayList(@RequestBody Playlist playlist)
+    public ResponseEntity<?> addPlayList(@RequestBody Playlist playlist)
     {
         try {
             Playlist newplaylist = playlistserviceImpl.addPlayList(playlist);

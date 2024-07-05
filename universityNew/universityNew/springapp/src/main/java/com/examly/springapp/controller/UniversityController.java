@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.examly.springapp.exception.DuplicateUniversityException;
 import com.examly.springapp.model.University;
 import com.examly.springapp.service.UniversityServiceImpl;
 
@@ -22,16 +23,18 @@ public class UniversityController {
 
 
     @PostMapping("university")
-    public ResponseEntity<University> addUniversity(@RequestBody University university)
+    public ResponseEntity<?> addUniversity(@RequestBody University university)
     {
-        University newuniversity = universityServiceImpl.addUniversity(university);
-        if(newuniversity!=null)
-        {
+        try {
+            University newuniversity = universityServiceImpl.addUniversity(university);
             return ResponseEntity.status(HttpStatus.CREATED).body(newuniversity);
-        }
-        else
-        {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        } catch (DuplicateUniversityException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        } catch (Exception e) {
+            // Handle other exceptions if needed
+            String errorMessage = "Unexpected error occurred: " + e.getMessage();
+            System.out.println(errorMessage);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorMessage);
         }
 
     }

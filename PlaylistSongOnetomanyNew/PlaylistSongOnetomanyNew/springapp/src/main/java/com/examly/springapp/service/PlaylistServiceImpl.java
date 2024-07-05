@@ -15,12 +15,12 @@ public class PlaylistServiceImpl implements PlaylistService{
 
     public Playlist addPlayList(Playlist playlist)
     {
-        if (playlist.existByName(playlist.getName())) {
+        if (playlistRepo.existsByName(playlist.getName())) {
             throw new DuplicatePlaylistException("Playlist with name " + playlist.getName() + " already exists!");
         }
         
         // If not exists, save the department
-        return playlistRepo.save(department);
+        return playlistRepo.save(playlist);
     }
 
 

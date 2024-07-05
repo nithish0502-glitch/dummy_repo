@@ -24,6 +24,34 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/ `appdb` /*!40100 DEFAULT CHARACTER SET 
 USE `appdb`;
 
 --
+-- Table structure for table `course`
+--
+
+DROP TABLE IF EXISTS `course`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `course` (
+  `course_id` int(11) NOT NULL AUTO_INCREMENT,
+  `fees` double NOT NULL,
+  `university_university_id` int(11) DEFAULT NULL,
+  `instructor` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`course_id`),
+  KEY `FKi3n1ufkc1uifytn1m2aalh644` (`university_university_id`),
+  CONSTRAINT `FKi3n1ufkc1uifytn1m2aalh644` FOREIGN KEY (`university_university_id`) REFERENCES `university` (`university_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `course`
+--
+
+LOCK TABLES `course` WRITE;
+/*!40000 ALTER TABLE `course` DISABLE KEYS */;
+/*!40000 ALTER TABLE `course` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `department`
 --
 
@@ -119,6 +147,87 @@ LOCK TABLES `employee_seq` WRITE;
 INSERT INTO `employee_seq` VALUES (1);
 /*!40000 ALTER TABLE `employee_seq` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `playlist`
+--
+
+DROP TABLE IF EXISTS `playlist`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `playlist` (
+  `numof_songs` int(11) NOT NULL,
+  `playlist_id` int(11) NOT NULL AUTO_INCREMENT,
+  `description` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`playlist_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `playlist`
+--
+
+LOCK TABLES `playlist` WRITE;
+/*!40000 ALTER TABLE `playlist` DISABLE KEYS */;
+INSERT INTO `playlist` VALUES (5,1,'A collection of my favorite songs.','My Favorite Songs');
+/*!40000 ALTER TABLE `playlist` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `song`
+--
+
+DROP TABLE IF EXISTS `song`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `song` (
+  `playlist_playlist_id` int(11) DEFAULT NULL,
+  `song_id` int(11) NOT NULL AUTO_INCREMENT,
+  `artist` varchar(255) DEFAULT NULL,
+  `composer` varchar(255) DEFAULT NULL,
+  `movie_name` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`song_id`),
+  KEY `FKsj6fhfnuq863tmvcp6jdwvkvs` (`playlist_playlist_id`),
+  CONSTRAINT `FKsj6fhfnuq863tmvcp6jdwvkvs` FOREIGN KEY (`playlist_playlist_id`) REFERENCES `playlist` (`playlist_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `song`
+--
+
+LOCK TABLES `song` WRITE;
+/*!40000 ALTER TABLE `song` DISABLE KEYS */;
+/*!40000 ALTER TABLE `song` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `university`
+--
+
+DROP TABLE IF EXISTS `university`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `university` (
+  `student_population` int(11) NOT NULL,
+  `university_id` int(11) NOT NULL AUTO_INCREMENT,
+  `location` varchar(255) DEFAULT NULL,
+  `university_name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`university_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `university`
+--
+
+LOCK TABLES `university` WRITE;
+/*!40000 ALTER TABLE `university` DISABLE KEYS */;
+INSERT INTO `university` VALUES (15000,1,'City Name','Sample University');
+/*!40000 ALTER TABLE `university` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -129,4 +238,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-05  6:39:13
+-- Dump completed on 2024-07-05  6:54:12
