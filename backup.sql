@@ -24,126 +24,101 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/ `appdb` /*!40100 DEFAULT CHARACTER SET 
 USE `appdb`;
 
 --
--- Table structure for table `diet_plan`
+-- Table structure for table `department`
 --
 
-DROP TABLE IF EXISTS `diet_plan`;
+DROP TABLE IF EXISTS `department`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `diet_plan` (
-  `diet_plan_id` int(11) NOT NULL AUTO_INCREMENT,
-  `created_at` datetime(6) DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `duration` varchar(255) DEFAULT NULL,
-  `plan_name` varchar(255) DEFAULT NULL,
-  `status` varchar(255) DEFAULT NULL,
-  `user_id` int(11) NOT NULL,
-  PRIMARY KEY (`diet_plan_id`),
-  KEY `FKtchmmud9da85af0yr2wjpilga` (`user_id`),
-  CONSTRAINT `FKtchmmud9da85af0yr2wjpilga` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `diet_plan`
---
-
-LOCK TABLES `diet_plan` WRITE;
-/*!40000 ALTER TABLE `diet_plan` DISABLE KEYS */;
-INSERT INTO `diet_plan` VALUES (1,'2024-07-03 10:15:30.000000','This is a sample diet plan description.','1 month','Sample Diet Plan','active',2),(2,'2024-07-03 10:15:30.000000','This is a sample diet plan2 description.','1 month','Sample Diet Plan2','active',2);
-/*!40000 ALTER TABLE `diet_plan` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `diet_plan_request`
---
-
-DROP TABLE IF EXISTS `diet_plan_request`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `diet_plan_request` (
-  `request_id` int(11) NOT NULL AUTO_INCREMENT,
-  `activity_level` varchar(255) DEFAULT NULL,
-  `age` int(11) DEFAULT NULL,
-  `created_at` datetime(6) DEFAULT NULL,
-  `gender` varchar(255) DEFAULT NULL,
-  `goal` varchar(255) DEFAULT NULL,
-  `height` double DEFAULT NULL,
-  `medical_conditions` varchar(255) DEFAULT NULL,
-  `status` varchar(255) DEFAULT NULL,
-  `weight` double DEFAULT NULL,
-  `diet_plan_diet_plan_id` int(11) DEFAULT NULL,
-  `user_user_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`request_id`),
-  KEY `FKa34o696wriwjnaiu134dborcr` (`diet_plan_diet_plan_id`),
-  KEY `FKpe1ifyc72xmrdfs4vkbklxpek` (`user_user_id`),
-  CONSTRAINT `FKa34o696wriwjnaiu134dborcr` FOREIGN KEY (`diet_plan_diet_plan_id`) REFERENCES `diet_plan` (`diet_plan_id`),
-  CONSTRAINT `FKpe1ifyc72xmrdfs4vkbklxpek` FOREIGN KEY (`user_user_id`) REFERENCES `user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `diet_plan_request`
---
-
-LOCK TABLES `diet_plan_request` WRITE;
-/*!40000 ALTER TABLE `diet_plan_request` DISABLE KEYS */;
-INSERT INTO `diet_plan_request` VALUES (1,'moderate',30,'2024-07-03 15:30:00.000000','male','lose_weight',175,'None','pending',70.5,1,1);
-/*!40000 ALTER TABLE `diet_plan_request` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `feedback`
---
-
-DROP TABLE IF EXISTS `feedback`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `feedback` (
-  `feedback_id` int(11) NOT NULL AUTO_INCREMENT,
-  `content` varchar(255) DEFAULT NULL,
-  `created_at` datetime(6) DEFAULT NULL,
-  `user_id` int(11) NOT NULL,
-  PRIMARY KEY (`feedback_id`),
-  KEY `FK7k33yw505d347mw3avr93akao` (`user_id`),
-  CONSTRAINT `FK7k33yw505d347mw3avr93akao` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
+CREATE TABLE `department` (
+  `id` int(11) NOT NULL,
+  `department_name` varchar(255) DEFAULT NULL,
+  `vision_statement` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `feedback`
+-- Dumping data for table `department`
 --
 
-LOCK TABLES `feedback` WRITE;
-/*!40000 ALTER TABLE `feedback` DISABLE KEYS */;
-/*!40000 ALTER TABLE `feedback` ENABLE KEYS */;
+LOCK TABLES `department` WRITE;
+/*!40000 ALTER TABLE `department` DISABLE KEYS */;
+INSERT INTO `department` VALUES (1,'Engineering','To innovate and lead in technology advancements.');
+/*!40000 ALTER TABLE `department` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `user`
+-- Table structure for table `department_seq`
 --
 
-DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `department_seq`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `user` (
-  `user_id` int(11) NOT NULL AUTO_INCREMENT,
-  `email` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
-  `role` varchar(255) DEFAULT NULL,
-  `username` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+CREATE TABLE `department_seq` (
+  `next_val` bigint(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `department_seq`
 --
 
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'user@example.com','$2a$10$JEFrZFhR9.3.zGv8InS35.C39YHQVgG/d1vWnNbkVXIGSylUd10Sy','USER','user'),(2,'nut@example.com','$2a$10$SqoYfr2SkdobR82/Gae9LuZTnDeDb0SY/4QQvszthNr3aT8IvTYAa','NUTRITIONIST','nut');
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+LOCK TABLES `department_seq` WRITE;
+/*!40000 ALTER TABLE `department_seq` DISABLE KEYS */;
+INSERT INTO `department_seq` VALUES (51);
+/*!40000 ALTER TABLE `department_seq` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `employee`
+--
+
+DROP TABLE IF EXISTS `employee`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `employee` (
+  `department_id` int(11) DEFAULT NULL,
+  `employee_id` int(11) NOT NULL,
+  `salary` double NOT NULL,
+  `designation` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`employee_id`),
+  KEY `FKbejtwvg9bxus2mffsm3swj3u9` (`department_id`),
+  CONSTRAINT `FKbejtwvg9bxus2mffsm3swj3u9` FOREIGN KEY (`department_id`) REFERENCES `department` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `employee`
+--
+
+LOCK TABLES `employee` WRITE;
+/*!40000 ALTER TABLE `employee` DISABLE KEYS */;
+INSERT INTO `employee` VALUES (1,1,75000,'Software Engineer','John Doe');
+/*!40000 ALTER TABLE `employee` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `employee_seq`
+--
+
+DROP TABLE IF EXISTS `employee_seq`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `employee_seq` (
+  `next_val` bigint(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `employee_seq`
+--
+
+LOCK TABLES `employee_seq` WRITE;
+/*!40000 ALTER TABLE `employee_seq` DISABLE KEYS */;
+INSERT INTO `employee_seq` VALUES (51);
+/*!40000 ALTER TABLE `employee_seq` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -155,4 +130,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-05  5:22:51
+-- Dump completed on 2024-07-05  5:37:51
