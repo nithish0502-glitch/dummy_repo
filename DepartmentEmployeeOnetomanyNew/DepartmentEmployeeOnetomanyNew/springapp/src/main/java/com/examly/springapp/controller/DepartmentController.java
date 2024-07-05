@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpServerErrorException.InternalServerError;
 
+import com.examly.springapp.exception.DuplicateDepartmentException;
 import com.examly.springapp.model.Department;
 import com.examly.springapp.service.DepartmentServiceImpl;
 
@@ -24,17 +25,17 @@ public class DepartmentController {
 
 
     @PostMapping("department")
-    public ResponseEntity<Department> addDepartment(@RequestBody Department department)
+    public ResponseEntity<?> addDepartment(@RequestBody Department department)
     {
-        Department newDepartment = departmentServiceImpl.addDepartment(department);
-        if(newDepartment!=null)
-        {
-                return ResponseEntity.status(HttpStatus.CREATED).body(newDepartment);
-
-        }
-        else {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                                 .body(null);  // Alternatively, you can send an error message or custom response
+        try {
+            Department newDepartment = departmentServiceImpl.addDepartment(department);
+            return ResponseEntity.status(HttpStatus.CREATED).body(newDepartment);
+        } catch (DuplicateDepartmentException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage()); // Conflict status for duplicate entry
+        } catch (Exception e) {
+            // Handle other exceptions if needed
+            System.out.println("Unexpected error occurred: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
         
     }

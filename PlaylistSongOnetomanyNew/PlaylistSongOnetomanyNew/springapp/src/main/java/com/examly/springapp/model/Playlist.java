@@ -14,7 +14,6 @@ import jakarta.persistence.OneToMany;
 @Entity
 public class Playlist {
 
-
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY) 
    private int playlistId;
