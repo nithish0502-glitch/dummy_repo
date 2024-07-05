@@ -3,6 +3,7 @@ package com.examly.springapp.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.examly.springapp.exception.DuplicatePlaylistException;
 import com.examly.springapp.model.Playlist;
 import com.examly.springapp.repository.PlaylistRepo;
 
@@ -14,16 +15,12 @@ public class PlaylistServiceImpl implements PlaylistService{
 
     public Playlist addPlayList(Playlist playlist)
     {
-        try
-        {
-            playlistRepo.save(playlist);
-            return playlist;
-        }catch(Exception e)
-        {
-         e.printStackTrace();
-         return null;   
+        if (playlist.existByName(playlist.getName())) {
+            throw new DuplicatePlaylistException("Playlist with name " + playlist.getName() + " already exists!");
         }
         
+        // If not exists, save the department
+        return playlistRepo.save(department);
     }
 
 

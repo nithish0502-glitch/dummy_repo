@@ -23,21 +23,19 @@ public class DepartmentController {
     @Autowired
     private DepartmentServiceImpl departmentServiceImpl;
 
-
     @PostMapping("department")
-    public ResponseEntity<?> addDepartment(@RequestBody Department department)
-    {
+    public ResponseEntity<?> addDepartment(@RequestBody Department department) {
         try {
             Department newDepartment = departmentServiceImpl.addDepartment(department);
             return ResponseEntity.status(HttpStatus.CREATED).body(newDepartment);
         } catch (DuplicateDepartmentException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage()); // Conflict status for duplicate entry
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         } catch (Exception e) {
             // Handle other exceptions if needed
-            System.out.println("Unexpected error occurred: " + e.getMessage());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+            String errorMessage = "Unexpected error occurred: " + e.getMessage();
+            System.out.println(errorMessage);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorMessage);
         }
-        
     }
 
 

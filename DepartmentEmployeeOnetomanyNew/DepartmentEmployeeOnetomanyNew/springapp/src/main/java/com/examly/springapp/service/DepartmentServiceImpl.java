@@ -14,18 +14,14 @@ public class DepartmentServiceImpl {
     @Autowired
     private DepartmentRepo departmentRepo;
 
-    public Department addDepartment(Department department)
-    { 
-        try {
-            if (departmentRepo.existsByDepartmentName(department.getDepartmentName())) {
-                throw new DuplicateDepartmentException("Department with name " + department.getDepartmentName() + " already exists!");
-            } 
-            return departmentRepo.save(department);
-        } catch (Exception e) {
-            // Log the exception (using a logger is preferred)
-            e.printStackTrace();
-            return null;
-        } 
+    public Department addDepartment(Department department) {
+        // Check if department with the same name already exists
+        if (departmentRepo.existsByDepartmentName(department.getDepartmentName())) {
+            throw new DuplicateDepartmentException("Department with name " + department.getDepartmentName() + " already exists!");
+        }
+        
+        // If not exists, save the department
+        return departmentRepo.save(department);
     }
 
 

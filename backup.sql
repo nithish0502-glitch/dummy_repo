@@ -44,6 +44,7 @@ CREATE TABLE `department` (
 
 LOCK TABLES `department` WRITE;
 /*!40000 ALTER TABLE `department` DISABLE KEYS */;
+INSERT INTO `department` VALUES (1,'Marketing','To be the leading innovator in digital marketing strategies.');
 /*!40000 ALTER TABLE `department` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -65,7 +66,7 @@ CREATE TABLE `department_seq` (
 
 LOCK TABLES `department_seq` WRITE;
 /*!40000 ALTER TABLE `department_seq` DISABLE KEYS */;
-INSERT INTO `department_seq` VALUES (1);
+INSERT INTO `department_seq` VALUES (51);
 /*!40000 ALTER TABLE `department_seq` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -128,4 +129,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-05  6:24:12
+-- Dump completed on 2024-07-05  6:39:13

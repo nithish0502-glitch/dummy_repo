@@ -8,5 +8,5 @@ import com.examly.springapp.model.Playlist;
 
 @Repository
 public interface PlaylistRepo extends JpaRepository<Playlist,Integer>{
-    
+    boolean existByName(String playlistName); 
 }
