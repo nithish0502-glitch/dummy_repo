@@ -21,9 +21,15 @@ public class UserController {
     @Autowired
     private UserServiceImpl userService;
 
+    // @PostMapping("/api/login")
+    // public ResponseEntity<AuthUser> loginUser(@RequestParam String email, @RequestParam String password) throws UsernameNotFoundException{
+    //     AuthUser u = userService.login(email, password);
+    //     return new ResponseEntity<>(u, HttpStatus.OK);
+    // }
+
     @PostMapping("/api/login")
-    public ResponseEntity<AuthUser> loginUser(@RequestParam String email, @RequestParam String password) throws UsernameNotFoundException{
-        AuthUser u = userService.login(email, password);
+    public ResponseEntity<AuthUser> loginUser(@RequestBody User user) throws UsernameNotFoundException{
+        AuthUser u = userService.login(user.getEmail(), user.getPassword());
         return new ResponseEntity<>(u, HttpStatus.OK);
     }
  
