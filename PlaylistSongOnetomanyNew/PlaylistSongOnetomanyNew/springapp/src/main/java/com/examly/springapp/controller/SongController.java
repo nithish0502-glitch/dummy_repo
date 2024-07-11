@@ -22,6 +22,9 @@ public class SongController {
     @Autowired
     private SongServiceImpl songserviceimpl;
 
+    @Autowired
+    private SongRepo songRepo;
+
     @PostMapping("song/{playlistId}/playlist")
     public ResponseEntity<Song> addSong(@PathVariable int playlistId,@RequestBody Song song)
     {
@@ -34,6 +37,11 @@ public class SongController {
         {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
+    }
+
+    @GetMapping("/song")
+    public List<Song> getAllSong(){
+
     }
 
 
