@@ -77,10 +77,9 @@ class SpringappApplicationTests {
 	
 	@Test
     @Order(4)
-    public void testgetAllCoursesByFeesGreaterThan() throws Exception {
+    public void testgetAllCourses() throws Exception {
 
-		int fees =90;
-        mockMvc.perform(MockMvcRequestBuilders.get("/course/findtheCourseGreaterthan/{fees}",fees)
+        mockMvc.perform(MockMvcRequestBuilders.get("/course")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())

@@ -15,12 +15,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.examly.springapp.model.Course;
 import com.examly.springapp.service.CourseServiceImpl;
-
+import com.examly.springapp.repository.CourseRepo;
 @RestController
 public class CourseController {
 
     @Autowired
     private CourseServiceImpl courseServiceImpl;
+
+    @Autowired
+    CourseRepo courseRepo;
 
     @PostMapping("course/{universityId}/university")
     public ResponseEntity<Course> addCourse(@PathVariable int universityId,@RequestBody Course course)
@@ -35,6 +38,11 @@ public class CourseController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+
+    @GetMapping("/course")
+    public List<Course> getAllCourse(){
+        return courseRepo.findAll();
+    }  
 
 
     @GetMapping("course/findtheCourseGreaterthan/{fee}")
