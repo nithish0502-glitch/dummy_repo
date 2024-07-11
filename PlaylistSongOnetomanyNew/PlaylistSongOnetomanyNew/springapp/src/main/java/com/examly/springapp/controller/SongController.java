@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.examly.springapp.model.Song;
 import com.examly.springapp.service.SongServiceImpl;
+import com.examly.springapp.repository.SongRepo;
 
 
 @RestController
@@ -41,7 +42,7 @@ public class SongController {
 
     @GetMapping("/song")
     public List<Song> getAllSong(){
-
+        return songRepo.findAll();
     }
 
 

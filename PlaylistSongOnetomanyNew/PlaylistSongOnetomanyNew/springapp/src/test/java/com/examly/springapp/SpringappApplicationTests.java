@@ -76,10 +76,10 @@ class SpringappApplicationTests {
 	
 	@Test
     @Order(4)
-    public void testgetAllSongsByArtist() throws Exception {
+    public void testgetAllSongs() throws Exception {
 
 		String artist ="Test Artist";
-        mockMvc.perform(MockMvcRequestBuilders.get("/song/{artist}",artist)
+        mockMvc.perform(MockMvcRequestBuilders.get("/song")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())

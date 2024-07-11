@@ -1,0 +1,97 @@
+[
+  {
+    "testcases": [
+      {
+        "name": "testAddDepartment",
+        "weightage": 0.16
+      },
+      {
+        "name": "testAddEmployee",
+        "weightage": 0.16
+      },
+      {
+        "name": "testGetDepartmentById",
+        "weightage": 0.15
+      },
+      {
+        "name": "testgetAllEmployees",
+        "weightage": 0.16
+      },
+      {
+        "name": "testDeleteEmployee",
+        "weightage": 0.08
+      },
+      {
+        "name": "testDuplicateException",
+        "weightage": 0.08
+      },
+      {
+        "name": "testMethodHasQueryAnnotation",
+        "weightage": 0.08
+      },
+      {
+        "name": "testOneToManyAnnotationPresent",
+        "weightage": 0.08
+      },
+      {
+        "name": "testControllerFolder",
+        "weightage": 0.0035
+      },
+      {
+        "name": "testDepartmentControllerFile",
+        "weightage": 0.0035
+      },
+      {
+        "name": "testEmployeeControllerFile",
+        "weightage": 0.0035
+      },
+      {
+        "name": "testModelFolder",
+        "weightage": 0.0035
+      },
+      {
+        "name": "testDepartmentModelFile",
+        "weightage": 0.0035
+      },
+      {
+        "name": "testEmployeeModelFile",
+        "weightage": 0.0035
+      },
+      {
+        "name": "testRepositoryFolder",
+        "weightage": 0.0035
+      },
+      {
+        "name": "testDepartmentRepositoryFile",
+        "weightage": 0.0035
+      },
+      {
+        "name": "testEmployeeRepositoryFile",
+        "weightage": 0.0035
+      },
+      {
+        "name": "testServiceFolder",
+        "weightage": 0.0035
+      },
+      {
+        "name": "testDepartmentServiceFile",
+        "weightage": 0.0035
+      },
+      {
+        "name": "testEmployeeServiceFile",
+        "weightage": 0.0035
+      },
+      {
+        "name": "testEmployeeServiceImplFile",
+        "weightage": 0.0035
+      },
+      {
+        "name": "testEmployeeServiceImplFile",
+        "weightage": 0.0045
+      }
+    ],
+    "testcase_path": "/home/coder/project/workspace/junit",
+    "evaluation_type": "Maven Junit",
+    "testcase_run_command": "sh /home/coder/project/workspace/junit/junit.sh"
+  }
+]
