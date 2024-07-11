@@ -42,7 +42,7 @@ public class CourseController {
     @GetMapping("/course")
     public List<Course> getAllCourse(){
         return courseRepo.findAll();
-    }  
+    }
 
 
     @GetMapping("course/findtheCourseGreaterthan/{fee}")
