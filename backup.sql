@@ -68,7 +68,7 @@ CREATE TABLE `course` (
   PRIMARY KEY (`course_id`),
   KEY `FKi3n1ufkc1uifytn1m2aalh644` (`university_university_id`),
   CONSTRAINT `FKi3n1ufkc1uifytn1m2aalh644` FOREIGN KEY (`university_university_id`) REFERENCES `university` (`university_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -310,7 +310,7 @@ CREATE TABLE `song` (
   PRIMARY KEY (`song_id`),
   KEY `FKsj6fhfnuq863tmvcp6jdwvkvs` (`playlist_playlist_id`),
   CONSTRAINT `FKsj6fhfnuq863tmvcp6jdwvkvs` FOREIGN KEY (`playlist_playlist_id`) REFERENCES `playlist` (`playlist_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -385,4 +385,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-11 15:24:49
+-- Dump completed on 2024-07-13  4:58:15
