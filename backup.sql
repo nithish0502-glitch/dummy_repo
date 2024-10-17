@@ -66,6 +66,7 @@ CREATE TABLE `bookings` (
   `status` varchar(255) DEFAULT NULL,
   `flight_id` bigint(20) NOT NULL,
   `user_id` int(11) NOT NULL,
+  `booking_id` bigint(20) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FKidcytqkgq0ve4x1elcnbmdy8a` (`flight_id`),
   KEY `FK65bh1tn1y443fxcah5u36e8fy` (`user_id`),
@@ -280,6 +281,7 @@ CREATE TABLE `flights` (
   `departure_time` datetime DEFAULT NULL,
   `flight_number` varchar(255) DEFAULT NULL,
   `price` double NOT NULL,
+  `flight_id` bigint(20) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -474,4 +476,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-10-17 14:22:41
+-- Dump completed on 2024-10-17 14:41:08

@@ -19,13 +19,7 @@ public class Flight {
 
     // Getters and Setters
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+  
 
     public String getFlightNumber() {
         return flightNumber;
@@ -81,5 +75,13 @@ public class Flight {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public Long getFlightId() {
+        return flightId;
+    }
+
+    public void setFlightId(Long flightId) {
+        this.flightId = flightId;
     }
 }
