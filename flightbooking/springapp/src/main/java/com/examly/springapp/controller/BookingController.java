@@ -1,59 +1,35 @@
 package com.examly.springapp.controller;
 
-import com.examly.springapp.model.Appointment;
-import com.examly.springapp.service.AppointmentService;
+import com.examly.springapp.model.Booking;
+import com.examly.springapp.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import org.springframework.http.HttpHeaders;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/appointments")
+@RequestMapping("/api/bookings")
 public class BookingController {
 
     @Autowired
-    private AppointmentService appointmentService;
+    private BookingService bookingService;
 
     @PostMapping
-    public ResponseEntity<Appointment> createAppointment(@RequestBody Appointment appointment) {
-  
-        Appointment createdAppointment = appointmentService.createAppointment(appointment);
-        return ResponseEntity.ok(createdAppointment);
+    public ResponseEntity<Booking> createBooking(@RequestBody Booking booking) {
+        Booking createdBooking = bookingService.createBooking(booking);
+        return ResponseEntity.ok(createdBooking);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Appointment> getAppointmentById(@PathVariable Long id) {
-        Appointment appointment = appointmentService.getAppointmentById(id);
-        return appointment != null ? ResponseEntity.ok(appointment) : ResponseEntity.notFound().build();
+    public ResponseEntity<Booking> getBookingById(@PathVariable Long id) {
+        Booking booking = bookingService.getBookingById(id);
+        return ResponseEntity.ok(booking);
     }
 
     @GetMapping
-    public ResponseEntity<List<Appointment>> getAllAppointments() {
-        List<Appointment> appointments = appointmentService.getAllAppointments();
-        return ResponseEntity.ok(appointments);
-    }
-
-
-    @GetMapping("/user/{userId}")
-    public ResponseEntity<List<Appointment>> getAppointmentsByUser(@PathVariable Long userId) {
-        List<Appointment> appointments = appointmentService.getAppointmentsByUser(userId);
-        return ResponseEntity.ok(appointments);
-    }
-
-
-    @PutMapping("/{id}")
-    public ResponseEntity<Appointment> updateAppointment(String authorizationHeader, @PathVariable Long id, @RequestBody Appointment appointment) {
-        
-        Appointment updatedAppointment = appointmentService.updateAppointment(id, appointment);
-        return updatedAppointment != null ? ResponseEntity.ok(updatedAppointment) : ResponseEntity.notFound().build();
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteAppointment(@PathVariable Long id) {
-        appointmentService.deleteAppointment(id);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<List<Booking>> getAllBookings() {
+        List<Booking> bookings = bookingService.getAllBookings();
+        return ResponseEntity.ok(bookings);
     }
 }
