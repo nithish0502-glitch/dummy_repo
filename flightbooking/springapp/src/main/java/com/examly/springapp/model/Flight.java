@@ -7,7 +7,7 @@ import java.util.Date;
 public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long flightId;
 
     private String flightNumber;
     private String airline;

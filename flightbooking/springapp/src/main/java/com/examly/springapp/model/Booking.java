@@ -7,7 +7,7 @@ import java.util.Date;
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long bookingId;
 
     @ManyToOne
     @JoinColumn(name = "flight_id", nullable = false)
