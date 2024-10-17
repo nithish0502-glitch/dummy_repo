@@ -29,4 +29,16 @@ public class BookingServiceImpl implements BookingService {
     public List<Booking> getAllBookings() {
         return bookingRepository.findAll();
     }
+
+    @Override
+    public Booking updateBooking(Long id, Booking updatedBooking) {
+        Booking existingBooking = getBookingById(id);
+        // Update the fields as necessary
+        existingBooking.setFlight(updatedBooking.getFlight());
+        existingBooking.setUser(updatedBooking.getUser());
+        existingBooking.setBookingDate(updatedBooking.getBookingDate());
+        existingBooking.setNumberOfPassengers(updatedBooking.getNumberOfPassengers());
+        existingBooking.setStatus(updatedBooking.getStatus());
+        return bookingRepository.save(existingBooking);
+    }
 }

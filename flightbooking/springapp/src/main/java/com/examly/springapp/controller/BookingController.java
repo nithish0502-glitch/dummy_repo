@@ -32,4 +32,10 @@ public class BookingController {
         List<Booking> bookings = bookingService.getAllBookings();
         return ResponseEntity.ok(bookings);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Booking> updateBooking(@PathVariable Long id, @RequestBody Booking booking) {
+        Booking updatedBooking = bookingService.updateBooking(id, booking);
+        return ResponseEntity.ok(updatedBooking);
+    }
 }

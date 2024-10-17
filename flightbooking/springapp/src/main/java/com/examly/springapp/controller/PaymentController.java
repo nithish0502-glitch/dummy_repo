@@ -1,55 +1,47 @@
 package com.examly.springapp.controller;
 
-import com.examly.springapp.model.Pet;
-import com.examly.springapp.service.PetService;
+import com.examly.springapp.model.Payment;
+import com.examly.springapp.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.http.HttpStatus;
-import java.time.LocalDate;
+
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/pet")
+@RequestMapping("/api/payments")
 public class PaymentController {
 
     @Autowired
-    private PetService petService;
+    private PaymentService paymentService;
 
     @PostMapping
-    public ResponseEntity<Pet> createPet(@RequestBody Pet pet) {
-        Pet createdPet = petService.createPet(pet);
-        // Return a ResponseEntity with status CREATED (201) and the created pet in the body
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdPet);
+    public ResponseEntity<Payment> createPayment(@RequestBody Payment payment) {
+        Payment createdPayment = paymentService.createPayment(payment);
+        return ResponseEntity.ok(createdPayment);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Pet> getPetById(@PathVariable Long id) {
-        Pet pet = petService.getPetById(id);
-        return pet != null ? ResponseEntity.ok(pet) : ResponseEntity.notFound().build();
-    }
-
-    @GetMapping("/user/{userId}")
-    public ResponseEntity<List<Pet>> getPetsByUserId(@PathVariable int userId) {
-        List<Pet> pets = petService.getPetsByUserId(userId);
-        return ResponseEntity.ok(pets);
+    public ResponseEntity<Payment> getPaymentById(@PathVariable Long id) {
+        Payment payment = paymentService.getPaymentById(id);
+        return ResponseEntity.ok(payment);
     }
 
     @GetMapping
-    public ResponseEntity<List<Pet>> getAllPets() {
-        List<Pet> pets = petService.getAllPets();
-        return ResponseEntity.ok(pets);
+    public ResponseEntity<List<Payment>> getAllPayments() {
+        List<Payment> payments = paymentService.getAllPayments();
+        return ResponseEntity.ok(payments);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Pet> updatePet(@PathVariable Long id, @RequestBody Pet pet) {
-        Pet updatedPet = petService.updatePet(id, pet);
-        return updatedPet != null ? ResponseEntity.ok(updatedPet) : ResponseEntity.notFound().build();
+    public ResponseEntity<Payment> updatePayment(@PathVariable Long id, @RequestBody Payment payment) {
+        Payment updatedPayment = paymentService.updatePayment(id, payment);
+        return ResponseEntity.ok(updatedPayment);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletePet(@PathVariable Long id) {
-        petService.deletePet(id);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<Void> deletePayment(@PathVariable Long id) {
+        paymentService.deletePayment(id);
+        return ResponseEntity.noContent().build();
     }
 }
