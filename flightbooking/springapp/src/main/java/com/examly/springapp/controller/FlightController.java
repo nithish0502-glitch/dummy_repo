@@ -11,12 +11,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/feedback")
-public class FeedbackController {
+public class FlightController {
 
     private final FeedbackService feedbackService;
 
     @Autowired
-    public FeedbackController(FeedbackService feedbackService) {
+    public FlightController(FeedbackService feedbackService) {
         this.feedbackService = feedbackService;
     }
 

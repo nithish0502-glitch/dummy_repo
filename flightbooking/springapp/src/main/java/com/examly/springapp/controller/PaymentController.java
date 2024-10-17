@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/pet")
-public class PetController {
+public class PaymentController {
 
     @Autowired
     private PetService petService;
