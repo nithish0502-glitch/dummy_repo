@@ -1,0 +1,154 @@
+/* General Styles */
+body {
+  font-family: 'Arial', sans-serif; /* Font for the entire body */
+  margin: 0;
+  background-color: #f9f9f9; /* Light background for the application */
+}
+
+/* Main Container */
+.main-container {
+  display: flex; /* Flexbox for alignment */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  min-height: 100vh; /* Full height of the viewport */
+  padding: 20px; /* Padding for the main container */
+}
+
+/* Registration Form Container */
+.container {
+  background-color: #ffffff; /* White background for form */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 40px; /* Padding for the form */
+  max-width: 400px; /* Max width of the form */
+  width: 100%; /* Full width */
+  text-align: left; /* Left align text */
+}
+
+/* Heading */
+h1 {
+  font-size: 1.8rem; /* Font size for heading */
+  color: #4CAF50; /* Match the navbar color */
+  margin-bottom: 30px; /* Space below the heading */
+  text-align: center; /* Center align the heading */
+}
+
+/* Form Elements */
+label {
+  font-size: 0.95rem; /* Font size for labels */
+  color: #333; /* Dark color for labels */
+  margin-bottom: 5px; /* Space below labels */
+  display: block; /* Block display for labels */
+}
+
+.asterisk {
+  color: red; /* Color for asterisk */
+}
+
+/* Input Fields and Select Dropdown */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+select {
+  width: 100%; /* Full width */
+  padding: 12px; /* Padding for input fields */
+  margin-bottom: 20px; /* Space below input fields */
+  border: 1px solid #ccd1d9; /* Border for input fields */
+  border-radius: 4px; /* Slightly rounded corners */
+  font-size: 1rem; /* Font size for input fields */
+  transition: border 0.3s; /* Smooth transition for border */
+}
+
+input:focus,
+select:focus {
+  border-color: #4CAF50; /* Green border on focus */
+  outline: none; /* Remove outline */
+}
+
+.error-message {
+  color: red; /* Red color for error messages */
+  font-size: 0.875rem; /* Smaller font size for error messages */
+  margin-top: -15px; /* Align error messages closer to the input */
+  margin-bottom: 20px; /* Space below error messages */
+}
+
+/* Submit Button */
+button[type="submit"] {
+  width: 100%; /* Full width */
+  padding: 12px; /* Padding for button */
+  background-color: #4CAF50; /* Green background */
+  border: none; /* Remove border */
+  border-radius: 4px; /* Slightly rounded corners */
+  color: white; /* Text color */
+  font-size: 1rem; /* Font size */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth background color transition */
+  margin-top: 10px; /* Space above the button */
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049; /* Darker shade on hover */
+}
+
+button[type="submit"]:disabled {
+  background-color: #b0bec5; /* Disabled button color */
+  cursor: not-allowed; /* Not allowed cursor */
+}
+
+/* Modal Popup */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed position for the popup */
+  top: 0; /* Align to top */
+  left: 0; /* Align to left */
+  right: 0; /* Align to right */
+  bottom: 0; /* Align to bottom */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+.modal.active {
+  display: flex; /* Show modal when active */
+}
+
+.modal-content {
+  background-color: #fff; /* White background for modal */
+  padding: 20px; /* Padding for modal content */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  text-align: center; /* Center text */
+  width: 80%; /* Width of modal */
+  max-width: 350px; /* Max width */
+}
+
+/* Modal Buttons */
+.modal-button {
+  padding: 10px 20px; /* Padding for modal button */
+  background-color: #4CAF50; /* Green background */
+  border: none; /* Remove border */
+  color: white; /* Text color */
+  font-size: 1rem; /* Font size */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor */
+  transition: background-color 0.3s; /* Smooth background color transition */
+  margin-top: 15px; /* Space above modal button */
+}
+
+.modal-button:hover {
+  background-color: #388E3C; /* Darker shade on hover */
+}
+
+.close-btn {
+  position: absolute; /* Absolute position for close button */
+  top: 15px; /* Align to top */
+  right: 20px; /* Align to right */
+  font-size: 1.5rem; /* Font size for close button */
+  color: #555; /* Color for close button */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+.close-btn:hover {
+  color: #333; /* Darker color on hover */
+}
