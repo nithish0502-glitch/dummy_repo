@@ -1,7 +1,7 @@
 package com.examly.springapp.service;
 
 import com.examly.springapp.model.Payment;
-import com.examly.springapp.repository.PaymentRepository; // Assume you have this repository
+import com.examly.springapp.repository.PaymentRepo; // Assume you have this repository
 import com.examly.springapp.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import java.util.List;
 public class PaymentServiceImpl implements PaymentService {
 
     @Autowired
-    private PaymentRepository paymentRepository;
+    private PaymentRepo paymentRepository;
 
     @Override
     public Payment createPayment(Payment payment) {
