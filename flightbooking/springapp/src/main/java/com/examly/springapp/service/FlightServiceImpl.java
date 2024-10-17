@@ -1,7 +1,7 @@
 package com.examly.springapp.service;
 
 import com.examly.springapp.model.Flight;
-import com.examly.springapp.repository.FlightRepository; // Assume you have this repository
+import com.examly.springapp.repository.FlightRepo; // Assume you have this repository
 import com.examly.springapp.service.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import java.util.List;
 public class FlightServiceImpl implements FlightService {
 
     @Autowired
-    private FlightRepository flightRepository;
+    private FlightRepo flightRepository;
 
     @Override
     public Flight createFlight(Flight flight) {
