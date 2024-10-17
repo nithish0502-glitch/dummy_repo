@@ -109,7 +109,7 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("https://8081-cbdaecefcf316620805facaadcacdfone.premiumproject.examly.io"));
+        configuration.setAllowedOrigins(Arrays.asList("https://8081-ddaeaedabebb313990803dacaabedeebtwo.premiumproject.examly.io"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
         configuration.setAllowCredentials(true);

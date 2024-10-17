@@ -1,110 +1,158 @@
-/* General Styles */
-body {
-    font-family: 'Arial', sans-serif; /* Font for the entire body */
-    margin: 0;
-    background-color: #f9f9f9; /* Light background for the application */
-    padding-top: 50px; /* Adjust based on navbar height */
-}
-
-/* Main Container */
 .main-container {
-    display: flex; /* Flexbox for alignment */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    min-height: calc(100vh - 50px); /* Adjust height */
-    padding: 0 20px; /* Padding for the main container */
-}
-
-/* Login Form Container */
-.container {
-    background-color: #ffffff; /* White background for form */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    padding: 40px; /* Padding for the form */
-    max-width: 400px; /* Max width of the form */
-    width: 100%; /* Full width */
-    text-align: left; /* Left align text */
-    margin: 5px 0 0 0; /* Further reduce margin-top */
-}
-
-/* Heading */
-h1 {
-    font-size: 1.8rem; /* Font size for heading */
-    color: #4CAF50; /* Match the navbar color */
-    margin-bottom: 30px; /* Space below the heading */
-    text-align: center; /* Center align the heading */
-}
-
-/* Form Elements */
-label {
-    font-size: 0.95rem; /* Font size for labels */
-    color: #333; /* Dark color for labels */
-    margin-bottom: 5px; /* Space below labels */
-    display: block; /* Block display for labels */
-}
-
-.asterisk {
-    color: red; /* Color for asterisk */
-}
-
-/* Input Fields and Select Dropdown */
-input[type="text"],
-input[type="password"] {
-    width: 100%; /* Full width */
-    padding: 12px; /* Padding for input fields */
-    margin-bottom: 20px; /* Space below input fields */
-    border: 1px solid #ccd1d9; /* Border for input fields */
-    border-radius: 4px; /* Slightly rounded corners */
-    font-size: 1rem; /* Font size for input fields */
-    transition: border 0.3s; /* Smooth transition for border */
-}
-
-input:focus {
-    border-color: #4CAF50; /* Green border on focus */
-    outline: none; /* Remove outline */
-}
-
-.error-message {
-    color: red; /* Red color for error messages */
-    font-size: 0.875rem; /* Smaller font size for error messages */
-    margin-top: -15px; /* Align error messages closer to the input */
-    margin-bottom: 20px; /* Space below error messages */
-}
-
-/* Submit Button */
-button[type="submit"] {
-    width: 100%; /* Full width */
-    padding: 12px; /* Padding for button */
-    background-color: #4CAF50; /* Green background */
-    border: none; /* Remove border */
-    border-radius: 4px; /* Slightly rounded corners */
-    color: white; /* Text color */
-    font-size: 1rem; /* Font size */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s; /* Smooth background color transition */
-    margin-top: 10px; /* Space above the button */
-}
-
-button[type="submit"]:hover {
-    background-color: #45a049; /* Darker shade on hover */
-}
-
-button[type="submit"]:disabled {
-    background-color: #b0bec5; /* Disabled button color */
-    cursor: not-allowed; /* Not allowed cursor */
-}
-
-/* Register Link */
-.register-link {
-    margin-top: 20px; /* Space above the link */
-    text-align: center; /* Center align the link */
-}
-
-.register-link a {
-    color: #4CAF50; /* Green link color */
-    text-decoration: none; /* Remove underline */
-}
-
-.register-link a:hover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('https://www.bacancytechnology.com/img/solution/flight-booking-2.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #0056b3; /* Heading color */
+    text-align: center;
+  }
+  
+  label {
+    display: block;
+    margin: 15px 0 5px;
+    font-weight: bold;
+    color: #333; /* Ensure label text is visible */
+  }
+  
+  input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    color: #333; /* Text color for inputs */
+  }
+  
+  input:focus, select:focus {
+    border-color: #0056b3;
+    outline: none;
+  }
+  
+  .error-message {
+    color: #d9534f;
+    font-size: 0.9em;
+    margin-top: -10px;
+    margin-bottom: 15px;
+  }
+  
+  button {
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+    width: 100%;
+  }
+  
+  button:hover {
+    background-color: #004494;
+  }
+  
+  .register-link {
+    text-align: center; /* Center align the register link */
+    margin-top: 20px; /* Spacing above the register link */
+    color: black; /* Change text color to black */
+  }
+  
+  .register-link a {
+    color: #007bff; /* Blue color for the link */
+    text-decoration: none; /* No underline */
+  }
+  
+  .register-link a:hover {
     text-decoration: underline; /* Underline on hover */
-}
+  }
+  
+  /* Modal Styles */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
+    transition: opacity 0.3s ease; /* Fade effect */
+  }
+  
+  .modal.active {
+    display: block; /* Show the modal */
+    opacity: 1; /* Fully opaque */
+  }
+  
+  .modal-content {
+    background-color: #fefefe; /* White background */
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888; /* Gray border */
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 500px; /* Max width for larger screens */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    animation: fadeIn 0.5s; /* Animation for showing modal */
+  }
+  
+  .close-btn {
+    color: #aaa; /* Gray color for the close button */
+    float: right; /* Right-align */
+    font-size: 28px; /* Size of the close button */
+    font-weight: bold; /* Bold text */
+    cursor: pointer; /* Pointer on hover */
+  }
+  
+  .close-btn:hover,
+  .close-btn:focus {
+    color: black; /* Color change on hover */
+    text-decoration: none; /* Remove underline */
+  }
+  
+  .modal h2 {
+    margin-top: 0; /* Remove default margin */
+    color: #333; /* Darker text color */
+  }
+  
+  .modal p {
+    color: #555; /* Medium text color */
+  }
+  
+  .modal-button {
+    background-color: #28a745; /* Green background */
+    color: white; /* White text */
+    border: none; /* No border */
+    padding: 10px 20px; /* Spacing */
+    text-align: center; /* Center the text */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Inline-block */
+    font-size: 16px; /* Font size */
+    margin-top: 15px; /* Spacing above */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer on hover */
+  }
+  
+  .modal-button:hover {
+    background-color: #218838; /* Darker green on hover */
+  }
+  

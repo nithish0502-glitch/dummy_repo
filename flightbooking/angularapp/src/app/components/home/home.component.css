@@ -1,23 +1,41 @@
 .container {
   max-width: 800px; /* Maximum width for the container */
-  margin: auto; /* Center the container */
-  padding: 40px; /* Padding around the content */
-  background: rgba(0, 0, 0, 0.7); /* Semi-transparent dark background for readability */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Shadow for depth */
-  color: white; /* White text for better contrast */
+  margin: 50px auto; /* Center the container with top margin */
+  padding: 30px; /* Padding around the content */
+  background: rgba(255, 255, 255, 0.9); /* Light background for better readability */
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  color: #333; /* Dark text color for contrast */
   text-align: center; /* Center text alignment */
 }
 
 h1 {
   font-size: 2.5em; /* Font size for the heading */
   margin-bottom: 20px; /* Space below the heading */
+  font-family: 'Arial', sans-serif; /* Clean font */
+  color: #0056b3; /* Color for the heading */
 }
 
 p {
   font-size: 1.2em; /* Font size for the paragraph */
-  line-height: 1.6; /* Improved line height for readability */
+  line-height: 1.8; /* Improved line height for readability */
   margin-bottom: 20px; /* Space below the paragraph */
+  font-family: 'Verdana', sans-serif; /* Clean font */
+}
+
+button {
+  background-color: #0056b3; /* Button background color */
+  color: white; /* Button text color */
+  border: none; /* Remove border */
+  padding: 10px 20px; /* Padding inside button */
+  border-radius: 5px; /* Rounded button corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 1em; /* Button text size */
+  transition: background-color 0.3s; /* Smooth background change */
+}
+
+button:hover {
+  background-color: #004494; /* Darker shade on hover */
 }
 
 @media (max-width: 600px) {
