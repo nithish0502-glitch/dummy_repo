@@ -10,38 +10,41 @@ import { Router } from '@angular/router';
 })
 export class AddFlightComponent implements OnInit {
   flight: Flight = {
-    flightId: 0, // Initialize flightId if needed
+    flightId: 0,
     flightNumber: '',
     airline: '',
     departureLocation: '',
     arrivalLocation: '',
-    departureTime: new Date(), // Initialize with the current date/time
-    arrivalTime: new Date(),   // Initialize with the current date/time
+    departureTime: new Date(),
+    arrivalTime: new Date(),
     price: 0
   };
-  
+
   successMessage: string = '';
   errorMessage: string = '';
+  showModal: boolean = false; // To control modal visibility
 
   constructor(private flightService: FlightService, private router: Router) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
-  // Method to handle flight submission
   addFlight(): void {
-    // Ensure to send the Date objects as they are
     this.flightService.createFlight(this.flight).subscribe({
       next: (createdFlight) => {
         this.successMessage = 'Flight created successfully!';
-        this.errorMessage = ''; // Clear any previous error messages
-        this.router.navigate(['/flights']); // Adjust the route as necessary
+        this.errorMessage = ''; 
+        this.showModal = true; // Show the modal
       },
       error: (error) => {
         this.errorMessage = 'Failed to create flight. Please try again.';
-        this.successMessage = ''; // Clear any previous success messages
+        this.successMessage = '';
         console.error('Error creating flight:', error);
       }
     });
+  }
+
+  closeModal(): void {
+    this.showModal = false; // Hide the modal
+    this.router.navigate(['/flights']); // Navigate to flight list
   }
 }

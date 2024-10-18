@@ -463,7 +463,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'john.doe@example.com','+1234567890','$2a$10$ubQ5cJ/AABqvM/VtxQUUzOJ0aN9NQCoF22NDnzQZNiSzhmW274dlu','FARMER','johndoe'),(2,'user123@gmail.com','6379623246','$2a$10$r.ATaziGxkNrJkQdfCr7eu7HYCS6RU.DL6bDOvPb9NDbTZXslNGmO','HospitalAdmin','user'),(3,'admin123@gmail.com','6379623246','$2a$10$pSFCGl/yMf9yo3jwSGxYE.rfENWIk3uf.7VHGJjJcorWbzln3l88u','PetOwner','admin123');
+INSERT INTO `user` VALUES (1,'john.doe@example.com','+1234567890','$2a$10$ubQ5cJ/AABqvM/VtxQUUzOJ0aN9NQCoF22NDnzQZNiSzhmW274dlu','FARMER','johndoe'),(2,'user123@gmail.com','6379623246','$2a$10$r.ATaziGxkNrJkQdfCr7eu7HYCS6RU.DL6bDOvPb9NDbTZXslNGmO','Passenger','user'),(3,'admin123@gmail.com','6379623246','$2a$10$pSFCGl/yMf9yo3jwSGxYE.rfENWIk3uf.7VHGJjJcorWbzln3l88u','Admin','admin123');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -476,4 +476,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-10-18  5:30:10
+-- Dump completed on 2024-10-18  5:45:12

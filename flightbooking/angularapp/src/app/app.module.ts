@@ -9,6 +9,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AddFlightComponent } from './components/add-flight/add-flight.component';
+import { FlightListComponent } from './components/flight-list/flight-list.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AddFlightComponent } from './components/add-flight/add-flight.component
     LoginComponent,
     RegisterComponent,
     NavbarComponent,
-    AddFlightComponent
+    AddFlightComponent,
+    FlightListComponent
   ],
   imports: [
     BrowserModule,
