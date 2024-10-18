@@ -1,1 +1,54 @@
-<p>add-flight works!</p>
+<div class="main-container">
+    <div class="container">
+      <h1>Add Flight</h1>
+  
+      <form (ngSubmit)="addFlight()" #flightForm="ngForm" novalidate>
+        <label for="flightNumber">Flight Number<span class="asterisk">*</span></label>
+        <input type="text" id="flightNumber" [(ngModel)]="flight.flightNumber" name="flightNumber" required #flightNumberNgModel="ngModel">
+        <div *ngIf="flightNumberNgModel.invalid && (flightNumberNgModel.dirty || flightNumberNgModel.touched)" class="error-message">
+          *Flight Number is required
+        </div>
+  
+        <label for="airline">Airline<span class="asterisk">*</span></label>
+        <input type="text" id="airline" [(ngModel)]="flight.airline" name="airline" required #airlineNgModel="ngModel">
+        <div *ngIf="airlineNgModel.invalid && (airlineNgModel.dirty || airlineNgModel.touched)" class="error-message">
+          *Airline is required
+        </div>
+  
+        <label for="departureLocation">Departure Location<span class="asterisk">*</span></label>
+        <input type="text" id="departureLocation" [(ngModel)]="flight.departureLocation" name="departureLocation" required #departureLocationNgModel="ngModel">
+        <div *ngIf="departureLocationNgModel.invalid && (departureLocationNgModel.dirty || departureLocationNgModel.touched)" class="error-message">
+          *Departure Location is required
+        </div>
+  
+        <label for="arrivalLocation">Arrival Location<span class="asterisk">*</span></label>
+        <input type="text" id="arrivalLocation" [(ngModel)]="flight.arrivalLocation" name="arrivalLocation" required #arrivalLocationNgModel="ngModel">
+        <div *ngIf="arrivalLocationNgModel.invalid && (arrivalLocationNgModel.dirty || arrivalLocationNgModel.touched)" class="error-message">
+          *Arrival Location is required
+        </div>
+  
+        <label for="departureTime">Departure Time<span class="asterisk">*</span></label>
+        <input type="datetime-local" id="departureTime" [(ngModel)]="flight.departureTime" name="departureTime" required #departureTimeNgModel="ngModel">
+        <div *ngIf="departureTimeNgModel.invalid && (departureTimeNgModel.dirty || departureTimeNgModel.touched)" class="error-message">
+          *Departure Time is required
+        </div>
+  
+        <label for="arrivalTime">Arrival Time<span class="asterisk">*</span></label>
+        <input type="datetime-local" id="arrivalTime" [(ngModel)]="flight.arrivalTime" name="arrivalTime" required #arrivalTimeNgModel="ngModel">
+        <div *ngIf="arrivalTimeNgModel.invalid && (arrivalTimeNgModel.dirty || arrivalTimeNgModel.touched)" class="error-message">
+          *Arrival Time is required
+        </div>
+  
+        <label for="price">Price<span class="asterisk">*</span></label>
+        <input type="number" id="price" [(ngModel)]="flight.price" name="price" required min="0" #priceNgModel="ngModel">
+        <div *ngIf="priceNgModel.invalid && (priceNgModel.dirty || priceNgModel.touched)" class="error-message">
+          *Price is required and must be a positive number
+        </div>
+  
+        <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+        <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  
+        <button type="submit" [disabled]="flightForm.invalid">Add Flight</button>
+      </form>
+    </div>
+  </div>

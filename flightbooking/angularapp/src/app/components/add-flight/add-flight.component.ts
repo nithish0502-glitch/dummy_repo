@@ -10,11 +10,13 @@ import { Router } from '@angular/router';
 })
 export class AddFlightComponent implements OnInit {
   flight: Flight = {
+    flightId: 0, // Initialize flightId if needed
     flightNumber: '',
-    origin: '',
-    destination: '',
-    departureTime: new Date(),
-    arrivalTime: new Date(),
+    airline: '',
+    departureLocation: '',
+    arrivalLocation: '',
+    departureTime: new Date(), // Initialize with the current date/time
+    arrivalTime: new Date(),   // Initialize with the current date/time
     price: 0
   };
   
@@ -28,11 +30,11 @@ export class AddFlightComponent implements OnInit {
 
   // Method to handle flight submission
   addFlight(): void {
+    // Ensure to send the Date objects as they are
     this.flightService.createFlight(this.flight).subscribe({
       next: (createdFlight) => {
         this.successMessage = 'Flight created successfully!';
         this.errorMessage = ''; // Clear any previous error messages
-        // Optionally, redirect to another page, like the flight list
         this.router.navigate(['/flights']); // Adjust the route as necessary
       },
       error: (error) => {

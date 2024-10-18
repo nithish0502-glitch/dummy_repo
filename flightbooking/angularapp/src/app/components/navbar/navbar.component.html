@@ -11,9 +11,9 @@
       <li><p class="user-role">{{ userName }} / {{ userRole }}</p></li>
       <li><a routerLink="/">Home</a></li>
       <!-- HospitalAdmin Links -->
-      <ng-container *ngIf="userRole === 'HospitalAdmin'">
-        <li><a routerLink="/view-all-appointments">Manage Appointments</a></li>
-        <li><a routerLink="/view-all-feedback">View Feedback</a></li>
+      <ng-container *ngIf="userRole === 'Admin'">
+        <li><a routerLink="/add-flight">Manage Flight</a></li>
+        <li><a routerLink="/view-all-feedback">Manage Booking</a></li>
         <li><a routerLink="/view-appointments-records">Treatment Records</a></li>
       </ng-container>
     

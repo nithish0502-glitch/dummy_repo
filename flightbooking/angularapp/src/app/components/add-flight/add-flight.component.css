@@ -1,0 +1,77 @@
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('https://www.bacancytechnology.com/img/solution/flight-booking-2.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #0056b3;
+    text-align: center;
+  }
+  
+  label {
+    display: block;
+    margin: 15px 0 5px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    color: #333;
+  }
+  
+  input:focus {
+    border-color: #0056b3;
+    outline: none;
+  }
+  
+  .error-message {
+    color: #d9534f;
+    font-size: 0.9em;
+    margin-top: -10px;
+    margin-bottom: 15px;
+  }
+  
+  .success-message {
+    color: #28a745;
+    font-size: 1em;
+    margin: 10px 0;
+  }
+  
+  button {
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+    width: 100%;
+  }
+  
+  button:hover {
+    background-color: #004494;
+  }
+  
