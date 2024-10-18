@@ -1,37 +1,41 @@
 <div class="main-container">
     <div class="container">
-      <h1>Flight List</h1>
-  
-      <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
-  
-      <table *ngIf="flights.length > 0">
-        <thead>
-          <tr>
-            <th>Flight Number</th>
-            <th>Airline</th>
-            <th>Departure Location</th>
-            <th>Arrival Location</th>
-            <th>Departure Time</th>
-            <th>Arrival Time</th>
-            <th>Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let flight of flights">
-            <td>{{ flight.flightNumber }}</td>
-            <td>{{ flight.airline }}</td>
-            <td>{{ flight.departureLocation }}</td>
-            <td>{{ flight.arrivalLocation }}</td>
-            <td>{{ flight.departureTime | date: 'short' }}</td>
-            <td>{{ flight.arrivalTime | date: 'short' }}</td>
-            <td>{{ flight.price | currency }}</td>
-          </tr>
-        </tbody>
-      </table>
-  
-      <div *ngIf="flights.length === 0" class="no-flights-message">
-        No flights available.
-      </div>
+        <h1>Flight List</h1>
+
+        <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+        <table *ngIf="flights.length > 0">
+            <thead>
+                <tr>
+                    <th>Flight Number</th>
+                    <th>Airline</th>
+                    <th>Departure Location</th>
+                    <th>Arrival Location</th>
+                    <th>Departure Time</th>
+                    <th>Arrival Time</th>
+                    <th>Price</th>
+                    <th>Actions</th> <!-- Added Actions Column -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let flight of flights">
+                    <td>{{ flight.flightNumber }}</td>
+                    <td>{{ flight.airline }}</td>
+                    <td>{{ flight.departureLocation }}</td>
+                    <td>{{ flight.arrivalLocation }}</td>
+                    <td>{{ flight.departureTime | date: 'short' }}</td>
+                    <td>{{ flight.arrivalTime | date: 'short' }}</td>
+                    <td>{{ flight.price | currency }}</td>
+                    <td>
+                        <button class="update" (click)="updateFlight(flight.id)">Update</button>
+                        <button class="delete" (click)="deleteFlight(flight.id)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div *ngIf="flights.length === 0" class="no-flights-message">
+            No flights available.
+        </div>
     </div>
-  </div>
-  
+</div>
