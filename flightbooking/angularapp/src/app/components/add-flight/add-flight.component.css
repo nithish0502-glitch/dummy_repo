@@ -74,4 +74,75 @@
   button:hover {
     background-color: #004494;
   }
+
+
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
+    transition: opacity 0.3s ease; /* Fade effect */
+}
+
+.modal.active {
+    display: block; /* Show the modal */
+}
+
+.modal-content {
+    background-color: #fefefe; /* White background */
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888; /* Gray border */
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 500px; /* Max width for larger screens */
+    border-radius: 8px; /* Rounded corners */
+}
+
+.close-btn {
+    color: #aaa; /* Gray color for the close button */
+    float: right; /* Right-align */
+    font-size: 28px; /* Size of the close button */
+    font-weight: bold; /* Bold text */
+    cursor: pointer; /* Pointer on hover */
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black; /* Color change on hover */
+    text-decoration: none; /* Remove underline */
+    cursor: pointer; /* Pointer on hover */
+}
+
+.modal h2 {
+    margin-top: 0; /* Remove default margin */
+    color: #333; /* Darker text color */
+}
+
+.modal p {
+    color: #555; /* Medium text color */
+}
+
+.modal-button {
+    background-color: #28a745; /* Green background */
+    color: white; /* White text */
+    border: none; /* No border */
+    padding: 10px 20px; /* Spacing */
+    text-align: center; /* Center the text */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Inline-block */
+    font-size: 16px; /* Font size */
+    margin-top: 15px; /* Spacing above */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer on hover */
+}
+
+.modal-button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
   

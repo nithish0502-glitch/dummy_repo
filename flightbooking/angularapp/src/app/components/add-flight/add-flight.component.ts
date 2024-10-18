@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
 })
 export class AddFlightComponent implements OnInit {
   flight: Flight = {
-    flightId: 0,
     flightNumber: '',
     airline: '',
     departureLocation: '',

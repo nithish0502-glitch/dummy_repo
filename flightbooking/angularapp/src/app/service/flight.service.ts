@@ -8,8 +8,10 @@ import { apiUrl } from '../apiconfig';
   providedIn: 'root'
 })
 export class FlightService {
-  public apiUrl = apiUrl;
+  public baseUrl = apiUrl;
  // Replace with your backend URL
+
+ public apiUrl = `${this.baseUrl}/api/flights`;
 
   constructor(private http: HttpClient) { }
 
