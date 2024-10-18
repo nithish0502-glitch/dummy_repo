@@ -14,14 +14,14 @@ export class AddFlightComponent implements OnInit {
     airline: '',
     departureLocation: '',
     arrivalLocation: '',
-    departureTime: new Date(),
-    arrivalTime: new Date(),
+    departureTime: '',
+    arrivalTime: '',
     price: 0
   };
 
   successMessage: string = '';
   errorMessage: string = '';
-  showModal: boolean = false; // To control modal visibility
+  showModal: boolean = false; // Controls modal visibility
   isEditing: boolean = false; // Flag to check if we are editing
 
   constructor(private flightService: FlightService, private router: Router, private route: ActivatedRoute) { }
@@ -48,8 +48,8 @@ export class AddFlightComponent implements OnInit {
 
   addOrUpdateFlight(): void {
     if (this.isEditing) {
-      this.flightService.updateFlight(this.flight.id, this.flight).subscribe({
-        next: (updatedFlight) => {
+      this.flightService.updateFlight(this.flight.flightId, this.flight).subscribe({
+        next: () => {
           this.successMessage = 'Flight updated successfully!';
           this.showModal = true;
         },
@@ -60,7 +60,7 @@ export class AddFlightComponent implements OnInit {
       });
     } else {
       this.flightService.createFlight(this.flight).subscribe({
-        next: (createdFlight) => {
+        next: () => {
           this.successMessage = 'Flight created successfully!';
           this.showModal = true;
         },
@@ -74,6 +74,8 @@ export class AddFlightComponent implements OnInit {
 
   closeModal(): void {
     this.showModal = false;
-    this.router.navigate(['/flights']); // Navigate to flight list
+    this.successMessage = ''; // Clear success message
+    this.errorMessage = ''; // Clear error message
+    this.router.navigate(['/flight-list']); // Navigate to flight list
   }
 }

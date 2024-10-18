@@ -27,8 +27,8 @@
                     <td>{{ flight.arrivalTime | date: 'short' }}</td>
                     <td>{{ flight.price | currency }}</td>
                     <td>
-                        <button class="update" (click)="updateFlight(flight.id)">Update</button>
-                        <button class="delete" (click)="deleteFlight(flight.id)">Delete</button>
+                        <button class="update" (click)="updateFlight(flight.flightId)">Update</button>
+                        <button class="delete" (click)="deleteFlight(flight.flightId)">Delete</button>
                     </td>
                 </tr>
             </tbody>

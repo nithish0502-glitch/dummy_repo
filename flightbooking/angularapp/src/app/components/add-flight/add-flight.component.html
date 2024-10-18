@@ -28,16 +28,17 @@
         </div>
   
         <label for="departureTime">Departure Time<span class="asterisk">*</span></label>
-        <input type="datetime-local" id="departureTime" [(ngModel)]="flight.departureTime" name="departureTime" required #departureTimeNgModel="ngModel">
+        <input type="time" id="departureTime" [(ngModel)]="flight.departureTime" name="departureTime" required #departureTimeNgModel="ngModel">
         <div *ngIf="departureTimeNgModel.invalid && (departureTimeNgModel.dirty || departureTimeNgModel.touched)" class="error-message">
-          *Departure Time is required
+            *Departure Time is required
         </div>
-  
+        
         <label for="arrivalTime">Arrival Time<span class="asterisk">*</span></label>
-        <input type="datetime-local" id="arrivalTime" [(ngModel)]="flight.arrivalTime" name="arrivalTime" required #arrivalTimeNgModel="ngModel">
+        <input type="time" id="arrivalTime" [(ngModel)]="flight.arrivalTime" name="arrivalTime" required #arrivalTimeNgModel="ngModel">
         <div *ngIf="arrivalTimeNgModel.invalid && (arrivalTimeNgModel.dirty || arrivalTimeNgModel.touched)" class="error-message">
-          *Arrival Time is required
+            *Arrival Time is required
         </div>
+        
   
         <label for="price">Price<span class="asterisk">*</span></label>
         <input type="number" id="price" [(ngModel)]="flight.price" name="price" required min="0" #priceNgModel="ngModel">

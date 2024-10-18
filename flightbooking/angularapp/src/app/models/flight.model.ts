@@ -4,7 +4,7 @@ export interface Flight {
     airline: string;
     departureLocation: string;
     arrivalLocation: string;
-    departureTime: Date; // Use Date type
-    arrivalTime: Date;   // Use Date type
+    departureTime: string; // Change to string for time only
+    arrivalTime: string;   // Change to string for time only
     price: number;
 }

@@ -13,8 +13,8 @@ public class Flight {
     private String airline;
     private String departureLocation;
     private String arrivalLocation;
-    private Date departureTime;
-    private Date arrivalTime;
+    private String departureTime;
+    private String arrivalTime;
     private double price;
 
     // Getters and Setters

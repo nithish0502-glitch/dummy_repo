@@ -33,6 +33,8 @@ export class FlightListComponent implements OnInit {
   }
 
   updateFlight(id: number): void {
+    console.log(id+"      nnn");
+    
     this.router.navigate(['/add-flight', id]); // Navigate to add-flight with the ID
   }
 
