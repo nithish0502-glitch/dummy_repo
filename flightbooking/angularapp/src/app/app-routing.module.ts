@@ -9,6 +9,7 @@ import { FlightListComponent } from './components/flight-list/flight-list.compon
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
+  
   {path: 'signup', component: RegisterComponent},
   {path: 'add-flight', component: AddFlightComponent},
   {path: 'flight-list', component: FlightListComponent}
