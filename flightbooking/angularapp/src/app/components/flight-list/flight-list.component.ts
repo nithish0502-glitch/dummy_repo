@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FlightService } from 'src/app/service/flight.service'; 
 import { Flight } from 'src/app/models/flight.model'; 
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-flight-list',
@@ -10,16 +10,17 @@ import { Router } from '@angular/router';
 })
 export class FlightListComponent implements OnInit {
   flights: Flight[] = []; // Array to hold the list of flights
+  // selectedFlightId: number | null = null;
   errorMessage: string = ''; // To display any error messages
   userRole: string = localStorage.getItem('userRole');
 
-  constructor(private flightService: FlightService, private router: Router) { }
+  constructor(private flightService: FlightService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.loadFlights(); // Load flights when the component initializes
-    this.route.queryParams.subscribe(params => {
-      this.selectedFlightId = +params['flightId'];
-    });
+    // this.route.queryParams.subscribe(params => {
+    //   this.selectedFlightId = +params['flightId'];
+    // });
   }
 
   // Method to fetch flights from the service
@@ -34,6 +35,10 @@ export class FlightListComponent implements OnInit {
         console.error('Error loading flights:', error); // Log error for debugging
       }
     });
+  }
+
+  navigateToBooking(flightId: number): void {
+    this.router.navigate(['/book-form'], { queryParams: { flightId } });
   }
 
   updateFlight(id: number): void {

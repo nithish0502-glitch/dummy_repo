@@ -36,9 +36,13 @@ export class BookingFormComponent implements OnInit {
 
   bookFlight(): void {
     if (this.selectedFlightId && this.numberOfPassengers > 0) {
-      const newBooking: Booking = {
-        flightId: this.selectedFlightId,
-        userId: 1, // Replace with actual user ID
+      const newBooking = {
+        flight: {
+          flightId: this.selectedFlightId
+      },
+      user:{
+        userId: parseInt(localStorage.getItem('userId') || '0', 10)
+      },
         bookingDate: new Date(),
         numberOfPassengers: this.numberOfPassengers,
         status: 'CONFIRMED'
