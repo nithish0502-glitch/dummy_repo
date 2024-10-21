@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/service/auth.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  showDropdown = false;
   showLogoutPopup = false;
   isLoggedIn: boolean = false;
   userRole: string | null = '';

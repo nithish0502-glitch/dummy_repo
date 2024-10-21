@@ -12,15 +12,18 @@
       <li><a routerLink="/">Home</a></li>
       <!-- HospitalAdmin Links -->
       <ng-container *ngIf="userRole === 'Admin'">
-        <li class="dropdown">
-          <a href="#">Flight</a>
-          <div class="dropdown-content">
-            <a routerLink="/add-flight">Add Flight</a>
-            <a routerLink="/flight-list">Manage Flights</a>
-          </div>
+        <li class="dropdown" (mouseenter)="showDropdown = true" (mouseleave)="showDropdown = false">
+            <a href="#">Flight</a>
+            <div class="dropdown-content" *ngIf="showDropdown">
+                <a routerLink="/add-flight">Add Flight</a>
+                <a routerLink="/flight-list">Manage Flights</a>
+            </div>
         </li>
         <li><a routerLink="/manage-booking">Manage Booking</a></li>
-      </ng-container>
+    </ng-container>
+    
+    
+    
     
 <ng-container *ngIf="userRole === 'PetOwner'">
   <li class="dropdown">
