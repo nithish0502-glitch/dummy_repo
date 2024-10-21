@@ -16,7 +16,7 @@ export class BookingFormComponent implements OnInit {
   numberOfPassengers: number = 1;
   errorMessage: string | null = null;
   successMessage: string | null = null;
-
+  bookingDate: string | null = null;
   constructor(private bookingService: BookingService, private flightService: FlightService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -54,12 +54,13 @@ export class BookingFormComponent implements OnInit {
         numberOfPassengers: this.numberOfPassengers,
         status: 'CONFIRMED'
       };
+      this.bookingDate = newBooking.bookingDate.toLocaleString();
 
       this.bookingService.createBooking(newBooking).subscribe({
         next: () => {
           this.successMessage = 'Booking confirmed successfully!';
           this.errorMessage = null;
-          // this.resetForm();
+           this.resetForm();
         },
         error: (err) => {
           this.errorMessage = 'Failed to confirm booking';
@@ -69,6 +70,13 @@ export class BookingFormComponent implements OnInit {
     } else {
       this.errorMessage = 'Please select a flight and enter a valid number of passengers.';
     }
+  }
+
+  resetForm(): void {
+    this.selectedFlightId = null;
+    this.numberOfPassengers = 1;
+    this.errorMessage = null;
+    this.successMessage = null;
   }
 
   getSelectedFlightDetails(): string {
