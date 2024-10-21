@@ -73,9 +73,20 @@ export class BookingFormComponent implements OnInit {
   }
 
   getSelectedFlightDetails(): string {
+    if (!this.selectedFlightId) {
+        console.log("No flight selected.");
+        return 'No flight selected';
+    }
+
     const flight = this.flights.find(f => f.flightId === this.selectedFlightId);
-   console.log("Selected one", flight.airline);
-   
-    return flight ? `${flight.flightNumber} - ${flight.airline}` : 'No flight selected';
-  }
+    
+    if (!flight) {
+        console.log("Flight not found for ID:", this.selectedFlightId);
+        return 'Flight not found';
+    }
+
+    console.log("Selected flight:", flight.flightNumber); // Log the selected flight details
+    return `${flight.flightNumber} - ${flight.airline}`;
+}
+
 }
