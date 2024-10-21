@@ -9,7 +9,10 @@ import { apiUrl } from '../apiconfig';
   providedIn: 'root'
 })
 export class BookingService {
-  private apiUrl = '/api/bookings';  // Adjust base URL as necessary
+  public baseUrl = apiUrl;
+ // Replace with your backend URL
+
+ public apiUrl = `${this.baseUrl}/api/bookings`;
 
   constructor(private http: HttpClient) { }
 

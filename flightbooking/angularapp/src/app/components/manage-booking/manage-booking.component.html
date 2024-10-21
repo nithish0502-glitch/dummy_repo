@@ -1,1 +1,36 @@
-<p>manage-booking works!</p>
+<div class="manage-booking-container">
+    <h1>Manage Bookings</h1>
+  
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  
+    <table *ngIf="bookings.length > 0">
+      <thead>
+        <tr>
+          <th>Flight Number</th>
+          <th>User Name</th>
+          <th>User Email</th>
+          <th>Booking Date</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let booking of bookings">
+          <td>{{ booking.flightNumber }}</td>
+          <td>{{ booking.userName }}</td>
+          <td>{{ booking.userEmail }}</td>
+          <td>{{ booking.bookingDate }}</td>
+          <td>{{ booking.status }}</td>
+          <td>
+            <button (click)="updateBookingStatus(booking.id, 'Approved')">Approve</button>
+            <button (click)="updateBookingStatus(booking.id, 'Rejected')">Reject</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div *ngIf="bookings.length === 0" class="no-bookings-message">
+      No bookings available.
+    </div>
+  </div>
+  

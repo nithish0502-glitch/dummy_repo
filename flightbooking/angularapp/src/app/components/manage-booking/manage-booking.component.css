@@ -1,0 +1,113 @@
+.manage-booking-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px; /* Added padding for spacing */
+    background: rgba(255, 255, 255, 0.95); /* Match inner container style */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+    max-width: 800px; /* Adjusted for consistent width */
+    width: 100%; /* Full width */
+    margin: 0 auto; /* Center the container */
+}
+
+/* Heading */
+h1 {
+    font-size: 2.5em; /* Increased font size for better visibility */
+    margin-bottom: 20px;
+    color: #0056b3;
+    text-align: center;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+/* Table Header and Cell Styles */
+th, td {
+    padding: 12px; /* Increased padding for a more spacious feel */
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #007bff; /* Deeper blue for contrast */
+    color: white; /* White text for readability */
+    font-weight: bold;
+}
+
+td {
+    color: black; /* Black text for data cells */
+}
+
+tbody tr:hover {
+    background-color: #e9ecef; /* Subtle hover effect */
+}
+
+/* Error Message */
+.error-message {
+    color: #d9534f; /* Error color */
+    font-size: 1.1em; /* Slightly larger font size */
+    margin-bottom: 15px;
+}
+
+/* No Bookings Message */
+.no-bookings-message {
+    text-align: center;
+    font-size: 1.2em; /* Slightly larger font */
+    color: #666; /* Grey text for less emphasis */
+    margin-top: 20px; /* Added margin for better spacing */
+}
+
+/* Button Styles */
+button {
+    padding: 10px 20px; /* Increased padding for better appearance */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin: 5px; /* Uniform margin for spacing */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+    display: inline-flex; /* Align items within the button */
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+}
+
+/* Approve Button */
+button.approve {
+    background-color: #28a745; /* Green color */
+    color: white;
+}
+
+button.approve:hover {
+    background-color: #218838; /* Darker green on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* Reject Button */
+button.reject {
+    background-color: #d9534f; /* Red color */
+    color: white;
+}
+
+button.reject:hover {
+    background-color: #c9302c; /* Darker red on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* Optional: Disable button styles */
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    button {
+        padding: 8px 16px; /* Adjust padding for smaller screens */
+        font-size: 0.9em; /* Slightly smaller font */
+    }
+}
