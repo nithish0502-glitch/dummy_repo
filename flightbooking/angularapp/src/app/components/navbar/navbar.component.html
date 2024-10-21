@@ -12,7 +12,13 @@
       <li><a routerLink="/">Home</a></li>
       <!-- HospitalAdmin Links -->
       <ng-container *ngIf="userRole === 'Admin'">
-        <li><a routerLink="/add-flight">Manage Flight</a></li>
+        <li class="dropdown">
+          <a href="#">Flight</a>
+          <div class="dropdown-content">
+            <a routerLink="/add-flight">Add Flight</a>
+            <a routerLink="/flight-list">Manage Flights</a>
+          </div>
+        </li>
         <li><a routerLink="/view-all-feedback">Manage Booking</a></li>
         <li><a routerLink="/view-appointments-records">Treatment Records</a></li>
       </ng-container>

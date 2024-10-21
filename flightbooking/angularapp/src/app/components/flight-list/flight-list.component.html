@@ -14,7 +14,7 @@
                     <th>Departure Time</th>
                     <th>Arrival Time</th>
                     <th>Price</th>
-                    <th>Actions</th> <!-- Added Actions Column -->
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,8 +23,8 @@
                     <td>{{ flight.airline }}</td>
                     <td>{{ flight.departureLocation }}</td>
                     <td>{{ flight.arrivalLocation }}</td>
-                    <td>{{ flight.departureTime | date: 'short' }}</td>
-                    <td>{{ flight.arrivalTime | date: 'short' }}</td>
+                    <td>{{ flight.departureTime }}</td>
+                    <td>{{ flight.arrivalTime }}</td>
                     <td>{{ flight.price | currency }}</td>
                     <td>
                         <button class="update" (click)="updateFlight(flight.flightId)">Update</button>

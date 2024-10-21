@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AddFlightComponent } from './components/add-flight/add-flight.component';
 import { FlightListComponent } from './components/flight-list/flight-list.component';
+import { ManageBookingComponent } from './components/manage-booking/manage-booking.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FlightListComponent } from './components/flight-list/flight-list.compon
     RegisterComponent,
     NavbarComponent,
     AddFlightComponent,
-    FlightListComponent
+    FlightListComponent,
+    ManageBookingComponent
   ],
   imports: [
     BrowserModule,
