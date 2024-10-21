@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BookingService } from 'src/app/service/booking.service'; 
-import { FlightService } from 'src/app/service/flight.service'; 
-import { Booking } from 'src/app/models/booking.model'; 
+import { FlightService } from 'src/app/service/flight.service';
 import { Flight } from 'src/app/models/flight.model'; 
 import { ActivatedRoute } from '@angular/router'; 
 
@@ -84,8 +83,8 @@ export class BookingFormComponent implements OnInit {
         console.log("Flight not found for ID:", this.selectedFlightId);
         return 'Flight not found';
     }
-
-    console.log("Selected flight:", flight.flightNumber); // Log the selected flight details
+    console.log("Flight number selected", flight.flightNumber);
+    
     return `${flight.flightNumber} - ${flight.airline}`;
 }
 
