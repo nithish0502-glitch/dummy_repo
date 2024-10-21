@@ -35,7 +35,6 @@ export class BookingFormComponent implements OnInit {
     this.flightService.getAllFlights().subscribe({
       next: (data) => {
         this.flights = data;
-        console.log("Available flights:", this.flights); // Log the loaded flights
       },
       error: (err) => {
         this.errorMessage = 'Failed to load flights';
@@ -75,7 +74,8 @@ export class BookingFormComponent implements OnInit {
 
   getSelectedFlightDetails(): string {
     const flight = this.flights.find(f => f.flightId === this.selectedFlightId);
-    console.log("Selected flight:", flight.flightNumber); // Log the selected flight details
+   console.log("Selected one", flight.airline);
+   
     return flight ? `${flight.flightNumber} - ${flight.airline}` : 'No flight selected';
   }
 }
