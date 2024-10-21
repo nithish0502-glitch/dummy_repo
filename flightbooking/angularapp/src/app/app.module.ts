@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AddFlightComponent } from './components/add-flight/add-flight.component';
 import { FlightListComponent } from './components/flight-list/flight-list.component';
 import { ManageBookingComponent } from './components/manage-booking/manage-booking.component';
+import { BookingFormComponent } from './components/booking-form/booking-form.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ManageBookingComponent } from './components/manage-booking/manage-booki
     NavbarComponent,
     AddFlightComponent,
     FlightListComponent,
-    ManageBookingComponent
+    ManageBookingComponent,
+    BookingFormComponent
   ],
   imports: [
     BrowserModule,

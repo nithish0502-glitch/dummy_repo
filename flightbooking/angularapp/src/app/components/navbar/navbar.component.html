@@ -25,25 +25,10 @@
     
     
     
-<ng-container *ngIf="userRole === 'PetOwner'">
-  <li class="dropdown">
-    <a routerLink="/manage-pets">Pets</a>
-    <div class="dropdown-content">
-      <a routerLink="/add-pet">Add Pet</a>
-      <a routerLink="/view-my-pets">View My Pets</a>
-    </div>
-  </li>
+<ng-container *ngIf="userRole === 'Passenger'">
   
-  <li class="dropdown">
-    <a href="#">Appointment</a> <!-- Main appointment link -->
-    <div class="dropdown-content">
-      <a routerLink="/appointments/add">Add Appointment</a> <!-- Dropdown for Add Appointment -->
-      <a routerLink="/view-appointments">View Appointment</a> <!-- Dropdown for View Appointment -->
-    </div>
-  </li>
-  
-  <li><a routerLink="/view-treatment-records">View Treatment Records</a></li>
-  <li><a routerLink="/view-my-feedback">View My Feedback</a></li>
+  <li><a routerLink="/flight-list">Book Flight</a></li>
+  <li><a routerLink="/view-my-feedback">History</a></li>
 </ng-container>
 
 

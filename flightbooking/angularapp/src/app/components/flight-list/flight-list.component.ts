@@ -11,11 +11,15 @@ import { Router } from '@angular/router';
 export class FlightListComponent implements OnInit {
   flights: Flight[] = []; // Array to hold the list of flights
   errorMessage: string = ''; // To display any error messages
+  userRole: string = localStorage.getItem('userRole');
 
   constructor(private flightService: FlightService, private router: Router) { }
 
   ngOnInit(): void {
     this.loadFlights(); // Load flights when the component initializes
+    this.route.queryParams.subscribe(params => {
+      this.selectedFlightId = +params['flightId'];
+    });
   }
 
   // Method to fetch flights from the service

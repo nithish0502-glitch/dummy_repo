@@ -27,8 +27,14 @@
                     <td>{{ flight.arrivalTime }}</td>
                     <td>{{ flight.price | currency }}</td>
                     <td>
-                        <button class="update" (click)="updateFlight(flight.flightId)">Update</button>
-                        <button class="delete" (click)="deleteFlight(flight.flightId)">Delete</button>
+                        <ng-container *ngIf="userRole === 'Admin'; else passengerActions">
+                            <button class="update" (click)="updateFlight(flight.flightId)">Update</button>
+                            <button class="delete" (click)="deleteFlight(flight.flightId)">Delete</button>
+                        </ng-container>
+                        <ng-template #passengerActions>
+                            <button class="book" (click)="navigateToBooking(flight.flightId)">Book</button>
+                        </ng-template>
+                        
                     </td>
                 </tr>
             </tbody>
