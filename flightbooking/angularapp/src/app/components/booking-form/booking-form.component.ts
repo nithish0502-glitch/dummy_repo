@@ -3,6 +3,7 @@ import { BookingService } from 'src/app/service/booking.service';
 import { FlightService } from 'src/app/service/flight.service'; 
 import { Booking } from 'src/app/models/booking.model'; 
 import { Flight } from 'src/app/models/flight.model'; 
+import { ActivatedRoute } from '@angular/router'; 
 
 @Component({
   selector: 'app-booking-form',
@@ -12,36 +13,39 @@ import { Flight } from 'src/app/models/flight.model';
 export class BookingFormComponent implements OnInit {
 
   flights: Flight[] = [];
-  selectedFlightId: number | null = null; // This should be set from the previous component
+  selectedFlightId: number | null = null;
   numberOfPassengers: number = 1;
   errorMessage: string | null = null;
   successMessage: string | null = null;
 
-  constructor(private bookingService: BookingService, private flightService: FlightService) { }
+  constructor(private bookingService: BookingService, private flightService: FlightService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    // If you want to load flights, keep this method; otherwise, comment it out
-    // this.loadAvailableFlights();
-    // Alternatively, set selectedFlightId directly from route or service if applicable
+    // Get the flightId from query parameters
+    this.route.queryParams.subscribe(params => {
+      this.selectedFlightId = +params['flightId'];
+      console.log("Selected Flight ID:", this.selectedFlightId); // Log the flight ID
+
+      // Load flights
+      this.loadAvailableFlights();
+    });
   }
 
-  // Uncomment this method if you still need to load flights
-  /*
   loadAvailableFlights(): void {
     this.flightService.getAllFlights().subscribe({
       next: (data) => {
         this.flights = data;
+        console.log("Available flights:", this.flights); // Log the loaded flights
       },
       error: (err) => {
         this.errorMessage = 'Failed to load flights';
       }
     });
   }
-  */
 
   bookFlight(): void {
     if (this.selectedFlightId && this.numberOfPassengers > 0) {
-      const newBooking: Booking = {
+      const newBooking ={
         flight: {
           flightId: this.selectedFlightId
         },
@@ -57,7 +61,7 @@ export class BookingFormComponent implements OnInit {
         next: () => {
           this.successMessage = 'Booking confirmed successfully!';
           this.errorMessage = null;
-          this.resetForm();
+          // this.resetForm();
         },
         error: (err) => {
           this.errorMessage = 'Failed to confirm booking';
@@ -69,16 +73,9 @@ export class BookingFormComponent implements OnInit {
     }
   }
 
-  resetForm(): void {
-    this.selectedFlightId = null; // Keep this if you want to reset flight selection
-    this.numberOfPassengers = 1;
-  }
-
   getSelectedFlightDetails(): string {
-
     const flight = this.flights.find(f => f.flightId === this.selectedFlightId);
-    console.log("Selected flight",flight);
-    
+    console.log("Selected flight:", flight.flightNumber); // Log the selected flight details
     return flight ? `${flight.flightNumber} - ${flight.airline}` : 'No flight selected';
   }
 }
