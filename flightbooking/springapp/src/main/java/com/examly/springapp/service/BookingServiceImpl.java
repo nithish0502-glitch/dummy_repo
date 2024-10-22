@@ -16,8 +16,6 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public Booking createBooking(Booking booking) {
-        // Booking oldone = bookingRepository.findById(booking.getBookingId()).orElse(null);
-        // oldone.setStatus(booking.getStatus());
         return bookingRepository.save(booking);
     }
 

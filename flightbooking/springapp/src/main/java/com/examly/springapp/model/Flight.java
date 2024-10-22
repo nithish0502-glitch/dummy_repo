@@ -16,6 +16,7 @@ public class Flight {
     private String departureTime;
     private String arrivalTime;
     private double price;
+    private int totalSeats; 
 
     // Getters and Setters
 
@@ -83,5 +84,13 @@ public class Flight {
 
     public void setFlightId(Long flightId) {
         this.flightId = flightId;
+    }
+
+    public int getTotalSeats() {
+        return totalSeats;
+    }
+
+    public void setTotalSeats(int totalSeats) {
+        this.totalSeats = totalSeats;
     }
 }

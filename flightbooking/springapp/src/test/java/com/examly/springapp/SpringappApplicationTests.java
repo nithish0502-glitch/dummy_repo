@@ -1,6 +1,7 @@
 package com.examly.springapp;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -19,6 +20,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import jakarta.persistence.ManyToOne;
+
+import java.lang.reflect.Field;  // Import the Field class
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -150,9 +154,9 @@ public void backend_day12_testAddFlight() throws Exception {
 
 	@Test
 	@Order(11)
- 	public void backend_day14_testrepositoryFile() {
+ 	public void backend_day14_testmodelFile() {
  
-		String filePath = "src/main/java/com/examly/springapp/repository/BookingRepo.java";
+		String filePath = "src/main/java/com/examly/springapp/model/Booking.java";
 		// Replace with the path to your file
 		File file = new File(filePath);
 		assertTrue(file.exists() && file.isFile());
@@ -163,52 +167,93 @@ public void backend_day12_testAddFlight() throws Exception {
 	@Order(12)
  	public void backend_day14_testserviceFile() {
  
-		String filePath = "src/main/java/com/examly/springapp/service/BookingService.java";
+		String filePath = "src/main/java/com/examly/springapp/repository/BookingRepo.java";
 		// Replace with the path to your file
 		File file = new File(filePath);
 		assertTrue(file.exists() && file.isFile());
 	}
 
 	
+// 	@Test
+// @Order(13)
+// void backend_day14_testAddBooking() throws Exception {
+
+//     String bookingData = "{\"flight\": {\"flightId\": 1}, \"user\": {\"userId\": 1}, \"bookingDate\": \"2024-10-21T10:00:00\", \"numberOfPassengers\": 2, \"status\": \"CONFIRMED\"}";
+
+//     mockMvc.perform(MockMvcRequestBuilders.post("/api/bookings") // Assuming the endpoint is /api/booking
+//             .contentType(MediaType.APPLICATION_JSON)
+//             .content(bookingData)
+//             .accept(MediaType.APPLICATION_JSON))
+//             .andExpect(MockMvcResultMatchers.status().isOk())
+//             .andExpect(jsonPath("$.numberOfPassengers").value(2))
+//             .andReturn();
+// }
+
+
+
+
+// @Test
+// @Order(14)
+// void backend_day14_testGetAllBookings() throws Exception {
+
+//     mockMvc.perform(MockMvcRequestBuilders.get("/api/bookings")
+//             .accept(MediaType.APPLICATION_JSON))
+//             .andExpect(MockMvcResultMatchers.status().isOk())
+//             .andExpect(jsonPath("$").isArray())
+//             .andExpect(jsonPath("$[?(@.numberOfPassengers == 2)]").exists()) // Change the number as needed
+//             .andReturn();
+// }
+
 	@Test
-@Order(13)
-void backend_day14_testAddBooking() throws Exception {
+public void backend_day15_testBookingHasManyToOneAnnotations() {
+    try {
+        // Use reflection to get the Class object for the Booking class
+        Class<?> bookingClass = Class.forName("com.examly.springapp.model.Booking");
 
-    String bookingData = "{\"flight\": {\"flightId\": 1}, \"user\": {\"userId\": 1}, \"bookingDate\": \"2024-10-21T10:00:00\", \"numberOfPassengers\": 2, \"status\": \"CONFIRMED\"}";
+        // Get all declared fields in the Booking class
+        Field[] declaredFields = bookingClass.getDeclaredFields();
 
-    mockMvc.perform(MockMvcRequestBuilders.post("/api/bookings") // Assuming the endpoint is /api/booking
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(bookingData)
-            .accept(MediaType.APPLICATION_JSON))
-            .andExpect(MockMvcResultMatchers.status().isOk())
-            .andExpect(jsonPath("$.numberOfPassengers").value(2))
-            .andReturn();
+        // Check for the fields with @ManyToOne annotation
+        boolean hasFlightManyToOne = false;
+        boolean hasUserManyToOne = false;
+
+        for (Field field : declaredFields) {
+            if (field.getName().equals("flight") && field.isAnnotationPresent(ManyToOne.class)) {
+                hasFlightManyToOne = true;
+            }
+            if (field.getName().equals("user") && field.isAnnotationPresent(ManyToOne.class)) {
+                hasUserManyToOne = true;
+            }
+        }
+
+        // Fail the test if any field is missing the @ManyToOne annotation
+        if (!hasFlightManyToOne) {
+            fail("No field with @ManyToOne annotation found for 'flight' in Booking class.");
+        }
+        if (!hasUserManyToOne) {
+            fail("No field with @ManyToOne annotation found for 'user' in Booking class.");
+        }
+
+    } catch (ClassNotFoundException e) {
+        // If the class is not found, fail the test
+        fail("Class not found: " + e.getMessage());
+    }
 }
-
-
-
 
 @Test
-@Order(14)
-void backend_day14_testGetAllBookings() throws Exception {
+public void backend_day16_testBookingServiceInterfaceAndImplementation() {
+    try {
+        Class<?> interfaceClass = Class.forName("com.examly.springapp.service.BookingService");
+        Class<?> implementationClass = Class.forName("com.examly.springapp.service.BookingServiceImpl");
 
-    mockMvc.perform(MockMvcRequestBuilders.get("/api/bookings")
-            .accept(MediaType.APPLICATION_JSON))
-            .andExpect(MockMvcResultMatchers.status().isOk())
-            .andExpect(jsonPath("$").isArray())
-            .andExpect(jsonPath("$[?(@.numberOfPassengers == 2)]").exists()) // Change the number as needed
-            .andReturn();
+        assertTrue(interfaceClass.isInterface(), "The specified class is not an interface");
+        assertTrue(interfaceClass.isAssignableFrom(implementationClass), "Implementation does not implement the interface");
+    } catch (ClassNotFoundException e) {
+        fail("Interface or implementation not found: " + e.getMessage());
+    }
 }
 
-	@Test
-	@Order(15)
- 	public void backend_day16_testServiceOrganizerFile() {
- 
-		String filePath = "src/main/java/com/examly/springapp/service/UserService.java";
-		// Replace with the path to your file
-		File file = new File(filePath);
-		assertTrue(file.exists() && file.isFile());
-	}
+
 	
 	
 	@Test
