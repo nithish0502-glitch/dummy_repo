@@ -35,7 +35,7 @@ private MockMvc mockMvc;
 
     @Test
 	@Order(1)
-    public void backend_day10_testControllerFolder() {
+    public void backend_day10_testControllerDirectoryExists() {
 
 		String directoryPath = "src/main/java/com/examly/springapp/controller";
 
@@ -47,7 +47,7 @@ private MockMvc mockMvc;
     
     @Test
     @Order(2)
-	public void backend_day10_testControllerFileTest() {
+	public void backend_day10_testControllerFileExists() {
 
 		String filePath = "src/main/java/com/examly/springapp/controller/TestController.java";
 		// Replace with the path to your file
@@ -67,7 +67,7 @@ private MockMvc mockMvc;
    
    @Test
    @Order(4)
-   public void backend_day11_testModelFolder() {
+   public void backend_day11_testModelDirectoryExists() {
 
    		String directoryPath = "src/main/java/com/examly/springapp/model";
 
@@ -79,9 +79,9 @@ private MockMvc mockMvc;
 	
 	@Test
     @Order(5)
-	public void backend_day11_testModelFileFlight() {
+	public void backend_day11_testFlightModelFileExists() {
 
-		String filePath = "src/main/java/com/examly/springapp/entity/Flight.java";
+		String filePath = "src/main/java/com/examly/springapp/model/Flight.java";
 		// Replace with the path to your file
 		File file = new File(filePath);
 		assertTrue(file.exists() && file.isFile());
@@ -100,7 +100,7 @@ private MockMvc mockMvc;
 	 
 	@Test
 	@Order(7)
- 	public void backend_day12_testcontrollerteamFile() {
+ 	public void backend_day12_testFlightControllerFileExists() {
  
 		String filePath = "src/main/java/com/examly/springapp/controller/FlightController.java";
 		// Replace with the path to your file
@@ -110,7 +110,7 @@ private MockMvc mockMvc;
 	
     @Test
 	@Order(8)
- 	public void backend_day12_testserviceFlightFile() {
+ 	public void backend_day12_testFlightServiceFileExists() {
  
 		String filePath = "src/main/java/com/examly/springapp/service/FlightService.java";
 		// Replace with the path to your file
@@ -154,7 +154,7 @@ public void backend_day12_testAddFlight() throws Exception {
 
 	@Test
 	@Order(11)
- 	public void backend_day14_testmodelFile() {
+ 	public void backend_day14_testBookingModelFileExists() {
  
 		String filePath = "src/main/java/com/examly/springapp/model/Booking.java";
 		// Replace with the path to your file
@@ -165,7 +165,7 @@ public void backend_day12_testAddFlight() throws Exception {
 
 	@Test
 	@Order(12)
- 	public void backend_day14_testserviceFile() {
+ 	public void backend_day14_testBookingRepoFileExists() {
  
 		String filePath = "src/main/java/com/examly/springapp/repository/BookingRepo.java";
 		// Replace with the path to your file
@@ -174,37 +174,9 @@ public void backend_day12_testAddFlight() throws Exception {
 	}
 
 	
-// 	@Test
-// @Order(13)
-// void backend_day14_testAddBooking() throws Exception {
-
-//     String bookingData = "{\"flight\": {\"flightId\": 1}, \"user\": {\"userId\": 1}, \"bookingDate\": \"2024-10-21T10:00:00\", \"numberOfPassengers\": 2, \"status\": \"CONFIRMED\"}";
-
-//     mockMvc.perform(MockMvcRequestBuilders.post("/api/bookings") // Assuming the endpoint is /api/booking
-//             .contentType(MediaType.APPLICATION_JSON)
-//             .content(bookingData)
-//             .accept(MediaType.APPLICATION_JSON))
-//             .andExpect(MockMvcResultMatchers.status().isOk())
-//             .andExpect(jsonPath("$.numberOfPassengers").value(2))
-//             .andReturn();
-// }
-
-
-
-
-// @Test
-// @Order(14)
-// void backend_day14_testGetAllBookings() throws Exception {
-
-//     mockMvc.perform(MockMvcRequestBuilders.get("/api/bookings")
-//             .accept(MediaType.APPLICATION_JSON))
-//             .andExpect(MockMvcResultMatchers.status().isOk())
-//             .andExpect(jsonPath("$").isArray())
-//             .andExpect(jsonPath("$[?(@.numberOfPassengers == 2)]").exists()) // Change the number as needed
-//             .andReturn();
-// }
 
 	@Test
+	@Order(13)
 public void backend_day15_testBookingHasManyToOneAnnotations() {
     try {
         // Use reflection to get the Class object for the Booking class
@@ -241,6 +213,7 @@ public void backend_day15_testBookingHasManyToOneAnnotations() {
 }
 
 @Test
+@Order(14)
 public void backend_day16_testBookingServiceInterfaceAndImplementation() {
     try {
         Class<?> interfaceClass = Class.forName("com.examly.springapp.service.BookingService");
@@ -257,29 +230,56 @@ public void backend_day16_testBookingServiceInterfaceAndImplementation() {
 	
 	
 	@Test
-	@Order(16)
+	@Order(15)
 	public void backend_day17_testExceptionFile() {
 		 
-		String filePath = "src/main/java/com/examly/springapp/exception/ExceedsTeamBudgetException.java";
+		String filePath = "src/main/java/com/examly/springapp/exception/SeatsExceededException.java";
 		// Replace with the path to your file
 		File file = new File(filePath);
 		assertTrue(file.exists() && file.isFile());
 	}
 	
-	@Test
-	@Order(17)
- 	public void backend_day18_testcontrollerOrganizerFile() {
- 
-		String filePath = "src/main/java/com/examly/springapp/controller/OrganizerController.java";
-		// Replace with the path to your file
-		File file = new File(filePath);
-		assertTrue(file.exists() && file.isFile());
-	}
-	
+		@Test
+@Order(16)
+void backend_day14_testAddBooking() throws Exception {
+
+    String bookingData = "{\"flight\": {\"flightId\": 1}, \"user\": {\"userId\": 1}, \"bookingDate\": \"2024-10-21T10:00:00\", \"numberOfPassengers\": 2, \"status\": \"CONFIRMED\"}";
+
+    mockMvc.perform(MockMvcRequestBuilders.post("/api/bookings") // Assuming the endpoint is /api/booking
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(bookingData)
+            .accept(MediaType.APPLICATION_JSON))
+            .andExpect(MockMvcResultMatchers.status().isOk())
+            .andExpect(jsonPath("$.numberOfPassengers").value(2))
+            .andReturn();
+}
+
+@Test
+@Order(17)
+void backend_day14_testGetAllBookings() throws Exception {
+
+    mockMvc.perform(MockMvcRequestBuilders.get("/api/bookings")
+            .accept(MediaType.APPLICATION_JSON))
+            .andExpect(MockMvcResultMatchers.status().isOk())
+            .andExpect(jsonPath("$").isArray())
+            .andExpect(jsonPath("$[?(@.numberOfPassengers == 2)]").exists()) // Change the number as needed
+            .andReturn();
+}
+
 	@Test
 	@Order(18)
-	void backend_day18_getallSoldPlayer() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.get("/api/organizer/sold-players")
+ 	public void backend_day18_testcontrollerOrganizerFile() {
+ 
+		String filePath = "src/main/java/com/examly/springapp/controller/BookingController.java";
+		// Replace with the path to your file
+		File file = new File(filePath);
+		assertTrue(file.exists() && file.isFile());
+	}
+	
+	@Test
+	@Order(19)
+	void backend_day18_getallBookings() throws Exception {
+		mockMvc.perform(MockMvcRequestBuilders.get("/api/bookings")
 				.accept(MediaType.APPLICATION_JSON)).andDo(print())
 				.andExpect(status().isOk()).andExpect(jsonPath("$").isArray())
 				.andReturn();
@@ -287,20 +287,20 @@ public void backend_day16_testBookingServiceInterfaceAndImplementation() {
 
     
     @Test
-	@Order(19)
+	@Order(20)
  	public void backend_day19_testEntityUserFile() {
  
-		String filePath = "src/main/java/com/examly/springapp/entity/User.java";
+		String filePath = "src/main/java/com/examly/springapp/model/User.java";
 		// Replace with the path to your file
 		File file = new File(filePath);
 		assertTrue(file.exists() && file.isFile());
 	}
 
     @Test
-	@Order(20)
+	@Order(21)
  	public void backend_day20_testCorsUserFile() {
  
-		String filePath = "src/main/java/com/examly/springapp/configuration/CorsConfig.java";
+		String filePath = "src/main/java/com/examly/springapp/config/CorsConfig.java";
 		// Replace with the path to your file
 		File file = new File(filePath);
 		assertTrue(file.exists() && file.isFile());

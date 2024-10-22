@@ -18,8 +18,16 @@ public class Flight {
     private double price;
     private int totalSeats; 
 
-    // Getters and Setters
+    private int bookedSeats = 0;
 
+    // Getters and Setters
+    public boolean canBook(int numberOfPassengers) {
+        return (totalSeats - bookedSeats) >= numberOfPassengers;
+    }
+
+    public void bookSeats(int numberOfPassengers) {
+        this.bookedSeats += numberOfPassengers;
+    }
   
 
     public String getFlightNumber() {
@@ -92,5 +100,13 @@ public class Flight {
 
     public void setTotalSeats(int totalSeats) {
         this.totalSeats = totalSeats;
+    }
+
+    public int getBookedSeats() {
+        return bookedSeats;
+    }
+
+    public void setBookedSeats(int bookedSeats) {
+        this.bookedSeats = bookedSeats;
     }
 }
