@@ -30,6 +30,8 @@ export class ManageBookingComponent implements OnInit {
     
   updateBookingStatus(bookingId: number, status: string): void {
     const updatedBooking: Booking = { bookingId, status }; // Adjust according to your Booking model
+    console.log("Update booking",bookingId);
+    
     this.bookingService.updateBooking(bookingId, updatedBooking).subscribe({
       next: () => {
         this.loadBookings(); // Refresh the list after updating

@@ -12,6 +12,7 @@ import { AddFlightComponent } from './components/add-flight/add-flight.component
 import { FlightListComponent } from './components/flight-list/flight-list.component';
 import { ManageBookingComponent } from './components/manage-booking/manage-booking.component';
 import { BookingFormComponent } from './components/booking-form/booking-form.component';
+import { MyHistoryComponent } from './components/my-history/my-history.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { BookingFormComponent } from './components/booking-form/booking-form.com
     AddFlightComponent,
     FlightListComponent,
     ManageBookingComponent,
-    BookingFormComponent
+    BookingFormComponent,
+    MyHistoryComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,10 @@
+<h2>My Booking History</h2>
+<ul>
+  <li *ngFor="let booking of bookings">
+    <p>Booking ID: {{ booking.bookingId }}</p>
+    <p>Flight ID: {{ booking.flight?.flightId }}</p>
+    <p>Booking Date: {{ booking.bookingDate | date }}</p>
+    <p>Status: {{ booking.status }}</p>
+    <hr>
+  </li>
+</ul>

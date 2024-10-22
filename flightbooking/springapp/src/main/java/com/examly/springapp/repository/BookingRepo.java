@@ -9,5 +9,5 @@ import com.examly.springapp.model.Booking;
 
 @Repository
 public interface BookingRepo extends JpaRepository<Booking,Long>{
-    // List<Booking> findByUser_UserId(Long userId);
+    List<Booking> findByUser_UserId(int userId);
 }

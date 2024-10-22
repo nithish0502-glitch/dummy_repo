@@ -16,8 +16,8 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public Booking createBooking(Booking booking) {
-        Booking oldone = bookingRepository.findById(booking.getBookingId()).orElse(null);
-        oldone.setStatus(booking.getStatus());
+        // Booking oldone = bookingRepository.findById(booking.getBookingId()).orElse(null);
+        // oldone.setStatus(booking.getStatus());
         return bookingRepository.save(booking);
     }
 
@@ -32,6 +32,10 @@ public class BookingServiceImpl implements BookingService {
         return bookingRepository.findAll();
     }
 
+    public List<Booking> getBookingsByUserId(int userId) {
+        return bookingRepository.findByUser_UserId(userId);
+    }
+
     @Override
     public Booking updateBooking(Long id, Booking updatedBooking) {
         // Booking existingBooking = getBookingById(id);
@@ -43,7 +47,7 @@ public class BookingServiceImpl implements BookingService {
         // existingBooking.setStatus(updatedBooking.getStatus());
 
         Booking oldone = bookingRepository.findById(id).orElse(null);
-        oldone.setStatus(booking.getStatus());
+        oldone.setStatus(updatedBooking.getStatus());
         return bookingRepository.save(oldone);
     }
 }

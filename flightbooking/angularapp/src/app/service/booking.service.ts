@@ -29,10 +29,16 @@ export class BookingService {
   }
 
   updateBooking(id: number, booking: Booking): Observable<Booking> {
+    console.log(booking);
+    
     return this.http.put<Booking>(`${this.apiUrl}/${id}`, booking);
   }
 
   deleteBooking(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
+  getBookingsByUserId(userId: number): Observable<Booking[]> {
+    return this.http.get<Booking[]>(`${this.apiUrl}/user/${userId}`);
   }
 }

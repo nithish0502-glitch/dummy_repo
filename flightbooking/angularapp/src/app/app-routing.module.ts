@@ -16,7 +16,8 @@ const routes: Routes = [
   {path: 'add-flight', component: AddFlightComponent},
   {path: 'flight-list', component: FlightListComponent},
   {path: 'manage-booking', component: ManageBookingComponent},
-  {path: 'book-form', component: BookingFormComponent}
+  {path: 'book-form', component: BookingFormComponent},
+  {path: 'my-history', component: BookingFormComponent}
 ];
 
 @NgModule({

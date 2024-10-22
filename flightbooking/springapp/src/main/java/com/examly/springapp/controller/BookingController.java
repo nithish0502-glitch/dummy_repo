@@ -33,6 +33,15 @@ public class BookingController {
         return ResponseEntity.ok(bookings);
     }
 
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<Booking>> getBookingsByUserId(@PathVariable int userId) {
+        List<Booking> bookings = bookingService.getBookingsByUserId(userId);
+        if (bookings.isEmpty()) {
+            return ResponseEntity.noContent().build(); // Return 204 No Content if no bookings found
+        }
+        return ResponseEntity.ok(bookings); // Return 200 OK with the list of bookings
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<Booking> updateBooking(@PathVariable Long id, @RequestBody Booking booking) {
         Booking updatedBooking = bookingService.updateBooking(id, booking);
