@@ -16,6 +16,8 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public Booking createBooking(Booking booking) {
+        Booking oldone = bookingRepository.findById(booking.getBookingId()).orElse(null);
+        oldone.setStatus(booking.getStatus());
         return bookingRepository.save(booking);
     }
 
@@ -32,13 +34,16 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public Booking updateBooking(Long id, Booking updatedBooking) {
-        Booking existingBooking = getBookingById(id);
-        // Update the fields as necessary
-        existingBooking.setFlight(updatedBooking.getFlight());
-        existingBooking.setUser(updatedBooking.getUser());
-        existingBooking.setBookingDate(updatedBooking.getBookingDate());
-        existingBooking.setNumberOfPassengers(updatedBooking.getNumberOfPassengers());
-        existingBooking.setStatus(updatedBooking.getStatus());
-        return bookingRepository.save(existingBooking);
+        // Booking existingBooking = getBookingById(id);
+        // // Update the fields as necessary
+        // existingBooking.setFlight(updatedBooking.getFlight());
+        // existingBooking.setUser(updatedBooking.getUser());
+        // existingBooking.setBookingDate(updatedBooking.getBookingDate());
+        // existingBooking.setNumberOfPassengers(updatedBooking.getNumberOfPassengers());
+        // existingBooking.setStatus(updatedBooking.getStatus());
+
+        Booking oldone = bookingRepository.findById(id).orElse(null);
+        oldone.setStatus(booking.getStatus());
+        return bookingRepository.save(oldone);
     }
 }
