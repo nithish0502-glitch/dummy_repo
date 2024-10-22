@@ -100,7 +100,6 @@ nav {
 }
 
 
-
 /* Logout Popup Styles */
 .logout-popup {
   position: fixed;
@@ -116,11 +115,16 @@ nav {
 }
 
 .logout-popup-content {
-  background: white;
+  background: white; /* Set background to white */
   border-radius: 5px;
   padding: 20px;
   text-align: center;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  color: black; /* Set text color to black for visibility */
+}
+
+.logout-popup-content p {
+  margin: 0 0 15px; /* Space below the paragraph */
 }
 
 .logout-popup button {
@@ -147,4 +151,34 @@ nav {
 
 .button-cancel:hover {
   background-color: #1abc9c; /* Cancel button hover color */
+}
+
+/* User Role Styles */
+.user-role {
+  font-size: 1.2em; /* Increased font size for emphasis */
+  color: #ffffff; /* White text for better contrast */
+  margin: 0; /* Remove default margin */
+  padding: 10px 15px; /* Added padding for spacing */
+  background-color: #3498db; /* Bright blue background */
+  border-radius: 10px; /* Slightly more rounded corners */
+  display: flex; /* Use flex for better alignment */
+  align-items: center; /* Center items vertically */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+  position: relative; /* Enable positioning */
+  left: -10px; /* Shift slightly to the left */
+}
+
+.user-role:hover {
+  background-color: #2980b9; /* Darker blue on hover for interaction */
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Responsive Adjustments for User Role */
+@media (max-width: 600px) {
+  .user-role {
+    font-size: 1.1em; /* Adjust font size for smaller screens */
+    padding: 8px 12px; /* Adjust padding for smaller screens */
+    left: -5px; /* Less shift on smaller screens */
+  }
 }
