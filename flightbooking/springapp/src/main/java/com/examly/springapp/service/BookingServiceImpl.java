@@ -19,6 +19,7 @@ public class BookingServiceImpl implements BookingService {
 
     @Autowired
     private FlightRepo flightRepository;
+    
     @Override
 public Booking createBooking(Booking booking) {
     Flight flight = flightRepository.findById(booking.getFlight().getFlightId())

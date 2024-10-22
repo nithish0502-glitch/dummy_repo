@@ -121,7 +121,7 @@ private MockMvc mockMvc;
 	@Test
 @Order(9)
 public void backend_day12_testAddFlight() throws Exception {
-    String flightData = "{\"flightId\": 1,\"flightNumber\": \"AI202\", \"airline\": \"Air India\", \"departureLocation\": \"Delhi\", \"arrivalLocation\": \"Mumbai\", \"departureTime\": \"2024-10-21T10:00:00\", \"arrivalTime\": \"2024-10-21T12:00:00\", \"price\": 7500.00}";
+    String flightData = "{\"flightId\": 1,\"flightNumber\": \"AI202\", \"airline\": \"Air India\", \"departureLocation\": \"Delhi\", \"arrivalLocation\": \"Mumbai\", \"departureTime\": \"2024-10-21T10:00:00\", \"arrivalTime\": \"2024-10-21T12:00:00\", \"price\": 7500.00, \"totalSeats\": 75}";
 
     mockMvc.perform(MockMvcRequestBuilders.post("/api/flights") // Assuming the endpoint is /api/flight
             .contentType(MediaType.APPLICATION_JSON)
