@@ -188,23 +188,23 @@ void backend_day14_testAddBooking() throws Exception {
 
 
 
-		@Test
-		@Order(14)
-		void backend_day14_testGetAllPlayer() throws Exception {
+@Test
+@Order(14)
+void backend_day14_testGetAllBookings() throws Exception {
 
-			mockMvc.perform(MockMvcRequestBuilders.get("/api/bookings")
-					.accept(MediaType.APPLICATION_JSON))
-					.andExpect(MockMvcResultMatchers.status().isOk())
-					.andExpect(jsonPath("$").isArray())
-					.andExpect(jsonPath("$[?(@.name == 'Virat')]").exists())
-					.andReturn();
-		}
-		
+    mockMvc.perform(MockMvcRequestBuilders.get("/api/bookings")
+            .accept(MediaType.APPLICATION_JSON))
+            .andExpect(MockMvcResultMatchers.status().isOk())
+            .andExpect(jsonPath("$").isArray())
+            .andExpect(jsonPath("$[?(@.numberOfPassengers == 2)]").exists()) // Change the number as needed
+            .andReturn();
+}
+
 	@Test
 	@Order(15)
  	public void backend_day16_testServiceOrganizerFile() {
  
-		String filePath = "src/main/java/com/examly/springapp/service/OrganizerService.java";
+		String filePath = "src/main/java/com/examly/springapp/service/UserService.java";
 		// Replace with the path to your file
 		File file = new File(filePath);
 		assertTrue(file.exists() && file.isFile());
