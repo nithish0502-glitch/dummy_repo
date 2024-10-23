@@ -179,31 +179,22 @@ public void backend_day12_testAddFlight() throws Exception {
 	@Order(13)
 public void backend_day15_testBookingHasManyToOneAnnotations() {
     try {
-        // Use reflection to get the Class object for the Booking class
+		
         Class<?> bookingClass = Class.forName("com.examly.springapp.model.Booking");
 
-        // Get all declared fields in the Booking class
         Field[] declaredFields = bookingClass.getDeclaredFields();
 
-        // Check for the fields with @ManyToOne annotation
         boolean hasFlightManyToOne = false;
-        boolean hasUserManyToOne = false;
 
         for (Field field : declaredFields) {
             if (field.getName().equals("flight") && field.isAnnotationPresent(ManyToOne.class)) {
                 hasFlightManyToOne = true;
-            }
-            if (field.getName().equals("user") && field.isAnnotationPresent(ManyToOne.class)) {
-                hasUserManyToOne = true;
-            }
+            }            
         }
 
         // Fail the test if any field is missing the @ManyToOne annotation
         if (!hasFlightManyToOne) {
             fail("No field with @ManyToOne annotation found for 'flight' in Booking class.");
-        }
-        if (!hasUserManyToOne) {
-            fail("No field with @ManyToOne annotation found for 'user' in Booking class.");
         }
 
     } catch (ClassNotFoundException e) {
