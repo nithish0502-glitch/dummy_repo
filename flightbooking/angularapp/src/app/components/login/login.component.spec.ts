@@ -19,7 +19,7 @@ describe('LoginComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  fit('Frontend_day31_should create login component', () => {
     expect(component).toBeTruthy();
   });
 });
