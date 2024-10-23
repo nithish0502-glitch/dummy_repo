@@ -28,4 +28,16 @@ describe('FlightListComponent', () => {
     expect(component).toBeTruthy();
     expect((component as any).flights).toBeDefined();
   });
+
+  fit('should have updateFlight method', () => {
+    expect(component.updateFlight).toBeDefined();
+    expect(typeof component.updateFlight).toBe('function');
+  });
+
+  fit('should have deleteFlight method', () => {
+    expect(component.deleteFlight).toBeDefined();
+    expect(typeof component.deleteFlight).toBe('function');
+  });
+
+
 });
