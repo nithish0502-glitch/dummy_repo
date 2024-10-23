@@ -19,7 +19,7 @@ describe('HomeComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  fit('Frontend_day25_should_create_Home_Component', () => {
     expect(component).toBeTruthy();
   });
 });
