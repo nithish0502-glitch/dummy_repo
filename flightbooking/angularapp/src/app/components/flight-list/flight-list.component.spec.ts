@@ -29,12 +29,12 @@ describe('FlightListComponent', () => {
     expect((component as any).flights).toBeDefined();
   });
 
-  fit('should have updateFlight method', () => {
+  fit('Frontend_day27_should have updateFlight method', () => {
     expect(component.updateFlight).toBeDefined();
     expect(typeof component.updateFlight).toBe('function');
   });
 
-  fit('should have deleteFlight method', () => {
+  fit('Frontend_day27_should have deleteFlight method', () => {
     expect(component.deleteFlight).toBeDefined();
     expect(typeof component.deleteFlight).toBe('function');
   });
