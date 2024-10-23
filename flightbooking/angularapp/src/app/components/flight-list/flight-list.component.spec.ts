@@ -30,13 +30,13 @@ describe('FlightListComponent', () => {
   });
 
   fit('Frontend_day27_should have updateFlight method', () => {
-    expect(component.updateFlight).toBeDefined();
-    expect(typeof component.updateFlight).toBe('function');
+    expect((component as any).updateFlight).toBeDefined();
+    expect(typeof (component as any).updateFlight).toBe('function');
   });
 
   fit('Frontend_day27_should have deleteFlight method', () => {
-    expect(component.deleteFlight).toBeDefined();
-    expect(typeof component.deleteFlight).toBe('function');
+    expect((component as any).deleteFlight).toBeDefined();
+    expect(typeof (component as any).deleteFlight).toBe('function');
   });
 
 
