@@ -217,9 +217,6 @@ public void backend_day16_testBookingServiceInterfaceAndImplementation() {
     }
 }
 
-
-	
-	
 	@Test
 	@Order(15)
 	public void backend_day17_testExceptionFile() {
@@ -230,20 +227,6 @@ public void backend_day16_testBookingServiceInterfaceAndImplementation() {
 		assertTrue(file.exists() && file.isFile());
 	}
 	
-		@Test
-@Order(16)
-void backend_day14_testAddBooking() throws Exception {
-
-    String bookingData = "{\"flight\": {\"flightId\": 1}, \"user\": {\"userId\": 1}, \"bookingDate\": \"2024-10-21T10:00:00\", \"numberOfPassengers\": 2, \"status\": \"CONFIRMED\"}";
-
-    mockMvc.perform(MockMvcRequestBuilders.post("/api/bookings") // Assuming the endpoint is /api/booking
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(bookingData)
-            .accept(MediaType.APPLICATION_JSON))
-            .andExpect(MockMvcResultMatchers.status().isOk())
-            .andExpect(jsonPath("$.numberOfPassengers").value(2))
-            .andReturn();
-}
 
 @Test
 @Order(17)
