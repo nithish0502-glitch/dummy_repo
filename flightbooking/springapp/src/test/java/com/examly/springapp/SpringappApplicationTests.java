@@ -227,7 +227,6 @@ public void backend_day16_testBookingServiceInterfaceAndImplementation() {
 		assertTrue(file.exists() && file.isFile());
 	}
 	
-
 @Test
 @Order(17)
 void backend_day14_testGetAllBookings() throws Exception {
