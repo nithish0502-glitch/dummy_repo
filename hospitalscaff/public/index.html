@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Attendance Form</title>
+</head>
+<body>
+
+  <h1>Attendance Form</h1>
+  <div>Mark Attendance</div>
+  <form onsubmit="">
+    <label for="attendanceid">Attendace ID:</label>
+    <input type="text" id="attendanceid" required>
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" required>
+
+    <label for="courseName">Course:</label>
+    <input type="text" id="courseName" required>
+
+    <label for="date">Attendace Date:</label>
+    <input type="date" id="date" required>
+
+    <label for="attendancePercentage">Attendance Percentage:</label>
+    <select id="attendancePercentage">
+      <option value="100">100%</option>
+      <option value="90">90%</option>
+      <option value="80">80%</option>
+      <option value="70">70%</option>
+      <option value="60">60%</option>
+      <option value="50">50%</option>
+      <option value="40">40%</option>
+      <option value="30">30%</option>
+      <option value="20">20%</option>
+      <option value="10">10%</option>
+      </select>
+
+      <input type="submit" id="submitButton" value="Submit">
+    </form>
+    <h2>Attendance Records</h2>
+      <table id="attendanceTable">
+        <thead>
+          <tr>
+            <th>Attendance</th>
+            <th>Name</th>
+            <th>Course Name</th>
+            <th>Attendance Date</th>
+            <th>Attendance Percentage</th>
+          </tr>
+        </thead>
+      </table>
+      <p id="attendanceCount"></p>
+
+      <script src="script.js"></script>
+</body>
+</html>
