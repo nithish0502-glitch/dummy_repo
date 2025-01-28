@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ProjectService {
     Project createProject(Project project);
-    Project getProjectById(int projectId) throws ProjectNotFoundException;
+    Project getProjectById(int projectId, boolean includeCompleted);
     void deleteProjectById(int projectId) throws ProjectNotFoundException;
     List<Project> getAllProjects();
 }

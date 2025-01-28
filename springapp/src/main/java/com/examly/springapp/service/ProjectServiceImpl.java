@@ -21,10 +21,22 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public Project getProjectById(int projectId) throws ProjectNotFoundException {
-        return projectRepository.findById(projectId).orElseThrow(() -> new ProjectNotFoundException("Project with ID " + projectId + " not found"));
-    }
+    public Project getProjectById(int projectId, boolean includeCompleted) {
+        // Retrieve the project from the database
+        Project project = projectRepository.findById(projectId)
+                .orElseThrow(() -> new ProjectNotFoundException("Project with ID " + projectId + " not found"));
 
+        // If 'includeCompleted' is false (default), filter tasks by status
+        if (!includeCompleted) {
+            project.setTasks(taskRepository.findByProjectIdAndStatusIn(projectId, List.of("Pending", "In Progress")));
+        } else {
+            // Include all tasks (including Completed tasks)
+            project.setTasks(taskRepository.findByProjectId(projectId));
+        }
+
+        return project;
+    }
+}
     @Override
     public void deleteProjectById(int projectId) throws ProjectNotFoundException {
         Project project = getProjectById(projectId);

@@ -22,10 +22,12 @@ public class ProjectController {
     }
 
     @GetMapping("/{projectId}")
-    public Project getProjectById(@PathVariable int projectId) throws ProjectNotFoundException {
-        return projectService.getProjectById(projectId);
+    public ResponseEntity<Project> getProjectById(
+            @PathVariable int projectId,
+            @RequestParam(required = false, defaultValue = "false") boolean includeCompleted) {
+        Project project = projectService.getProjectById(projectId, includeCompleted);
+        return ResponseEntity.ok(project);
     }
-
     @DeleteMapping("/{projectId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteProject(@PathVariable int projectId) throws ProjectNotFoundException {
