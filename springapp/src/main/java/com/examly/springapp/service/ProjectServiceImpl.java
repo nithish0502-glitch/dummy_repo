@@ -36,7 +36,7 @@ public class ProjectServiceImpl implements ProjectService {
 
         return project;
     }
-}
+
     @Override
     public void deleteProjectById(int projectId) throws ProjectNotFoundException {
         Project project = getProjectById(projectId);
