@@ -1,7 +1,7 @@
 package com.examly.springapp.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import javax.persistence.*;
+import jakarta.*;
 import java.util.List;
 
 @Entity
