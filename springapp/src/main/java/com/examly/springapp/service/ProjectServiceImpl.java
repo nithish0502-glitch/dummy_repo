@@ -37,12 +37,21 @@ public class ProjectServiceImpl implements ProjectService {
         return project;
     }
 
-    @Override
-    public void deleteProjectById(int projectId) throws ProjectNotFoundException {
-        Project project = getProjectById(projectId);
-        projectRepository.delete(project);
+    @DeleteMapping("/{projectId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public ResponseEntity<?> deleteProject(@PathVariable int projectId) {
+        try {
+            projectService.deleteProjectById(projectId);
+            return ResponseEntity.noContent().build();  // 204 No Content
+        } catch (ProjectNotFoundException ex) {
+            // Handle the case when the project is not found
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+        } catch (Exception ex) {
+            // Handle other unexpected exceptions
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An unexpected error occurred.");
+        }
     }
-
+    
     @Override
     public List<Project> getAllProjects() {
         return projectRepository.findAll();

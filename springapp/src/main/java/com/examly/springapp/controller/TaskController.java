@@ -21,9 +21,22 @@ public class TaskController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Task addTaskToProject(@PathVariable int projectId, @RequestBody Task task) throws TaskLimitExceededException, ProjectNotFoundException {
-        return taskService.addTaskToProject(projectId, task);
+    public ResponseEntity<?> addTaskToProject(@PathVariable int projectId, @RequestBody Task task) {
+        try {
+            Task createdTask = taskService.addTaskToProject(projectId, task);
+            return ResponseEntity.status(HttpStatus.CREATED).body(createdTask);
+        } catch (ProjectNotFoundException ex) {
+            // Handle case where the project doesn't exist
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+        } catch (TaskLimitExceededException ex) {
+            // Handle case where task limit is exceeded
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
+        } catch (Exception ex) {
+            // Handle any unexpected error
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An unexpected error occurred.");
+        }
     }
+    
 
     @GetMapping
     public List<Task> getTasksByProject(@PathVariable int projectId) throws ProjectNotFoundException {

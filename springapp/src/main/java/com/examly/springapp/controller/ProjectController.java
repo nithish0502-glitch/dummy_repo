@@ -22,12 +22,21 @@ public class ProjectController {
     }
 
     @GetMapping("/{projectId}")
-    public ResponseEntity<Project> getProjectById(
+    public ResponseEntity<?> getProjectById(
             @PathVariable int projectId,
             @RequestParam(required = false, defaultValue = "false") boolean includeCompleted) {
-        Project project = projectService.getProjectById(projectId, includeCompleted);
-        return ResponseEntity.ok(project);
+        try {
+            Project project = projectService.getProjectById(projectId, includeCompleted);
+            return ResponseEntity.ok(project);
+        } catch (ProjectNotFoundException ex) {
+            // Handle the case when the project is not found
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+        } catch (Exception ex) {
+            // Handle other unexpected exceptions
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An unexpected error occurred.");
+        }
     }
+    
     @DeleteMapping("/{projectId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteProject(@PathVariable int projectId) throws ProjectNotFoundException {
