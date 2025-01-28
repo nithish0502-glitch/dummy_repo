@@ -39,9 +39,23 @@ public class TaskController {
     
 
     @GetMapping
-    public List<Task> getTasksByProject(@PathVariable int projectId) throws ProjectNotFoundException {
-        return taskService.getTasksByProjectId(projectId);
+    public ResponseEntity<?> getTasksByProject(@PathVariable int projectId) {
+        try {
+            List<Task> tasks = taskService.getTasksByProjectId(projectId);
+            if (tasks.isEmpty()) {
+                // Return a 204 No Content status if no tasks found
+                return ResponseEntity.status(HttpStatus.NO_CONTENT).body("No tasks found for the project.");
+            }
+            return ResponseEntity.ok(tasks); // Return 200 OK with the list of tasks
+        } catch (ProjectNotFoundException ex) {
+            // Handle case where the project doesn't exist
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+        } catch (Exception ex) {
+            // Handle any unexpected error
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An unexpected error occurred.");
+        }
     }
+    
 
     @PutMapping("/{taskId}/status")
     public Task updateTaskStatus(@PathVariable int taskId, @RequestParam String status) throws InvalidTaskStatusUpdateException, ProjectCompletedException {
