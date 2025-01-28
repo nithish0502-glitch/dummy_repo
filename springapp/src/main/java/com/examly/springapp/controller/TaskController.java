@@ -1,0 +1,37 @@
+package com.examly.springapp.controller;
+
+import com.examly.springapp.model.Task;
+import com.examly.springapp.service.TaskService;
+import com.examly.springapp.exception.TaskLimitExceededException;
+import com.examly.springapp.exception.ProjectNotFoundException;
+import com.examly.springapp.exception.InvalidTaskStatusUpdateException;
+import com.examly.springapp.exception.ProjectCompletedException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/projects/{projectId}/tasks")
+public class TaskController {
+
+    @Autowired
+    private TaskService taskService;
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Task addTaskToProject(@PathVariable int projectId, @RequestBody Task task) throws TaskLimitExceededException, ProjectNotFoundException {
+        return taskService.addTaskToProject(projectId, task);
+    }
+
+    @GetMapping
+    public List<Task> getTasksByProject(@PathVariable int projectId) throws ProjectNotFoundException {
+        return taskService.getTasksByProjectId(projectId);
+    }
+
+    @PutMapping("/{taskId}/status")
+    public Task updateTaskStatus(@PathVariable int taskId, @RequestParam String status) throws InvalidTaskStatusUpdateException, ProjectCompletedException {
+        return taskService.updateTaskStatus(taskId, status);
+    }
+}
