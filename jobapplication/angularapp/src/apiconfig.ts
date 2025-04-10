@@ -1,0 +1,1 @@
+export const apiUrl = 'https://8080-ddaeaedabebb313990803dacaabedeebtwo.premiumproject.examly.io';

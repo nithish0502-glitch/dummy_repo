@@ -1,0 +1,104 @@
+/* General Styling */
+.job-details {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.job-details h2 {
+  font-size: 28px;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.job-details p {
+  font-size: 16px;
+  color: #7f8c8d;
+  margin: 5px 0;
+}
+
+.job-details strong {
+  color: #34495e;
+}
+
+.job-details h3 {
+  font-size: 22px;
+  color: #2980b9;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+/* Styling for the job applications list */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+li p {
+  margin: 5px 0;
+}
+
+li select {
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #ecf0f1;
+  color: #34495e;
+}
+
+li select:focus {
+  border-color: #2980b9;
+}
+
+/* Styling for loading message */
+.loading-message {
+  font-size: 18px;
+  color: #e74c3c;
+  text-align: center;
+  margin-top: 30px;
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .job-details {
+    margin: 10px;
+    padding: 15px;
+  }
+
+  .job-details h2 {
+    font-size: 24px;
+  }
+
+  .job-details h3 {
+    font-size: 18px;
+  }
+
+  .job-details p {
+    font-size: 14px;
+  }
+
+  li {
+    padding: 10px;
+  }
+
+  li p {
+    font-size: 14px;
+  }
+
+  li select {
+    font-size: 12px;
+  }
+}

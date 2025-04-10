@@ -1,0 +1,67 @@
+<div class="add-job-container">
+  <h2 class="form-title">{{ isEditMode ? 'Update Job' : 'Add Job' }}</h2>
+
+  <form (ngSubmit)="saveJob()" class="job-form">
+    <div class="form-group">
+      <label for="title">Job Title</label>
+      <input
+        type="text"
+        id="title"
+        name="title"
+        [(ngModel)]="job.title"
+        required
+        placeholder="Enter job title"
+        class="form-control"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="description">Job Description</label>
+      <textarea
+        id="description"
+        name="description"
+        [(ngModel)]="job.description"
+        required
+        placeholder="Enter job description"
+        class="form-control"
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="company">Company</label>
+      <input
+        type="text"
+        id="company"
+        name="company"
+        [(ngModel)]="job.company"
+        required
+        placeholder="Enter company name"
+        class="form-control"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="location">Location</label>
+      <input
+        type="text"
+        id="location"
+        name="location"
+        [(ngModel)]="job.location"
+        required
+        placeholder="Enter job location"
+        class="form-control"
+      />
+    </div>
+
+    <button type="submit" class="add-job-btn">
+      {{ isEditMode ? 'Update Job' : 'Add Job' }}
+    </button>
+
+    <div *ngIf="successMessage" class="success-message">
+      {{ successMessage }}
+    </div>
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+  </form>
+</div>

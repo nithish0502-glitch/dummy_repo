@@ -1,0 +1,22 @@
+<div class="view-applications-container">
+    <h2>Jobs with Applications</h2>
+  
+    <!-- Error message -->
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+  
+    <!-- Jobs list -->
+    <div *ngIf="jobs.length > 0; else noJobs">
+      <div *ngFor="let job of jobs" class="job-card" (click)="viewJobDetails(job.jobId)">
+        <h3>{{ job.title }}</h3> <!-- Display Job Title -->
+        <p><strong>Number of Applications:</strong> {{ job.applications.length }}</p> <!-- Display Number of Applications -->
+      </div>
+    </div>
+  
+    <!-- No jobs message -->
+    <ng-template #noJobs>
+      <p>No jobs found.</p>
+    </ng-template>
+  </div>
+  

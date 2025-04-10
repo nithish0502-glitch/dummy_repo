@@ -1,0 +1,49 @@
+<div class="job-list-container">
+    <h2 class="list-title">Job List</h2>
+  
+    <!-- Display error message if there is any -->
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  
+    <!-- Job cards container -->
+    <div class="job-cards-container" *ngIf="jobs.length > 0; else noJobsTemplate">
+      <div class="job-card" *ngFor="let job of jobs">
+        <div class="card-header">
+          <h3 class="job-title">{{ job.title }}</h3>
+          <p class="company">{{ job.company }}</p>
+        </div>
+  
+        <div class="card-body">
+          <p class="job-description">{{ job.description }}</p>
+          <p class="location">{{ job.location }}</p>
+        </div>
+  
+        <div class="card-footer">
+          <!-- Conditionally display buttons based on the role -->
+          <button 
+            *ngIf="isAdmin" 
+            (click)="navigateToUpdatePage(job.jobId)" 
+            class="update-btn">
+            Update
+          </button>
+          <button 
+            *ngIf="!isAdmin" 
+            (click)="applyForJob(job.jobId)" 
+            class="apply-btn">
+            Apply
+          </button>
+          <button 
+            (click)="deleteJob(job.jobId)" 
+            class="delete-btn">
+            Delete
+          </button>
+        </div>
+        
+      </div>
+    </div>
+  
+    <!-- Template for when no jobs are available -->
+    <ng-template #noJobsTemplate>
+      <p class="no-jobs">No jobs available. Please add jobs to view the list.</p>
+    </ng-template>
+  </div>
+  

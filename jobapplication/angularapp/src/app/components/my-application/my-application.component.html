@@ -1,0 +1,29 @@
+<div class="my-applications-container">
+  <h2>My Applications</h2>
+
+  <!-- Error message -->
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+       
+  <div *ngIf="jobs.length > 0; else noApplications">
+    <div *ngFor="let job of jobs" class="job-card">
+      <h3>{{ job.title }}</h3> 
+
+      <!-- Check for applications of the logged-in user -->
+      <div *ngFor="let application of job.applications" class="application-card">
+        <div *ngIf="application.user.userId === currenUserId">
+          <p><strong>Status:</strong> {{ application.status }}</p> <!-- Application Status -->
+          <p><strong>Skills:</strong> {{ application.skills }}</p> <!-- Applicant Skills -->
+          <p><strong>Location Preference:</strong> {{ application.locationPreference }}</p> <!-- Applicant Location Preference -->
+          <p><strong>Application Date:</strong> {{ application.applicationDate | date }}</p> <!-- Application Date -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- No applications message -->
+  <ng-template #noApplications>
+    <p>No applications found.</p>
+  </ng-template>
+</div>

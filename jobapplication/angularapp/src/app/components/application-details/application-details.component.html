@@ -1,0 +1,36 @@
+<div *ngIf="jobDetails; else loading" class="job-details">
+    <h2>{{ jobDetails.title }}</h2>
+    <p><strong>Company:</strong> {{ jobDetails.company }}</p>
+    <p><strong>Location:</strong> {{ jobDetails.location }}</p>
+    <p><strong>Description:</strong> {{ jobDetails.description }}</p>
+  
+    <h3>Applications:</h3>
+    <ul>
+      <li *ngFor="let application of jobDetails.applications">
+        <p><strong>Applicant Name:</strong> {{ application.user.username }}</p>
+        <p><strong>Email:</strong> {{ application.user.email }}</p>
+        <p><strong>Mobile Number:</strong> {{ application.user.mobileNumber }}</p>
+        
+        <!-- Editable Status -->
+        <p><strong>Status:</strong>
+          <select [(ngModel)]="application.status" (change)="updateApplicationStatus(application, application.status)">
+            <option value="Applied">Applied</option>
+            <option value="Ready for Interview">Ready for Interview</option>
+            <option value="Interview Scheduled">Interview Scheduled</option>
+            <option value="Hired">Hired</option>
+            <option value="Rejected">Rejected</option>
+          </select>
+        </p>
+  
+        <p><strong>Years of Experience:</strong> {{ application.yearsOfExperience }}</p>
+        <p><strong>Skills:</strong> {{ application.skills }}</p>
+        <p><strong>Application Date:</strong> {{ application.applicationDate | date }}</p>
+        <p><strong>Location Preference:</strong> {{ application.locationPreference }}</p>
+      </li>
+    </ul>
+  </div>
+  
+  <ng-template #loading>
+    <p class="loading-message">Loading job details...</p>
+  </ng-template>
+  
