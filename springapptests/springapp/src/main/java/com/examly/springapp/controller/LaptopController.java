@@ -2,7 +2,7 @@ package com.examly.springapp.controller;
 
 import com.examly.springapp.model.Laptop;
 import com.examly.springapp.service.LaptopService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,43 +12,74 @@ import java.util.List;
 @RequestMapping("/api/laptop")
 public class LaptopController {
 
-    @Autowired
-    private LaptopService laptopService;
+    private final LaptopService laptopService;
+
+    public LaptopController(LaptopService laptopService) {
+        this.laptopService = laptopService;
+    }
 
     @PostMapping("/{userId}")
     public ResponseEntity<?> createLaptop(@RequestBody Laptop laptop) {
-        if (laptop.getBrand().isEmpty() || laptop.getSerialNumber().isEmpty()) {
-            return ResponseEntity.status(409).body("Laptop brand and serial number are required.");
+        if (laptop.getBrand() == null || laptop.getBrand().isEmpty() ||
+            laptop.getSerialNumber() == null || laptop.getSerialNumber().isEmpty()) {
+            return ResponseEntity.status(HttpStatus.CONFLICT)
+                    .body("Laptop brand and serial number are required.");
         }
-        return ResponseEntity.status(201).body(laptopService.createLaptop(laptop));
+
+        Laptop createdLaptop = laptopService.createLaptop(laptop);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdLaptop);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<?> updateLaptop(@PathVariable Long id, @RequestBody Laptop laptop) {
-        return ResponseEntity.ok(laptopService.updateLaptop(id, laptop));
+        try {
+            Laptop updatedLaptop = laptopService.updateLaptop(id, laptop);
+            return ResponseEntity.ok(updatedLaptop);
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Laptop with ID " + id + " not found.");
+        }
     }
 
     @GetMapping
     public ResponseEntity<?> getAllLaptops() {
         List<Laptop> laptops = laptopService.getAllLaptops();
-        if (laptops.isEmpty()) return ResponseEntity.status(404).body("No laptops found.");
+        if (laptops.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("No laptops found.");
+        }
         return ResponseEntity.ok(laptops);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getLaptopById(@PathVariable Long id) {
-        return ResponseEntity.ok(laptopService.getLaptopById(id));
+        try {
+            Laptop laptop = laptopService.getLaptopById(id);
+            return ResponseEntity.ok(laptop);
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Laptop with ID " + id + " not found.");
+        }
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteLaptop(@PathVariable Long id) {
-        laptopService.deleteLaptop(id);
-        return ResponseEntity.ok("Laptop deleted successfully.");
+    public ResponseEntity<?> deleteLaptop(@PathVariable Long id) {
+        try {
+            laptopService.deleteLaptop(id);
+            return ResponseEntity.ok("Laptop deleted successfully.");
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Laptop with ID " + id + " not found.");
+        }
     }
 
     @GetMapping("/byDepartment/{department}")
-    public ResponseEntity<List<Laptop>> getLaptopsByDepartment(@PathVariable String department) {
-        return ResponseEntity.ok(laptopService.getLaptopsByDepartment(department));
+    public ResponseEntity<?> getLaptopsByDepartment(@PathVariable String department) {
+        List<Laptop> laptops = laptopService.getLaptopsByDepartment(department);
+        if (laptops.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("No laptops found for department: " + department);
+        }
+        return ResponseEntity.ok(laptops);
     }
 }
-
