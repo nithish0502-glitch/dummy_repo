@@ -198,7 +198,7 @@ class SpringappApplicationTests {
 
     @Test
     @Order(15)
-     void testLaptopUnderMaintenanceException() {
+    void testLaptopUnderMaintenanceException() {
         String laptopJson = "{"
                 + "\"brand\": \"Dell\","
                 + "\"model\": \"XPS 13\","
@@ -221,7 +221,7 @@ class SpringappApplicationTests {
     
     @Test
     @Order(16)
-    public void testRetrieveLaptopsAssignedToITDepartmentUsers() throws Exception {
+    void testRetrieveLaptopsAssignedToITDepartmentUsers() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/api/laptop/byDepartment/IT")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -230,7 +230,7 @@ class SpringappApplicationTests {
     }
 
     @Test
-    public void testQueryAnnotationPresentInLaptopRepository() {
+    void testQueryAnnotationPresentInLaptopRepository() {
         try {
             Class<?> repoClass = Class.forName("com.examly.springapp.repository.LaptopRepository");
 
@@ -248,7 +248,7 @@ class SpringappApplicationTests {
     }
 
     @Test
-    public void testFoldersExist() {
+    void testFoldersExist() {
         String[] folders = {
                 "src/main/java/com/examly/springapp/controller",
                 "src/main/java/com/examly/springapp/model",
@@ -265,7 +265,7 @@ class SpringappApplicationTests {
     }
 
     @Test
-    public void testFilesExist() {
+    void testFilesExist() {
         String[] files = {
                 "src/main/java/com/examly/springapp/controller/LaptopController.java",
                 "src/main/java/com/examly/springapp/controller/UserController.java",
