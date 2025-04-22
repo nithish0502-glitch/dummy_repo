@@ -15,7 +15,7 @@ public class LaptopController {
     @Autowired
     private LaptopService laptopService;
 
-    @PostMapping
+    @PostMapping("/{UserId}")
     public ResponseEntity<?> createLaptop(@RequestBody Laptop laptop) {
         if (laptop.getBrand().isEmpty() || laptop.getSerialNumber().isEmpty()) {
             return ResponseEntity.status(409).body("Laptop brand and serial number are required.");
