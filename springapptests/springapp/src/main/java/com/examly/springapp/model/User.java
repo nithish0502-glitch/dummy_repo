@@ -1,7 +1,6 @@
 package com.examly.springapp.model;
 
 import jakarta.persistence.*;
-import java.util.List;
 
 @Entity
 public class User {
@@ -12,8 +11,39 @@ public class User {
     private String name;
     private String department;
 
-    @OneToMany(mappedBy = "assignedTo")
-    private List<Laptop> laptops;
+    @OneToOne(mappedBy = "user")
+    private Laptop laptop;
 
     // Getters and Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public Laptop getLaptop() {
+        return laptop;
+    }
+
+    public void setLaptop(Laptop laptop) {
+        this.laptop = laptop;
+    }
 }
