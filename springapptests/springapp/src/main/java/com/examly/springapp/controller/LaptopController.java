@@ -25,7 +25,7 @@ public class LaptopController {
             return ResponseEntity.status(HttpStatus.CONFLICT)
                     .body("Laptop brand and serial number are required.");
         }
-
+        
         Laptop createdLaptop = laptopService.createLaptop(laptop);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdLaptop);
     }
