@@ -34,7 +34,7 @@ public class UserController {
                 .map(user -> ResponseEntity.ok(user))
                 .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).body("User with ID " + id + " not found."));
     }
-
+      
     @GetMapping
     public ResponseEntity<?> getAllUsers() {
         List<User> users = userService.getAllUsers();
