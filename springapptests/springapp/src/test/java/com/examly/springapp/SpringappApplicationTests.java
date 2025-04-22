@@ -218,7 +218,7 @@ class SpringappApplicationTests {
             fail("LaptopUnderMaintenanceException should be thrown for a laptop under maintenance.");
         }
     }
-
+    
     @Test
     @Order(16)
     public void testRetrieveLaptopsAssignedToITDepartmentUsers() throws Exception {
