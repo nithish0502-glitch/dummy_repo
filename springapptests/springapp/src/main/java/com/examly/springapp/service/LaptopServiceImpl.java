@@ -43,7 +43,7 @@ public class LaptopServiceImpl implements LaptopService {
         return laptopRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Laptop with ID " + id + " not found."));
     }
-
+     
     @Override
     public List<Laptop> getAllLaptops() {
         return laptopRepository.findAll();
