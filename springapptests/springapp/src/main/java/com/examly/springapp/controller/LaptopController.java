@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/laptop")
@@ -20,20 +19,15 @@ public class LaptopController {
     }
 
     @PostMapping("/{userId}")
-    public ResponseEntity<?> createLaptop(@PathVariable Long userId, @RequestBody Laptop laptop) {
+    public ResponseEntity<?> createLaptop(@RequestBody Laptop laptop) {
         if (laptop.getBrand() == null || laptop.getBrand().isEmpty() ||
             laptop.getSerialNumber() == null || laptop.getSerialNumber().isEmpty()) {
             return ResponseEntity.status(HttpStatus.CONFLICT)
                     .body("Laptop brand and serial number are required.");
         }
 
-        try {
-            Laptop createdLaptop = laptopService.createLaptop(userId, laptop);
-            return ResponseEntity.status(HttpStatus.CREATED).body(createdLaptop);
-        } catch (Exception ex) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("User with ID " + userId + " not found.");
-        }
+        Laptop createdLaptop = laptopService.createLaptop(laptop);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdLaptop);
     }
 
     @PutMapping("/{id}")
@@ -59,10 +53,10 @@ public class LaptopController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getLaptopById(@PathVariable Long id) {
-        Optional<Laptop> laptop = laptopService.getLaptopById(id);
-        if (laptop.isPresent()) {
-            return ResponseEntity.ok(laptop.get());
-        } else {
+        try {
+            Laptop laptop = laptopService.getLaptopById(id);
+            return ResponseEntity.ok(laptop);
+        } catch (Exception ex) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("Laptop with ID " + id + " not found.");
         }
@@ -70,12 +64,13 @@ public class LaptopController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteLaptop(@PathVariable Long id) {
-        if (!laptopService.getLaptopById(id).isPresent()) {
+        try {
+            laptopService.deleteLaptop(id);
+            return ResponseEntity.ok("Laptop deleted successfully.");
+        } catch (Exception ex) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("Laptop with ID " + id + " not found.");
         }
-        laptopService.deleteLaptop(id);
-        return ResponseEntity.ok("Laptop deleted successfully.");
     }
 
     @GetMapping("/byDepartment/{department}")
