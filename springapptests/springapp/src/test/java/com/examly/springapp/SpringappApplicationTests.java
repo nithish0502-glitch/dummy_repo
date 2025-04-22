@@ -198,7 +198,7 @@ class SpringappApplicationTests {
 
     @Test
     @Order(15)
-    public void testLaptopUnderMaintenanceException() {
+     void testLaptopUnderMaintenanceException() {
         String laptopJson = "{"
                 + "\"brand\": \"Dell\","
                 + "\"model\": \"XPS 13\","
