@@ -29,7 +29,7 @@ public class LaptopController {
         Laptop createdLaptop = laptopService.createLaptop(laptop);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdLaptop);
     }
-
+    
     @PutMapping("/{id}")
     public ResponseEntity<?> updateLaptop(@PathVariable Long id, @RequestBody Laptop laptop) {
         try {
