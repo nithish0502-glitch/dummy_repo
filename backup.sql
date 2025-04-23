@@ -41,7 +41,7 @@ CREATE TABLE `laptop` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `UKtlki0ww9j5y04x8vunr7022c2` (`user_id`),
   CONSTRAINT `FKooqo9avddwki53oo4fmad0u0q` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -50,7 +50,7 @@ CREATE TABLE `laptop` (
 
 LOCK TABLES `laptop` WRITE;
 /*!40000 ALTER TABLE `laptop` DISABLE KEYS */;
-INSERT INTO `laptop` VALUES (6,1,'Lenovo','Inspiron 16','SN12345679','Available'),(7,2,NULL,NULL,NULL,NULL);
+INSERT INTO `laptop` VALUES (2,1,'Dell','XPS 13','SN123456','Under Maintenance');
 /*!40000 ALTER TABLE `laptop` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -66,7 +66,7 @@ CREATE TABLE `user` (
   `department` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -75,7 +75,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'HR','vijay'),(2,'IT','Veera'),(3,'Engineering','Alice');
+INSERT INTO `user` VALUES (1,'Engineering','Alice');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -88,4 +88,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-04-23 19:14:18
+-- Dump completed on 2025-04-23 19:29:18

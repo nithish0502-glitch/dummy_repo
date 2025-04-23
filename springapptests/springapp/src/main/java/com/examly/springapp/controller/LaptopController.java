@@ -15,7 +15,7 @@ import java.util.Optional;
 @RequestMapping("/api/laptop")
 public class LaptopController {
 
-     @Autowired
+    @Autowired
     private LaptopService laptopService;
 
     @PostMapping("/user/{userId}")
@@ -24,8 +24,8 @@ public class LaptopController {
             Laptop savedLaptop = laptopService.createLaptopWithUser(laptop, userId);
             return ResponseEntity.status(HttpStatus.CREATED).body(savedLaptop);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                                 .body("Error saving laptop: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("User with ID " + userId + " not found.");
         }
     }
 
@@ -33,18 +33,21 @@ public class LaptopController {
     public ResponseEntity<?> getAllLaptops() {
         List<Laptop> laptops = laptopService.getAllLaptops();
         if (laptops.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("No laptops found.");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No laptops found.");
         }
         return ResponseEntity.ok(laptops);
     }
 
-    // @GetMapping("/{id}")
-    // public ResponseEntity<?> getLaptopById(@PathVariable Long id) {
-    //     Optional<Laptop> laptop = laptopService.getLaptopById(id);
-    //     return laptop.map(ResponseEntity::ok)
-    //                  .orElse(() -> ResponseEntity.status(HttpStatus.NOT_FOUND)
-    //                                                 .body("Laptop with ID " + id + " not found."));
-    // }
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getLaptopById(@PathVariable Long id) {
+        Optional<Laptop> laptop = laptopService.getLaptopById(id);
+        if (laptop.isPresent()) {
+            return ResponseEntity.ok(laptop.get());
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Laptop with ID " + id + " not found.");
+        }
+    }
 
     @PutMapping("/{id}")
     public ResponseEntity<?> updateLaptop(@PathVariable Long id, @RequestBody Laptop updatedLaptop) {

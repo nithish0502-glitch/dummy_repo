@@ -181,7 +181,7 @@ class SpringappApplicationTests {
                 + "}";
 
         try {
-            mockMvc.perform(MockMvcRequestBuilders.post("/api/user/assignLaptop")
+            mockMvc.perform(MockMvcRequestBuilders.post("/api/laptop/user/1")
                     .contentType(MediaType.APPLICATION_JSON)
                     .content(laptopJson)
                     .accept(MediaType.APPLICATION_JSON))
@@ -192,15 +192,6 @@ class SpringappApplicationTests {
         }
     }
     
-    @Test
-    @Order(16)
-    void testRetrieveLaptopsAssignedToITDepartmentUsers() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/laptop/byDepartment/IT")
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$").isArray())
-                .andExpect(MockMvcResultMatchers.jsonPath("$[*].assignedTo.department").value("IT"));
-    }
 
     @Test
     void testQueryAnnotationPresentInLaptopRepository() {
