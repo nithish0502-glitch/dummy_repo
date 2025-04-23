@@ -12,8 +12,5 @@ public interface UserService {
     List<User> getAllUsers();
     void deleteUser(Long id);
     String assignLaptopToUser(Long userId, Long laptopId);
-
-    
-
 }
 
