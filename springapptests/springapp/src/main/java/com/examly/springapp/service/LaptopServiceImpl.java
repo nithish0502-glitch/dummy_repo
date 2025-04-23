@@ -1,57 +1,64 @@
 package com.examly.springapp.service;
 
 import com.examly.springapp.model.Laptop;
+import com.examly.springapp.model.User;
 import com.examly.springapp.repository.LaptopRepository;
+import com.examly.springapp.repository.UserRepository;
 import com.examly.springapp.exception.ResourceNotFoundException;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class LaptopServiceImpl implements LaptopService {
+@Autowired
+    private LaptopRepository laptopRepository;
 
-    private final LaptopRepository laptopRepository;
-
-    public LaptopServiceImpl(LaptopRepository laptopRepository) {
-        this.laptopRepository = laptopRepository;
-    }
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
-    public Laptop createLaptop(Laptop laptop) {
+    public Laptop createLaptopWithUser(Laptop laptop, Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
+
+        laptop.setUser(user);
         return laptopRepository.save(laptop);
     }
 
-    @Override
-    public Laptop updateLaptop(Long id, Laptop laptopDetails) {
-        Laptop laptop = laptopRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Laptop with ID " + id + " not found."));
-        laptop.setBrand(laptopDetails.getBrand());
-        laptop.setModel(laptopDetails.getModel());
-        laptop.setSerialNumber(laptopDetails.getSerialNumber());
-        laptop.setStatus(laptopDetails.getStatus());
-        return laptopRepository.save(laptop);
-    }
-
-    @Override
-    public void deleteLaptop(Long id) {
-        Laptop laptop = laptopRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Laptop with ID " + id + " not found."));
-        laptopRepository.delete(laptop);
-    }
-
-    @Override
-    public Laptop getLaptopById(Long id) {
-        return laptopRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Laptop with ID " + id + " not found."));
-    }
-     
     @Override
     public List<Laptop> getAllLaptops() {
         return laptopRepository.findAll();
     }
 
     @Override
-    public List<Laptop> getLaptopsByDepartment(String department) {
-        return laptopRepository.findByUserDepartment(department);
+    public Optional<Laptop> getLaptopById(Long id) {
+        return laptopRepository.findById(id);
+    }
+
+    @Override
+    public Laptop updateLaptop(Long id, Laptop updatedLaptop) {
+        return laptopRepository.findById(id).map(existing -> {
+            existing.setBrand(updatedLaptop.getBrand());
+            existing.setModel(updatedLaptop.getModel());
+            existing.setSerialNumber(updatedLaptop.getSerialNumber());
+            existing.setStatus(updatedLaptop.getStatus());
+            return laptopRepository.save(existing);
+        }).orElse(null);
+    }
+
+    @Override
+    public boolean deleteLaptop(Long id) {
+        if (laptopRepository.existsById(id)) {
+            laptopRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 }
 

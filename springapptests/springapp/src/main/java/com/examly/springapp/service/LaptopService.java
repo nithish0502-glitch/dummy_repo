@@ -3,13 +3,13 @@ package com.examly.springapp.service;
 import com.examly.springapp.model.Laptop;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface LaptopService {
-    Laptop createLaptop(Laptop laptop);
-    Laptop updateLaptop(Long id, Laptop laptop);
+    Laptop createLaptopWithUser(Laptop laptop, Long userId);
     List<Laptop> getAllLaptops();
-    Laptop getLaptopById(Long id);
-    void deleteLaptop(Long id);
-    List<Laptop> getLaptopsByDepartment(String department);
+    Optional<Laptop> getLaptopById(Long id);
+    Laptop updateLaptop(Long id, Laptop laptop);
+    boolean deleteLaptop(Long id);
 }
 

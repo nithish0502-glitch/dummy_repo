@@ -1,5 +1,7 @@
 package com.examly.springapp.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -12,6 +14,7 @@ public class User {
     private String department;
 
     @OneToOne(mappedBy = "user")
+    @JsonManagedReference
     private Laptop laptop;
 
     // Getters and Setters
