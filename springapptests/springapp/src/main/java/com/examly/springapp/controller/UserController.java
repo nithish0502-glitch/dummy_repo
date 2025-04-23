@@ -52,4 +52,31 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body("No users found.");
         }
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateUser(@PathVariable Long id, @RequestBody User userDetails) {
+        try {
+            User updatedUser = userService.updateUser(id, userDetails);
+            return ResponseEntity.ok(updatedUser);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User with ID " + id + " not found.");
+        }
+    }
+
+    // ✅ Delete a User
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable Long id) {
+        try {
+            boolean deleted = userService.deleteUser(id);
+            if (deleted) {
+                return ResponseEntity.ok("User with ID " + id + " deleted successfully.");
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User with ID " + id + " not found.");
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error deleting user.");
+        }
+    }
 }
+
+
+
