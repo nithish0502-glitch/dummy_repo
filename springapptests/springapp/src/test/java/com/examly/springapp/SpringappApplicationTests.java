@@ -56,7 +56,7 @@ class SpringappApplicationTests {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.brand").value("Dell"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.status").value("Assigned"));
     }
-
+ 
     @Test
     @Order(4)
     void testGetAllLaptops_Success() throws Exception {
@@ -132,7 +132,7 @@ class SpringappApplicationTests {
     @Test
     @Order(11)
     void testGetLaptopsByDepartment_Success() throws Exception {
-        String department = "IT";
+        String department = "Engineering";
 
         mockMvc.perform(MockMvcRequestBuilders.get("/api/laptop/byDepartment/" + department)
                 .accept(MediaType.APPLICATION_JSON))

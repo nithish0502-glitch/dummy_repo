@@ -1,28 +1,12 @@
 -------------------------------------------------------------------------------
 Test set: com.examly.springapp.SpringappApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 16, Failures: 6, Errors: 0, Skipped: 0, Time elapsed: 5.424 s <<< FAILURE! - in com.examly.springapp.SpringappApplicationTests
-com.examly.springapp.SpringappApplicationTests.testGetAllLaptops_NotFound  Time elapsed: 0.643 s  <<< FAILURE!
-java.lang.AssertionError: Status expected:<404> but was:<204>
-	at com.examly.springapp.SpringappApplicationTests.testGetAllLaptops_NotFound(SpringappApplicationTests.java:75)
-
-com.examly.springapp.SpringappApplicationTests.testGetLaptopById_Success  Time elapsed: 0.008 s  <<< FAILURE!
-java.lang.AssertionError: Status expected:<200> but was:<405>
-	at com.examly.springapp.SpringappApplicationTests.testGetLaptopById_Success(SpringappApplicationTests.java:127)
-
-com.examly.springapp.SpringappApplicationTests.testGetLaptopsByDepartment_Success  Time elapsed: 0.013 s  <<< FAILURE!
+Tests run: 16, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 5.649 s <<< FAILURE! - in com.examly.springapp.SpringappApplicationTests
+com.examly.springapp.SpringappApplicationTests.testGetLaptopsByDepartment_Success  Time elapsed: 0.029 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<200> but was:<404>
 	at com.examly.springapp.SpringappApplicationTests.testGetLaptopsByDepartment_Success(SpringappApplicationTests.java:139)
 
-com.examly.springapp.SpringappApplicationTests.testGetLaptopById_NotFound  Time elapsed: 0.007 s  <<< FAILURE!
-java.lang.AssertionError: Status expected:<404> but was:<405>
-	at com.examly.springapp.SpringappApplicationTests.testGetLaptopById_NotFound(SpringappApplicationTests.java:150)
-
-com.examly.springapp.SpringappApplicationTests.testLaptopUnderMaintenanceException  Time elapsed: 0.017 s  <<< FAILURE!
+com.examly.springapp.SpringappApplicationTests.testLaptopUnderMaintenanceException  Time elapsed: 0.027 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<400> but was:<201>
 	at com.examly.springapp.SpringappApplicationTests.testLaptopUnderMaintenanceException(SpringappApplicationTests.java:188)
-
-com.examly.springapp.SpringappApplicationTests.testQueryAnnotationPresentInLaptopRepository  Time elapsed: 0.008 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: @Query annotation should be present on at least one method in LaptopRepository ==> expected: <true> but was: <false>
-	at com.examly.springapp.SpringappApplicationTests.testQueryAnnotationPresentInLaptopRepository(SpringappApplicationTests.java:207)
 
