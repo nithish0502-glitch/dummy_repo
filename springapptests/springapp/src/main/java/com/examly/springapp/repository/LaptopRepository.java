@@ -9,5 +9,7 @@ import java.util.List;
 public interface LaptopRepository extends JpaRepository<Laptop, Long> {
     @Query("SELECT l FROM Laptop l WHERE l.assignedTo.department = ?1")
     List<Laptop> findByDepartment(String department);
+
+    List<Laptop> findByUserDepartment(String department);
 }
 

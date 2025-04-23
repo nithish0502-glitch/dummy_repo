@@ -65,4 +65,14 @@ public class Laptop {
     public void setUser(User user) {
         this.user = user;
     }
+
+    public Object getAssignedTo() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getAssignedTo'");
+    }
+
+    public void setAssignedTo(User user2) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setAssignedTo'");
+    }
 }
