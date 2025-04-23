@@ -35,13 +35,23 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean deleteUser(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteUser'");
+        Optional<User> userOpt = userRepository.findById(id);
+        if (userOpt.isPresent()) {
+            userRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 
     @Override
     public User updateUser(Long id, User userDetails) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateUser'");
+            User user = userRepository.findById(id)
+                    .orElseThrow(() -> new RuntimeException("User with ID " + id + " not found"));
+    
+            user.setName(userDetails.getName());
+            user.setDepartment(userDetails.getDepartment());
+    
+            return userRepository.save(user);
+        }
     }
-}
+
