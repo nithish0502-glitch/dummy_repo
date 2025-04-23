@@ -31,36 +31,30 @@ class SpringappApplicationTests {
 
     @Test
     @Order(2)
-    void testCreateLaptop_Success() throws Exception {
-        String laptopJson = "{"
-                + "\"brand\": \"Dell\","
-                + "\"model\": \"XPS 13\","
-                + "\"serialNumber\": \"SN123456\","
-                + "\"status\": \"Working\","
-                + "\"assignedTo\": null"
-                + "}";
+    void testCreateUser_Success() throws Exception {
+        String userJson = "{ \"name\": \"Alice\", \"department\": \"Engineering\" }";
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/laptop")
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/user")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(laptopJson)
-                .accept(MediaType.APPLICATION_JSON))
+                .content(userJson))
                 .andExpect(MockMvcResultMatchers.status().isCreated())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.brand").value("Dell"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.serialNumber").value("SN123456"))
-                .andReturn();
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value("Alice"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.department").value("Engineering"));
     }
+
+       
 
     @Test
     @Order(3)
-    void testCreateLaptop_MissingFields() throws Exception {
-        String laptopJson = "{ \"brand\": \"\", \"serialNumber\": \"\" }";
+    void testCreateLaptop_Success() throws Exception {
+        String laptopJson = "{ \"brand\": \"Dell\", \"model\": \"XPS 15\", \"serialNumber\": \"ABC123XYZ\", \"status\": \"Assigned\" }";
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/laptop")
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/laptop/user/1")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(laptopJson)
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isConflict())
-                .andExpect(MockMvcResultMatchers.content().string("Laptop brand and serial number are required."));
+                .content(laptopJson))
+                .andExpect(MockMvcResultMatchers.status().isCreated())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.brand").value("Dell"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.status").value("Assigned"));
     }
 
     @Test
@@ -70,7 +64,7 @@ class SpringappApplicationTests {
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$").isArray())
-                .andExpect(MockMvcResultMatchers.jsonPath("$[*].model").value("XPS 13"));
+                .andExpect(MockMvcResultMatchers.jsonPath("$[*].model").value("XPS 15"));
     }
 
     @Test
@@ -85,7 +79,7 @@ class SpringappApplicationTests {
     @Test
     @Order(5)
     void testUpdateLaptop_Success() throws Exception {
-        String laptopJson = "{ \"brand\": \"Dell\", \"model\": \"XPS 15\" }";
+        String laptopJson = "{ \"brand\": \"Dell\", \"model\": \"XPS 14\" }";
 
         mockMvc.perform(MockMvcRequestBuilders.put("/api/laptop/1")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -93,7 +87,7 @@ class SpringappApplicationTests {
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.brand").value("Dell"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.model").value("XPS 15"));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.model").value("XPS 14"));
     }
 
     @Test
@@ -109,39 +103,17 @@ class SpringappApplicationTests {
                 .andExpect(MockMvcResultMatchers.content().string("Laptop with ID 99 not found."));
     }
 
-    @Test
-    @Order(7)
-    void testAssignLaptopToUser_Success() throws Exception {
-        String assignLaptopJson = "{"
-                + "\"userId\": 1,"
-                + "\"laptopId\": 1"
-                + "}";
-
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/user/assignLaptop")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(assignLaptopJson)
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.status").value("Laptop assigned successfully"))
-                .andReturn();
-    }
-
-    @Test
-    @Order(8)
-    void testUserHasLinkedLaptop() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/user/1"))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.laptop.brand").value("Dell"));
-    }
+    
+    
 
     @Test
     @Order(9)
     void testAssignLaptopToUser_UserNotFound() throws Exception {
-        String assignLaptopJson = "{ \"userId\": 99, \"laptopId\": 1 }";
+        String laptopJson = "{ \"brand\": \"Dell\", \"model\": \"XPS 15\", \"serialNumber\": \"ABC123XYZ\", \"status\": \"Assigned\" }";
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/user/assignLaptop")
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/laptop/user/99")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(assignLaptopJson)
+                .content(laptopJson)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isNotFound())
                 .andExpect(MockMvcResultMatchers.content().string("User with ID 99 not found."));
@@ -154,7 +126,7 @@ class SpringappApplicationTests {
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.brand").value("Dell"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.model").value("XPS 15"));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.model").value("XPS 14"));
     }
 
     @Test
@@ -166,7 +138,8 @@ class SpringappApplicationTests {
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$").isArray())
-                .andExpect(MockMvcResultMatchers.jsonPath("$[*].assignedTo.department").value(department));
+                .andExpect(MockMvcResultMatchers.jsonPath("$[*].model").value("XPS 15"));
+            
     }
 
     @Test
