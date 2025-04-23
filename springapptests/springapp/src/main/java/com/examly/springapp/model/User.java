@@ -46,4 +46,9 @@ public class User {
     public void setLaptop(Laptop laptop) {
         this.laptop = laptop;
     }
+
+    public Object map(Object object) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'map'");
+    }
 }
