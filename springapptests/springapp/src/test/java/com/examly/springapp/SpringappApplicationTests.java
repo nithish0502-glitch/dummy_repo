@@ -177,7 +177,6 @@ class SpringappApplicationTests {
                 + "\"model\": \"XPS 13\","
                 + "\"serialNumber\": \"SN123456\","
                 + "\"status\": \"Under Maintenance\","
-                + "\"assignedTo\": 1"
                 + "}";
 
         try {
