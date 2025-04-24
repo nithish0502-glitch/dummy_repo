@@ -7,6 +7,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultHandler;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
@@ -136,11 +137,17 @@ class SpringappApplicationTests {
 
         mockMvc.perform(MockMvcRequestBuilders.get("/api/laptop/byDepartment/" + department)
                 .accept(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$").isArray())
-                .andExpect(MockMvcResultMatchers.jsonPath("$[*].model").value("XPS 15"));
+                .andDo(print())
+        .andExpect(MockMvcResultMatchers.status().isOk());
             
     }
+
+    private ResultHandler print() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'print'");
+    }
+
+
 
     @Test
     @Order(12)

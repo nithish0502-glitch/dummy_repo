@@ -68,4 +68,10 @@ public class LaptopController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Laptop with ID " + id + " not found.");
         }
     }
+    @GetMapping("/byDepartment/{department}")
+public ResponseEntity<List<Laptop>> getLaptopsByDepartment(@PathVariable String department) {
+    List<Laptop> laptops = laptopService.getLaptopsByDepartment(department);
+    return ResponseEntity.ok(laptops);
+}
+
 }

@@ -1,12 +1,12 @@
 -------------------------------------------------------------------------------
 Test set: com.examly.springapp.SpringappApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 16, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 4.403 s <<< FAILURE! - in com.examly.springapp.SpringappApplicationTests
-com.examly.springapp.SpringappApplicationTests.testGetLaptopsByDepartment_Success  Time elapsed: 0.013 s  <<< FAILURE!
+Tests run: 16, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 4.277 s <<< FAILURE! - in com.examly.springapp.SpringappApplicationTests
+com.examly.springapp.SpringappApplicationTests.testGetLaptopsByDepartment_Success  Time elapsed: 0.012 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<200> but was:<404>
 	at com.examly.springapp.SpringappApplicationTests.testGetLaptopsByDepartment_Success(SpringappApplicationTests.java:139)
 
-com.examly.springapp.SpringappApplicationTests.testLaptopUnderMaintenanceException  Time elapsed: 0.006 s  <<< FAILURE!
+com.examly.springapp.SpringappApplicationTests.testLaptopUnderMaintenanceException  Time elapsed: 0.008 s  <<< FAILURE!
 java.lang.AssertionError: Response content expected:<Laptop is under maintenance and cannot be assigned.> but was:<>
 	at com.examly.springapp.SpringappApplicationTests.testLaptopUnderMaintenanceException(SpringappApplicationTests.java:188)
 
