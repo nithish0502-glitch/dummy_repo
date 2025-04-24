@@ -10,6 +10,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultHandler;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -106,23 +107,17 @@ class SpringappApplicationTests {
 
     }
 
-    
-    
-
     @Test
-    @Order(9)
-    void testAssignLaptopToUser_UserNotFound() throws Exception {
-        String laptopJson = "{ \"brand\": \"Dell\", \"model\": \"XPS 15\", \"serialNumber\": \"ABC123XYZ\", \"status\": \"Assigned\" }";
+void testAssignLaptopToUser_UserNotFound() throws Exception {
+    String laptopJson = "{ \"brand\": \"Dell\", \"model\": \"XPS 15\", \"serialNumber\": \"ABC123XYZ\", \"status\": \"Assigned\" }";
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/laptop/user/99")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(laptopJson)
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isNotFound())
-                //.andExpect(MockMvcResultMatchers.content().string("User with ID 99 not found."));
-                .andExpect(MockMvcResultMatchers.content().string("User not found"));
-
-    }
+    mockMvc.perform(MockMvcRequestBuilders.post("/api/laptop/user/99")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(laptopJson)
+            .accept(MediaType.APPLICATION_JSON))
+            .andExpect(MockMvcResultMatchers.status().isNotFound())
+            .andExpect(MockMvcResultMatchers.content().string("User not found"));
+}
 
     @Test
     @Order(10)
@@ -145,14 +140,6 @@ class SpringappApplicationTests {
         .andExpect(MockMvcResultMatchers.status().isOk());
             
     }
-
-    private ResultHandler print() {
-        // TODO Auto-generated method stub
-       throw new UnsupportedOperationException("Unimplemented method 'print'");
-    }
-
-
-
     @Test
     @Order(12)
     void testGetLaptopById_NotFound() throws Exception {
