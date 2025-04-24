@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.examly.springapp.SpringappApplicationTests" time="4.61" tests="16" errors="0" skipped="0" failures="1">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.examly.springapp.SpringappApplicationTests" time="4.772" tests="16" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -14,7 +14,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-17-openjdk-amd64/lib"/>
-    <property name="sun.java.command" value="/home/coder/project/workspace/springapptests/springapp/target/surefire/surefirebooter4940878832443251249.jar /home/coder/project/workspace/springapptests/springapp/target/surefire 2025-04-24T10-47-30_500-jvmRun1 surefire16051291612342138140tmp surefire_010232812330677325264tmp"/>
+    <property name="sun.java.command" value="/home/coder/project/workspace/springapptests/springapp/target/surefire/surefirebooter3520709355742144001.jar /home/coder/project/workspace/springapptests/springapp/target/surefire 2025-04-24T10-57-29_996-jvmRun1 surefire204127283420352916tmp surefire_016825366541866022041tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/coder/project/workspace/springapptests/springapp/target/test-classes:/home/coder/project/workspace/springapptests/springapp/target/classes:/home/coder/.m2/repository/org/springframework/boot/spring-boot-starter-data-jpa/3.3.8/spring-boot-starter-data-jpa-3.3.8.jar:/home/coder/.m2/repository/org/springframework/boot/spring-boot-starter-aop/3.3.8/spring-boot-starter-aop-3.3.8.jar:/home/coder/.m2/repository/org/springframework/spring-aop/6.1.16/spring-aop-6.1.16.jar:/home/coder/.m2/repository/org/aspectj/aspectjweaver/1.9.22.1/aspectjweaver-1.9.22.1.jar:/home/coder/.m2/repository/org/springframework/boot/spring-boot-starter-jdbc/3.3.8/spring-boot-starter-jdbc-3.3.8.jar:/home/coder/.m2/repository/com/zaxxer/HikariCP/5.1.0/HikariCP-5.1.0.jar:/home/coder/.m2/repository/org/springframework/spring-jdbc/6.1.16/spring-jdbc-6.1.16.jar:/home/coder/.m2/repository/org/hibernate/orm/hibernate-core/6.5.3.Final/hibernate-core-6.5.3.Final.jar:/home/coder/.m2/repository/jakarta/persistence/jakarta.persistence-api/3.1.0/jakarta.persistence-api-3.1.0.jar:/home/coder/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar:/home/coder/.m2/repository/org/jboss/logging/jboss-logging/3.5.3.Final/jboss-logging-3.5.3.Final.jar:/home/coder/.m2/repository/org/hibernate/common/hibernate-commons-annotations/6.0.6.Final/hibernate-commons-annotations-6.0.6.Final.jar:/home/coder/.m2/repository/io/smallrye/jandex/3.1.2/jandex-3.1.2.jar:/home/coder/.m2/repository/com/fasterxml/classmate/1.7.0/classmate-1.7.0.jar:/home/coder/.m2/repository/net/bytebuddy/byte-buddy/1.14.19/byte-buddy-1.14.19.jar:/home/coder/.m2/repository/org/glassfish/jaxb/jaxb-runtime/4.0.5/jaxb-runtime-4.0.5.jar:/home/coder/.m2/repository/org/glassfish/jaxb/jaxb-core/4.0.5/jaxb-core-4.0.5.jar:/home/coder/.m2/repository/org/eclipse/angus/angus-activation/2.0.2/angus-activation-2.0.2.jar:/home/coder/.m2/repository/org/glassfish/jaxb/txw2/4.0.5/txw2-4.0.5.jar:/home/coder/.m2/repository/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.jar:/home/coder/.m2/repository/jakarta/inject/jakarta.inject-api/2.0.1/jakarta.inject-api-2.0.1.jar:/home/coder/.m2/repository/org/antlr/antlr4-runtime/4.13.0/antlr4-runtime-4.13.0.jar:/home/coder/.m2/repository/org/springframework/data/spring-data-jpa/3.3.8/spring-data-jpa-3.3.8.jar:/home/coder/.m2/repository/org/springframework/data/spring-data-commons/3.3.8/spring-data-commons-3.3.8.jar:/home/coder/.m2/repository/org/springframework/spring-orm/6.1.16/spring-orm-6.1.16.jar:/home/coder/.m2/repository/org/springframework/spring-context/6.1.16/spring-context-6.1.16.jar:/home/coder/.m2/repository/org/springframework/spring-tx/6.1.16/spring-tx-6.1.16.jar:/home/coder/.m2/repository/org/springframework/spring-beans/6.1.16/spring-beans-6.1.16.jar:/home/coder/.m2/repository/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1.jar:/home/coder/.m2/repository/org/slf4j/slf4j-api/2.0.16/slf4j-api-2.0.16.jar:/home/coder/.m2/repository/org/springframework/spring-aspects/6.1.16/spring-aspects-6.1.16.jar:/home/coder/.m2/repository/org/springframework/boot/spring-boot-starter-web/3.3.8/spring-boot-starter-web-3.3.8.jar:/home/coder/.m2/repository/org/springframework/boot/spring-boot-starter/3.3.8/spring-boot-starter-3.3.8.jar:/home/coder/.m2/repository/org/springframework/boot/spring-boot-starter-logging/3.3.8/spring-boot-starter-logging-3.3.8.jar:/home/coder/.m2/repository/ch/qos/logback/logback-classic/1.5.16/logback-classic-1.5.16.jar:/home/coder/.m2/repository/ch/qos/logback/logback-core/1.5.16/logback-core-1.5.16.jar:/home/coder/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.23.1/log4j-to-slf4j-2.23.1.jar:/home/coder/.m2/repository/org/apache/logging/log4j/log4j-api/2.23.1/log4j-api-2.23.1.jar:/home/coder/.m2/repository/org/slf4j/jul-to-slf4j/2.0.16/jul-to-slf4j-2.0.16.jar:/home/coder/.m2/repository/org/yaml/snakeyaml/2.2/snakeyaml-2.2.jar:/home/coder/.m2/repository/org/springframework/boot/spring-boot-starter-json/3.3.8/spring-boot-starter-json-3.3.8.jar:/home/coder/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.17.3/jackson-databind-2.17.3.jar:/home/coder/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.17.3/jackson-annotations-2.17.3.jar:/home/coder/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.17.3/jackson-core-2.17.3.jar:/home/coder/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.17.3/jackson-datatype-jdk8-2.17.3.jar:/home/coder/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.17.3/jackson-datatype-jsr310-2.17.3.jar:/home/coder/.m2/repository/com/fasterxml/jackson/module/jackson-module-parameter-names/2.17.3/jackson-module-parameter-names-2.17.3.jar:/home/coder/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/3.3.8/spring-boot-starter-tomcat-3.3.8.jar:/home/coder/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/10.1.34/tomcat-embed-core-10.1.34.jar:/home/coder/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/10.1.34/tomcat-embed-el-10.1.34.jar:/home/coder/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/10.1.34/tomcat-embed-websocket-10.1.34.jar:/home/coder/.m2/repository/org/springframework/spring-web/6.1.16/spring-web-6.1.16.jar:/home/coder/.m2/repository/io/micrometer/micrometer-observation/1.13.10/micrometer-observation-1.13.10.jar:/home/coder/.m2/repository/io/micrometer/micrometer-commons/1.13.10/micrometer-commons-1.13.10.jar:/home/coder/.m2/repository/org/springframework/spring-webmvc/6.1.16/spring-webmvc-6.1.16.jar:/home/coder/.m2/repository/org/springframework/spring-expression/6.1.16/spring-expression-6.1.16.jar:/home/coder/.m2/repository/org/springframework/boot/spring-boot-devtools/3.3.8/spring-boot-devtools-3.3.8.jar:/home/coder/.m2/repository/org/springframework/boot/spring-boot/3.3.8/spring-boot-3.3.8.jar:/home/coder/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/3.3.8/spring-boot-autoconfigure-3.3.8.jar:/home/coder/.m2/repository/com/mysql/mysql-connector-j/8.3.0/mysql-connector-j-8.3.0.jar:/home/coder/.m2/repository/org/springframework/boot/spring-boot-starter-test/3.3.8/spring-boot-starter-test-3.3.8.jar:/home/coder/.m2/repository/org/springframework/boot/spring-boot-test/3.3.8/spring-boot-test-3.3.8.jar:/home/coder/.m2/repository/org/springframework/boot/spring-boot-test-autoconfigure/3.3.8/spring-boot-test-autoconfigure-3.3.8.jar:/home/coder/.m2/repository/com/jayway/jsonpath/json-path/2.9.0/json-path-2.9.0.jar:/home/coder/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.2/jakarta.xml.bind-api-4.0.2.jar:/home/coder/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.3/jakarta.activation-api-2.1.3.jar:/home/coder/.m2/repository/net/minidev/json-smart/2.5.1/json-smart-2.5.1.jar:/home/coder/.m2/repository/net/minidev/accessors-smart/2.5.1/accessors-smart-2.5.1.jar:/home/coder/.m2/repository/org/ow2/asm/asm/9.6/asm-9.6.jar:/home/coder/.m2/repository/org/assertj/assertj-core/3.25.3/assertj-core-3.25.3.jar:/home/coder/.m2/repository/org/awaitility/awaitility/4.2.2/awaitility-4.2.2.jar:/home/coder/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/home/coder/.m2/repository/org/junit/jupiter/junit-jupiter/5.10.5/junit-jupiter-5.10.5.jar:/home/coder/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.5/junit-jupiter-api-5.10.5.jar:/home/coder/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/coder/.m2/repository/org/junit/platform/junit-platform-commons/1.10.5/junit-platform-commons-1.10.5.jar:/home/coder/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/coder/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.5/junit-jupiter-params-5.10.5.jar:/home/coder/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.5/junit-jupiter-engine-5.10.5.jar:/home/coder/.m2/repository/org/junit/platform/junit-platform-engine/1.10.5/junit-platform-engine-1.10.5.jar:/home/coder/.m2/repository/org/mockito/mockito-core/5.11.0/mockito-core-5.11.0.jar:/home/coder/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.19/byte-buddy-agent-1.14.19.jar:/home/coder/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/home/coder/.m2/repository/org/mockito/mockito-junit-jupiter/5.11.0/mockito-junit-jupiter-5.11.0.jar:/home/coder/.m2/repository/org/skyscreamer/jsonassert/1.5.3/jsonassert-1.5.3.jar:/home/coder/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar:/home/coder/.m2/repository/org/springframework/spring-core/6.1.16/spring-core-6.1.16.jar:/home/coder/.m2/repository/org/springframework/spring-jcl/6.1.16/spring-jcl-6.1.16.jar:/home/coder/.m2/repository/org/springframework/spring-test/6.1.16/spring-test-6.1.16.jar:/home/coder/.m2/repository/org/xmlunit/xmlunit-core/2.9.1/xmlunit-core-2.9.1.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -31,7 +31,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="FILE_LOG_CHARSET" value="UTF-8"/>
     <property name="java.awt.headless" value="true"/>
-    <property name="surefire.real.class.path" value="/home/coder/project/workspace/springapptests/springapp/target/surefire/surefirebooter4940878832443251249.jar"/>
+    <property name="surefire.real.class.path" value="/home/coder/project/workspace/springapptests/springapp/target/surefire/surefirebooter3520709355742144001.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.14+7-Debian-1deb11u1"/>
     <property name="user.name" value="coder"/>
@@ -48,7 +48,7 @@
     <property name="user.dir" value="/home/coder/project/workspace/springapptests/springapp"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="PID" value="89921"/>
+    <property name="PID" value="98846"/>
     <property name="CONSOLE_LOG_CHARSET" value="UTF-8"/>
     <property name="native.encoding" value="UTF-8"/>
     <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib"/>
@@ -59,8 +59,8 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="testGetAllLaptops_NotFound" classname="com.examly.springapp.SpringappApplicationTests" time="0.542">
-    <system-out><![CDATA[10:47:31.442 [main] INFO org.springframework.boot.devtools.restart.RestartApplicationListener -- Restart disabled due to context in which it is running
+  <testcase name="testGetAllLaptops_NotFound" classname="com.examly.springapp.SpringappApplicationTests" time="0.581">
+    <system-out><![CDATA[10:57:31.045 [main] INFO org.springframework.boot.devtools.restart.RestartApplicationListener -- Restart disabled due to context in which it is running
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -71,20 +71,20 @@
 
  :: Spring Boot ::                (v3.3.8)
 
-2025-04-24T10:47:31.707Z  INFO 89921 --- [           main] c.e.springapp.SpringappApplicationTests  : Starting SpringappApplicationTests using Java 17.0.14 with PID 89921 (started by coder in /home/coder/project/workspace/springapptests/springapp)
-2025-04-24T10:47:31.709Z  INFO 89921 --- [           main] c.e.springapp.SpringappApplicationTests  : No active profile set, falling back to 1 default profile: "default"
-2025-04-24T10:47:32.407Z  INFO 89921 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-04-24T10:47:32.503Z  INFO 89921 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 87 ms. Found 2 JPA repository interfaces.
-2025-04-24T10:47:32.876Z  INFO 89921 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-04-24T10:47:32.932Z  INFO 89921 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
-2025-04-24T10:47:32.981Z  INFO 89921 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-04-24T10:47:33.175Z  INFO 89921 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-04-24T10:47:33.205Z  INFO 89921 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-04-24T10:47:33.321Z  INFO 89921 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3095d401
-2025-04-24T10:47:33.322Z  INFO 89921 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-04-24T10:47:33.338Z  WARN 89921 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-04-24T10:47:33.339Z  WARN 89921 --- [           main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2025-04-24T10:47:33.953Z  INFO 89921 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-24T10:57:31.295Z  INFO 98846 --- [           main] c.e.springapp.SpringappApplicationTests  : Starting SpringappApplicationTests using Java 17.0.14 with PID 98846 (started by coder in /home/coder/project/workspace/springapptests/springapp)
+2025-04-24T10:57:31.297Z  INFO 98846 --- [           main] c.e.springapp.SpringappApplicationTests  : No active profile set, falling back to 1 default profile: "default"
+2025-04-24T10:57:31.924Z  INFO 98846 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-24T10:57:31.977Z  INFO 98846 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 39 ms. Found 2 JPA repository interfaces.
+2025-04-24T10:57:32.365Z  INFO 98846 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-24T10:57:32.405Z  INFO 98846 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2025-04-24T10:57:32.437Z  INFO 98846 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-24T10:57:32.662Z  INFO 98846 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-24T10:57:32.682Z  INFO 98846 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-24T10:57:32.820Z  INFO 98846 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3ac0a14b
+2025-04-24T10:57:32.823Z  INFO 98846 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-24T10:57:32.845Z  WARN 98846 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-04-24T10:57:32.847Z  WARN 98846 --- [           main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-04-24T10:57:33.498Z  INFO 98846 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
 Hibernate: alter table laptop drop foreign key FKooqo9avddwki53oo4fmad0u0q
 Hibernate: drop table if exists laptop
 Hibernate: drop table if exists user
@@ -92,109 +92,69 @@ Hibernate: create table laptop (id bigint not null auto_increment, user_id bigin
 Hibernate: create table user (id bigint not null auto_increment, department varchar(255), name varchar(255), primary key (id)) engine=InnoDB
 Hibernate: alter table laptop add constraint UKtlki0ww9j5y04x8vunr7022c2 unique (user_id)
 Hibernate: alter table laptop add constraint FKooqo9avddwki53oo4fmad0u0q foreign key (user_id) references user (id)
-2025-04-24T10:47:34.070Z  INFO 89921 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-04-24T10:47:34.416Z  WARN 89921 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-04-24T10:47:34.689Z  INFO 89921 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2025-04-24T10:47:34.689Z  INFO 89921 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2025-04-24T10:47:34.692Z  INFO 89921 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
-2025-04-24T10:47:34.720Z  INFO 89921 --- [           main] c.e.springapp.SpringappApplicationTests  : Started SpringappApplicationTests in 3.287 seconds (process running for 3.999)
+2025-04-24T10:57:33.653Z  INFO 98846 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-24T10:57:34.023Z  WARN 98846 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-24T10:57:34.303Z  INFO 98846 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-04-24T10:57:34.303Z  INFO 98846 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-04-24T10:57:34.306Z  INFO 98846 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2025-04-24T10:57:34.330Z  INFO 98846 --- [           main] c.e.springapp.SpringappApplicationTests  : Started SpringappApplicationTests in 3.296 seconds (process running for 4.066)
 Hibernate: select l1_0.id,l1_0.brand,l1_0.model,l1_0.serial_number,l1_0.status,l1_0.user_id from laptop l1_0
 ]]></system-out>
   </testcase>
-  <testcase name="testCreateUser_Success" classname="com.examly.springapp.SpringappApplicationTests" time="0.105">
+  <testcase name="testCreateUser_Success" classname="com.examly.springapp.SpringappApplicationTests" time="0.136">
     <system-out><![CDATA[Hibernate: insert into user (department,name) values (?,?)
 ]]></system-out>
   </testcase>
-  <testcase name="testCreateLaptop_Success" classname="com.examly.springapp.SpringappApplicationTests" time="0.022">
+  <testcase name="testCreateLaptop_Success" classname="com.examly.springapp.SpringappApplicationTests" time="0.025">
     <system-out><![CDATA[Hibernate: select u1_0.id,u1_0.department,l1_0.id,l1_0.brand,l1_0.model,l1_0.serial_number,l1_0.status,u1_0.name from user u1_0 left join laptop l1_0 on u1_0.id=l1_0.user_id where u1_0.id=?
 Hibernate: insert into laptop (brand,model,serial_number,status,user_id) values (?,?,?,?,?)
 ]]></system-out>
   </testcase>
-  <testcase name="testGetAllLaptops_Success" classname="com.examly.springapp.SpringappApplicationTests" time="0.014">
+  <testcase name="testGetAllLaptops_Success" classname="com.examly.springapp.SpringappApplicationTests" time="0.013">
     <system-out><![CDATA[Hibernate: select l1_0.id,l1_0.brand,l1_0.model,l1_0.serial_number,l1_0.status,l1_0.user_id from laptop l1_0
 Hibernate: select u1_0.id,u1_0.department,l1_0.id,l1_0.brand,l1_0.model,l1_0.serial_number,l1_0.status,u1_0.name from user u1_0 left join laptop l1_0 on u1_0.id=l1_0.user_id where u1_0.id=?
 ]]></system-out>
   </testcase>
-  <testcase name="testUpdateLaptop_Success" classname="com.examly.springapp.SpringappApplicationTests" time="0.018">
+  <testcase name="testUpdateLaptop_Success" classname="com.examly.springapp.SpringappApplicationTests" time="0.022">
     <system-out><![CDATA[Hibernate: select l1_0.id,l1_0.brand,l1_0.model,l1_0.serial_number,l1_0.status,u1_0.id,u1_0.department,u1_0.name from laptop l1_0 left join user u1_0 on u1_0.id=l1_0.user_id where l1_0.id=?
 Hibernate: update laptop set brand=?,model=?,serial_number=?,status=?,user_id=? where id=?
 ]]></system-out>
   </testcase>
-  <testcase name="testUpdateLaptop_NotFound" classname="com.examly.springapp.SpringappApplicationTests" time="0.007">
+  <testcase name="testUpdateLaptop_NotFound" classname="com.examly.springapp.SpringappApplicationTests" time="0.009">
     <system-out><![CDATA[Hibernate: select l1_0.id,l1_0.brand,l1_0.model,l1_0.serial_number,l1_0.status,u1_0.id,u1_0.department,u1_0.name from laptop l1_0 left join user u1_0 on u1_0.id=l1_0.user_id where l1_0.id=?
 ]]></system-out>
   </testcase>
-  <testcase name="testGetLaptopById_Success" classname="com.examly.springapp.SpringappApplicationTests" time="0.007">
+  <testcase name="testGetLaptopById_Success" classname="com.examly.springapp.SpringappApplicationTests" time="0.009">
     <system-out><![CDATA[Hibernate: select l1_0.id,l1_0.brand,l1_0.model,l1_0.serial_number,l1_0.status,u1_0.id,u1_0.department,u1_0.name from laptop l1_0 left join user u1_0 on u1_0.id=l1_0.user_id where l1_0.id=?
 ]]></system-out>
   </testcase>
-  <testcase name="testGetLaptopsByDepartment_Success" classname="com.examly.springapp.SpringappApplicationTests" time="0.029">
+  <testcase name="testGetLaptopsByDepartment_Success" classname="com.examly.springapp.SpringappApplicationTests" time="0.035">
     <system-out><![CDATA[Hibernate: select l1_0.id,l1_0.brand,l1_0.model,l1_0.serial_number,l1_0.status,l1_0.user_id from laptop l1_0 left join user u1_0 on u1_0.id=l1_0.user_id where u1_0.department=?
 Hibernate: select u1_0.id,u1_0.department,l1_0.id,l1_0.brand,l1_0.model,l1_0.serial_number,l1_0.status,u1_0.name from user u1_0 left join laptop l1_0 on u1_0.id=l1_0.user_id where u1_0.id=?
 ]]></system-out>
   </testcase>
-  <testcase name="testGetLaptopById_NotFound" classname="com.examly.springapp.SpringappApplicationTests" time="0.007">
+  <testcase name="testGetLaptopById_NotFound" classname="com.examly.springapp.SpringappApplicationTests" time="0.009">
     <system-out><![CDATA[Hibernate: select l1_0.id,l1_0.brand,l1_0.model,l1_0.serial_number,l1_0.status,u1_0.id,u1_0.department,u1_0.name from laptop l1_0 left join user u1_0 on u1_0.id=l1_0.user_id where l1_0.id=?
 ]]></system-out>
   </testcase>
-  <testcase name="testDeleteLaptop_Success" classname="com.examly.springapp.SpringappApplicationTests" time="0.203">
+  <testcase name="testDeleteLaptop_Success" classname="com.examly.springapp.SpringappApplicationTests" time="0.213">
     <system-out><![CDATA[Hibernate: select count(*) from laptop l1_0 where l1_0.id=?
 Hibernate: select l1_0.id,l1_0.brand,l1_0.model,l1_0.serial_number,l1_0.status,u1_0.id,u1_0.department,u1_0.name from laptop l1_0 left join user u1_0 on u1_0.id=l1_0.user_id where l1_0.id=?
 Hibernate: delete from laptop where id=?
 ]]></system-out>
   </testcase>
-  <testcase name="testDeleteLaptop_NotFound" classname="com.examly.springapp.SpringappApplicationTests" time="0.009">
+  <testcase name="testDeleteLaptop_NotFound" classname="com.examly.springapp.SpringappApplicationTests" time="0.008">
     <system-out><![CDATA[Hibernate: select count(*) from laptop l1_0 where l1_0.id=?
 ]]></system-out>
   </testcase>
-  <testcase name="testLaptopUnderMaintenanceException" classname="com.examly.springapp.SpringappApplicationTests" time="0.007">
+  <testcase name="testLaptopUnderMaintenanceException" classname="com.examly.springapp.SpringappApplicationTests" time="0.015">
     <system-out><![CDATA[Hibernate: select u1_0.id,u1_0.department,l1_0.id,l1_0.brand,l1_0.model,l1_0.serial_number,l1_0.status,u1_0.name from user u1_0 left join laptop l1_0 on u1_0.id=l1_0.user_id where u1_0.id=?
 ]]></system-out>
   </testcase>
-  <testcase name="testQueryAnnotationPresentInLaptopRepository" classname="com.examly.springapp.SpringappApplicationTests" time="0.005"/>
-  <testcase name="testFoldersExist" classname="com.examly.springapp.SpringappApplicationTests" time="0.002"/>
+  <testcase name="testQueryAnnotationPresentInLaptopRepository" classname="com.examly.springapp.SpringappApplicationTests" time="0.006"/>
+  <testcase name="testFoldersExist" classname="com.examly.springapp.SpringappApplicationTests" time="0.003"/>
   <testcase name="testAssignLaptopToUser_UserNotFound" classname="com.examly.springapp.SpringappApplicationTests" time="0.009">
-    <failure type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Response content expected:<User not found> but was:<404 NOT_FOUND "User not found">
-	at com.examly.springapp.SpringappApplicationTests.testAssignLaptopToUser_UserNotFound(SpringappApplicationTests.java:124)
-]]></failure>
     <system-out><![CDATA[Hibernate: select u1_0.id,u1_0.department,l1_0.id,l1_0.brand,l1_0.model,l1_0.serial_number,l1_0.status,u1_0.name from user u1_0 left join laptop l1_0 on u1_0.id=l1_0.user_id where u1_0.id=?
-
-MockHttpServletRequest:
-      HTTP Method = POST
-      Request URI = /api/laptop/user/99
-       Parameters = {}
-          Headers = [Content-Type:"application/json;charset=UTF-8", Accept:"application/json", Content-Length:"89"]
-             Body = { "brand": "Dell", "model": "XPS 15", "serialNumber": "ABC123XYZ", "status": "Assigned" }
-    Session Attrs = {}
-
-Handler:
-             Type = com.examly.springapp.controller.LaptopController
-           Method = com.examly.springapp.controller.LaptopController#addLaptop(Laptop, Long)
-
-Async:
-    Async started = false
-     Async result = null
-
-Resolved Exception:
-             Type = null
-
-ModelAndView:
-        View name = null
-             View = null
-            Model = null
-
-FlashMap:
-       Attributes = null
-
-MockHttpServletResponse:
-           Status = 404
-    Error message = null
-          Headers = [Content-Type:"application/json", Content-Length:"30"]
-     Content type = application/json
-             Body = 404 NOT_FOUND "User not found"
-    Forwarded URL = null
-   Redirected URL = null
-          Cookies = []
 ]]></system-out>
   </testcase>
   <testcase name="testFilesExist" classname="com.examly.springapp.SpringappApplicationTests" time="0.003"/>

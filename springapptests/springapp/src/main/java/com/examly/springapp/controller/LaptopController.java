@@ -20,19 +20,18 @@ public class LaptopController {
  
     @Autowired
     private LaptopService laptopService;
- 
     @PostMapping("/user/{userId}") 
 public ResponseEntity<?> addLaptop(@RequestBody Laptop laptop, @PathVariable Long userId) {
     try {
         Laptop savedLaptop = laptopService.createLaptopWithUser(laptop, userId);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedLaptop);
     } catch (ResponseStatusException e) {
-        // Check if the exception is "User not found" and return a custom message
-        if (e.getStatus() == HttpStatus.NOT_FOUND && "User not found".equals(e.getReason())) {
+        // Correctly accessing the status code from ResponseStatusException using getStatusCode()
+        if (e.getStatusCode() == HttpStatus.NOT_FOUND && "User not found".equals(e.getReason())) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
         }
         // Otherwise, return the exception message
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getReason());
     } catch (LaptopUnderMaintenanceException e) {
         // Handle specific exception for laptop under maintenance
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
@@ -41,6 +40,7 @@ public ResponseEntity<?> addLaptop(@RequestBody Laptop laptop, @PathVariable Lon
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
 }
+
 
     @GetMapping
     public ResponseEntity<?> getAllLaptops() {
