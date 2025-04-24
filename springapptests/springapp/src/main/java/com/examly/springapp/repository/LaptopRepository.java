@@ -10,6 +10,6 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface LaptopRepository extends JpaRepository<Laptop, Long> {
     @Query
-    List<Laptop> findByUserDepartment(String department);
+    Laptop findByUserDepartment(String department);
 
  }

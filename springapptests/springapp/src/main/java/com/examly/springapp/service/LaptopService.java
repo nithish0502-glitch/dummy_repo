@@ -12,7 +12,7 @@ public interface LaptopService {
     Optional<Laptop> getLaptopById(Long id);
     Laptop updateLaptop(Long id, Laptop laptop);
     boolean deleteLaptop(Long id);
-    List<Laptop> getLaptopsByDepartment(String department);
+    Laptop getLaptopByDepartment(String department);
     
 
 }

@@ -64,8 +64,9 @@ public class LaptopServiceImpl implements LaptopService {
     }
 
     @Override
-public List<Laptop> getLaptopsByDepartment(String department) {
-    return laptopRepository.findByUserDepartment(department);
+    public Laptop getLaptopByDepartment(String department) {
+        return laptopRepository.findByUserDepartment(department);
+    }
 }
-}
+
 

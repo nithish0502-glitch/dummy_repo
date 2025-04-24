@@ -12,6 +12,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.result.StatusResultMatchers;
 import org.springframework.web.server.ResponseStatusException;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
