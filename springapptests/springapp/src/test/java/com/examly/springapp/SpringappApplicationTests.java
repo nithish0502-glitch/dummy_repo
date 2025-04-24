@@ -136,26 +136,18 @@ void testAssignLaptopToUser_UserNotFound() throws Exception {
 
     @Order(11)
     @Test
-void testGetLaptopsByDepartment_Success() throws Exception {
-    String department = "Engineering";
-
-    mockMvc.perform(MockMvcRequestBuilders.get("/api/laptop/byDepartment/" + department)
-            .accept(MediaType.APPLICATION_JSON))
-            .andExpect(status().isOk())
-                        .andExpect(MockMvcResultMatchers.jsonPath("$").isArray())
-                        .andExpect(MockMvcResultMatchers.jsonPath("$[0].department").value("Engineering"))
-                        .andExpect(MockMvcResultMatchers.jsonPath("$[0].brand").exists())
-                        .andExpect(MockMvcResultMatchers.jsonPath("$[0].model").exists());
-            }
+    void testGetLaptopsByDepartment_Success() throws Exception {
+        String department = "Engineering";
+    
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/laptop/byDepartment/" + department)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.department").value("Engineering"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.brand").exists())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.model").exists())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.serialNumber").exists());
+    }
             
-                        
-                private StatusResultMatchers status() {
-                    // TODO Auto-generated method stub
-                    throw new UnsupportedOperationException("Unimplemented method 'status'");
-                }
-            
-            
-                }
     @Test
     @Order(12)
     void testGetLaptopById_NotFound() throws Exception {
