@@ -1,17 +1,17 @@
 -------------------------------------------------------------------------------
 Test set: com.examly.springapp.SpringappApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 16, Failures: 2, Errors: 1, Skipped: 0, Time elapsed: 6.077 s <<< FAILURE! - in com.examly.springapp.SpringappApplicationTests
-com.examly.springapp.SpringappApplicationTests.testAssignLaptopToUser_UserNotFound  Time elapsed: 0.045 s  <<< FAILURE!
-java.lang.AssertionError: Response content expected:<User with ID 99 not found.> but was:<>
-	at com.examly.springapp.SpringappApplicationTests.testAssignLaptopToUser_UserNotFound(SpringappApplicationTests.java:120)
+Tests run: 16, Failures: 2, Errors: 1, Skipped: 0, Time elapsed: 5.181 s <<< FAILURE! - in com.examly.springapp.SpringappApplicationTests
+com.examly.springapp.SpringappApplicationTests.testAssignLaptopToUser_UserNotFound  Time elapsed: 0.014 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<404> but was:<400>
+	at com.examly.springapp.SpringappApplicationTests.testAssignLaptopToUser_UserNotFound(SpringappApplicationTests.java:119)
 
-com.examly.springapp.SpringappApplicationTests.testGetLaptopsByDepartment_Success  Time elapsed: 0.086 s  <<< ERROR!
+com.examly.springapp.SpringappApplicationTests.testGetLaptopsByDepartment_Success  Time elapsed: 0.028 s  <<< ERROR!
 java.lang.UnsupportedOperationException: Unimplemented method 'print'
 	at com.examly.springapp.SpringappApplicationTests.print(SpringappApplicationTests.java:147)
 	at com.examly.springapp.SpringappApplicationTests.testGetLaptopsByDepartment_Success(SpringappApplicationTests.java:140)
 
-com.examly.springapp.SpringappApplicationTests.testLaptopUnderMaintenanceException  Time elapsed: 0.008 s  <<< FAILURE!
+com.examly.springapp.SpringappApplicationTests.testLaptopUnderMaintenanceException  Time elapsed: 0.017 s  <<< FAILURE!
 java.lang.AssertionError: Response content expected:<Laptop is under maintenance and cannot be assigned.> but was:<>
 	at com.examly.springapp.SpringappApplicationTests.testLaptopUnderMaintenanceException(SpringappApplicationTests.java:195)
 

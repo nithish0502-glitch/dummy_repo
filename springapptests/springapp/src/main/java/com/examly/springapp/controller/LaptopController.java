@@ -1,37 +1,35 @@
 package com.examly.springapp.controller;
-
+ 
+import com.examly.springapp.exception.LaptopUnderMaintenanceException;
 import com.examly.springapp.model.Laptop;
 import com.examly.springapp.service.LaptopService;
-
+ 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+ 
 import java.util.List;
 import java.util.Optional;
-
+ 
 @RestController
 @RequestMapping("/api/laptop")
 public class LaptopController {
-
+ 
     @Autowired
     private LaptopService laptopService;
-
-
-
-@PostMapping("/user/{userId}")
+ 
+    @PostMapping("/user/{userId}")
 public ResponseEntity<?> addLaptop(@RequestBody Laptop laptop, @PathVariable Long userId) {
     try {
         Laptop savedLaptop = laptopService.createLaptopWithUser(laptop, userId);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedLaptop);
     } catch (Exception e) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .body("User with ID " + userId + " not found.");
+        System.out.println("+++++++++++++++++++++++++++++");
+        System.out.println(e.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
 }
-
-
     @GetMapping
     public ResponseEntity<?> getAllLaptops() {
         List<Laptop> laptops = laptopService.getAllLaptops();
@@ -40,7 +38,7 @@ public ResponseEntity<?> addLaptop(@RequestBody Laptop laptop, @PathVariable Lon
         }
         return ResponseEntity.ok(laptops);
     }
-
+ 
     @GetMapping("/{id}")
     public ResponseEntity<?> getLaptopById(@PathVariable Long id) {
         Optional<Laptop> laptop = laptopService.getLaptopById(id);
@@ -51,7 +49,7 @@ public ResponseEntity<?> addLaptop(@RequestBody Laptop laptop, @PathVariable Lon
                     .body("Laptop with ID " + id + " not found.");
         }
     }
-
+ 
     @PutMapping("/{id}")
     public ResponseEntity<?> updateLaptop(@PathVariable Long id, @RequestBody Laptop updatedLaptop) {
         Laptop laptop = laptopService.updateLaptop(id, updatedLaptop);
@@ -61,7 +59,7 @@ public ResponseEntity<?> addLaptop(@RequestBody Laptop laptop, @PathVariable Lon
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Laptop with ID " + id + " not found.");
         }
     }
-
+ 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteLaptop(@PathVariable Long id) {
         boolean deleted = laptopService.deleteLaptop(id);
@@ -71,10 +69,13 @@ public ResponseEntity<?> addLaptop(@RequestBody Laptop laptop, @PathVariable Lon
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Laptop with ID " + id + " not found.");
         }
     }
+ 
     @GetMapping("/byDepartment/{department}")
-public ResponseEntity<List<Laptop>> getLaptopsByDepartment(@PathVariable String department) {
-    List<Laptop> laptops = laptopService.getLaptopsByDepartment(department);
-    return ResponseEntity.ok(laptops);
+    public ResponseEntity<List<Laptop>> getLaptopsByDepartment(@PathVariable String department) {
+        List<Laptop> laptops = laptopService.getLaptopsByDepartment(department);
+        return ResponseEntity.ok(laptops);
+    }
+ 
 }
-
-}
+ 
+ 
