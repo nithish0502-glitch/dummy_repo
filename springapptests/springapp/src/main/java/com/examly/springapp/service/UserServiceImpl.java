@@ -1,9 +1,7 @@
 package com.examly.springapp.service;
 
-import com.examly.springapp.exception.ResourceNotFoundException;
-import com.examly.springapp.model.Laptop;
+import com.examly.springapp.exception.LaptopUnderMaintenanceException;
 import com.examly.springapp.model.User;
-import com.examly.springapp.repository.LaptopRepository;
 import com.examly.springapp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +23,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserById(Long id) {
         return userRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("User with ID " + id + " not found"));
+                .orElseThrow(() -> new LaptopUnderMaintenanceException("User with ID " + id + " not found"));
     }
 
     @Override

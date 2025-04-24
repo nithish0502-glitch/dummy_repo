@@ -4,7 +4,7 @@ import com.examly.springapp.model.Laptop;
 import com.examly.springapp.model.User;
 import com.examly.springapp.repository.LaptopRepository;
 import com.examly.springapp.repository.UserRepository;
-import com.examly.springapp.exception.ResourceNotFoundException;
+import com.examly.springapp.exception.LaptopUnderMaintenanceException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
