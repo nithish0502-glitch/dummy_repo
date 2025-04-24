@@ -62,9 +62,9 @@ public class LaptopServiceImpl implements LaptopService {
     }
 
     @Override
-    public List<Laptop> getLaptopsByDepartment(String department) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getLaptopsByDepartment'");
-    }
+public List<Laptop> getLaptopsByDepartment(String department) {
+    return laptopRepository.findByUserDepartment(department);
+}
+
 }
 
