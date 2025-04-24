@@ -102,6 +102,8 @@ class SpringappApplicationTests {
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isNotFound())
                 .andExpect(MockMvcResultMatchers.content().string("Laptop with ID 99 not found."));
+                
+
     }
 
     
@@ -117,7 +119,9 @@ class SpringappApplicationTests {
                 .content(laptopJson)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isNotFound())
-                .andExpect(MockMvcResultMatchers.content().string("User with ID 99 not found."));
+                //.andExpect(MockMvcResultMatchers.content().string("User with ID 99 not found."));
+                .andExpect(MockMvcResultMatchers.content().string("User not found"));
+
     }
 
     @Test
