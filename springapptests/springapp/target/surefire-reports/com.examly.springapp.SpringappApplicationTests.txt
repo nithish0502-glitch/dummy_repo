@@ -1,12 +1,12 @@
 -------------------------------------------------------------------------------
 Test set: com.examly.springapp.SpringappApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 16, Failures: 1, Errors: 1, Skipped: 0, Time elapsed: 4.654 s <<< FAILURE! - in com.examly.springapp.SpringappApplicationTests
-com.examly.springapp.SpringappApplicationTests.testAssignLaptopToUser_UserNotFound  Time elapsed: 0.013 s  <<< FAILURE!
+Tests run: 16, Failures: 1, Errors: 1, Skipped: 0, Time elapsed: 5.068 s <<< FAILURE! - in com.examly.springapp.SpringappApplicationTests
+com.examly.springapp.SpringappApplicationTests.testAssignLaptopToUser_UserNotFound  Time elapsed: 0.014 s  <<< FAILURE!
 java.lang.AssertionError: Response content expected:<User with ID 99 not found.> but was:<404 NOT_FOUND "User not found">
 	at com.examly.springapp.SpringappApplicationTests.testAssignLaptopToUser_UserNotFound(SpringappApplicationTests.java:120)
 
-com.examly.springapp.SpringappApplicationTests.testGetLaptopsByDepartment_Success  Time elapsed: 0.03 s  <<< ERROR!
+com.examly.springapp.SpringappApplicationTests.testGetLaptopsByDepartment_Success  Time elapsed: 0.044 s  <<< ERROR!
 java.lang.UnsupportedOperationException: Unimplemented method 'print'
 	at com.examly.springapp.SpringappApplicationTests.print(SpringappApplicationTests.java:147)
 	at com.examly.springapp.SpringappApplicationTests.testGetLaptopsByDepartment_Success(SpringappApplicationTests.java:140)
