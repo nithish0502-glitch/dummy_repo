@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.examly.springapp.SpringappApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 16, Failures: 2, Errors: 1, Skipped: 0, Time elapsed: 4.105 s <<< FAILURE! - in com.examly.springapp.SpringappApplicationTests
-com.examly.springapp.SpringappApplicationTests.testAssignLaptopToUser_UserNotFound  Time elapsed: 0.011 s  <<< FAILURE!
+Tests run: 16, Failures: 2, Errors: 1, Skipped: 0, Time elapsed: 4.267 s <<< FAILURE! - in com.examly.springapp.SpringappApplicationTests
+com.examly.springapp.SpringappApplicationTests.testAssignLaptopToUser_UserNotFound  Time elapsed: 0.013 s  <<< FAILURE!
 java.lang.AssertionError: Response content expected:<User with ID 99 not found.> but was:<>
 	at com.examly.springapp.SpringappApplicationTests.testAssignLaptopToUser_UserNotFound(SpringappApplicationTests.java:120)
 
