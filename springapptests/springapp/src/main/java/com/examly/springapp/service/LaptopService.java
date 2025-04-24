@@ -1,5 +1,6 @@
 package com.examly.springapp.service;
 
+import com.examly.springapp.exception.LaptopUnderMaintenanceException;
 import com.examly.springapp.model.Laptop;
 
 import java.util.List;
@@ -12,5 +13,7 @@ public interface LaptopService {
     Laptop updateLaptop(Long id, Laptop laptop);
     boolean deleteLaptop(Long id);
     List<Laptop> getLaptopsByDepartment(String department);
+    
+
 }
 

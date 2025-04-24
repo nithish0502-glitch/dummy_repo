@@ -192,7 +192,8 @@ class SpringappApplicationTests {
                     .content(laptopJson)
                     .accept(MediaType.APPLICATION_JSON))
                     .andExpect(MockMvcResultMatchers.status().isBadRequest())
-                    .andExpect(MockMvcResultMatchers.content().string("Laptop is under maintenance and cannot be assigned."));
+                    .andExpect(MockMvcResultMatchers.content().string("Laptop is under maintenance and cannot be assigned.")); 
+    
         } catch (Exception e) {
             fail("LaptopUnderMaintenanceException should be thrown for a laptop under maintenance.");
         }

@@ -19,15 +19,11 @@ public class LaptopController {
     private LaptopService laptopService;
 
     @PostMapping("/user/{userId}")
-    public ResponseEntity<?> addLaptop(@RequestBody Laptop laptop, @PathVariable Long userId) {
-        try {
-            Laptop savedLaptop = laptopService.createLaptopWithUser(laptop, userId);
-            return ResponseEntity.status(HttpStatus.CREATED).body(savedLaptop);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("User with ID " + userId + " not found.");
-        }
-    }
+public ResponseEntity<Laptop> addLaptop(@RequestBody Laptop laptop, @PathVariable Long userId) {
+    Laptop savedLaptop = laptopService.createLaptopWithUser(laptop, userId);
+    return ResponseEntity.status(HttpStatus.CREATED).body(savedLaptop);
+}
+
 
     @GetMapping
     public ResponseEntity<?> getAllLaptops() {
