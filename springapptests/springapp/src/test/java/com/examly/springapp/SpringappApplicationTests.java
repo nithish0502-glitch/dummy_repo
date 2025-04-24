@@ -183,7 +183,7 @@ class SpringappApplicationTests {
                 + "\"brand\": \"Dell\","
                 + "\"model\": \"XPS 13\","
                 + "\"serialNumber\": \"SN123456\","
-                + "\"status\": \"Under Maintenance\","
+                + "\"status\": \"Under Maintenance\""
                 + "}";
 
         try {

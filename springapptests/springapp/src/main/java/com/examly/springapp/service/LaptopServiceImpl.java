@@ -26,7 +26,7 @@ public class LaptopServiceImpl implements LaptopService {
     public Laptop createLaptopWithUser(Laptop laptop, Long userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
-                if ("maintenance".equalsIgnoreCase(laptop.getStatus())) {
+                if ("Under Maintenance".equalsIgnoreCase(laptop.getStatus())) {
                     throw new LaptopUnderMaintenanceException("Laptop is under maintenance and cannot be assigned.");
                 }
         laptop.setUser(user);

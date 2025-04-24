@@ -8,7 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
- 
+import org.springframework.web.server.ResponseStatusException;
+
 import java.util.List;
 import java.util.Optional;
  
@@ -24,9 +25,10 @@ public ResponseEntity<?> addLaptop(@RequestBody Laptop laptop, @PathVariable Lon
     try {
         Laptop savedLaptop = laptopService.createLaptopWithUser(laptop, userId);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedLaptop);
+    }
+    catch(ResponseStatusException e){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     } catch (Exception e) {
-        System.out.println("+++++++++++++++++++++++++++++");
-        System.out.println(e.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
 }
