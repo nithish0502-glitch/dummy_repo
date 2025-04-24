@@ -144,7 +144,7 @@ class SpringappApplicationTests {
 
     private ResultHandler print() {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'print'");
+       throw new UnsupportedOperationException("Unimplemented method 'print'");
     }
 
 
