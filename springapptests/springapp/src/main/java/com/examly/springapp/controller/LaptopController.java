@@ -1,5 +1,6 @@
 package com.examly.springapp.controller;
  
+import com.examly.springapp.exception.LaptopUnderMaintenanceException;
 //import com.examly.springapp.exception.LaptopUnderMaintenanceException;
 import com.examly.springapp.model.Laptop;
 import com.examly.springapp.service.LaptopService;
@@ -20,18 +21,27 @@ public class LaptopController {
     @Autowired
     private LaptopService laptopService;
  
-    @PostMapping("/user/{userId}")
+    @PostMapping("/user/{userId}") 
 public ResponseEntity<?> addLaptop(@RequestBody Laptop laptop, @PathVariable Long userId) {
     try {
         Laptop savedLaptop = laptopService.createLaptopWithUser(laptop, userId);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedLaptop);
-    }
-    catch(ResponseStatusException e){
+    } catch (ResponseStatusException e) {
+        // Check if the exception is "User not found" and return a custom message
+        if (e.getStatus() == HttpStatus.NOT_FOUND && "User not found".equals(e.getReason())) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+        }
+        // Otherwise, return the exception message
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+    } catch (LaptopUnderMaintenanceException e) {
+        // Handle specific exception for laptop under maintenance
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     } catch (Exception e) {
+        // Generic exception handler
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
 }
+
     @GetMapping
     public ResponseEntity<?> getAllLaptops() {
         List<Laptop> laptops = laptopService.getAllLaptops();
@@ -73,8 +83,8 @@ public ResponseEntity<?> addLaptop(@RequestBody Laptop laptop, @PathVariable Lon
     }
  
     @GetMapping("/byDepartment/{department}")
-    public ResponseEntity<List<Laptop>> getLaptopsByDepartment(@PathVariable String department) {
-        List<Laptop> laptops = laptopService.getLaptopByDepartment(department);
+    public ResponseEntity<Laptop> getLaptopsByDepartment(@PathVariable String department) {
+        Laptop laptops = laptopService.getLaptopByDepartment(department);
         return ResponseEntity.ok(laptops);
     }
  
