@@ -1,7 +1,7 @@
 /home/coder/project/workspace/springapptests/springapp/src/main/java/com/examly/springapp/SpringappApplication.java
 /home/coder/project/workspace/springapptests/springapp/src/main/java/com/examly/springapp/controller/LaptopController.java
 /home/coder/project/workspace/springapptests/springapp/src/main/java/com/examly/springapp/controller/UserController.java
-/home/coder/project/workspace/springapptests/springapp/src/main/java/com/examly/springapp/exception/ResourceNotFoundException.java
+/home/coder/project/workspace/springapptests/springapp/src/main/java/com/examly/springapp/exception/LaptopUnderMaintenanceException.java
 /home/coder/project/workspace/springapptests/springapp/src/main/java/com/examly/springapp/model/Laptop.java
 /home/coder/project/workspace/springapptests/springapp/src/main/java/com/examly/springapp/model/User.java
 /home/coder/project/workspace/springapptests/springapp/src/main/java/com/examly/springapp/repository/LaptopRepository.java
