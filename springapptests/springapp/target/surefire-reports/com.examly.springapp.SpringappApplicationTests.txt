@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.examly.springapp.SpringappApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 16, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 4.492 s <<< FAILURE! - in com.examly.springapp.SpringappApplicationTests
-com.examly.springapp.SpringappApplicationTests.testAssignLaptopToUser_UserNotFound  Time elapsed: 0.013 s  <<< FAILURE!
+Tests run: 16, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 4.509 s <<< FAILURE! - in com.examly.springapp.SpringappApplicationTests
+com.examly.springapp.SpringappApplicationTests.testAssignLaptopToUser_UserNotFound  Time elapsed: 0.01 s  <<< FAILURE!
 java.lang.AssertionError: Response content expected:<User not found> but was:<404 NOT_FOUND "User not found">
-	at com.examly.springapp.SpringappApplicationTests.testAssignLaptopToUser_UserNotFound(SpringappApplicationTests.java:124)
+	at com.examly.springapp.SpringappApplicationTests.testAssignLaptopToUser_UserNotFound(SpringappApplicationTests.java:123)
 
