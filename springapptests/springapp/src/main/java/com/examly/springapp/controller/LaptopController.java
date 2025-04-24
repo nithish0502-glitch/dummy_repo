@@ -74,7 +74,7 @@ public ResponseEntity<?> addLaptop(@RequestBody Laptop laptop, @PathVariable Lon
  
     @GetMapping("/byDepartment/{department}")
     public ResponseEntity<List<Laptop>> getLaptopsByDepartment(@PathVariable String department) {
-        List<Laptop> laptops = laptopService.getLaptopsByDepartment(department);
+        List<Laptop> laptops = laptopService.getLaptopByDepartment(department);
         return ResponseEntity.ok(laptops);
     }
  

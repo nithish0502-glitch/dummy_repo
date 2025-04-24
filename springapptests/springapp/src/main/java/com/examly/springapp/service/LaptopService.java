@@ -13,7 +13,5 @@ public interface LaptopService {
     Laptop updateLaptop(Long id, Laptop laptop);
     boolean deleteLaptop(Long id);
     Laptop getLaptopByDepartment(String department);
-    
-
 }
 

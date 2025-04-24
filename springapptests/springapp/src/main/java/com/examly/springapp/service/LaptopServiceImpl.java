@@ -32,7 +32,7 @@ public class LaptopServiceImpl implements LaptopService {
         laptop.setUser(user);
         return laptopRepository.save(laptop);
     }
-
+ 
     @Override
     public List<Laptop> getAllLaptops() {
         return laptopRepository.findAll();
