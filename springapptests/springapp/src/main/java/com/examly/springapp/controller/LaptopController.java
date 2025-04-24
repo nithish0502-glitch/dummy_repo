@@ -1,6 +1,6 @@
 package com.examly.springapp.controller;
  
-import com.examly.springapp.exception.LaptopUnderMaintenanceException;
+//import com.examly.springapp.exception.LaptopUnderMaintenanceException;
 import com.examly.springapp.model.Laptop;
 import com.examly.springapp.service.LaptopService;
  
