@@ -1,9 +1,9 @@
 package com.examly.springapp.service;
 
 import com.examly.springapp.model.Laptop;
-import com.examly.springapp.model.User;
+import com.examly.springapp.model.Account;
 import com.examly.springapp.repository.LaptopRepository;
-import com.examly.springapp.repository.UserRepository;
+import com.examly.springapp.repository.AccountRepository;
 import com.examly.springapp.exception.LaptopUnderMaintenanceException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,16 +15,16 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class LaptopServiceImpl implements LaptopService {
+public class LaptopServiceImpl implements CustomerService {
 @Autowired
     private LaptopRepository laptopRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    private AccountRepository userRepository;
 
     @Override
     public Laptop createLaptopWithUser(Laptop laptop, Long userId) {
-        User user = userRepository.findById(userId)
+        Account user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
                 if ("Under Maintenance".equalsIgnoreCase(laptop.getStatus())) {
                     throw new LaptopUnderMaintenanceException("Laptop is under maintenance and cannot be assigned.");
