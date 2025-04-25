@@ -232,7 +232,7 @@ class SpringappApplicationTests {
     }
 
     @Test
-    public void testQueryAnnotationPresentInAccountRepository() {
+     void testQueryAnnotationPresentInAccountRepository() {
         try {
             Class<?> repoClass = Class.forName("com.examly.springapp.repository.AccountRepository");
 
@@ -250,7 +250,7 @@ class SpringappApplicationTests {
     }
 
     @Test
-    public void testFoldersExist() {
+     void testFoldersExist() {
         String[] folders = {
                 "src/main/java/com/examly/springapp/controller",
                 "src/main/java/com/examly/springapp/model",
@@ -267,7 +267,7 @@ class SpringappApplicationTests {
     }
 
     @Test
-    public void testFilesExist() {
+     void testFilesExist() {
         String[] files = {
                 "src/main/java/com/examly/springapp/controller/CustomerController.java",
                 "src/main/java/com/examly/springapp/controller/AccountController.java",
