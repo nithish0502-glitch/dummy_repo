@@ -2,8 +2,8 @@ package com.examly.springapp.service;
 
 import com.examly.springapp.model.Customer;
 import com.examly.springapp.repository.CustomerRepository;
-import com.examly.springapp.exception.CustomerNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.config.ConfigDataLocationNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,15 +33,15 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Customer getCustomerById(Long id) {
+    public Optional getCustomerById(Long id) {
         // Fetch customer by ID and throw an exception if not found
-        return customerRepository.findById(id).orElseThrow(() -> new CustomerNotFoundException("Customer with ID " + id + " not found"));
+        return Optional.empty();
     }
 
     @Override
     public Customer updateCustomer(Long id, Customer customerDetails) {
         // Fetch the existing customer by ID
-        Customer existingCustomer = getCustomerById(id);
+                 Optional existingCustomer = getCustomerById(id);
         
         // Update customer details
         existingCustomer.setName(customerDetails.getName());
@@ -70,7 +70,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void checkAccess(Customer customer) throws Exception, Throwable {
+    public void checkAccess(Customer customer) throws Throwable {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'checkAccess'");
     }
