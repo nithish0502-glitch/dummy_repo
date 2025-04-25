@@ -32,7 +32,7 @@ public class AccountServiceImpl implements AccountService {
         account.setCustomer(customer);
         return accountRepository.save(account);
     }
-
+     
     @Override
     public Account getAccountById(Long id) {
         return accountRepository.findById(id)
@@ -43,7 +43,7 @@ public class AccountServiceImpl implements AccountService {
     public List<Account> getAccountsByCustomerName(String customerName) {
         return accountRepository.findByCustomerName(customerName);
     }
-
+     
     @Override
     public List<Account> getActiveAccountsOfVerifiedCustomers() {
         return accountRepository.findActiveAccountsOfVerifiedCustomers();
