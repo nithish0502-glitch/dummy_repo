@@ -24,8 +24,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 
 @SpringBootTest(classes = SpringappApplication.class)
 @AutoConfigureMockMvc
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@ActiveProfiles("test") 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class) 
 class SpringappApplicationTests {
 
     @Autowired
