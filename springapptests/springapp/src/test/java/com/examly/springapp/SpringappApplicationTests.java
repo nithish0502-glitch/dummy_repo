@@ -7,16 +7,9 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultHandler;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import org.springframework.test.web.servlet.result.StatusResultMatchers;
-import org.springframework.web.server.ResponseStatusException;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -38,172 +31,210 @@ class SpringappApplicationTests {
 
     @Test
     @Order(2)
-    void testCreateUser_Success() throws Exception {
-        String userJson = "{ \"name\": \"Alice\", \"department\": \"Engineering\" }";
+    void testCreateCustomer_Success() throws Exception {
+        String customerJson = "{"
+                + "\"name\": \"John Doe\","
+                + "\"email\": \"john.doe@example.com\","
+                + "\"phoneNumber\": \"1234567890\","
+                + "\"address\": \"123 Main St, New York\","
+                + "\"isVerified\": true"
+                + "}";
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/user")
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/customer")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(userJson))
+                .content(customerJson)
+                .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isCreated())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value("Alice"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.department").value("Engineering"));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value("John Doe"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.phoneNumber").value("1234567890"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.isVerified").value(true));
     }
-
-       
 
     @Test
     @Order(3)
-    void testCreateLaptop_Success() throws Exception {
-        String laptopJson = "{ \"brand\": \"Dell\", \"model\": \"XPS 15\", \"serialNumber\": \"ABC123XYZ\", \"status\": \"Assigned\" }";
+    void testCreateCustomer_MissingFields() throws Exception {
+        String customerJson = "{ \"name\": \"\", \"phoneNumber\": \"\" }";
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/laptop/user/1")
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/customer")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(laptopJson))
-                .andExpect(MockMvcResultMatchers.status().isCreated())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.brand").value("Dell"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.status").value("Assigned"));
+                .content(customerJson)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isConflict())
+                .andExpect(MockMvcResultMatchers.content().string("Customer name and phone number are required."));
     }
- 
+
     @Test
     @Order(4)
-    void testGetAllLaptops_Success() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/laptop")
+    void testGetAllCustomers_Success() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/customer")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$").isArray())
-                .andExpect(MockMvcResultMatchers.jsonPath("$[*].model").value("XPS 15"));
+                .andExpect(MockMvcResultMatchers.jsonPath("$[*].address").value("123 Main St, New York"));
     }
 
     @Test
     @Order(1)
-    void testGetAllLaptops_NotFound() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/laptop")
+    void testGetAllCustomers_NotFound() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/customer")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isNotFound())
-                .andExpect(MockMvcResultMatchers.content().string("No laptops found."));
+                .andExpect(MockMvcResultMatchers.content().string("No customers found."));
     }
 
     @Test
     @Order(5)
-    void testUpdateLaptop_Success() throws Exception {
-        String laptopJson = "{ \"brand\": \"Dell\", \"model\": \"XPS 14\",\"serialNumber\": \"ABC123XYZ\" }";
+    void testUpdateCustomer_Success() throws Exception {
+        String customerJson = "{ \"name\": \"Updated Name\", \"phoneNumber\": \"9876543210\" }";
 
-        mockMvc.perform(MockMvcRequestBuilders.put("/api/laptop/1")
+        mockMvc.perform(MockMvcRequestBuilders.put("/api/customer/1")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(laptopJson)
+                .content(customerJson)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.brand").value("Dell"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.model").value("XPS 14"));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value("Updated Name"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.phoneNumber").value("9876543210"));
     }
 
     @Test
     @Order(6)
-    void testUpdateLaptop_NotFound() throws Exception {
-        String laptopJson = "{ \"brand\": \"Dell\", \"model\": \"XPS 15\" }";
+    void testUpdateCustomer_NotFound() throws Exception {
+        String customerJson = "{ \"name\": \"Updated Name\", \"phoneNumber\": \"9876543210\" }";
 
-        mockMvc.perform(MockMvcRequestBuilders.put("/api/laptop/99")
+        mockMvc.perform(MockMvcRequestBuilders.put("/api/customer/99")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(laptopJson)
+                .content(customerJson)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isNotFound())
-                .andExpect(MockMvcResultMatchers.content().string("Laptop with ID 99 not found."));
-                
-
+                .andExpect(MockMvcResultMatchers.content().string("Customer with ID 99 not found."));
     }
 
     @Test
-void testAssignLaptopToUser_UserNotFound() throws Exception {
-    String laptopJson = "{ \"brand\": \"Dell\", \"model\": \"XPS 15\", \"serialNumber\": \"ABC123XYZ\", \"status\": \"Assigned\" }";
+    @Order(7)
+    void testCreateAccount_Success() throws Exception {
+        String accountJson = "{"
+                + "\"accountNumber\": \"AC-12345\","
+                + "\"balance\": 1000.00,"
+                + "\"isActive\": true"
+                + "}";
 
-    mockMvc.perform(MockMvcRequestBuilders.post("/api/laptop/user/99")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(laptopJson)
-            .accept(MediaType.APPLICATION_JSON))
-            .andExpect(MockMvcResultMatchers.status().isNotFound())
-            .andExpect(MockMvcResultMatchers.content().string("User not found"));
-          
-}
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/account/1")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(accountJson)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isCreated())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.accountNumber").value("AC-12345"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.balance").value(1000.00));
+    }
+
+    @Test
+    @Order(8)
+    void testCustomerHasLinkedAccount() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/customer"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$[*].account.accountNumber").value("AC-12345"));
+    }
+
+    @Test
+    @Order(9)
+    void testCreateAccount_CustomerNotFound() throws Exception {
+        String accountJson = "{ \"accountNumber\": \"AC-12345\", \"balance\": 1000.00 }";
+
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/account/99")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(accountJson)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isNotFound())
+                .andExpect(MockMvcResultMatchers.content().string("Customer with ID 99 not found."));
+    }
 
     @Test
     @Order(10)
-    void testGetLaptopById_Success() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/laptop/1")
+    void testGetAccountById_Success() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/account/1")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.brand").value("Dell"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.model").value("XPS 14"));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.accountNumber").value("AC-12345"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.balance").value(1000.00));
     }
 
-    @Order(11)
     @Test
-    void testGetLaptopsByDepartment_Success() throws Exception {
-        String department = "Engineering";
-    
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/laptop/byDepartment/" + department)
+    @Order(11)
+    void testGetAccountsByCustomer_Success() throws Exception {
+        String customerName = "John Doe";
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/account/byCustomer/" + customerName)
                 .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                //.andExpect(MockMvcResultMatchers.jsonPath("$.department").value("Engineering"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.brand").exists())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.model").exists())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.serialNumber").exists());
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$").isArray())
+                .andExpect(MockMvcResultMatchers.jsonPath("$[*].customer.name").value(customerName));
     }
-            
+
     @Test
     @Order(12)
-    void testGetLaptopById_NotFound() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/laptop/100")
+    void testGetAccountById_NotFound() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/account/100")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isNotFound())
-                .andExpect(MockMvcResultMatchers.content().string("Laptop with ID 100 not found."));
+                .andExpect(MockMvcResultMatchers.content().string("Account with ID 100 not found."));
     }
 
     @Test
     @Order(13)
-    void testDeleteLaptop_Success() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.delete("/api/laptop/1")
+    void testDeleteAccount_Success() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.delete("/api/account/1")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.content().string("Laptop deleted successfully."));
+                .andExpect(MockMvcResultMatchers.content().string("Account deleted successfully."));
     }
 
     @Test
     @Order(14)
-    void testDeleteLaptop_NotFound() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.delete("/api/laptop/200")
+    void testDeleteAccount_NotFound() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.delete("/api/account/200")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isNotFound())
-                .andExpect(MockMvcResultMatchers.content().string("Laptop with ID 200 not found."));
+                .andExpect(MockMvcResultMatchers.content().string("Account with ID 200 not found."));
     }
 
     @Test
     @Order(15)
-    void testLaptopUnderMaintenanceException() {
-        String laptopJson = "{"
-                + "\"brand\": \"Dell\","
-                + "\"model\": \"XPS 13\","
-                + "\"serialNumber\": \"SN123456\","
-                + "\"status\": \"Under Maintenance\""
-                + "}";
-
+    void testAccountAccessDeniedException() {
         try {
-            mockMvc.perform(MockMvcRequestBuilders.post("/api/laptop/user/1")
+            String customerJson = "{"
+                    + "\"name\": \"Unauthorized User\","
+                    + "\"email\": \"unauth@example.com\","
+                    + "\"phoneNumber\": \"0000000000\","
+                    + "\"address\": \"No Access St\","
+                    + "\"isVerified\": false"
+                    + "}";
+
+            mockMvc.perform(MockMvcRequestBuilders.post("/api/customer/access/denied")
                     .contentType(MediaType.APPLICATION_JSON)
-                    .content(laptopJson)
+                    .content(customerJson)
                     .accept(MediaType.APPLICATION_JSON))
-                    .andExpect(MockMvcResultMatchers.status().isBadRequest())
-                    .andExpect(MockMvcResultMatchers.content().string("Laptop is under maintenance and cannot be assigned.")); 
-    
+                    .andExpect(MockMvcResultMatchers.status().isUnauthorized())
+                    .andExpect(MockMvcResultMatchers.content().string("Unauthorized access to customer accounts. Customer is not verified."));
         } catch (Exception e) {
-            fail("LaptopUnderMaintenanceException should be thrown for a laptop under maintenance.");
+            e.printStackTrace();
+            fail("Exception thrown during testAccountAccessDeniedException: " + e.getMessage());
         }
     }
-    
 
     @Test
-    void testQueryAnnotationPresentInLaptopRepository() {
+    @Order(16)
+    void testFindAllCustomersWithActiveAccounts() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/customer/activeAccounts")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$").isArray())
+                .andExpect(MockMvcResultMatchers.jsonPath("$[*].account.isActive").value(true));
+    }
+
+    @Test
+    public void testQueryAnnotationPresentInAccountRepository() {
         try {
-            Class<?> repoClass = Class.forName("com.examly.springapp.repository.LaptopRepository");
+            Class<?> repoClass = Class.forName("com.examly.springapp.repository.AccountRepository");
 
             Method[] methods = repoClass.getDeclaredMethods();
 
@@ -212,14 +243,14 @@ void testAssignLaptopToUser_UserNotFound() throws Exception {
                     .anyMatch(annotation -> annotation.annotationType().equals(Query.class));
 
             assertTrue(hasQueryAnnotation,
-                    "@Query annotation should be present on at least one method in LaptopRepository");
+                    "@Query annotation should be present on at least one method in AccountRepository");
         } catch (ClassNotFoundException e) {
-            fail("LaptopRepository class not found");
+            fail("AccountRepository class not found");
         }
     }
 
     @Test
-    void testFoldersExist() {
+    public void testFoldersExist() {
         String[] folders = {
                 "src/main/java/com/examly/springapp/controller",
                 "src/main/java/com/examly/springapp/model",
@@ -236,18 +267,18 @@ void testAssignLaptopToUser_UserNotFound() throws Exception {
     }
 
     @Test
-    void testFilesExist() {
+    public void testFilesExist() {
         String[] files = {
-                "src/main/java/com/examly/springapp/controller/LaptopController.java",
-                "src/main/java/com/examly/springapp/controller/UserController.java",
-                "src/main/java/com/examly/springapp/model/Laptop.java",
-                "src/main/java/com/examly/springapp/model/User.java",
-                "src/main/java/com/examly/springapp/repository/LaptopRepository.java",
-                "src/main/java/com/examly/springapp/repository/UserRepository.java",
-                "src/main/java/com/examly/springapp/service/LaptopService.java",
-                "src/main/java/com/examly/springapp/service/UserService.java",
-                "src/main/java/com/examly/springapp/service/LaptopServiceImpl.java",
-                "src/main/java/com/examly/springapp/service/UserServiceImpl.java"
+                "src/main/java/com/examly/springapp/controller/CustomerController.java",
+                "src/main/java/com/examly/springapp/controller/AccountController.java",
+                "src/main/java/com/examly/springapp/model/Customer.java",
+                "src/main/java/com/examly/springapp/model/Account.java",
+                "src/main/java/com/examly/springapp/repository/CustomerRepository.java",
+                "src/main/java/com/examly/springapp/repository/AccountRepository.java",
+                "src/main/java/com/examly/springapp/service/CustomerService.java",
+                "src/main/java/com/examly/springapp/service/AccountService.java",
+                "src/main/java/com/examly/springapp/service/CustomerServiceImpl.java",
+                "src/main/java/com/examly/springapp/service/AccountServiceImpl.java"
         };
 
         for (String filePath : files) {
