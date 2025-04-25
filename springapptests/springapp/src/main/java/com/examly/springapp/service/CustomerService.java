@@ -14,4 +14,5 @@ public interface CustomerService {
     Customer updateCustomer(Long id, Customer customer);
     
     void deleteCustomer(Long id);
+    List<Customer> getAllCustomersWithActiveAccounts();
 }
