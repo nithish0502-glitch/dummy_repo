@@ -3,7 +3,6 @@ package com.examly.springapp.service;
 import com.examly.springapp.model.Customer;
 import com.examly.springapp.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.config.ConfigDataLocationNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,16 +32,24 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Optional getCustomerById(Long id) {
+    public Optional<Customer> getCustomerById(Long id) {
         // Fetch customer by ID and throw an exception if not found
-        return Optional.empty();
+        return customerRepository.findById(id);
     }
 
     @Override
     public Customer updateCustomer(Long id, Customer customerDetails) {
         // Fetch the existing customer by ID
-                 Optional existingCustomer = getCustomerById(id);
+        Optional<Customer> existingCustomerOpt = getCustomerById(id);
         
+        // Check if the customer exists
+        if (!existingCustomerOpt.isPresent()) {
+            throw new RuntimeException("Customer not found with id " + id);
+        }
+
+        // Get the customer from Optional
+        Customer existingCustomer = existingCustomerOpt.get();
+
         // Update customer details
         existingCustomer.setName(customerDetails.getName());
         existingCustomer.setEmail(customerDetails.getEmail());
@@ -57,10 +64,15 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void deleteCustomer(Long id) {
         // Check if the customer exists before deletion
-        Customer existingCustomer = getCustomerById(id);
+        Optional<Customer> existingCustomerOpt = getCustomerById(id);
         
-        // Delete the customer by ID
-        customerRepository.delete(existingCustomer);
+        // If the customer is not found, throw an exception
+        if (!existingCustomerOpt.isPresent()) {
+            throw new RuntimeException("Customer not found with id " + id);
+        }
+
+        // Delete the customer
+        customerRepository.delete(existingCustomerOpt.get());
     }
 
     @Override

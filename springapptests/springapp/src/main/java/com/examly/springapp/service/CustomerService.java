@@ -15,4 +15,5 @@ public interface CustomerService {
     
     void deleteCustomer(Long id);
     List<Customer> getAllCustomersWithActiveAccounts();
+    void checkAccess(Customer customer) throws Throwable;
 }
