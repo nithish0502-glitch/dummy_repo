@@ -46,6 +46,7 @@ public class AccountController {
 
     @PostMapping("/access/denied")
     public ResponseEntity<String> simulateAccessDenied(@RequestBody Account dummy) {
-        throw new UnauthorizedAccessException();
+        //throw new UnauthorizedAccessException();
+        throw new IllegalArgumentException("Unauthorized access to customer accounts.");
     }
 }

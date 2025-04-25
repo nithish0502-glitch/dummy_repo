@@ -1,7 +1,6 @@
 package com.examly.springapp.service;
 
 import com.examly.springapp.exception.ResourceNotFoundException;
-import com.examly.springapp.exception.UnauthorizedAccessException;
 import com.examly.springapp.model.Account;
 import com.examly.springapp.model.Customer;
 import com.examly.springapp.repository.AccountRepository;
@@ -23,9 +22,9 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public Account createAccount(Long customerId, Account account) {
         Customer customer = customerRepository.findById(customerId)
-                .orElseThrow(() -> new ResourceNotFoundException());
+                .orElseThrow(() -> new ResourceNotFoundException("Customer with ID " + customerId + " not found."));
         if (!Boolean.TRUE.equals(customer.getIsVerified())) {
-            throw new UnauthorizedAccessException("Customer is not verified.");
+            throw new IllegalArgumentException("Customer is not verified."); // Using IllegalArgumentException for access control
         }
         account.setCustomer(customer);
         return accountRepository.save(account);
@@ -54,3 +53,4 @@ public class AccountServiceImpl implements AccountService {
         accountRepository.delete(account);
     }
 }
+
