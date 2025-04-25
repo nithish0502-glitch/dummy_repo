@@ -23,7 +23,15 @@ public class CustomerController {
     // Endpoint for testing access based on verification
     @PostMapping("/access/denied")
     public ResponseEntity<String> checkAccess(@RequestBody Customer customer) {
-        customerService.checkAccess(customer);
+        try {
+            customerService.checkAccess(customer);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (Throwable e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         return new ResponseEntity<>("Access granted", HttpStatus.OK);
     }
 }

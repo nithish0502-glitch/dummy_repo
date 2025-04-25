@@ -19,9 +19,9 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void checkAccess(Customer customer) {
+    public void checkAccess(Customer customer) throws Throwable {
         if (!Boolean.TRUE.equals(customer.getIsVerified())) {
-            throw new AccountAccessDeniedException("Unauthorized access to customer accounts. Verification failed.");
+            throw new Exception("Unauthorized access to customer accounts. Verification failed.");
         }
     }
 }
