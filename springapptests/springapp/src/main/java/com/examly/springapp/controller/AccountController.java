@@ -1,5 +1,6 @@
 package com.examly.springapp.controller;
 
+import com.examly.springapp.exception.ResourceNotFoundException;
 import com.examly.springapp.model.Account;
 import com.examly.springapp.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,11 +44,12 @@ public class AccountController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteAccount(@PathVariable Long id) {
-        if (accountService.getAccountById(id).isPresent()) {
-            accountService.deleteAccount(id);
-            return ResponseEntity.ok("Account deleted successfully.");
-        } else {
-            return ResponseEntity.status(404).body("Account with ID " + id + " not found.");
-        }
+    try {
+        accountService.deleteAccount(id);
+        return ResponseEntity.ok("Account deleted successfully.");
+    } catch (ResourceNotFoundException ex) {
+        return ResponseEntity.status(404).body(ex.getMessage());
     }
+}
+
 }

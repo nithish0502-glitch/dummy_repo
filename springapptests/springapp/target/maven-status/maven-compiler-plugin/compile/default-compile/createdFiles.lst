@@ -1,14 +1,1 @@
-com/examly/springapp/model/Account.class
-com/examly/springapp/controller/AccountController.class
 com/examly/springapp/SpringappApplication.class
-com/examly/springapp/repository/AccountRepository.class
-com/examly/springapp/exception/ResourceNotFoundException.class
-com/examly/springapp/repository/CustomerRepository.class
-com/examly/springapp/controller/CustomerController.class
-com/examly/springapp/model/Customer.class
-com/examly/springapp/service/AccountServiceImpl.class
-com/examly/springapp/service/AccountService.class
-com/examly/springapp/repository/list.class
-com/examly/springapp/service/CustomerService.class
-com/examly/springapp/exception/AccountAccessDeniedException.class
-com/examly/springapp/service/CustomerServiceImpl.class

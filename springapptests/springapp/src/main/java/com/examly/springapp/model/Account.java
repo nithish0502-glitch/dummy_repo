@@ -17,6 +17,14 @@ public class Account {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
+    public Customer getCustomer() {
+        return customer;
+    }
+  
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
     // Constructors
     public Account() {
     }
@@ -61,16 +69,5 @@ public class Account {
     public void setIsActive(Boolean isActive) {
         this.isActive = isActive;
     }
-
-    public boolean isPresent() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'isPresent'");
-    }
-
-    public void setCustomer(Customer customer2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setCustomer'");
-    }
-    
    
 }
