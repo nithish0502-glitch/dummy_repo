@@ -49,8 +49,9 @@ public class CustomerController {
         return ResponseEntity.ok(activeCustomers);
     }
 
-    @GetMapping("/{unauthorized}")
-    public ResponseEntity<?> unauthorizedAccess(@PathVariable String unauthorized) {
-        return ResponseEntity.status(401).body("Unauthorized access to customer accounts. Customer is not verified.");
-    }
+    @GetMapping("/unauthorized")
+public ResponseEntity<?> unauthorizedAccess() {
+    return ResponseEntity.status(401).body("Unauthorized access to customer accounts. Customer is not verified.");
+}
+
 }
