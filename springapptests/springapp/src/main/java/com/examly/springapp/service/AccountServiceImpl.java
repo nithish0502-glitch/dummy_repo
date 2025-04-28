@@ -15,7 +15,7 @@ import java.util.List;
 
 @Service
 public class AccountServiceImpl implements AccountService {
-
+ 
     @Autowired
     private AccountRepository accountRepository;
 
@@ -45,15 +45,6 @@ public class AccountServiceImpl implements AccountService {
                 .orElseThrow(() -> new ResourceNotFoundException("Account with ID " + id + " not found."));
     }
 
-    // @Override
-    //  public <Account>  getAccountsByCustomerName(String customerName) {
-    //      return accountRepository.findAccountsByCustomerName(customerName);
-    //  }
-     
-    // @Override
-    // public List<Account> getActiveAccountsOfVerifiedCustomers() {
-    //     return accountRepository.findActiveAccountsOfVerifiedCustomers();
-    // }
 
     @Override
     public void deleteAccount(Long id) {
@@ -62,12 +53,7 @@ public class AccountServiceImpl implements AccountService {
         accountRepository.delete(account);
     }
 
-    @Override
-    public Account getAccountByCustomerName(String customerName) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAccountByCustomerName'");
-    }
 }
 
-
+ 
 

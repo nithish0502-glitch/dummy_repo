@@ -41,14 +41,9 @@ public class CustomerServiceImpl implements CustomerService {
                 .orElse(null);
     }
 
-    public List<Customer> findAllCustomersWithActiveAccounts() {
-        return customerRepository.findAll()
-                .stream()
-                .filter(customer -> customer.getAccount() != null && customer.getAccount().isActive())
-                .collect(Collectors.toList());
-    }
-    
-        
+        public List<Customer> findCustomersWithActiveAccounts() {
+            return customerRepository.findCustomersWithActiveAccounts();
+        }
     @Override
     public List<Customer> getAllCustomersWithActiveAccounts() {
         // TODO Auto-generated method stub
@@ -66,4 +61,7 @@ public class CustomerServiceImpl implements CustomerService {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'deleteCustomer'");
     }
+ 
 }
+
+

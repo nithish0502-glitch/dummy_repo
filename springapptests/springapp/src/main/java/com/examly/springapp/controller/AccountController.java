@@ -33,14 +33,14 @@ public class AccountController {
     }
     
 
-    @GetMapping("/byCustomer/{customerName}")
-    public ResponseEntity<?> getAccountByCustomerName(@PathVariable String customerName) {
-        Account account = accountService.getAccountByCustomerName(customerName);
-        if (account == null) {
-            return ResponseEntity.status(404).body("Account not found for customer " + customerName);
-        }
-        return ResponseEntity.ok(account);
-    }
+    // @GetMapping("/byCustomer/{customerName}")
+    // public ResponseEntity<?> getAccountByCustomerName(@PathVariable String customerName) {
+    //     Account account = accountService.getAccountByCustomerName(customerName);
+    //     if (account == null) {
+    //         return ResponseEntity.status(404).body("Account not found for customer " + customerName);
+    //     }
+    //     return ResponseEntity.ok(account);
+    // }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteAccount(@PathVariable Long id) {
@@ -51,5 +51,5 @@ public class AccountController {
         return ResponseEntity.status(404).body(ex.getMessage());
     }
 }
-
+ 
 }

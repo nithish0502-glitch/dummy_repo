@@ -7,7 +7,6 @@
 /home/coder/project/workspace/springapptests/springapp/src/main/java/com/examly/springapp/model/Customer.java
 /home/coder/project/workspace/springapptests/springapp/src/main/java/com/examly/springapp/repository/AccountRepository.java
 /home/coder/project/workspace/springapptests/springapp/src/main/java/com/examly/springapp/repository/CustomerRepository.java
-/home/coder/project/workspace/springapptests/springapp/src/main/java/com/examly/springapp/repository/list.java
 /home/coder/project/workspace/springapptests/springapp/src/main/java/com/examly/springapp/service/AccountService.java
 /home/coder/project/workspace/springapptests/springapp/src/main/java/com/examly/springapp/service/AccountServiceImpl.java
 /home/coder/project/workspace/springapptests/springapp/src/main/java/com/examly/springapp/service/CustomerService.java
