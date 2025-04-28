@@ -28,15 +28,15 @@ public class AccountController {
         return new ResponseEntity<>(account, HttpStatus.OK);
     }
 
-    @GetMapping("/byCustomer/{name}")
-    public ResponseEntity<List<Account>> getAccountsByCustomer(@PathVariable String name) {
-        return new ResponseEntity<>(accountService.getAccountsByCustomerName(name), HttpStatus.OK);
-    }
+    // @GetMapping("/byCustomer/{name}")
+    // public ResponseEntity<List<Account>> getAccountsByCustomer(@PathVariable String name) {
+    //     return new ResponseEntity<>(accountService.getAccountsByCustomerName(name), HttpStatus.OK);
+    // }
 
-    @GetMapping("/activeAccounts")
-    public ResponseEntity<List<Account>> getActiveAccounts() {
-        return new ResponseEntity<>(accountService.getActiveAccountsOfVerifiedCustomers(), HttpStatus.OK);
-    }
+    // @GetMapping("/activeAccounts")
+    // public ResponseEntity<List<Account>> getActiveAccounts() {
+    //     return new ResponseEntity<>(accountService.getActiveAccountsOfVerifiedCustomers(), HttpStatus.OK);
+    // }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteAccount(@PathVariable Long id) {

@@ -1,12 +1,12 @@
 -------------------------------------------------------------------------------
 Test set: com.examly.springapp.SpringappApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 19, Failures: 9, Errors: 4, Skipped: 0, Time elapsed: 4.28 s <<< FAILURE! - in com.examly.springapp.SpringappApplicationTests
-com.examly.springapp.SpringappApplicationTests.testGetAllCustomers_NotFound  Time elapsed: 0.5 s  <<< FAILURE!
+Tests run: 19, Failures: 9, Errors: 3, Skipped: 0, Time elapsed: 4.482 s <<< FAILURE! - in com.examly.springapp.SpringappApplicationTests
+com.examly.springapp.SpringappApplicationTests.testGetAllCustomers_NotFound  Time elapsed: 0.444 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<404> but was:<405>
 	at com.examly.springapp.SpringappApplicationTests.testGetAllCustomers_NotFound(SpringappApplicationTests.java:33)
 
-com.examly.springapp.SpringappApplicationTests.testCreateCustomer_MissingFields  Time elapsed: 0.015 s  <<< FAILURE!
+com.examly.springapp.SpringappApplicationTests.testCreateCustomer_MissingFields  Time elapsed: 0.014 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<409> but was:<201>
 	at com.examly.springapp.SpringappApplicationTests.testCreateCustomer_MissingFields(SpringappApplicationTests.java:67)
 
@@ -14,11 +14,11 @@ com.examly.springapp.SpringappApplicationTests.testGetAllCustomers_Success  Time
 java.lang.AssertionError: Status expected:<200> but was:<405>
 	at com.examly.springapp.SpringappApplicationTests.testGetAllCustomers_Success(SpringappApplicationTests.java:76)
 
-com.examly.springapp.SpringappApplicationTests.testUpdateCustomer_Success  Time elapsed: 0.011 s  <<< FAILURE!
+com.examly.springapp.SpringappApplicationTests.testUpdateCustomer_Success  Time elapsed: 0.013 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<200> but was:<404>
 	at com.examly.springapp.SpringappApplicationTests.testUpdateCustomer_Success(SpringappApplicationTests.java:90)
 
-com.examly.springapp.SpringappApplicationTests.testUpdateCustomer_NotFound  Time elapsed: 0.009 s  <<< FAILURE!
+com.examly.springapp.SpringappApplicationTests.testUpdateCustomer_NotFound  Time elapsed: 0.008 s  <<< FAILURE!
 java.lang.AssertionError: Response content expected:<Customer with ID 99 not found.> but was:<>
 	at com.examly.springapp.SpringappApplicationTests.testUpdateCustomer_NotFound(SpringappApplicationTests.java:105)
 
@@ -26,23 +26,15 @@ com.examly.springapp.SpringappApplicationTests.testCustomerHasLinkedAccount  Tim
 java.lang.AssertionError: Status expected:<200> but was:<405>
 	at com.examly.springapp.SpringappApplicationTests.testCustomerHasLinkedAccount(SpringappApplicationTests.java:131)
 
-com.examly.springapp.SpringappApplicationTests.testCreateAccount_CustomerNotFound  Time elapsed: 0.016 s  <<< ERROR!
+com.examly.springapp.SpringappApplicationTests.testCreateAccount_CustomerNotFound  Time elapsed: 0.01 s  <<< ERROR!
 jakarta.servlet.ServletException: Request processing failed: com.examly.springapp.exception.ResourceNotFoundException: Customer with ID 99 not found.
 	at com.examly.springapp.SpringappApplicationTests.testCreateAccount_CustomerNotFound(SpringappApplicationTests.java:140)
 Caused by: com.examly.springapp.exception.ResourceNotFoundException: Customer with ID 99 not found.
 	at com.examly.springapp.SpringappApplicationTests.testCreateAccount_CustomerNotFound(SpringappApplicationTests.java:140)
 
-com.examly.springapp.SpringappApplicationTests.testGetAccountsByCustomer_Success  Time elapsed: 0.008 s  <<< ERROR!
-jakarta.servlet.ServletException: 
-Handler dispatch failed: java.lang.Error: Unresolved compilation problem: 
-	The method getAccountsByCustomerName(String) is undefined for the type AccountService
-
-	at com.examly.springapp.SpringappApplicationTests.testGetAccountsByCustomer_Success(SpringappApplicationTests.java:161)
-Caused by: java.lang.Error: 
-Unresolved compilation problem: 
-	The method getAccountsByCustomerName(String) is undefined for the type AccountService
-
-	at com.examly.springapp.SpringappApplicationTests.testGetAccountsByCustomer_Success(SpringappApplicationTests.java:161)
+com.examly.springapp.SpringappApplicationTests.testGetAccountsByCustomer_Success  Time elapsed: 0.006 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<404>
+	at com.examly.springapp.SpringappApplicationTests.testGetAccountsByCustomer_Success(SpringappApplicationTests.java:163)
 
 com.examly.springapp.SpringappApplicationTests.testGetAccountById_NotFound  Time elapsed: 0.007 s  <<< ERROR!
 jakarta.servlet.ServletException: Request processing failed: com.examly.springapp.exception.ResourceNotFoundException: Account with ID 100 not found.
@@ -60,11 +52,7 @@ com.examly.springapp.SpringappApplicationTests.testAccountAccessDeniedException 
 java.lang.AssertionError: Status expected:<401> but was:<404>
 	at com.examly.springapp.SpringappApplicationTests.testAccountAccessDeniedException(SpringappApplicationTests.java:200)
 
-com.examly.springapp.SpringappApplicationTests.testFindAllCustomersWithActiveAccounts  Time elapsed: 0.005 s  <<< FAILURE!
+com.examly.springapp.SpringappApplicationTests.testFindAllCustomersWithActiveAccounts  Time elapsed: 0.006 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<200> but was:<404>
 	at com.examly.springapp.SpringappApplicationTests.testFindAllCustomersWithActiveAccounts(SpringappApplicationTests.java:209)
-
-com.examly.springapp.SpringappApplicationTests.testQueryAnnotationPresentInAccountRepository  Time elapsed: 0.007 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: @Query annotation should be present on at least one method in AccountRepository ==> expected: <true> but was: <false>
-	at com.examly.springapp.SpringappApplicationTests.testQueryAnnotationPresentInAccountRepository(SpringappApplicationTests.java:223)
 
