@@ -78,5 +78,7 @@ public class Customer {
         this.isVerified = isVerified;
     }
 
+    
+
    
 }

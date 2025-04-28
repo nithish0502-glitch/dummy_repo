@@ -41,13 +41,13 @@ public class CustomerServiceImpl implements CustomerService {
                 .orElse(null);
     }
 
-    //  @Override
-    //  public List<Customer> getCustomersWithActiveAccounts() {
-    //      return customerRepository.findAll()
-    //              .stream()
-    //              .filter(customer -> customer.getAccount() != null && customer.getAccount().isActive())
-    //              .collect(Collectors.toList());
-    //  }
+    public List<Customer> findAllCustomersWithActiveAccounts() {
+        return customerRepository.findAll()
+                .stream()
+                .filter(customer -> customer.getAccount() != null && customer.getAccount().isActive())
+                .collect(Collectors.toList());
+    }
+    
         
     @Override
     public List<Customer> getAllCustomersWithActiveAccounts() {
