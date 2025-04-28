@@ -13,7 +13,7 @@ public interface CustomerService {
     
     Customer updateCustomer(Long id, Customer customer);
     
-   // void deleteCustomer(Long id);
+   void deleteCustomer(Long id);
    List<Customer> getAllCustomersWithActiveAccounts();
    void checkAccess(Customer customer);
 }

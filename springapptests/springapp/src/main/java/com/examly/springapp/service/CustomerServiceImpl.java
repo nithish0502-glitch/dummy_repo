@@ -60,4 +60,10 @@ public class CustomerServiceImpl implements CustomerService {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'checkAccess'");
     }
+
+    @Override
+    public void deleteCustomer(Long id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'deleteCustomer'");
+    }
 }

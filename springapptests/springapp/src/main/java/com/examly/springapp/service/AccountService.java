@@ -8,6 +8,6 @@ public interface AccountService {
     Account getAccountById(Long id);
     // List<Account> getActiveAccountsOfVerifiedCustomers();
     void deleteAccount(Long id);
-    Account getAccountsByCustomerName(String customerName);
+    Account getAccountByCustomerName(String customerName);
 
 }

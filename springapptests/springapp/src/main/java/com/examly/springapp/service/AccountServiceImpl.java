@@ -39,10 +39,10 @@ public class AccountServiceImpl implements AccountService {
                 .orElseThrow(() -> new ResourceNotFoundException("Account with ID " + id + " not found."));
     }
 
-    @Override
-     public <Account>  getAccountsByCustomerName(String customerName) {
-         return accountRepository.findAccountsByCustomerName(customerName);
-     }
+    // @Override
+    //  public <Account>  getAccountsByCustomerName(String customerName) {
+    //      return accountRepository.findAccountsByCustomerName(customerName);
+    //  }
      
     // @Override
     // public List<Account> getActiveAccountsOfVerifiedCustomers() {
