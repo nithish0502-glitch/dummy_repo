@@ -8,8 +8,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AccountRepository extends JpaRepository<Account, Long> {
 
-    List<Account> findActiveAccountsOfVerifiedCustomers();
+   // List<Account> findActiveAccountsOfVerifiedCustomers();
 
-    List<Account> findByCustomerName(String customerName);
+   // List<Account> findByCustomerName(String customerName);
 }
 

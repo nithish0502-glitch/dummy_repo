@@ -75,11 +75,11 @@ public class CustomerServiceImpl implements CustomerService {
         customerRepository.delete(existingCustomerOpt.get());
     }
 
-    @Override
-    public List<Customer> getAllCustomersWithActiveAccounts() {
-        // Implement logic to return customers with active accounts if required
-        return customerRepository.findCustomersWithActiveAccounts(); // Assuming a custom query method exists
-    }
+    // @Override
+    // public List<Customer> getAllCustomersWithActiveAccounts() {
+    //     // Implement logic to return customers with active accounts if required
+    //     return customerRepository.findCustomersWithActiveAccounts(); // Assuming a custom query method exists
+    // }
 
     @Override
     public void checkAccess(Customer customer) throws Throwable {
