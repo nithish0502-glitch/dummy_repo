@@ -62,21 +62,15 @@ public class Account {
         this.isActive = isActive;
     }
 
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public Object map(Object object) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'map'");
-    }
-
     public boolean isPresent() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'isPresent'");
     }
+
+    public void setCustomer(Customer customer2) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setCustomer'");
+    }
+    
+   
 }
