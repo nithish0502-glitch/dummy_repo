@@ -3,11 +3,8 @@ package com.examly.springapp.controller;
 import com.examly.springapp.model.Account;
 import com.examly.springapp.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/account")
@@ -17,36 +14,34 @@ public class AccountController {
     private AccountService accountService;
 
     @PostMapping("/{customerId}")
-    public ResponseEntity<Account> createAccount(@PathVariable Long customerId, @RequestBody Account account) {
-        Account created = accountService.createAccount(customerId, account);
-        return new ResponseEntity<>(created, HttpStatus.CREATED);
+    public ResponseEntity<?> createAccount(@PathVariable Long customerId, @RequestBody Account account) {
+        Account createdAccount = accountService.createAccount(customerId, account);
+        if (createdAccount == null) {
+            return ResponseEntity.status(404).body("Customer with ID " + customerId + " not found.");
+        }
+        return ResponseEntity.status(201).body(createdAccount);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Account> getAccountById(@PathVariable Long id) {
-        Account account = accountService.getAccountById(id);
-        return new ResponseEntity<>(account, HttpStatus.OK);
+    public ResponseEntity<?> getAccountById(@PathVariable Long id) {
+        return accountService.getAccountById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.status(404).body("Account with ID " + id + " not found."));
     }
 
-    // @GetMapping("/byCustomer/{name}")
-    // public ResponseEntity<List<Account>> getAccountsByCustomer(@PathVariable String name) {
-    //     return new ResponseEntity<>(accountService.getAccountsByCustomerName(name), HttpStatus.OK);
-    // }
-
-    // @GetMapping("/activeAccounts")
-    // public ResponseEntity<List<Account>> getActiveAccounts() {
-    //     return new ResponseEntity<>(accountService.getActiveAccountsOfVerifiedCustomers(), HttpStatus.OK);
-    // }
+    @GetMapping("/byCustomer/{customerName}")
+    public ResponseEntity<Account> getAccountByCustomerName(@PathVariable String customerName) {
+        Account account = accountService.getAccountByCustomerName(customerName);
+        return ResponseEntity.ok(account);
+    }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteAccount(@PathVariable Long id) {
-        accountService.deleteAccount(id);
-        return new ResponseEntity<>("Account deleted successfully.", HttpStatus.OK);
-    }
-
-    @PostMapping("/access/denied")
-    public ResponseEntity<String> simulateAccessDenied(@RequestBody Account dummy) {
-        //throw new UnauthorizedAccessException();
-        throw new IllegalArgumentException("Unauthorized access to customer accounts.");
+    public ResponseEntity<?> deleteAccount(@PathVariable Long id) {
+        if (accountService.getAccountById(id).isPresent()) {
+            accountService.deleteAccount(id);
+            return ResponseEntity.ok("Account deleted successfully.");
+        } else {
+            return ResponseEntity.status(404).body("Account with ID " + id + " not found.");
+        }
     }
 }

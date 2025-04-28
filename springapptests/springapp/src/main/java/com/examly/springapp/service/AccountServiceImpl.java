@@ -55,6 +55,12 @@ public class AccountServiceImpl implements AccountService {
                 .orElseThrow(() -> new ResourceNotFoundException("Account with ID " + id + " not found."));
         accountRepository.delete(account);
     }
+
+    @Override
+    public Account getAccountByCustomerName(String customerName) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getAccountByCustomerName'");
+    }
 }
 
 

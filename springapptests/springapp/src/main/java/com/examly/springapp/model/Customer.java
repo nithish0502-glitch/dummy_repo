@@ -77,4 +77,9 @@ public class Customer {
     public void setIsVerified(Boolean isVerified) {
         this.isVerified = isVerified;
     }
+
+    public Object getAccount() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getAccount'");
+    }
 }

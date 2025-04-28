@@ -9,4 +9,6 @@ public interface AccountService {
     // List<Account> getAccountsByCustomerName(String customerName);
     // List<Account> getActiveAccountsOfVerifiedCustomers();
     void deleteAccount(Long id);
+    Account getAccountByCustomerName(String customerName);
+
 }
