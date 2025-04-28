@@ -81,14 +81,14 @@ class SpringappApplicationTests {
     @Test
     @Order(5)
     void testUpdateCustomer_Success() throws Exception {
-        String updateJson = "{ \"name\": \"Updated Name\", \"phoneNumber\": \"9876543210\" }";
+        String updateJson = "{ \"name\": \"Elise\", \"phoneNumber\": \"9876543210\" }";
 
         mockMvc.perform(MockMvcRequestBuilders.put("/api/customer/1")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(updateJson)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value("Updated Name"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value("Elise"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.phoneNumber").value("9876543210"));
     }
 
@@ -149,10 +149,10 @@ class SpringappApplicationTests {
     @Test
     @Order(11)
     void testGetAccountsByCustomer_Success() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/account/byCustomer/John Doe")
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/account/byCustomer/Elise")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].customer.name").value("John Doe"));
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].customer.name").value("Elise"));
     }
 
     @Test

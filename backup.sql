@@ -76,7 +76,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES ('',1,'123 Main St, New York','john.doe@example.com','Updated Name','9876543210');
+INSERT INTO `customer` VALUES ('',1,'123 Main St, New York','john.doe@example.com','Elise','9876543210');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -143,4 +143,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-04-28 13:58:28
+-- Dump completed on 2025-04-28 14:13:44

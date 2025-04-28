@@ -1,8 +1,9 @@
 -------------------------------------------------------------------------------
 Test set: com.examly.springapp.SpringappApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 17, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 4.808 s <<< FAILURE! - in com.examly.springapp.SpringappApplicationTests
-com.examly.springapp.SpringappApplicationTests.testGetAccountsByCustomer_Success  Time elapsed: 0.013 s  <<< FAILURE!
-java.lang.AssertionError: Status expected:<200> but was:<404>
-	at com.examly.springapp.SpringappApplicationTests.testGetAccountsByCustomer_Success(SpringappApplicationTests.java:154)
+Tests run: 17, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 5.067 s <<< FAILURE! - in com.examly.springapp.SpringappApplicationTests
+com.examly.springapp.SpringappApplicationTests.testGetAccountsByCustomer_Success  Time elapsed: 0.04 s  <<< FAILURE!
+java.lang.AssertionError: No value at JSON path "$[0].customer.name"
+	at com.examly.springapp.SpringappApplicationTests.testGetAccountsByCustomer_Success(SpringappApplicationTests.java:155)
+Caused by: com.jayway.jsonpath.PathNotFoundException: Filter: [0]['customer']['name'] can only be applied to arrays. Current context is: {id=1, accountNumber=AC-12345, balance=1000.0, isActive=true, customer={id=1, name=Elise, email=john.doe@example.com, phoneNumber=9876543210, address=123 Main St, New York, isVerified=true}}
 
