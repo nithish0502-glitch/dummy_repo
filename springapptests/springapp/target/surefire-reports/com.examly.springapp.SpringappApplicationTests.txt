@@ -1,16 +1,16 @@
 -------------------------------------------------------------------------------
 Test set: com.examly.springapp.SpringappApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 19, Failures: 6, Errors: 6, Skipped: 0, Time elapsed: 4.867 s <<< FAILURE! - in com.examly.springapp.SpringappApplicationTests
-com.examly.springapp.SpringappApplicationTests.testCreateCustomer_Success  Time elapsed: 0.103 s  <<< FAILURE!
+Tests run: 19, Failures: 6, Errors: 6, Skipped: 0, Time elapsed: 4.715 s <<< FAILURE! - in com.examly.springapp.SpringappApplicationTests
+com.examly.springapp.SpringappApplicationTests.testCreateCustomer_Success  Time elapsed: 0.114 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<201> but was:<500>
 	at com.examly.springapp.SpringappApplicationTests.testCreateCustomer_Success(SpringappApplicationTests.java:52)
 
-com.examly.springapp.SpringappApplicationTests.testGetAllCustomers_Success  Time elapsed: 0.021 s  <<< FAILURE!
+com.examly.springapp.SpringappApplicationTests.testGetAllCustomers_Success  Time elapsed: 0.019 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<200> but was:<500>
 	at com.examly.springapp.SpringappApplicationTests.testGetAllCustomers_Success(SpringappApplicationTests.java:76)
 
-com.examly.springapp.SpringappApplicationTests.testUpdateCustomer_Success  Time elapsed: 0.04 s  <<< FAILURE!
+com.examly.springapp.SpringappApplicationTests.testUpdateCustomer_Success  Time elapsed: 0.032 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<200> but was:<500>
 	at com.examly.springapp.SpringappApplicationTests.testUpdateCustomer_Success(SpringappApplicationTests.java:90)
 
@@ -18,15 +18,15 @@ com.examly.springapp.SpringappApplicationTests.testCreateAccount_Success  Time e
 java.lang.AssertionError: Status expected:<201> but was:<405>
 	at com.examly.springapp.SpringappApplicationTests.testCreateAccount_Success(SpringappApplicationTests.java:121)
 
-com.examly.springapp.SpringappApplicationTests.testCustomerHasLinkedAccount  Time elapsed: 0.024 s  <<< FAILURE!
+com.examly.springapp.SpringappApplicationTests.testCustomerHasLinkedAccount  Time elapsed: 0.011 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<200> but was:<500>
 	at com.examly.springapp.SpringappApplicationTests.testCustomerHasLinkedAccount(SpringappApplicationTests.java:131)
 
-com.examly.springapp.SpringappApplicationTests.testCreateAccount_CustomerNotFound  Time elapsed: 0.009 s  <<< FAILURE!
+com.examly.springapp.SpringappApplicationTests.testCreateAccount_CustomerNotFound  Time elapsed: 0.008 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<404> but was:<405>
 	at com.examly.springapp.SpringappApplicationTests.testCreateAccount_CustomerNotFound(SpringappApplicationTests.java:144)
 
-com.examly.springapp.SpringappApplicationTests.testGetAccountById_Success  Time elapsed: 0.019 s  <<< ERROR!
+com.examly.springapp.SpringappApplicationTests.testGetAccountById_Success  Time elapsed: 0.012 s  <<< ERROR!
 jakarta.servlet.ServletException: Request processing failed: com.examly.springapp.exception.ResourceNotFoundException: Account with ID 1 not found.
 	at com.examly.springapp.SpringappApplicationTests.testGetAccountById_Success(SpringappApplicationTests.java:151)
 Caused by: com.examly.springapp.exception.ResourceNotFoundException: Account with ID 1 not found.
@@ -38,13 +38,13 @@ jakarta.servlet.ServletException: Request processing failed: java.lang.Unsupport
 Caused by: java.lang.UnsupportedOperationException: Unimplemented method 'getAccountByCustomerName'
 	at com.examly.springapp.SpringappApplicationTests.testGetAccountsByCustomer_Success(SpringappApplicationTests.java:161)
 
-com.examly.springapp.SpringappApplicationTests.testGetAccountById_NotFound  Time elapsed: 0.007 s  <<< ERROR!
+com.examly.springapp.SpringappApplicationTests.testGetAccountById_NotFound  Time elapsed: 0.008 s  <<< ERROR!
 jakarta.servlet.ServletException: Request processing failed: com.examly.springapp.exception.ResourceNotFoundException: Account with ID 100 not found.
 	at com.examly.springapp.SpringappApplicationTests.testGetAccountById_NotFound(SpringappApplicationTests.java:170)
 Caused by: com.examly.springapp.exception.ResourceNotFoundException: Account with ID 100 not found.
 	at com.examly.springapp.SpringappApplicationTests.testGetAccountById_NotFound(SpringappApplicationTests.java:170)
 
-com.examly.springapp.SpringappApplicationTests.testDeleteAccount_Success  Time elapsed: 0.008 s  <<< ERROR!
+com.examly.springapp.SpringappApplicationTests.testDeleteAccount_Success  Time elapsed: 0.007 s  <<< ERROR!
 jakarta.servlet.ServletException: Request processing failed: com.examly.springapp.exception.ResourceNotFoundException: Account with ID 1 not found.
 	at com.examly.springapp.SpringappApplicationTests.testDeleteAccount_Success(SpringappApplicationTests.java:179)
 Caused by: com.examly.springapp.exception.ResourceNotFoundException: Account with ID 1 not found.

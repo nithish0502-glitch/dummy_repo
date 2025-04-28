@@ -48,12 +48,12 @@ public class CustomerServiceImpl implements CustomerService {
     //              .filter(customer -> customer.getAccount() != null && customer.getAccount().isActive())
     //              .collect(Collectors.toList());
     //  }
-
+        
     @Override
     public List<Customer> getAllCustomersWithActiveAccounts() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getAllCustomersWithActiveAccounts'");
-    }
+    }       
 
     @Override
     public void checkAccess(Customer customer) {
