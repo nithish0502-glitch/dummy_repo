@@ -10,6 +10,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
-   @Query("SELECT c FROM Customer c JOIN c.account a WHERE a.isActive = true")
-    List<Customer> findCustomersWithActiveAccounts();
+  
 }

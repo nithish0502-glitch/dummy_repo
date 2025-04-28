@@ -41,21 +41,6 @@ public class CustomerServiceImpl implements CustomerService {
                 .orElse(null);
     }
 
-        public List<Customer> findCustomersWithActiveAccounts() {
-            return customerRepository.findCustomersWithActiveAccounts();
-        }
-    @Override
-    public List<Customer> getAllCustomersWithActiveAccounts() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAllCustomersWithActiveAccounts'");
-    }       
-
-    @Override
-    public void checkAccess(Customer customer) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'checkAccess'");
-    }
-
     @Override
     public void deleteCustomer(Long id) {
         // TODO Auto-generated method stub

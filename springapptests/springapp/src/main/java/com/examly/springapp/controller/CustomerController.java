@@ -43,12 +43,6 @@ public class CustomerController {
         return ResponseEntity.ok(updatedCustomer);
     }
 
-    @GetMapping("/activeAccounts")
-    public ResponseEntity<List<Customer>> getCustomersWithActiveAccounts() {
-        List<Customer> activeCustomers = customerService.getAllCustomersWithActiveAccounts();
-        return ResponseEntity.ok(activeCustomers);
-    }
-
     @GetMapping("/unauthorized")
 public ResponseEntity<?> unauthorizedAccess() {
     return ResponseEntity.status(401).body("Unauthorized access to customer accounts. Customer is not verified.");

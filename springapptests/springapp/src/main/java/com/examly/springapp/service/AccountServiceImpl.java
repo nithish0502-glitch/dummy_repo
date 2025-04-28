@@ -38,11 +38,10 @@ public class AccountServiceImpl implements AccountService {
         return accountRepository.save(account);
     }
     
-     
+      
     @Override
     public Account getAccountById(Long id) {
-        return accountRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Account with ID " + id + " not found."));
+        return accountRepository.findById(id).orElse(null);
     }
 
 
