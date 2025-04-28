@@ -23,7 +23,7 @@ public class CustomerController {
         }
         return ResponseEntity.ok(customers);
     }
-
+     
     @PostMapping
     public ResponseEntity<?> createCustomer(@RequestBody Customer customer) {
         if (customer.getName() == null || customer.getName().isEmpty() || 
@@ -33,7 +33,7 @@ public class CustomerController {
         Customer createdCustomer = customerService.createCustomer(customer);
         return ResponseEntity.status(201).body(createdCustomer);
     }
-
+     
     @PutMapping("/{id}")
     public ResponseEntity<?> updateCustomer(@PathVariable Long id, @RequestBody Customer customer) {
         Customer updatedCustomer = customerService.updateCustomer(id, customer);

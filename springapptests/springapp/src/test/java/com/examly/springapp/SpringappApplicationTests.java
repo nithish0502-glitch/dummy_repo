@@ -154,7 +154,7 @@ class SpringappApplicationTests {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.accountNumber").value("AC-12345"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.balance").value(1000.00));
     }
-
+                                                           
     @Test
     @Order(11)
     void testGetAccountsByCustomer_Success() throws Exception {
