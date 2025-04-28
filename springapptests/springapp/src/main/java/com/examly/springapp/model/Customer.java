@@ -79,16 +79,5 @@ public class Customer {
     public void setIsVerified(Boolean isVerified) {
         this.isVerified = isVerified;
     }
-
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
-    }
-
-    
-
    
 }
