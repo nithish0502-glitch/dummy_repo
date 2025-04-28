@@ -13,6 +13,6 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
 
    // List<Account> findByCustomerName(String customerName);
    @Query("SELECT a FROM Account a WHERE a.customer.name = :customerName")
-    List<Account> findAccountsByCustomerName(String customerName);
+    list <Account> findAccountsByCustomerName(String customerName);
 }
 

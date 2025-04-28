@@ -1,24 +1,24 @@
 -------------------------------------------------------------------------------
 Test set: com.examly.springapp.SpringappApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 19, Failures: 7, Errors: 5, Skipped: 0, Time elapsed: 4.494 s <<< FAILURE! - in com.examly.springapp.SpringappApplicationTests
-com.examly.springapp.SpringappApplicationTests.testCreateCustomer_Success  Time elapsed: 0.112 s  <<< FAILURE!
+Tests run: 19, Failures: 7, Errors: 5, Skipped: 0, Time elapsed: 5.277 s <<< FAILURE! - in com.examly.springapp.SpringappApplicationTests
+com.examly.springapp.SpringappApplicationTests.testCreateCustomer_Success  Time elapsed: 0.103 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<201> but was:<500>
 	at com.examly.springapp.SpringappApplicationTests.testCreateCustomer_Success(SpringappApplicationTests.java:52)
 
-com.examly.springapp.SpringappApplicationTests.testGetAllCustomers_Success  Time elapsed: 0.023 s  <<< FAILURE!
+com.examly.springapp.SpringappApplicationTests.testGetAllCustomers_Success  Time elapsed: 0.02 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<200> but was:<500>
 	at com.examly.springapp.SpringappApplicationTests.testGetAllCustomers_Success(SpringappApplicationTests.java:76)
 
-com.examly.springapp.SpringappApplicationTests.testUpdateCustomer_Success  Time elapsed: 0.035 s  <<< FAILURE!
+com.examly.springapp.SpringappApplicationTests.testUpdateCustomer_Success  Time elapsed: 0.053 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<200> but was:<500>
 	at com.examly.springapp.SpringappApplicationTests.testUpdateCustomer_Success(SpringappApplicationTests.java:90)
 
-com.examly.springapp.SpringappApplicationTests.testCreateAccount_Success  Time elapsed: 0.025 s  <<< FAILURE!
+com.examly.springapp.SpringappApplicationTests.testCreateAccount_Success  Time elapsed: 0.062 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<201> but was:<500>
 	at com.examly.springapp.SpringappApplicationTests.testCreateAccount_Success(SpringappApplicationTests.java:121)
 
-com.examly.springapp.SpringappApplicationTests.testCustomerHasLinkedAccount  Time elapsed: 0.014 s  <<< FAILURE!
+com.examly.springapp.SpringappApplicationTests.testCustomerHasLinkedAccount  Time elapsed: 0.012 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<200> but was:<500>
 	at com.examly.springapp.SpringappApplicationTests.testCustomerHasLinkedAccount(SpringappApplicationTests.java:131)
 
@@ -32,7 +32,7 @@ com.examly.springapp.SpringappApplicationTests.testGetAccountById_Success  Time 
 java.lang.AssertionError: Status expected:<200> but was:<405>
 	at com.examly.springapp.SpringappApplicationTests.testGetAccountById_Success(SpringappApplicationTests.java:153)
 
-com.examly.springapp.SpringappApplicationTests.testGetAccountsByCustomer_Success  Time elapsed: 0.011 s  <<< ERROR!
+com.examly.springapp.SpringappApplicationTests.testGetAccountsByCustomer_Success  Time elapsed: 0.01 s  <<< ERROR!
 jakarta.servlet.ServletException: Request processing failed: java.lang.UnsupportedOperationException: Unimplemented method 'getAccountByCustomerName'
 	at com.examly.springapp.SpringappApplicationTests.testGetAccountsByCustomer_Success(SpringappApplicationTests.java:161)
 Caused by: java.lang.UnsupportedOperationException: Unimplemented method 'getAccountByCustomerName'
@@ -42,13 +42,13 @@ com.examly.springapp.SpringappApplicationTests.testGetAccountById_NotFound  Time
 java.lang.AssertionError: Status expected:<404> but was:<405>
 	at com.examly.springapp.SpringappApplicationTests.testGetAccountById_NotFound(SpringappApplicationTests.java:172)
 
-com.examly.springapp.SpringappApplicationTests.testDeleteAccount_Success  Time elapsed: 0.009 s  <<< ERROR!
+com.examly.springapp.SpringappApplicationTests.testDeleteAccount_Success  Time elapsed: 0.013 s  <<< ERROR!
 jakarta.servlet.ServletException: Request processing failed: java.lang.UnsupportedOperationException: Unimplemented method 'isPresent'
 	at com.examly.springapp.SpringappApplicationTests.testDeleteAccount_Success(SpringappApplicationTests.java:179)
 Caused by: java.lang.UnsupportedOperationException: Unimplemented method 'isPresent'
 	at com.examly.springapp.SpringappApplicationTests.testDeleteAccount_Success(SpringappApplicationTests.java:179)
 
-com.examly.springapp.SpringappApplicationTests.testDeleteAccount_NotFound  Time elapsed: 0.005 s  <<< ERROR!
+com.examly.springapp.SpringappApplicationTests.testDeleteAccount_NotFound  Time elapsed: 0.007 s  <<< ERROR!
 jakarta.servlet.ServletException: Request processing failed: com.examly.springapp.exception.ResourceNotFoundException: Account with ID 200 not found.
 	at com.examly.springapp.SpringappApplicationTests.testDeleteAccount_NotFound(SpringappApplicationTests.java:188)
 Caused by: com.examly.springapp.exception.ResourceNotFoundException: Account with ID 200 not found.
