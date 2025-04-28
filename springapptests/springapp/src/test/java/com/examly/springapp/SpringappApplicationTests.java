@@ -126,7 +126,7 @@ class SpringappApplicationTests {
     @Test
     @Order(8)
     void testCustomerHasLinkedAccount() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/customer")
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/account/customer")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].account.accountNumber").value("AC-12345"));
@@ -137,7 +137,7 @@ class SpringappApplicationTests {
     void testCreateAccount_CustomerNotFound() throws Exception {
         String accountJson = "{ \"accountNumber\": \"AC-99999\", \"balance\": 500.00 }";
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/account/99")
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/account/customer/99")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(accountJson)
                 .accept(MediaType.APPLICATION_JSON))
