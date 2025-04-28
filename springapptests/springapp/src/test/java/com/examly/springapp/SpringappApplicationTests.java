@@ -152,7 +152,7 @@ class SpringappApplicationTests {
         mockMvc.perform(MockMvcRequestBuilders.get("/api/account/byCustomer/Elise")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].customer.name").value("Elise"));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.customer.name").value("Elise"));
     }
 
     @Test
