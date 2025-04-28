@@ -1,4 +1,5 @@
 com/examly/springapp/model/Account.class
+com/examly/springapp/controller/AccountController.class
 com/examly/springapp/SpringappApplication.class
 com/examly/springapp/repository/AccountRepository.class
 com/examly/springapp/exception/ResourceNotFoundException.class

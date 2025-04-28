@@ -1,12 +1,12 @@
 -------------------------------------------------------------------------------
 Test set: com.examly.springapp.SpringappApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 19, Failures: 1, Errors: 4, Skipped: 0, Time elapsed: 5.76 s <<< FAILURE! - in com.examly.springapp.SpringappApplicationTests
+Tests run: 19, Failures: 1, Errors: 4, Skipped: 0, Time elapsed: 5.904 s <<< FAILURE! - in com.examly.springapp.SpringappApplicationTests
 com.examly.springapp.SpringappApplicationTests.testCustomerHasLinkedAccount  Time elapsed: 0.016 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<200> but was:<400>
 	at com.examly.springapp.SpringappApplicationTests.testCustomerHasLinkedAccount(SpringappApplicationTests.java:131)
 
-com.examly.springapp.SpringappApplicationTests.testCreateAccount_CustomerNotFound  Time elapsed: 0.014 s  <<< ERROR!
+com.examly.springapp.SpringappApplicationTests.testCreateAccount_CustomerNotFound  Time elapsed: 0.011 s  <<< ERROR!
 jakarta.servlet.ServletException: Request processing failed: com.examly.springapp.exception.ResourceNotFoundException: Customer with ID 99 not found.
 	at com.examly.springapp.SpringappApplicationTests.testCreateAccount_CustomerNotFound(SpringappApplicationTests.java:140)
 Caused by: com.examly.springapp.exception.ResourceNotFoundException: Customer with ID 99 not found.
@@ -24,7 +24,7 @@ jakarta.servlet.ServletException: Request processing failed: com.examly.springap
 Caused by: com.examly.springapp.exception.ResourceNotFoundException: Account with ID 100 not found.
 	at com.examly.springapp.SpringappApplicationTests.testGetAccountById_NotFound(SpringappApplicationTests.java:170)
 
-com.examly.springapp.SpringappApplicationTests.testFindAllCustomersWithActiveAccounts  Time elapsed: 0.006 s  <<< ERROR!
+com.examly.springapp.SpringappApplicationTests.testFindAllCustomersWithActiveAccounts  Time elapsed: 0.004 s  <<< ERROR!
 jakarta.servlet.ServletException: Request processing failed: java.lang.UnsupportedOperationException: Unimplemented method 'getAllCustomersWithActiveAccounts'
 	at com.examly.springapp.SpringappApplicationTests.testFindAllCustomersWithActiveAccounts(SpringappApplicationTests.java:207)
 Caused by: java.lang.UnsupportedOperationException: Unimplemented method 'getAllCustomersWithActiveAccounts'
