@@ -22,11 +22,11 @@ public class AccountController {
         return ResponseEntity.status(201).body(createdAccount);
     }
 
-    // @GetMapping("/{id}")
-    // public ResponseEntity<?> getAccountById(@PathVariable Long id) {
+    //  @GetMapping("/{id}")
+    //  public ResponseEntity<?> getAccountById(@PathVariable Long id) {
     //     return accountService.getAccountById(id)
-    //             .map(ResponseEntity::ok)
-    //             .orElse(ResponseEntity.status(404).body("Account with ID " + id + " not found."));
+    //              .map(ResponseEntity::ok)
+    //              .orElse(ResponseEntity.status(404).body("Account with ID " + id + " not found."));
     // }
 
     @GetMapping("/byCustomer/{customerName}")
