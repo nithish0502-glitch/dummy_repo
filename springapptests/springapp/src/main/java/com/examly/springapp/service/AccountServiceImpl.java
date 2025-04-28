@@ -40,7 +40,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-     public <Account> Object getAccountsByCustomerName(String customerName) {
+     public <Account>  getAccountsByCustomerName(String customerName) {
          return accountRepository.findAccountsByCustomerName(customerName);
      }
      
