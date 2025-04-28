@@ -114,7 +114,7 @@ class SpringappApplicationTests {
                 + "\"isActive\": true"
                 + "}";
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/account/1")
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/account/customer/1")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(accountJson)
                 .accept(MediaType.APPLICATION_JSON))

@@ -8,6 +8,7 @@ com/examly/springapp/controller/CustomerController.class
 com/examly/springapp/model/Customer.class
 com/examly/springapp/service/AccountServiceImpl.class
 com/examly/springapp/service/AccountService.class
+com/examly/springapp/repository/list.class
 com/examly/springapp/service/CustomerService.class
 com/examly/springapp/exception/AccountAccessDeniedException.class
 com/examly/springapp/service/CustomerServiceImpl.class
