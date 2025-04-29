@@ -1,4 +1,36 @@
 -------------------------------------------------------------------------------
 Test set: com.examly.springapp.SpringappApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.548 s - in com.examly.springapp.SpringappApplicationTests
+Tests run: 17, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 4.899 s <<< FAILURE! - in com.examly.springapp.SpringappApplicationTests
+com.examly.springapp.SpringappApplicationTests.testAddMembership  Time elapsed: 0.055 s  <<< FAILURE!
+java.lang.AssertionError: No value at JSON path "$.memberName"
+	at com.examly.springapp.SpringappApplicationTests.testAddMembership(SpringappApplicationTests.java:116)
+Caused by: com.jayway.jsonpath.InvalidJsonException: net.minidev.json.parser.ParseException: Malicious payload, having non natural depths, parsing stoped on { at position 27102.
+	at com.examly.springapp.SpringappApplicationTests.testAddMembership(SpringappApplicationTests.java:116)
+Caused by: net.minidev.json.parser.ParseException: Malicious payload, having non natural depths, parsing stoped on { at position 27102.
+	at com.examly.springapp.SpringappApplicationTests.testAddMembership(SpringappApplicationTests.java:116)
+
+com.examly.springapp.SpringappApplicationTests.testGetMembershipsByGymId  Time elapsed: 0.063 s  <<< FAILURE!
+java.lang.AssertionError: No value at JSON path "$"
+	at com.examly.springapp.SpringappApplicationTests.testGetMembershipsByGymId(SpringappApplicationTests.java:127)
+Caused by: com.jayway.jsonpath.InvalidJsonException: net.minidev.json.parser.ParseException: Malicious payload, having non natural depths, parsing stoped on { at position 27000.
+	at com.examly.springapp.SpringappApplicationTests.testGetMembershipsByGymId(SpringappApplicationTests.java:127)
+Caused by: net.minidev.json.parser.ParseException: Malicious payload, having non natural depths, parsing stoped on { at position 27000.
+	at com.examly.springapp.SpringappApplicationTests.testGetMembershipsByGymId(SpringappApplicationTests.java:127)
+
+com.examly.springapp.SpringappApplicationTests.testRenewMembership  Time elapsed: 0.012 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<400>
+	at com.examly.springapp.SpringappApplicationTests.testRenewMembership(SpringappApplicationTests.java:151)
+
+com.examly.springapp.SpringappApplicationTests.testRenewExpiredMembership  Time elapsed: 0.022 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<400> but was:<404>
+	at com.examly.springapp.SpringappApplicationTests.testRenewExpiredMembership(SpringappApplicationTests.java:165)
+
+com.examly.springapp.SpringappApplicationTests.testGetExpiredMemberships  Time elapsed: 0.059 s  <<< FAILURE!
+java.lang.AssertionError: No value at JSON path "$"
+	at com.examly.springapp.SpringappApplicationTests.testGetExpiredMemberships(SpringappApplicationTests.java:176)
+Caused by: com.jayway.jsonpath.InvalidJsonException: net.minidev.json.parser.ParseException: Malicious payload, having non natural depths, parsing stoped on { at position 27000.
+	at com.examly.springapp.SpringappApplicationTests.testGetExpiredMemberships(SpringappApplicationTests.java:176)
+Caused by: net.minidev.json.parser.ParseException: Malicious payload, having non natural depths, parsing stoped on { at position 27000.
+	at com.examly.springapp.SpringappApplicationTests.testGetExpiredMemberships(SpringappApplicationTests.java:176)
+

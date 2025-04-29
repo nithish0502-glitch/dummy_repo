@@ -81,6 +81,32 @@ INSERT INTO `customer` VALUES ('',1,'123 Main St, New York','john.doe@example.c
 UNLOCK TABLES;
 
 --
+-- Table structure for table `gym`
+--
+
+DROP TABLE IF EXISTS `gym`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `gym` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `description` varchar(255) DEFAULT NULL,
+  `location` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `gym`
+--
+
+LOCK TABLES `gym` WRITE;
+/*!40000 ALTER TABLE `gym` DISABLE KEYS */;
+INSERT INTO `gym` VALUES (1,'Best gym in town','Downtown','Fitness Plus');
+/*!40000 ALTER TABLE `gym` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `laptop`
 --
 
@@ -107,6 +133,36 @@ CREATE TABLE `laptop` (
 LOCK TABLES `laptop` WRITE;
 /*!40000 ALTER TABLE `laptop` DISABLE KEYS */;
 /*!40000 ALTER TABLE `laptop` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `membership`
+--
+
+DROP TABLE IF EXISTS `membership`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `membership` (
+  `end_date` date DEFAULT NULL,
+  `start_date` date DEFAULT NULL,
+  `gym_id` bigint(20) DEFAULT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `member_name` varchar(255) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKi3xs41hmknxgrgd1lcie8vpfr` (`gym_id`),
+  CONSTRAINT `FKi3xs41hmknxgrgd1lcie8vpfr` FOREIGN KEY (`gym_id`) REFERENCES `gym` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `membership`
+--
+
+LOCK TABLES `membership` WRITE;
+/*!40000 ALTER TABLE `membership` DISABLE KEYS */;
+INSERT INTO `membership` VALUES ('2023-12-31','2023-01-01',1,1,'John Doe','Premium');
+/*!40000 ALTER TABLE `membership` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -143,4 +199,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-04-29  6:51:29
+-- Dump completed on 2025-04-29  7:07:14
