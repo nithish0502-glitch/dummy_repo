@@ -16,7 +16,6 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/membership")
 public class MembershipController {
-
     @Autowired
     private MembershipService membershipService;
     @PostMapping("/{gymId}")
