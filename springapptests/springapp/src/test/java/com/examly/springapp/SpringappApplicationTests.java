@@ -288,7 +288,6 @@ public class SpringappApplicationTests {
             Class<?> gymClass = Class.forName("com.examly.springapp.model.Gym");
             Field membershipsField = gymClass.getDeclaredField("memberships");
             OneToMany oneToManyAnnotation = membershipsField.getAnnotation(OneToMany.class);
-
             assertNotNull(oneToManyAnnotation,
                     "@OneToMany annotation should be present on 'memberships' field in Gym class");
         } catch (ClassNotFoundException e) {
