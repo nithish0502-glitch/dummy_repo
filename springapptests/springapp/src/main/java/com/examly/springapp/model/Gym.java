@@ -1,7 +1,10 @@
 package com.examly.springapp.model;
 
 import jakarta.persistence.*;
+
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Entity
 public class Gym {
@@ -63,8 +66,23 @@ public class Gym {
         this.memberships = memberships;
     }
 
-    public void save(Membership expired) {
+    public Membership save(Gym membership) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'save'");
+    }
+
+    public Optional<Gym> findById(Long membershipId) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findById'");
+    }
+
+    public void setEndDate(LocalDate localDate) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setEndDate'");
+    }
+
+    public LocalDate getEndDate() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getEndDate'");
     }
 }

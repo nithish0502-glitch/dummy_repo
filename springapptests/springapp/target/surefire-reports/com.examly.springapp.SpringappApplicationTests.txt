@@ -1,32 +1,40 @@
 -------------------------------------------------------------------------------
 Test set: com.examly.springapp.SpringappApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 17, Failures: 4, Errors: 2, Skipped: 0, Time elapsed: 4.444 s <<< FAILURE! - in com.examly.springapp.SpringappApplicationTests
-com.examly.springapp.SpringappApplicationTests.testAddMembership  Time elapsed: 0.011 s  <<< FAILURE!
+Tests run: 17, Failures: 9, Errors: 0, Skipped: 0, Time elapsed: 4.575 s <<< FAILURE! - in com.examly.springapp.SpringappApplicationTests
+com.examly.springapp.SpringappApplicationTests.testAddGym  Time elapsed: 0.199 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<201> but was:<500>
+	at com.examly.springapp.SpringappApplicationTests.testAddGym(SpringappApplicationTests.java:51)
+
+com.examly.springapp.SpringappApplicationTests.testGetGymById  Time elapsed: 0.043 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<500>
+	at com.examly.springapp.SpringappApplicationTests.testGetGymById(SpringappApplicationTests.java:75)
+
+com.examly.springapp.SpringappApplicationTests.testGetAllGyms  Time elapsed: 0.009 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<500>
+	at com.examly.springapp.SpringappApplicationTests.testGetAllGyms(SpringappApplicationTests.java:95)
+
+com.examly.springapp.SpringappApplicationTests.testAddMembership  Time elapsed: 0.01 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<201> but was:<404>
 	at com.examly.springapp.SpringappApplicationTests.testAddMembership(SpringappApplicationTests.java:119)
 
-com.examly.springapp.SpringappApplicationTests.testGetMembershipsByGymId  Time elapsed: 0.029 s  <<< FAILURE!
+com.examly.springapp.SpringappApplicationTests.testGetMembershipsByGymId  Time elapsed: 0.02 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<200> but was:<204>
 	at com.examly.springapp.SpringappApplicationTests.testGetMembershipsByGymId(SpringappApplicationTests.java:130)
 
-com.examly.springapp.SpringappApplicationTests.testGetMembershipsByGymId_NoMemberships  Time elapsed: 0.008 s  <<< FAILURE!
+com.examly.springapp.SpringappApplicationTests.testGetMembershipsByGymId_NoMemberships  Time elapsed: 0.011 s  <<< FAILURE!
 java.lang.AssertionError: Response content expected:<No memberships found for this gym.> but was:<>
 	at com.examly.springapp.SpringappApplicationTests.testGetMembershipsByGymId_NoMemberships(SpringappApplicationTests.java:142)
 
-com.examly.springapp.SpringappApplicationTests.testRenewMembership  Time elapsed: 0.012 s  <<< ERROR!
-jakarta.servlet.ServletException: Request processing failed: java.util.NoSuchElementException: No value present
-	at com.examly.springapp.SpringappApplicationTests.testRenewMembership(SpringappApplicationTests.java:152)
-Caused by: java.util.NoSuchElementException: No value present
-	at com.examly.springapp.SpringappApplicationTests.testRenewMembership(SpringappApplicationTests.java:152)
+com.examly.springapp.SpringappApplicationTests.testRenewMembership  Time elapsed: 0.015 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<404>
+	at com.examly.springapp.SpringappApplicationTests.testRenewMembership(SpringappApplicationTests.java:155)
 
-com.examly.springapp.SpringappApplicationTests.testRenewExpiredMembership  Time elapsed: 0.008 s  <<< ERROR!
-jakarta.servlet.ServletException: Request processing failed: java.util.NoSuchElementException: No value present
-	at com.examly.springapp.SpringappApplicationTests.testRenewExpiredMembership(SpringappApplicationTests.java:166)
-Caused by: java.util.NoSuchElementException: No value present
-	at com.examly.springapp.SpringappApplicationTests.testRenewExpiredMembership(SpringappApplicationTests.java:166)
+com.examly.springapp.SpringappApplicationTests.testRenewExpiredMembership  Time elapsed: 0.009 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<400> but was:<404>
+	at com.examly.springapp.SpringappApplicationTests.testRenewExpiredMembership(SpringappApplicationTests.java:169)
 
-com.examly.springapp.SpringappApplicationTests.testGetExpiredMemberships  Time elapsed: 0.01 s  <<< FAILURE!
+com.examly.springapp.SpringappApplicationTests.testGetExpiredMemberships  Time elapsed: 0.013 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<200> but was:<204>
 	at com.examly.springapp.SpringappApplicationTests.testGetExpiredMemberships(SpringappApplicationTests.java:179)
 

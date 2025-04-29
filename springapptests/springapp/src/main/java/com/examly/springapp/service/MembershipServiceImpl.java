@@ -4,6 +4,9 @@ import com.examly.springapp.model.Gym;
 import com.examly.springapp.model.Membership;
 import com.examly.springapp.repository.GymRepo;
 import com.examly.springapp.repository.MembershipRepo;
+
+import jakarta.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,8 +24,23 @@ public class MembershipServiceImpl implements MembershipService {
 
     @Override
     public Membership addMembership(Long gymId, Membership membership) {
-        Gym gym = gymRepo.findById(gymId).orElseThrow();
+        Gym gym = gymRepo.findById(gymId).orElseThrow(() ->
+            new EntityNotFoundException("Gym not found with ID: " + gymId)
+        );
         membership.setGym(gym);
+        return membershipRepo.save(membership);
+    }
+
+    @Override
+    public Membership renewMembership(Long membershipId, String newEndDate) {
+        Membership membership = membershipRepo.findById(membershipId)
+            .orElseThrow(() -> new EntityNotFoundException("Membership not found"));
+
+        if (membership.getEndDate().isBefore(LocalDate.now())) {
+            throw new IllegalStateException("Cannot renew an expired membership.");
+        }
+
+        membership.setEndDate(LocalDate.parse(newEndDate));
         return membershipRepo.save(membership);
     }
 
@@ -32,24 +50,11 @@ public class MembershipServiceImpl implements MembershipService {
     }
 
     @Override
-    public Membership renewMembership(Long membershipId, String newEndDate) {
-        Membership membership = membershipRepo.findById(membershipId).orElseThrow();
-        if (membership.getEndDate().isBefore(LocalDate.now())) {
-            throw new IllegalStateException("Membership has expired and cannot be renewed.");
-        }
-        membership.setEndDate(LocalDate.parse(newEndDate));
-        return membershipRepo.save(membership);
-    }
-
-    @Override
     public List<Membership> getExpiredMemberships() {
-        return membershipRepo.findExpiredMemberships();
+        return membershipRepo.findByEndDateBefore(LocalDate.now());
     }
-
     @Override
-   
- public Membership renewMembership(Membership membership) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'renewMembership'");
+    public Membership renewMembership(Membership membership) {
+        return membershipRepo.save(membership); // Optional behavior if used elsewhere
     }
 }
