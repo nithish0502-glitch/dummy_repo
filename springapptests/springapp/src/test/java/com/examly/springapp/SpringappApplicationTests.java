@@ -13,6 +13,7 @@ import java.util.Arrays;
 import org.springframework.data.jpa.repository.Query;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.time.LocalDate;
 
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
@@ -23,6 +24,9 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+
+import com.examly.springapp.model.Gym;
+import com.examly.springapp.model.Membership;
 
 import jakarta.persistence.OneToMany;
 import org.junit.jupiter.api.MethodOrderer;
