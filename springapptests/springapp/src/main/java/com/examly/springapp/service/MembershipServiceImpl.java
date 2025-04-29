@@ -45,4 +45,10 @@ public class MembershipServiceImpl implements MembershipService {
     public List<Membership> getExpiredMemberships() {
         return membershipRepo.findExpiredMemberships();
     }
+
+    @Override
+    public Membership renewMembership(Membership membership) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'renewMembership'");
+    }
 }

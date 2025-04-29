@@ -8,4 +8,5 @@ public interface MembershipService {
     List<Membership> getMembershipsByGymId(Long gymId);
     Membership renewMembership(Long membershipId, String newEndDate);
     List<Membership> getExpiredMemberships();
+    Membership renewMembership(Membership membership);
 }

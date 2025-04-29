@@ -3,6 +3,7 @@ package com.examly.springapp.controller;
 import com.examly.springapp.model.Membership;
 import com.examly.springapp.service.MembershipService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,15 +17,12 @@ public class MembershipController {
     @Autowired
     private MembershipService membershipService;
 
-    @PostMapping("/{gymId}")
-    public ResponseEntity<?> addMembership(@PathVariable Long gymId, @RequestBody Membership membership) {
-        try {
-            Membership savedMembership = membershipService.addMembership(gymId, membership);
-            return ResponseEntity.status(201).body(savedMembership);
-        } catch (Exception e) {
-            return ResponseEntity.status(404).body("Gym not found.");
-        }
+    @PostMapping
+    public ResponseEntity<Membership> addMembership(@RequestBody Membership membership) {
+        Membership saved = membershipService.renewMembership(membership);
+        return ResponseEntity.status(HttpStatus.CREATED).body(saved); // Ensure saved has memberName set
     }
+    
 
     @GetMapping("/search/{gymId}")
     public ResponseEntity<?> getMembershipsByGym(@PathVariable Long gymId) {
