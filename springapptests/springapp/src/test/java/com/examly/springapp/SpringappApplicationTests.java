@@ -1,249 +1,297 @@
 package com.examly.springapp;
 
-import org.junit.jupiter.api.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
+import java.io.File;
+import java.util.Arrays;
+import org.springframework.data.jpa.repository.Query;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import java.io.File;
-import java.lang.reflect.Method;
-import java.util.Arrays;
+import jakarta.persistence.OneToMany;
+import org.junit.jupiter.api.MethodOrderer;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
-
-@SpringBootTest(classes = SpringappApplication.class)
+@SpringBootTest
 @AutoConfigureMockMvc
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-class SpringappApplicationTests {
+@TestMethodOrder(OrderAnnotation.class)
+public class SpringappApplicationTests {
 
     @Autowired
     private MockMvc mockMvc;
 
-    @Test
-    @Order(1)
-    void testGetAllCustomers_NotFound() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/customer")
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isNotFound())
-                .andExpect(MockMvcResultMatchers.content().string("No customers found."));
-    }
-
+    // Test adding a new Gym
     @Test
     @Order(2)
-    void testCreateCustomer_Success() throws Exception {
-        String customerJson = "{"
-                + "\"name\": \"John Doe\","
-                + "\"email\": \"john.doe@example.com\","
-                + "\"phoneNumber\": \"1234567890\","
-                + "\"address\": \"123 Main St, New York\","
-                + "\"isVerified\": true"
-                + "}";
+    public void testAddGym() throws Exception {
+        String gymJson = "{ \"name\": \"Fitness Plus\", \"location\": \"Downtown\", \"description\": \"Best gym in town\" }";
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/customer")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(customerJson)
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isCreated())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value("John Doe"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.phoneNumber").value("1234567890"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.isVerified").value(true));
+        mockMvc.perform(post("/api/gym")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(gymJson))
+            .andExpect(status().isCreated())
+            .andExpect(jsonPath("$.name").value("Fitness Plus"))
+            .andExpect(jsonPath("$.location").value("Downtown"));
     }
 
     @Test
     @Order(3)
-    void testCreateCustomer_MissingFields() throws Exception {
-        String customerJson = "{ \"name\": \"\", \"phoneNumber\": \"\" }";
+    public void testDuplicateAddGym() throws Exception {
+        String gymJson = "{ \"name\": \"Fitness Plus\", \"location\": \"Downtown\", \"description\": \"Best gym in town\" }";
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/customer")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(customerJson)
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isConflict())
-                .andExpect(MockMvcResultMatchers.content().string("Customer name and phone number are required."));
+        mockMvc.perform(post("/api/gym")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(gymJson))
+            .andExpect(status().isConflict())
+            .andExpect(content().string("A gym with the same name and location already exists."));
     }
 
+    // Test retrieving a Gym by ID
     @Test
     @Order(4)
-    void testGetAllCustomers_Success() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/customer")
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$").isArray())
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].address").value("123 Main St, New York"));
+    public void testGetGymById() throws Exception {
+        // Assuming a gym with ID 1 exists from testAddGym
+        mockMvc.perform(get("/api/gym/1")
+            .accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.name").value("Fitness Plus"));
     }
 
+    // Test retrieving a non-existent Gym
     @Test
     @Order(5)
-    void testUpdateCustomer_Success() throws Exception {
-        String updateJson = "{ \"name\": \"Elise\", \"phoneNumber\": \"9876543210\" }";
+    public void testGetGymById_NotFound() throws Exception {
+        mockMvc.perform(get("/api/gym/999")
+            .accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isNotFound())
+            .andExpect(content().string("Gym with ID 999 not found."));
+    }
 
-        mockMvc.perform(MockMvcRequestBuilders.put("/api/customer/1")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(updateJson)
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value("Elise"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.phoneNumber").value("9876543210"));
+    // Test retrieving all Gyms
+    @Test
+    @Order(6)
+    public void testGetAllGyms() throws Exception {
+        mockMvc.perform(get("/api/gym")
+            .accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$").isArray())
+            .andExpect(jsonPath("$[0].name").exists());
     }
 
     @Test
-    @Order(6)      
-    void testUpdateCustomer_NotFound() throws Exception {
-        String updateJson = "{ \"name\": \"Updated Name\", \"phoneNumber\": \"9876543210\" }";
-
-        mockMvc.perform(MockMvcRequestBuilders.put("/api/customer/99")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(updateJson)
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isNotFound())
-                .andExpect(MockMvcResultMatchers.content().string("Customer with ID 99 not found."));
+    @Order(1)
+    public void testGetAllGyms_NoContent() throws Exception {
+        // This test assumes that the gym list is empty.
+        mockMvc.perform(get("/api/gym")
+            .accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isNoContent());
     }
 
+    // Test adding a new membership for a gym
     @Test
     @Order(7)
-    void testCreateAccount_Success() throws Exception {
-        String accountJson = "{"
-                + "\"accountNumber\": \"AC-12345\","
-                + "\"balance\": 1000.00,"
-                + "\"isActive\": true"
-                + "}";
+    public void testAddMembership() throws Exception {
+        String membershipJson = "{ \"memberName\": \"John Doe\", \"startDate\": \"2023-01-01\", \"endDate\": \"2023-12-31\", \"type\": \"Premium\" }";
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/account/customer/1")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(accountJson)
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isCreated())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.accountNumber").value("AC-12345"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.balance").value(1000.00));
+        // Assuming a gym with ID 1 exists
+        mockMvc.perform(post("/api/membership/1")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(membershipJson))
+            .andExpect(status().isCreated())
+            .andExpect(jsonPath("$.memberName").value("John Doe"));
     }
 
+    // Test retrieving memberships by gym ID
+    @Test
+    @Order(8)
+    public void testGetMembershipsByGymId() throws Exception {
+        // This assumes that your service returns memberships for gym ID 1
+        mockMvc.perform(get("/api/membership/search/1")
+            .accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$").isArray())
+            .andExpect(jsonPath("$[0].memberName").exists());
+    }
+
+    // Test when no memberships match the provided gym ID
     @Test
     @Order(9)
-    void testCreateAccount_CustomerNotFound() throws Exception {
-        String accountJson = "{ \"accountNumber\": \"AC-99999\", \"balance\": 500.00 }";
-
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/account/customer/99")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(accountJson)
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isNotFound())
-                .andExpect(MockMvcResultMatchers.content().string("Customer with ID 99 not found."));
+    public void testGetMembershipsByGymId_NoMemberships() throws Exception {
+        mockMvc.perform(get("/api/membership/search/999")
+            .accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isNoContent())
+            .andExpect(content().string("No memberships found for this gym."));
     }
 
+    // Test renewing a membership before expiration
     @Test
     @Order(10)
-    void testGetAccountById_Success() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/account/1")
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.accountNumber").value("AC-12345"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.balance").value(1000.00));
+    public void testRenewMembership() throws Exception {
+        String renewalJson = "{ \"newEndDate\": \"2024-12-31\" }";
+
+        // Assuming a membership with ID 1 exists and is not expired
+        mockMvc.perform(post("/api/membership/renew/1")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(renewalJson))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.newEndDate").value("2024-12-31"));
     }
-                                                           
+
+    // Test renewing an expired membership
     @Test
     @Order(11)
-    void testGetAccountsByCustomer_Success() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/account/byCustomer/Elise")
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.customer.name").value("Elise"));
+    public void testRenewExpiredMembership() throws Exception {
+        String renewalJson = "{ \"newEndDate\": \"2024-12-31\" }";
+
+        // Assuming a membership with ID 2 exists and is expired
+        mockMvc.perform(post("/api/membership/renew/2")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(renewalJson))
+            .andExpect(status().isBadRequest())
+            .andExpect(content().string("Membership has expired and cannot be renewed."));
     }
 
+    // Test retrieving all expired memberships
     @Test
     @Order(12)
-    void testGetAccountById_NotFound() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/account/100")
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isNotFound())
-                .andExpect(MockMvcResultMatchers.content().string("Account with ID 100 not found."));
+    public void testGetExpiredMemberships() throws Exception {
+        mockMvc.perform(get("/api/membership/expired")
+            .accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$").isArray())
+            .andExpect(jsonPath("$[0].memberName").exists());
     }
 
     @Test
-    @Order(13)
-    void testDeleteAccount_Success() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.delete("/api/account/1")
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.content().string("Account deleted successfully."));
-    }
-
-    @Test
-    @Order(14)
-    void testDeleteAccount_NotFound() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.delete("/api/account/200")
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isNotFound())
-                .andExpect(MockMvcResultMatchers.content().string("Account with ID 200 not found."));
-    }
-
-    @Test
-    @Order(15)
-    void testAccountAccessDeniedException() throws Exception {
-        // Simulating unauthorized access by trying to get an unverified customer's account
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/customer/unauthorized")
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isUnauthorized())
-                .andExpect(MockMvcResultMatchers.content().string("Unauthorized access to customer accounts. Customer is not verified."));
-    }
-
-  
-
-    @Test
-    @Order(17)
-    void testQueryAnnotationPresentInAccountRepository() {
-        try {
-            Class<?> repoClass = Class.forName("com.examly.springapp.repository.AccountRepository");
-            Method[] methods = repoClass.getDeclaredMethods();
-            boolean hasQueryAnnotation = Arrays.stream(methods)
-                    .flatMap(method -> Arrays.stream(method.getAnnotations()))
-                    .anyMatch(annotation -> annotation.annotationType().equals(Query.class));
-
-            assertTrue(hasQueryAnnotation, "@Query annotation should be present on at least one method in AccountRepository");
-        } catch (ClassNotFoundException e) {
-            fail("AccountRepository class not found");
-        }
-    }
-
-    @Test
-    @Order(18)
-    void testFoldersExist() {
-        String[] folders = {
-                "src/main/java/com/examly/springapp/controller",
-                "src/main/java/com/examly/springapp/model",
-                "src/main/java/com/examly/springapp/repository",
-                "src/main/java/com/examly/springapp/service",
-                "src/main/java/com/examly/springapp/exception"
+    void testFoldersAndFilesExist() {
+        // Test for folders
+        String[] directories = {
+            "src/main/java/com/examly/springapp/controller",
+            "src/main/java/com/examly/springapp/model",
+            "src/main/java/com/examly/springapp/repository",
+            "src/main/java/com/examly/springapp/service"
         };
-        for (String folderPath : folders) {
-            File directory = new File(folderPath);
-            assertTrue(directory.exists() && directory.isDirectory(), "Folder does not exist: " + folderPath);
-        }
-    }
 
-    @Test
-    @Order(19)
-    void testFilesExist() {
-        String[] files = {
-                "src/main/java/com/examly/springapp/controller/CustomerController.java",
-                "src/main/java/com/examly/springapp/controller/AccountController.java",
-                "src/main/java/com/examly/springapp/model/Customer.java",
-                "src/main/java/com/examly/springapp/model/Account.java",
-                "src/main/java/com/examly/springapp/repository/CustomerRepository.java",
-                "src/main/java/com/examly/springapp/repository/AccountRepository.java",
-                "src/main/java/com/examly/springapp/service/CustomerService.java",
-                "src/main/java/com/examly/springapp/service/AccountService.java",
-                "src/main/java/com/examly/springapp/service/CustomerServiceImpl.java",
-                "src/main/java/com/examly/springapp/service/AccountServiceImpl.java"
+        for (String directoryPath : directories) {
+            File directory = new File(directoryPath);
+            assertTrue(directory.exists() && directory.isDirectory(), "Directory does not exist: " + directoryPath);
+        }
+
+        // Test for files in the controller folder
+        String[] controllerFiles = {
+            "src/main/java/com/examly/springapp/controller/GymController.java",
+            "src/main/java/com/examly/springapp/controller/MembershipController.java"
         };
-        for (String filePath : files) {
+
+        for (String filePath : controllerFiles) {
             File file = new File(filePath);
             assertTrue(file.exists() && file.isFile(), "File does not exist: " + filePath);
+        }
+
+        // Test for files in the model folder
+        String[] modelFiles = {
+            "src/main/java/com/examly/springapp/model/Gym.java",
+            "src/main/java/com/examly/springapp/model/Membership.java"
+        };
+
+        for (String filePath : modelFiles) {
+            File file = new File(filePath);
+            assertTrue(file.exists() && file.isFile(), "File does not exist: " + filePath);
+        }
+
+        // Test for files in the repository folder
+        String[] repoFiles = {
+            "src/main/java/com/examly/springapp/repository/GymRepo.java",
+            "src/main/java/com/examly/springapp/repository/MembershipRepo.java"
+        };
+
+        for (String filePath : repoFiles) {
+            File file = new File(filePath);
+            assertTrue(file.exists() && file.isFile(), "File does not exist: " + filePath);
+        }
+
+        // Test for files in the service folder
+        String[] serviceFiles = {
+            "src/main/java/com/examly/springapp/service/GymService.java",
+            "src/main/java/com/examly/springapp/service/MembershipService.java",
+            "src/main/java/com/examly/springapp/service/GymServiceImpl.java",
+            "src/main/java/com/examly/springapp/service/MembershipServiceImpl.java"
+        };
+
+        for (String filePath : serviceFiles) {
+            File file = new File(filePath);
+            assertTrue(file.exists() && file.isFile(), "File does not exist: " + filePath);
+        }
+    }
+
+    @Test
+    void testGymServiceInterfaceExists() {
+        try {
+            Class<?> clazz = Class.forName("com.examly.springapp.service.GymService");
+            assertNotNull(clazz, "GymService interface should exist.");
+            assertTrue(clazz.isInterface(), "GymService should be an interface.");
+        } catch (ClassNotFoundException e) {
+            fail("GymService interface not found.");
+        }
+    }
+
+    @Test
+    void testMembershipServiceInterfaceExists() {
+        try {
+            Class<?> clazz = Class.forName("com.examly.springapp.service.MembershipService");
+            assertNotNull(clazz, "MembershipService interface should exist.");
+            assertTrue(clazz.isInterface(), "MembershipService should be an interface.");
+        } catch (ClassNotFoundException e) {
+            fail("MembershipService interface not found.");
+        }
+    }
+
+    @Test
+    public void testQueryAnnotationPresentInMembershipRepo() {
+        try {
+            Class<?> membershipRepoClass = Class.forName("com.examly.springapp.repository.MembershipRepo");
+
+            Method[] methods = membershipRepoClass.getMethods();
+
+            boolean hasQueryAnnotation = Arrays.stream(methods)
+                    .anyMatch(method -> Arrays.stream(method.getDeclaredAnnotations())
+                            .anyMatch(annotation -> annotation.annotationType().equals(Query.class)));
+
+            assertTrue(hasQueryAnnotation,
+                    "@Query annotation should be present on at least one method in MembershipRepo");
+        } catch (ClassNotFoundException e) {
+            fail("MembershipRepo class not found. Ensure the class name and package are correct.");
+        }
+    }
+
+    @Test
+    public void testOneToManyAnnotationPresentInGym() {
+        try {
+            Class<?> gymClass = Class.forName("com.examly.springapp.model.Gym");
+            Field membershipsField = gymClass.getDeclaredField("memberships");
+            OneToMany oneToManyAnnotation = membershipsField.getAnnotation(OneToMany.class);
+
+            assertNotNull(oneToManyAnnotation,
+                    "@OneToMany annotation should be present on 'memberships' field in Gym class");
+        } catch (ClassNotFoundException e) {
+            fail("Gym class not found");
+        } catch (NoSuchFieldException e) {
+            fail("Field 'memberships' not found in Gym class");
         }
     }
 }
