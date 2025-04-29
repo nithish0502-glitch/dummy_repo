@@ -55,6 +55,6 @@ public class MembershipServiceImpl implements MembershipService {
     }
     @Override
     public Membership renewMembership(Membership membership) {
-        return membershipRepo.save(membership); // Optional behavior if used elsewhere
+        return membershipRepo.save(membership); 
     }
 }

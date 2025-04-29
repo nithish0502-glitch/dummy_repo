@@ -24,8 +24,8 @@ public class MembershipController {
         Membership saved = membershipService.addMembership(gymId, membership);
         return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     }
-    @GetMapping("/search/{gymId}")
-    public ResponseEntity<?> getMembershipsByGym(@PathVariable Long gymId) {
+    @GetMapping("/gym/{gymId}")
+    public ResponseEntity<?> getMembershipsByGymId(@PathVariable Long gymId) {
     List<Membership> memberships = membershipService.getMembershipsByGymId(gymId);
     if (memberships.isEmpty()) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No memberships found for this gym.");
