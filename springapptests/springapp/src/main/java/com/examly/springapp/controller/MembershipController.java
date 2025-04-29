@@ -32,8 +32,7 @@ public class MembershipController {
     }
     return ResponseEntity.ok(memberships);
 }
-
-    
+  
     @PostMapping("/renew/{membershipId}")
     public ResponseEntity<?> renewMembership(@PathVariable Long membershipId, @RequestBody Map<String, String> request) {
         try {
