@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface MembershipRepo extends JpaRepository<Membership, Long> {
-
+ 
     @Query("SELECT m FROM Membership m WHERE m.gym.id = :gymId")
     List<Membership> findByGymId(Long gymId);
 
