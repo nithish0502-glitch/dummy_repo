@@ -62,4 +62,9 @@ public class Gym {
     public void setMemberships(List<Membership> memberships) {
         this.memberships = memberships;
     }
+
+    public void save(Membership expired) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'save'");
+    }
 }
