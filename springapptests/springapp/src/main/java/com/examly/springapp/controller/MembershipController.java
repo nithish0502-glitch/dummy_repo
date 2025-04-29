@@ -19,9 +19,9 @@ public class MembershipController {
 
     @Autowired
     private MembershipService membershipService;
-    @PostMapping
-    public ResponseEntity<Membership> addMembership(@RequestBody Membership membership) {
-        Membership saved = membershipService.addMembership (null, membership);
+    @PostMapping("/{gymId}")
+    public ResponseEntity<Membership> addMembership(@PathVariable Long gymId, @RequestBody Membership membership) {
+        Membership saved = membershipService.addMembership(gymId, membership);
         return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     }
     @GetMapping("/search/{gymId}")
