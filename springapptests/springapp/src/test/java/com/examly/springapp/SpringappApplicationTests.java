@@ -131,7 +131,7 @@ public class SpringappApplicationTests {
     // Test when no memberships match the provided gym ID
     @Test
     @Order(9)
-    public void testGetMembershipsByGymId_NoMemberships() throws Exception {
+     void testGetMembershipsByGymId_NoMemberships() throws Exception {
         mockMvc.perform(get("/api/membership/search/999")
             .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isNoContent())
@@ -141,16 +141,16 @@ public class SpringappApplicationTests {
     // Test renewing a membership before expiration
     @Test
     @Order(10)
-    public void testRenewMembership() throws Exception {
+     void testRenewMembership() throws Exception {
         String renewalJson = "{ \"newEndDate\": \"2024-12-31\" }";
 
         // Assuming a membership with ID 1 exists and is not expired
         mockMvc.perform(post("/api/membership/renew/1")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(renewalJson))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$.newEndDate").value("2024-12-31"));
-    }
+        .contentType(MediaType.APPLICATION_JSON)
+        .content(renewalJson))
+        .andExpect(status().isOk()) 
+        .andExpect(jsonPath("$.newEndDate").value("2024-12-31"));
+     }
 
     // Test renewing an expired membership
     @Test

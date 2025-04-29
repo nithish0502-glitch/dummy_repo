@@ -36,17 +36,18 @@ public class MembershipController {
     }
 
     @PostMapping("/renew/{membershipId}")
-    public ResponseEntity<?> renewMembership(@PathVariable Long membershipId, @RequestBody Map<String, String> request) {
-        try {
-            String newEndDate = request.get("newEndDate");
-            Membership renewed = membershipService.renewMembership(membershipId, newEndDate);
-            return ResponseEntity.ok(renewed);
-        } catch (IllegalStateException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        } catch (Exception e) {
-            return ResponseEntity.status(404).body("Membership not found.");
-        }
+public ResponseEntity<?> renewMembership(@PathVariable Long membershipId, @RequestBody Map<String, String> request) {
+    try {
+        String newEndDate = request.get("newEndDate");
+        Membership renewed = membershipService.renewMembership(membershipId, newEndDate);
+        return ResponseEntity.ok(renewed);
+    } catch (IllegalStateException e) {
+        return ResponseEntity.badRequest().body(e.getMessage()); 
+    } catch (Exception e) {
+        return ResponseEntity.status(404).body("Membership not found."); 
     }
+}
+
 
     @GetMapping("/expired")
     public ResponseEntity<?> getExpiredMemberships() {
