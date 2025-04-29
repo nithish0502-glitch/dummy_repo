@@ -42,7 +42,7 @@ public class SpringappApplicationTests {
     // Test adding a new Gym
     @Test
     @Order(2)
-    public void testAddGym() throws Exception {
+     void testAddGym() throws Exception {
         String gymJson = "{ \"name\": \"Fitness Plus\", \"location\": \"Downtown\", \"description\": \"Best gym in town\" }";
 
         mockMvc.perform(post("/api/gym")
@@ -55,9 +55,8 @@ public class SpringappApplicationTests {
 
     @Test
     @Order(3)
-    public void testDuplicateAddGym() throws Exception {
+     void testDuplicateAddGym() throws Exception {
         String gymJson = "{ \"name\": \"Fitness Plus\", \"location\": \"Downtown\", \"description\": \"Best gym in town\" }";
-
         mockMvc.perform(post("/api/gym")
             .contentType(MediaType.APPLICATION_JSON)
             .content(gymJson))
@@ -68,7 +67,7 @@ public class SpringappApplicationTests {
     // Test retrieving a Gym by ID
     @Test
     @Order(4)
-    public void testGetGymById() throws Exception {
+     void testGetGymById() throws Exception {
         // Assuming a gym with ID 1 exists from testAddGym
         mockMvc.perform(get("/api/gym/1")
             .accept(MediaType.APPLICATION_JSON))
@@ -79,7 +78,7 @@ public class SpringappApplicationTests {
     // Test retrieving a non-existent Gym
     @Test
     @Order(5)
-    public void testGetGymById_NotFound() throws Exception {
+     void testGetGymById_NotFound() throws Exception {
         mockMvc.perform(get("/api/gym/999")
             .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isNotFound())
@@ -89,7 +88,7 @@ public class SpringappApplicationTests {
     // Test retrieving all Gyms
     @Test
     @Order(6)
-    public void testGetAllGyms() throws Exception {
+     void testGetAllGyms() throws Exception {
         mockMvc.perform(get("/api/gym")
             .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
@@ -99,7 +98,7 @@ public class SpringappApplicationTests {
 
     @Test
     @Order(1)
-    public void testGetAllGyms_NoContent() throws Exception {
+         void testGetAllGyms_NoContent() throws Exception {
         // This test assumes that the gym list is empty.
         mockMvc.perform(get("/api/gym")
             .accept(MediaType.APPLICATION_JSON))
@@ -109,7 +108,7 @@ public class SpringappApplicationTests {
     // Test adding a new membership for a gym
     @Test
     @Order(7)
-    public void testAddMembership() throws Exception {
+     void testAddMembership() throws Exception {
         String membershipJson = "{ \"memberName\": \"John Doe\", \"startDate\": \"2023-01-01\", \"endDate\": \"2023-12-31\", \"type\": \"Premium\" }";
 
         // Assuming a gym with ID 1 exists
@@ -123,7 +122,7 @@ public class SpringappApplicationTests {
     // Test retrieving memberships by gym ID
     @Test
     @Order(8)
-    public void testGetMembershipsByGymId() throws Exception {
+     void testGetMembershipsByGymId() throws Exception {
         // This assumes that your service returns memberships for gym ID 1
         mockMvc.perform(get("/api/membership/search/1")
             .accept(MediaType.APPLICATION_JSON))
@@ -159,7 +158,7 @@ public class SpringappApplicationTests {
     // Test renewing an expired membership
     @Test
     @Order(11)
-    public void testRenewExpiredMembership() throws Exception {
+     void testRenewExpiredMembership() throws Exception {
         String renewalJson = "{ \"newEndDate\": \"2024-12-31\" }";
 
         // Assuming a membership with ID 2 exists and is expired
@@ -173,7 +172,7 @@ public class SpringappApplicationTests {
     // Test retrieving all expired memberships
     @Test
     @Order(12)
-    public void testGetExpiredMemberships() throws Exception {
+     void testGetExpiredMemberships() throws Exception {
         mockMvc.perform(get("/api/membership/expired")
             .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
@@ -266,7 +265,7 @@ public class SpringappApplicationTests {
     }
 
     @Test
-    public void testQueryAnnotationPresentInMembershipRepo() {
+     void testQueryAnnotationPresentInMembershipRepo() {
         try {
             Class<?> membershipRepoClass = Class.forName("com.examly.springapp.repository.MembershipRepo");
 
@@ -284,7 +283,7 @@ public class SpringappApplicationTests {
     }
 
     @Test
-    public void testOneToManyAnnotationPresentInGym() {
+     void testOneToManyAnnotationPresentInGym() {
         try {
             Class<?> gymClass = Class.forName("com.examly.springapp.model.Gym");
             Field membershipsField = gymClass.getDeclaredField("memberships");

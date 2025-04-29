@@ -24,15 +24,16 @@ public class MembershipController {
         Membership saved = membershipService.addMembership (null, membership);
         return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     }
-
     @GetMapping("/search/{gymId}")
     public ResponseEntity<?> getMembershipsByGym(@PathVariable Long gymId) {
-        List<Membership> memberships = membershipService.getMembershipsByGymId(gymId);
-        if (memberships.isEmpty()) {
-            return ResponseEntity.noContent().build(); // Corrected: 204 with no body
-        }
-        return ResponseEntity.ok(memberships);
+    List<Membership> memberships = membershipService.getMembershipsByGymId(gymId);
+    if (memberships.isEmpty()) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No memberships found for this gym.");
     }
+    return ResponseEntity.ok(memberships);
+}
+
+    
     @PostMapping("/renew/{membershipId}")
     public ResponseEntity<?> renewMembership(@PathVariable Long membershipId, @RequestBody Map<String, String> request) {
         try {

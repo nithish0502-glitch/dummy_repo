@@ -1,5 +1,4 @@
 package com.examly.springapp.controller;
-
 import com.examly.springapp.model.Gym;
 import com.examly.springapp.service.GymService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +13,8 @@ public class GymController {
 
     @Autowired
     private GymService gymService;
-
     @PostMapping
     public ResponseEntity<?> addGym(@RequestBody Gym gym) {
-        // Check for duplicate gym (based on name and location)
         List<Gym> gyms = gymService.getAllGyms();
         boolean exists = gyms.stream().anyMatch(g ->
             g.getName().equalsIgnoreCase(gym.getName()) &&
@@ -26,7 +23,6 @@ public class GymController {
         if (exists) {
             return ResponseEntity.status(409).body("A gym with the same name and location already exists.");
         }
-
         Gym savedGym = gymService.addGym(gym);
         return ResponseEntity.status(201).body(savedGym);
     }
