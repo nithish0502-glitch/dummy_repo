@@ -93,7 +93,7 @@ CREATE TABLE `gym` (
   `location` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -102,7 +102,6 @@ CREATE TABLE `gym` (
 
 LOCK TABLES `gym` WRITE;
 /*!40000 ALTER TABLE `gym` DISABLE KEYS */;
-INSERT INTO `gym` VALUES (1,'Best gym in town','Downtown','Fitness Plus');
 /*!40000 ALTER TABLE `gym` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -152,7 +151,7 @@ CREATE TABLE `membership` (
   PRIMARY KEY (`id`),
   KEY `FKi3xs41hmknxgrgd1lcie8vpfr` (`gym_id`),
   CONSTRAINT `FKi3xs41hmknxgrgd1lcie8vpfr` FOREIGN KEY (`gym_id`) REFERENCES `gym` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -161,7 +160,6 @@ CREATE TABLE `membership` (
 
 LOCK TABLES `membership` WRITE;
 /*!40000 ALTER TABLE `membership` DISABLE KEYS */;
-INSERT INTO `membership` VALUES ('2023-12-31','2023-01-01',1,1,'John Doe','Premium');
 /*!40000 ALTER TABLE `membership` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -199,4 +197,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-04-29 10:42:17
+-- Dump completed on 2025-04-29 10:44:00
