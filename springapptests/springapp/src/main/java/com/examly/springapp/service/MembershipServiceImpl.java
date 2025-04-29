@@ -47,7 +47,8 @@ public class MembershipServiceImpl implements MembershipService {
     }
 
     @Override
-    public Membership renewMembership(Membership membership) {
+   
+ public Membership renewMembership(Membership membership) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'renewMembership'");
     }

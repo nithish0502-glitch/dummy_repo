@@ -1,24 +1,28 @@
 -------------------------------------------------------------------------------
 Test set: com.examly.springapp.SpringappApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 17, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 5.184 s <<< FAILURE! - in com.examly.springapp.SpringappApplicationTests
-com.examly.springapp.SpringappApplicationTests.testAddMembership  Time elapsed: 0.015 s  <<< FAILURE!
+Tests run: 17, Failures: 3, Errors: 2, Skipped: 0, Time elapsed: 6.62 s <<< FAILURE! - in com.examly.springapp.SpringappApplicationTests
+com.examly.springapp.SpringappApplicationTests.testAddMembership  Time elapsed: 0.019 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<201> but was:<404>
 	at com.examly.springapp.SpringappApplicationTests.testAddMembership(SpringappApplicationTests.java:115)
 
-com.examly.springapp.SpringappApplicationTests.testGetMembershipsByGymId  Time elapsed: 0.03 s  <<< FAILURE!
+com.examly.springapp.SpringappApplicationTests.testGetMembershipsByGymId  Time elapsed: 0.039 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<200> but was:<204>
 	at com.examly.springapp.SpringappApplicationTests.testGetMembershipsByGymId(SpringappApplicationTests.java:126)
 
-com.examly.springapp.SpringappApplicationTests.testRenewMembership  Time elapsed: 0.014 s  <<< FAILURE!
-java.lang.AssertionError: Status expected:<200> but was:<404>
-	at com.examly.springapp.SpringappApplicationTests.testRenewMembership(SpringappApplicationTests.java:151)
+com.examly.springapp.SpringappApplicationTests.testRenewMembership  Time elapsed: 0.018 s  <<< ERROR!
+jakarta.servlet.ServletException: Request processing failed: java.util.NoSuchElementException: No value present
+	at com.examly.springapp.SpringappApplicationTests.testRenewMembership(SpringappApplicationTests.java:148)
+Caused by: java.util.NoSuchElementException: No value present
+	at com.examly.springapp.SpringappApplicationTests.testRenewMembership(SpringappApplicationTests.java:148)
 
-com.examly.springapp.SpringappApplicationTests.testRenewExpiredMembership  Time elapsed: 0.015 s  <<< FAILURE!
-java.lang.AssertionError: Status expected:<400> but was:<404>
-	at com.examly.springapp.SpringappApplicationTests.testRenewExpiredMembership(SpringappApplicationTests.java:165)
+com.examly.springapp.SpringappApplicationTests.testRenewExpiredMembership  Time elapsed: 0.012 s  <<< ERROR!
+jakarta.servlet.ServletException: Request processing failed: java.util.NoSuchElementException: No value present
+	at com.examly.springapp.SpringappApplicationTests.testRenewExpiredMembership(SpringappApplicationTests.java:162)
+Caused by: java.util.NoSuchElementException: No value present
+	at com.examly.springapp.SpringappApplicationTests.testRenewExpiredMembership(SpringappApplicationTests.java:162)
 
-com.examly.springapp.SpringappApplicationTests.testGetExpiredMemberships  Time elapsed: 0.011 s  <<< FAILURE!
+com.examly.springapp.SpringappApplicationTests.testGetExpiredMemberships  Time elapsed: 0.012 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<200> but was:<204>
 	at com.examly.springapp.SpringappApplicationTests.testGetExpiredMemberships(SpringappApplicationTests.java:175)
 
