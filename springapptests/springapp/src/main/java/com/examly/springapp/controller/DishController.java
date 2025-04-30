@@ -22,9 +22,12 @@ public class DishController {
         return new ResponseEntity<>(saved, HttpStatus.CREATED);
     }
 
-    @GetMapping("/underPrice/{price}")
-    public ResponseEntity<List<Dish>> getDishesUnderPrice(@PathVariable double price) {
+    @GetMapping("/search/{price}")
+public ResponseEntity<List<Dish>> getDishesUnderPrice(double price) {
     List<Dish> dishes = dishService.getDishesBelowPrice(price);
+    if (dishes.isEmpty()) {
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
     return new ResponseEntity<>(dishes, HttpStatus.OK);
 }
     @DeleteMapping("/{id}")
