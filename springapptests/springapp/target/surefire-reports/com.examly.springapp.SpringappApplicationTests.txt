@@ -1,36 +1,20 @@
 -------------------------------------------------------------------------------
 Test set: com.examly.springapp.SpringappApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 17, Failures: 6, Errors: 0, Skipped: 0, Time elapsed: 5.025 s <<< FAILURE! - in com.examly.springapp.SpringappApplicationTests
-com.examly.springapp.SpringappApplicationTests.testAddMembership  Time elapsed: 0.054 s  <<< FAILURE!
-java.lang.AssertionError: No value at JSON path "$.memberName"
-	at com.examly.springapp.SpringappApplicationTests.testAddMembership(SpringappApplicationTests.java:119)
-Caused by: com.jayway.jsonpath.InvalidJsonException: net.minidev.json.parser.ParseException: Malicious payload, having non natural depths, parsing stoped on { at position 27102.
-	at com.examly.springapp.SpringappApplicationTests.testAddMembership(SpringappApplicationTests.java:119)
-Caused by: net.minidev.json.parser.ParseException: Malicious payload, having non natural depths, parsing stoped on { at position 27102.
-	at com.examly.springapp.SpringappApplicationTests.testAddMembership(SpringappApplicationTests.java:119)
-
-com.examly.springapp.SpringappApplicationTests.testGetMembershipsByGymId  Time elapsed: 0.013 s  <<< FAILURE!
+Tests run: 17, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 4.272 s <<< FAILURE! - in com.examly.springapp.SpringappApplicationTests
+com.examly.springapp.SpringappApplicationTests.testGetMembershipsByGymId  Time elapsed: 0.014 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<200> but was:<404>
-	at com.examly.springapp.SpringappApplicationTests.testGetMembershipsByGymId(SpringappApplicationTests.java:129)
+	at com.examly.springapp.SpringappApplicationTests.testGetMembershipsByGymId(SpringappApplicationTests.java:130)
 
-com.examly.springapp.SpringappApplicationTests.testGetMembershipsByGymId_NoMemberships  Time elapsed: 0.017 s  <<< FAILURE!
+com.examly.springapp.SpringappApplicationTests.testGetMembershipsByGymId_NoMemberships  Time elapsed: 0.006 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<204> but was:<404>
-	at com.examly.springapp.SpringappApplicationTests.testGetMembershipsByGymId_NoMemberships(SpringappApplicationTests.java:140)
+	at com.examly.springapp.SpringappApplicationTests.testGetMembershipsByGymId_NoMemberships(SpringappApplicationTests.java:141)
 
-com.examly.springapp.SpringappApplicationTests.testRenewMembership  Time elapsed: 0.016 s  <<< FAILURE!
+com.examly.springapp.SpringappApplicationTests.testRenewMembership  Time elapsed: 0.017 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<200> but was:<400>
-	at com.examly.springapp.SpringappApplicationTests.testRenewMembership(SpringappApplicationTests.java:154)
+	at com.examly.springapp.SpringappApplicationTests.testRenewMembership(SpringappApplicationTests.java:155)
 
 com.examly.springapp.SpringappApplicationTests.testRenewExpiredMembership  Time elapsed: 0.01 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<400> but was:<404>
-	at com.examly.springapp.SpringappApplicationTests.testRenewExpiredMembership(SpringappApplicationTests.java:168)
-
-com.examly.springapp.SpringappApplicationTests.testGetExpiredMemberships  Time elapsed: 0.146 s  <<< FAILURE!
-java.lang.AssertionError: No value at JSON path "$"
-	at com.examly.springapp.SpringappApplicationTests.testGetExpiredMemberships(SpringappApplicationTests.java:179)
-Caused by: com.jayway.jsonpath.InvalidJsonException: net.minidev.json.parser.ParseException: Malicious payload, having non natural depths, parsing stoped on { at position 27000.
-	at com.examly.springapp.SpringappApplicationTests.testGetExpiredMemberships(SpringappApplicationTests.java:179)
-Caused by: net.minidev.json.parser.ParseException: Malicious payload, having non natural depths, parsing stoped on { at position 27000.
-	at com.examly.springapp.SpringappApplicationTests.testGetExpiredMemberships(SpringappApplicationTests.java:179)
+	at com.examly.springapp.SpringappApplicationTests.testRenewExpiredMembership(SpringappApplicationTests.java:169)
 

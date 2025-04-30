@@ -3,6 +3,8 @@ package com.examly.springapp.model;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Membership {
 
@@ -17,6 +19,7 @@ public class Membership {
 
     @ManyToOne
     @JoinColumn(name = "gym_id")
+    @JsonIgnore
     private Gym gym;
 
     // Constructors
