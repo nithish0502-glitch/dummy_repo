@@ -18,8 +18,14 @@ public class RestaurantController {
 
     @PostMapping
     public ResponseEntity<Restaurant> addRestaurant(@RequestBody Restaurant restaurant) {
+        try
+        {
         Restaurant saved = restaurantService.addRestaurant(restaurant);
         return new ResponseEntity<>(saved, HttpStatus.CREATED);
+        }catch(DuplicateRestaurantException e)
+        {
+            return new ResponseEntity<>(HttpStatus.CONFLICT).body()
+        }
     }
 
     @GetMapping("/{id}")

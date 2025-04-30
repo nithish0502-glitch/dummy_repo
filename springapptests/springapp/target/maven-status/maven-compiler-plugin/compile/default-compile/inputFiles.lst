@@ -1,7 +1,7 @@
 /home/coder/project/workspace/springapptests/springapp/src/main/java/com/examly/springapp/SpringappApplication.java
 /home/coder/project/workspace/springapptests/springapp/src/main/java/com/examly/springapp/controller/DishController.java
 /home/coder/project/workspace/springapptests/springapp/src/main/java/com/examly/springapp/controller/RestaurantController.java
-/home/coder/project/workspace/springapptests/springapp/src/main/java/com/examly/springapp/exception/ResourceNotFoundException.java
+/home/coder/project/workspace/springapptests/springapp/src/main/java/com/examly/springapp/exception/DuplicateRestaurantException.java
 /home/coder/project/workspace/springapptests/springapp/src/main/java/com/examly/springapp/model/Dish.java
 /home/coder/project/workspace/springapptests/springapp/src/main/java/com/examly/springapp/model/Restaurant.java
 /home/coder/project/workspace/springapptests/springapp/src/main/java/com/examly/springapp/repository/DishRepo.java

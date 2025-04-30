@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import com.examly.springapp.model.Restaurant;
 import com.examly.springapp.repository.RestaurantRepo;
 import com.examly.springapp.exception.DuplicateRestaurantException;
-import com.examly.springapp.exception.ResourceNotFoundException;
 
 import java.util.List;
 
@@ -27,7 +26,7 @@ public class RestaurantServiceImpl implements RestaurantService {
     @Override
     public Restaurant getRestaurantById(Long id) {
         return restaurantRepo.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Restaurant with ID " + id + " not found."));
+                .orElseThrow(() -> new RuntimeException("Restaurant with ID " + id + " not found."));
     }
 
     @Override

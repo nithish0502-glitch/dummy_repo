@@ -81,6 +81,35 @@ INSERT INTO `customer` VALUES ('',1,'123 Main St, New York','john.doe@example.c
 UNLOCK TABLES;
 
 --
+-- Table structure for table `dish`
+--
+
+DROP TABLE IF EXISTS `dish`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `dish` (
+  `price` double NOT NULL,
+  `stock` int(11) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `restaurant_id` bigint(20) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKt13glsbe9ivpka00hbeg539cv` (`restaurant_id`),
+  CONSTRAINT `FKt13glsbe9ivpka00hbeg539cv` FOREIGN KEY (`restaurant_id`) REFERENCES `restaurant` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `dish`
+--
+
+LOCK TABLES `dish` WRITE;
+/*!40000 ALTER TABLE `dish` DISABLE KEYS */;
+/*!40000 ALTER TABLE `dish` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `gym`
 --
 
@@ -166,6 +195,31 @@ INSERT INTO `membership` VALUES ('2045-12-31','2023-01-01',1,1,'John Doe','Premi
 UNLOCK TABLES;
 
 --
+-- Table structure for table `restaurant`
+--
+
+DROP TABLE IF EXISTS `restaurant`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `restaurant` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `description` varchar(255) DEFAULT NULL,
+  `location` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `restaurant`
+--
+
+LOCK TABLES `restaurant` WRITE;
+/*!40000 ALTER TABLE `restaurant` DISABLE KEYS */;
+/*!40000 ALTER TABLE `restaurant` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `user`
 --
 
@@ -199,4 +253,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-04-30 10:47:10
+-- Dump completed on 2025-04-30 11:02:10
