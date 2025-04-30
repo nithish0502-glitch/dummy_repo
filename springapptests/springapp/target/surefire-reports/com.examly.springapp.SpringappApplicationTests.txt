@@ -1,16 +1,16 @@
 -------------------------------------------------------------------------------
 Test set: com.examly.springapp.SpringappApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 17, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 4.274 s <<< FAILURE! - in com.examly.springapp.SpringappApplicationTests
-com.examly.springapp.SpringappApplicationTests.testGetMembershipsByGymId_NoMemberships  Time elapsed: 0.01 s  <<< FAILURE!
+Tests run: 17, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 5.016 s <<< FAILURE! - in com.examly.springapp.SpringappApplicationTests
+com.examly.springapp.SpringappApplicationTests.testGetMembershipsByGymId_NoMemberships  Time elapsed: 0.012 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<204> but was:<404>
 	at com.examly.springapp.SpringappApplicationTests.testGetMembershipsByGymId_NoMemberships(SpringappApplicationTests.java:141)
 
-com.examly.springapp.SpringappApplicationTests.testRenewMembership  Time elapsed: 0.01 s  <<< FAILURE!
+com.examly.springapp.SpringappApplicationTests.testRenewMembership  Time elapsed: 0.013 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<200> but was:<400>
 	at com.examly.springapp.SpringappApplicationTests.testRenewMembership(SpringappApplicationTests.java:155)
 
-com.examly.springapp.SpringappApplicationTests.testRenewExpiredMembership  Time elapsed: 0.01 s  <<< FAILURE!
+com.examly.springapp.SpringappApplicationTests.testRenewExpiredMembership  Time elapsed: 0.011 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<400> but was:<404>
 	at com.examly.springapp.SpringappApplicationTests.testRenewExpiredMembership(SpringappApplicationTests.java:170)
 

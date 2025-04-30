@@ -27,7 +27,7 @@ public class MembershipController {
     public ResponseEntity<?> getMembershipsByGymId(@PathVariable Long gymId) {
     List<Membership> memberships = membershipService.getMembershipsByGymId(gymId);
     if (memberships.isEmpty()) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No memberships found for this gym.");
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body();
     }
     return ResponseEntity.ok(memberships);
 }
@@ -39,9 +39,9 @@ public class MembershipController {
             Membership renewed = membershipService.renewMembership(membershipId, newEndDate);
             return ResponseEntity.ok(renewed);
         } catch (IllegalStateException e) {
-            return ResponseEntity.badRequest().body(e.getMessage()); // 400 if already expired
+            return ResponseEntity.badRequest().body(e.getMessage()); 
         } catch (EntityNotFoundException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Membership not found."); // 404 if not found
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Membership not found."); 
         }
     }
 
