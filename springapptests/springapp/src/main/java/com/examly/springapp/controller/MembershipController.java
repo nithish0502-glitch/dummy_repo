@@ -27,23 +27,24 @@ public class MembershipController {
     public ResponseEntity<?> getMembershipsByGymId(@PathVariable Long gymId) {
     List<Membership> memberships = membershipService.getMembershipsByGymId(gymId);
     if (memberships.isEmpty()) {
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).body();
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
     }
     return ResponseEntity.ok(memberships);
 }
   
-    @PostMapping("/renew/{membershipId}")
-    public ResponseEntity<?> renewMembership(@PathVariable Long membershipId, @RequestBody Map<String, String> request) {
-        try {
-            String newEndDate = request.get("newEndDate");
-            Membership renewed = membershipService.renewMembership(membershipId, newEndDate);
-            return ResponseEntity.ok(renewed);
-        } catch (IllegalStateException e) {
-            return ResponseEntity.badRequest().body(e.getMessage()); 
-        } catch (EntityNotFoundException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Membership not found."); 
-        }
+@PutMapping("/renew/{membershipId}")
+public ResponseEntity<?> renewMembership(@PathVariable Long membershipId, @RequestBody Map<String, String> request) {
+    try {
+        String newEndDate = request.get("newEndDate");
+        Membership renewed = membershipService.renewMembership(membershipId, newEndDate);
+        return ResponseEntity.ok(renewed);
+    } catch (IllegalStateException e) {
+        return ResponseEntity.badRequest().body(e.getMessage()); 
+    } catch (EntityNotFoundException e) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Membership not found."); 
     }
+}
+
 
     @GetMapping("/expired")
     public ResponseEntity<?> getExpiredMemberships() {
