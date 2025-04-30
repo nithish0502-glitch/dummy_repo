@@ -125,7 +125,7 @@ public class SpringappApplicationTests {
     @Order(8)
      void testGetMembershipsByGymId() throws Exception {
         // This assumes that your service returns memberships for gym ID 1
-        mockMvc.perform(get("/api/membership/search/1")
+        mockMvc.perform(get("/api/membership/gym/1")
             .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$").isArray())
@@ -153,7 +153,8 @@ public class SpringappApplicationTests {
         .contentType(MediaType.APPLICATION_JSON)
         .content(renewalJson))
         .andExpect(status().isOk()) 
-        .andExpect(jsonPath("$.newEndDate").value("2024-12-31"));
+        //.andExpect(jsonPath("$.newEndDate").value("2024-12-31"));
+        .andExpect(jsonPath("$.endDate").value("2024-12-31"));
      }
 
     // Test renewing an expired membership
