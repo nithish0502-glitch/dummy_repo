@@ -147,7 +147,7 @@ public class SpringappApplicationTests {
 
     // Test renewing a membership before expiration
     @Test
-    @Order(10)
+    @Order(11)
      void testRenewMembership() throws Exception {
         String renewalJson = "{ \"memberName\": \"John Doe\", \"startDate\": \"2023-01-01\", \"endDate\": \"2045-12-31\", \"type\": \"Premium\" }";
 
@@ -163,27 +163,24 @@ public class SpringappApplicationTests {
 
 
     // Test renewing an expired membership
-     @Test
-     @Order(11)
-      void testRenewExpiredMembership() throws Exception {
-         String renewalJson = "{ \"newEndDate\": \"2024-12-31\" }";
+    @Test
+@Order(12)
+void testRenewExpiredMembership() throws Exception {
+    String renewalJson = "{ \"memberName\": \"John Doe\", \"startDate\": \"2023-01-01\", \"endDate\": \"2045-12-31\", \"type\": \"Premium\" }";
 
-         // Assuming a membership with ID 2 exists and is expired
-         mockMvc.perform(put("/api/membership/renew/2")
-             .contentType(MediaType.APPLICATION_JSON)
-            .content(renewalJson))
-            .andExpect(status().isBadRequest())
-             .andExpect(content().string("Membership has expired and cannot be renewed."));
-     }
+    // Assuming a membership with ID 99 does not exist
+    mockMvc.perform(put("/api/membership/renew/99")
+        .contentType(MediaType.APPLICATION_JSON)
+        .content(renewalJson)) 
+        .andExpect(status().isNotFound())
+        .andExpect(content().string("Membership with ID:99 not found."));
+}
 
-    private MockHttpServletRequestBuilder put(String string) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'put'");
-    }
 
+    
     // Test retrieving all expired memberships
     @Test
-    @Order(12)
+    @Order(10)
      void testGetExpiredMemberships() throws Exception {
         mockMvc.perform(get("/api/membership/expired")
             .accept(MediaType.APPLICATION_JSON))

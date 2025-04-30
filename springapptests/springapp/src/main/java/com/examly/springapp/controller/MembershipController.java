@@ -41,7 +41,7 @@ public ResponseEntity<?> renewMembership(@PathVariable Long membershipId, @Reque
     } catch (IllegalStateException e) {
         return ResponseEntity.badRequest().body(e.getMessage()); 
     } catch (EntityNotFoundException e) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Membership not found."); 
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Membership with ID:"+membershipId+"not found."); 
     }
 }
 

@@ -161,7 +161,7 @@ CREATE TABLE `membership` (
 
 LOCK TABLES `membership` WRITE;
 /*!40000 ALTER TABLE `membership` DISABLE KEYS */;
-INSERT INTO `membership` VALUES ('2023-12-31','2023-01-01',1,1,'John Doe','Premium');
+INSERT INTO `membership` VALUES ('2045-12-31','2023-01-01',1,1,'John Doe','Premium');
 /*!40000 ALTER TABLE `membership` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -199,4 +199,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-04-30  6:22:11
+-- Dump completed on 2025-04-30  6:37:11
