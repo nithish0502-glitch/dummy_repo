@@ -25,6 +25,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultHandler;
+import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 
 import com.examly.springapp.model.Gym;
 import com.examly.springapp.model.Membership;
@@ -149,7 +150,7 @@ public class SpringappApplicationTests {
         String renewalJson = "{ \"newEndDate\": \"2024-12-31\" }";
 
         // Assuming a membership with ID 1 exists and is not expired
-        mockMvc.perform(post("/api/membership/renew/1")
+        mockMvc.perform(put("/api/membership/renew/1")
         .contentType(MediaType.APPLICATION_JSON)
         .content(renewalJson))
         .andExpect(status().isOk()) 
@@ -170,6 +171,11 @@ public class SpringappApplicationTests {
     //         .andExpect(status().isBadRequest())
     //         .andExpect(content().string("Membership has expired and cannot be renewed."));
     // }
+
+    private MockHttpServletRequestBuilder put(String string) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'put'");
+    }
 
     // Test retrieving all expired memberships
     @Test

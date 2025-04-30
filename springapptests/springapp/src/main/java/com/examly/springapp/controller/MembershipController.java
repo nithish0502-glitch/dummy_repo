@@ -33,10 +33,10 @@ public class MembershipController {
 }
   
 @PutMapping("/renew/{membershipId}")
-public ResponseEntity<?> renewMembership(@PathVariable Long membershipId, @RequestBody Map<String, String> request) {
+public ResponseEntity<?> renewMembership(@PathVariable Long membershipId, @RequestBody Membership membership) {
     try {
-        String newEndDate = request.get("newEndDate");
-        Membership renewed = membershipService.renewMembership(membershipId, newEndDate);
+     //   String newEndDate = request.get("newEndDate");
+        Membership renewed = membershipService.renewMembership(membershipId, membership);
         return ResponseEntity.ok(renewed);
     } catch (IllegalStateException e) {
         return ResponseEntity.badRequest().body(e.getMessage()); 

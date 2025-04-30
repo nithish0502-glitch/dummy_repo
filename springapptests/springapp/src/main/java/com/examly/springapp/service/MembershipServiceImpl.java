@@ -32,17 +32,21 @@ public class MembershipServiceImpl implements MembershipService {
     }
 
     @Override
-    public Membership renewMembership(Long membershipId, String newEndDate) {
-        Membership membership = membershipRepo.findById(membershipId)
+    public Membership renewMembership(Long membershipId, Membership membership) {
+        Membership oldMembership = membershipRepo.findById(membershipId)
             .orElseThrow(() -> new EntityNotFoundException("Membership not found"));
-
-        if (membership.getEndDate().isBefore(LocalDate.now())) {
-            throw new IllegalStateException("Cannot renew an expired membership.");
+    
+        // Renew only if expired
+        if (oldMembership.getEndDate().isBefore(LocalDate.now())) {
+            // Update the end date of the existing membership
+            oldMembership.setEndDate(membership.getEndDate());
+            return membershipRepo.save(oldMembership);
+        } else {
+            // If not expired, throw an exception or handle it based on your requirement
+            throw new IllegalStateException("Membership is still active and does not need renewal.");
         }
-
-        membership.setEndDate(LocalDate.parse(newEndDate));
-        return membershipRepo.save(membership);
     }
+    
 
     @Override
     public List<Membership> getMembershipsByGymId(Long gymId) {
@@ -53,8 +57,5 @@ public class MembershipServiceImpl implements MembershipService {
     public List<Membership> getExpiredMemberships() {
         return membershipRepo.findByEndDateBefore(LocalDate.now());
     }
-    @Override
-    public Membership renewMembership(Membership membership) {
-        return membershipRepo.save(membership); 
-    }
+   
 }
