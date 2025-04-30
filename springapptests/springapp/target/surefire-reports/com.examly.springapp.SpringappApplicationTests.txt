@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.examly.springapp.SpringappApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 17, Failures: 3, Errors: 2, Skipped: 0, Time elapsed: 4.986 s <<< FAILURE! - in com.examly.springapp.SpringappApplicationTests
-com.examly.springapp.SpringappApplicationTests.testAddDish  Time elapsed: 0.061 s  <<< FAILURE!
+Tests run: 17, Failures: 3, Errors: 2, Skipped: 0, Time elapsed: 4.889 s <<< FAILURE! - in com.examly.springapp.SpringappApplicationTests
+com.examly.springapp.SpringappApplicationTests.testAddDish  Time elapsed: 0.056 s  <<< FAILURE!
 java.lang.AssertionError: No value at JSON path "$.name"
 	at com.examly.springapp.SpringappApplicationTests.testAddDish(SpringappApplicationTests.java:118)
 Caused by: com.jayway.jsonpath.InvalidJsonException: net.minidev.json.parser.ParseException: Malicious payload, having non natural depths, parsing stoped on { at position 25896.
@@ -10,7 +10,7 @@ Caused by: com.jayway.jsonpath.InvalidJsonException: net.minidev.json.parser.Par
 Caused by: net.minidev.json.parser.ParseException: Malicious payload, having non natural depths, parsing stoped on { at position 25896.
 	at com.examly.springapp.SpringappApplicationTests.testAddDish(SpringappApplicationTests.java:118)
 
-com.examly.springapp.SpringappApplicationTests.testGetDishesUnderPriceRange  Time elapsed: 0.132 s  <<< FAILURE!
+com.examly.springapp.SpringappApplicationTests.testGetDishesUnderPriceRange  Time elapsed: 0.075 s  <<< FAILURE!
 java.lang.AssertionError: No value at JSON path "$"
 	at com.examly.springapp.SpringappApplicationTests.testGetDishesUnderPriceRange(SpringappApplicationTests.java:129)
 Caused by: com.jayway.jsonpath.InvalidJsonException: net.minidev.json.parser.ParseException: Malicious payload, having non natural depths, parsing stoped on { at position 25803.
@@ -18,17 +18,17 @@ Caused by: com.jayway.jsonpath.InvalidJsonException: net.minidev.json.parser.Par
 Caused by: net.minidev.json.parser.ParseException: Malicious payload, having non natural depths, parsing stoped on { at position 25803.
 	at com.examly.springapp.SpringappApplicationTests.testGetDishesUnderPriceRange(SpringappApplicationTests.java:129)
 
-com.examly.springapp.SpringappApplicationTests.testGetDishesUnderPriceRange_NoDishes  Time elapsed: 0.055 s  <<< FAILURE!
+com.examly.springapp.SpringappApplicationTests.testGetDishesUnderPriceRange_NoDishes  Time elapsed: 0.042 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<204> but was:<200>
 	at com.examly.springapp.SpringappApplicationTests.testGetDishesUnderPriceRange_NoDishes(SpringappApplicationTests.java:139)
 
-com.examly.springapp.SpringappApplicationTests.testDishOutOfStockException  Time elapsed: 0.009 s  <<< ERROR!
+com.examly.springapp.SpringappApplicationTests.testDishOutOfStockException  Time elapsed: 0.006 s  <<< ERROR!
 jakarta.servlet.ServletException: Request processing failed: java.lang.RuntimeException: Dish is currently out of stock.
 	at com.examly.springapp.SpringappApplicationTests.testDishOutOfStockException(SpringappApplicationTests.java:150)
 Caused by: java.lang.RuntimeException: Dish is currently out of stock.
 	at com.examly.springapp.SpringappApplicationTests.testDishOutOfStockException(SpringappApplicationTests.java:150)
 
-com.examly.springapp.SpringappApplicationTests.testDeleteDish_NotFound  Time elapsed: 0.036 s  <<< ERROR!
+com.examly.springapp.SpringappApplicationTests.testDeleteDish_NotFound  Time elapsed: 0.034 s  <<< ERROR!
 jakarta.servlet.ServletException: Request processing failed: java.lang.RuntimeException: Dish not found with ID: 999
 	at com.examly.springapp.SpringappApplicationTests.testDeleteDish_NotFound(SpringappApplicationTests.java:171)
 Caused by: java.lang.RuntimeException: Dish not found with ID: 999

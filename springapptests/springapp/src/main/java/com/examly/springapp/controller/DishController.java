@@ -23,7 +23,7 @@ public class DishController {
     }
 
     @GetMapping("/search/{price}")
-public ResponseEntity<List<Dish>> getDishesUnderPrice(double price) {
+public ResponseEntity<List<Dish>> getDishesUnderPrice(@PathVariable double price) {
     List<Dish> dishes = dishService.getDishesBelowPrice(price);
     if (dishes.isEmpty()) {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
