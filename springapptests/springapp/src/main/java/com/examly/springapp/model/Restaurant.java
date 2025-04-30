@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-public class Gym {
+public class Restaurant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,21 +14,17 @@ public class Gym {
     private String location;
     private String description;
 
-    @OneToMany(mappedBy = "gym", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Membership> memberships;
-
-    // Constructors
-    public Gym() {}
-
-    public Gym(String name, String location, String description) {
-        this.name = name;
-        this.location = location;
-        this.description = description;
-    }
+    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
+    private List<Dish> dishes;
 
     // Getters and Setters
+
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -55,11 +51,11 @@ public class Gym {
         this.description = description;
     }
 
-    public List<Membership> getMemberships() {
-        return memberships;
+    public List<Dish> getDishes() {
+        return dishes;
     }
 
-    public void setMemberships(List<Membership> memberships) {
-        this.memberships = memberships;
+    public void setDishes(List<Dish> dishes) {
+        this.dishes = dishes;
     }
 }
