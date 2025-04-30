@@ -20,7 +20,9 @@ public class DishServiceImpl implements DishService {
 
     @Override
     public Dish addDish(Long restaurantId, Dish dish) {
-       
+        if (dish.getStock() <= 0) {
+            throw new RuntimeException("Dish is currently out of stock.");
+        }        
         Restaurant restaurant = restaurantRepo.findById(restaurantId)
                 .orElseThrow(() -> new RuntimeException("Restaurant with ID " + restaurantId + " not found."));
         dish.setRestaurant(restaurant);

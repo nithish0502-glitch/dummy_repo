@@ -22,12 +22,11 @@ public class DishController {
         return new ResponseEntity<>(saved, HttpStatus.CREATED);
     }
 
-    @GetMapping("/search/{price}")
+    @GetMapping("/underPrice/{price}")
     public ResponseEntity<List<Dish>> getDishesUnderPrice(@PathVariable double price) {
-        List<Dish> dishes = dishService.getDishesBelowPrice(price);
-        return ResponseEntity.ok(dishes);
-    }
-
+    List<Dish> dishes = dishService.getDishesBelowPrice(price);
+    return new ResponseEntity<>(dishes, HttpStatus.OK);
+}
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteDish(@PathVariable Long id) {
         dishService.deleteDish(id);
