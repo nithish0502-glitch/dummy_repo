@@ -174,10 +174,7 @@ void testRenewExpiredMembership() throws Exception {
         .content(renewalJson)) 
         .andExpect(status().isNotFound())
         .andExpect(content().string("Membership with ID:99 not found."));
-}
-
-
-    
+} 
     // Test retrieving all expired memberships
     @Test
     @Order(10)
