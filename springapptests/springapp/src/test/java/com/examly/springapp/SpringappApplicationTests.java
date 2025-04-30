@@ -7,15 +7,12 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-
 
 import java.io.File;
 import java.util.Arrays;
 import org.springframework.data.jpa.repository.Query;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.time.LocalDate;
 
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
@@ -26,74 +23,72 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultHandler;
-import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
-
-import com.examly.springapp.model.Gym;
-import com.examly.springapp.model.Membership;
 
 import jakarta.persistence.OneToMany;
+
 import org.junit.jupiter.api.MethodOrderer;
 
 @SpringBootTest
 @AutoConfigureMockMvc
 @TestMethodOrder(OrderAnnotation.class)
-public class SpringappApplicationTests {
+ class SpringappApplicationTests {
 
     @Autowired
     private MockMvc mockMvc;
 
-    // Test adding a new Gym
+    // Test adding a new restaurant
     @Test
     @Order(2)
-     void testAddGym() throws Exception {
-        String gymJson = "{ \"name\": \"Fitness Plus\", \"location\": \"Downtown\", \"description\": \"Best gym in town\" }";
+     void testAddRestaurant() throws Exception {
+        String restaurantJson = "{ \"name\": \"Pizza Palace\", \"location\": \"Main Street\", \"description\": \"Best pizza in town\" }";
 
-        mockMvc.perform(post("/api/gym")
+        mockMvc.perform(post("/api/restaurant")
             .contentType(MediaType.APPLICATION_JSON)
-            .content(gymJson))
+            .content(restaurantJson))
             .andExpect(status().isCreated())
-            .andExpect(jsonPath("$.name").value("Fitness Plus"))
-            .andExpect(jsonPath("$.location").value("Downtown"));
+            .andExpect(jsonPath("$.name").value("Pizza Palace"))
+            .andExpect(jsonPath("$.location").value("Main Street"));
     }
 
     @Test
     @Order(3)
-     void testDuplicateAddGym() throws Exception {
-        String gymJson = "{ \"name\": \"Fitness Plus\", \"location\": \"Downtown\", \"description\": \"Best gym in town\" }";
-        mockMvc.perform(post("/api/gym")
+     void testDuplicateAddRestaurant() throws Exception {
+        String restaurantJson = "{ \"name\": \"Pizza Palace\", \"location\": \"Main Street\", \"description\": \"Best pizza in town\" }";
+
+        mockMvc.perform(post("/api/restaurant")
             .contentType(MediaType.APPLICATION_JSON)
-            .content(gymJson))
+            .content(restaurantJson))
             .andExpect(status().isConflict())
-            .andExpect(content().string("A gym with the same name and location already exists."));
+            .andExpect(content().string("A restaurant with the same name and location already exists."));
+
     }
 
-    // Test retrieving a Gym by ID
+    // Test retrieving a restaurant by ID
     @Test
     @Order(4)
-     void testGetGymById() throws Exception {
-        // Assuming a gym with ID 1 exists from testAddGym
-        mockMvc.perform(get("/api/gym/1")
+     void testGetRestaurantById() throws Exception {
+        // Assuming a restaurant with ID 1 exists from testAddRestaurant
+        mockMvc.perform(get("/api/restaurant/1")
             .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
-            .andExpect(jsonPath("$.name").value("Fitness Plus"));
+            .andExpect(jsonPath("$.name").value("Pizza Palace"));
     }
 
-    // Test retrieving a non-existent Gym
+    // Test retrieving a non-existent restaurant
     @Test
     @Order(5)
-     void testGetGymById_NotFound() throws Exception {
-        mockMvc.perform(get("/api/gym/999")
+     void testGetRestaurantById_NotFound() throws Exception {
+        mockMvc.perform(get("/api/restaurant/999")
             .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isNotFound())
-            .andExpect(content().string("Gym with ID 999 not found."));
+            .andExpect(content().string("Restaurant with ID 999 not found."));
     }
 
-    // Test retrieving all Gyms
+    // Test retrieving all restaurants
     @Test
     @Order(6)
-     void testGetAllGyms() throws Exception {
-        mockMvc.perform(get("/api/gym")
+     void testGetAllRestaurants() throws Exception {
+        mockMvc.perform(get("/api/restaurant")
             .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$").isArray())
@@ -102,88 +97,81 @@ public class SpringappApplicationTests {
 
     @Test
     @Order(1)
-         void testGetAllGyms_NoContent() throws Exception {
-        // This test assumes that the gym list is empty.
-        mockMvc.perform(get("/api/gym")
+     void testGetAllRestaurants_NoContent() throws Exception {
+        // This test assumes that the restaurant list is empty.
+        mockMvc.perform(get("/api/restaurant")
             .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isNoContent());
     }
 
-    // Test adding a new membership for a gym
+    // Test adding a new dish to a restaurant
     @Test
     @Order(7)
-     void testAddMembership() throws Exception {
-        String membershipJson = "{ \"memberName\": \"John Doe\", \"startDate\": \"2023-01-01\", \"endDate\": \"2023-12-31\", \"type\": \"Premium\" }";
+     void testAddDish() throws Exception {
+        String dishJson = "{  \"name\": \"Margherita\", \"price\": 10.0, \"stock\": 5, \"description\": \"Classic pizza\" }";
 
-        // Assuming a gym with ID 1 exists
-        mockMvc.perform(post("/api/membership/1")
+        // Assuming a restaurant with ID 1 exists
+        mockMvc.perform(post("/api/dish/1")
             .contentType(MediaType.APPLICATION_JSON)
-            .content(membershipJson))
+            .content(dishJson))
             .andExpect(status().isCreated())
-            .andExpect(jsonPath("$.memberName").value("John Doe"));
+            .andExpect(jsonPath("$.name").value("Margherita"));
     }
 
-    // Test retrieving memberships by gym ID
+    // Test retrieving dishes that are under a certain price range
     @Test
     @Order(8)
-     void testGetMembershipsByGymId() throws Exception {
-        // This assumes that your service returns memberships for gym ID 1
-        mockMvc.perform(get("/api/membership/gym/1")
+     void testGetDishesUnderPriceRange() throws Exception {
+        // This assumes that your service returns dishes under the price of 15.0
+        mockMvc.perform(get("/api/dish/search/15.0")
             .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$").isArray())
-            .andExpect(jsonPath("$[0].memberName").exists());
+            .andExpect(jsonPath("$[0].name").exists());
     }
 
-    // Test when no memberships match the provided gym ID
+    // Test when no dishes match the provided price range
     @Test
     @Order(9)
-     void testGetMembershipsByGymId_NoMemberships() throws Exception {
-        mockMvc.perform(get("/api/membership/gym/999")
+     void testGetDishesUnderPriceRange_NoDishes() throws Exception {
+        mockMvc.perform(get("/api/dish/search/100.0")
             .accept(MediaType.APPLICATION_JSON))
-            .andExpect(status().isNoContent());
-            //.andExpect(content().string("No memberships found for this gym."));
+            .andExpect(status().isNoContent())
+            .andExpect(content().string("No dishes found under the specified price range."));
     }
 
-    // Test renewing a membership before expiration
-    @Test
-    @Order(11)
-     void testRenewMembership() throws Exception {
-        String renewalJson = "{ \"memberName\": \"John Doe\", \"startDate\": \"2023-01-01\", \"endDate\": \"2045-12-31\", \"type\": \"Premium\" }";
-
-        // Assuming a membership with ID 1 exists and is not expired
-        mockMvc.perform(put("/api/membership/renew/1")
-        .contentType(MediaType.APPLICATION_JSON)
-        .content(renewalJson))
-        .andExpect(status().isOk()) 
-        .andExpect(jsonPath("$.endDate").value("2045-12-31"));
-     }
-
-
-
-
-    // Test renewing an expired membership
-    @Test
-@Order(12)
-void testRenewExpiredMembership() throws Exception {
-    String renewalJson = "{ \"memberName\": \"John Doe\", \"startDate\": \"2023-01-01\", \"endDate\": \"2045-12-31\", \"type\": \"Premium\" }";
-
-    // Assuming a membership with ID 99 does not exist
-    mockMvc.perform(put("/api/membership/renew/99")
-        .contentType(MediaType.APPLICATION_JSON)
-        .content(renewalJson)) 
-        .andExpect(status().isNotFound())
-        .andExpect(content().string("Membership with ID:99 not found."));
-} 
-    // Test retrieving all expired memberships
+    // Test handling dish out of stock exception
     @Test
     @Order(10)
-     void testGetExpiredMemberships() throws Exception {
-        mockMvc.perform(get("/api/membership/expired")
+     void testDishOutOfStockException() throws Exception {
+        String dishJson = "{  \"name\": \"Margherita\", \"price\": 10.0, \"stock\": 0, \"description\": \"Classic pizza\" }";
+
+        // Assuming a restaurant with ID 1 exists
+        mockMvc.perform(post("/api/dish/1")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(dishJson))
+            .andExpect(status().isBadRequest())
+            .andExpect(content().string("Dish is currently out of stock."));
+    }
+
+    // Test deleting an existing dish
+    @Test
+    @Order(11)
+     void testDeleteDish() throws Exception {
+        // Assuming a dish with ID 1 exists from testAddDish
+        mockMvc.perform(delete("/api/dish/1")
             .accept(MediaType.APPLICATION_JSON))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$").isArray())
-            .andExpect(jsonPath("$[0].memberName").exists());
+            .andExpect(status().isNoContent());
+    }
+    
+    // Test deleting a non-existent dish
+    @Test
+    @Order(12)
+     void testDeleteDish_NotFound() throws Exception {
+        mockMvc.perform(delete("/api/dish/999")
+            .accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isNotFound())
+            .andExpect(content().string("Dish not found with ID: 999"));
     }
 
     @Test
@@ -203,8 +191,8 @@ void testRenewExpiredMembership() throws Exception {
 
         // Test for files in the controller folder
         String[] controllerFiles = {
-            "src/main/java/com/examly/springapp/controller/GymController.java",
-            "src/main/java/com/examly/springapp/controller/MembershipController.java"
+            "src/main/java/com/examly/springapp/controller/RestaurantController.java",
+            "src/main/java/com/examly/springapp/controller/DishController.java"
         };
 
         for (String filePath : controllerFiles) {
@@ -214,8 +202,8 @@ void testRenewExpiredMembership() throws Exception {
 
         // Test for files in the model folder
         String[] modelFiles = {
-            "src/main/java/com/examly/springapp/model/Gym.java",
-            "src/main/java/com/examly/springapp/model/Membership.java"
+            "src/main/java/com/examly/springapp/model/Restaurant.java",
+            "src/main/java/com/examly/springapp/model/Dish.java"
         };
 
         for (String filePath : modelFiles) {
@@ -225,8 +213,8 @@ void testRenewExpiredMembership() throws Exception {
 
         // Test for files in the repository folder
         String[] repoFiles = {
-            "src/main/java/com/examly/springapp/repository/GymRepo.java",
-            "src/main/java/com/examly/springapp/repository/MembershipRepo.java"
+            "src/main/java/com/examly/springapp/repository/RestaurantRepo.java",
+            "src/main/java/com/examly/springapp/repository/DishRepo.java"
         };
 
         for (String filePath : repoFiles) {
@@ -236,10 +224,10 @@ void testRenewExpiredMembership() throws Exception {
 
         // Test for files in the service folder
         String[] serviceFiles = {
-            "src/main/java/com/examly/springapp/service/GymService.java",
-            "src/main/java/com/examly/springapp/service/MembershipService.java",
-            "src/main/java/com/examly/springapp/service/GymServiceImpl.java",
-            "src/main/java/com/examly/springapp/service/MembershipServiceImpl.java"
+            "src/main/java/com/examly/springapp/service/RestaurantService.java",
+            "src/main/java/com/examly/springapp/service/DishService.java",
+            "src/main/java/com/examly/springapp/service/RestaurantServiceImpl.java",
+            "src/main/java/com/examly/springapp/service/DishServiceImpl.java"
         };
 
         for (String filePath : serviceFiles) {
@@ -249,57 +237,58 @@ void testRenewExpiredMembership() throws Exception {
     }
 
     @Test
-    void testGymServiceInterfaceExists() {
+    void testRestaurantServiceInterfaceExists() {
         try {
-            Class<?> clazz = Class.forName("com.examly.springapp.service.GymService");
-            assertNotNull(clazz, "GymService interface should exist.");
-            assertTrue(clazz.isInterface(), "GymService should be an interface.");
+            Class<?> clazz = Class.forName("com.examly.springapp.service.RestaurantService");
+            assertNotNull(clazz, "RestaurantService interface should exist.");
+            assertTrue(clazz.isInterface(), "RestaurantService should be an interface.");
         } catch (ClassNotFoundException e) {
-            fail("GymService interface not found.");
+            fail("RestaurantService interface not found.");
         }
     }
 
     @Test
-    void testMembershipServiceInterfaceExists() {
+    void testDishServiceInterfaceExists() {
         try {
-            Class<?> clazz = Class.forName("com.examly.springapp.service.MembershipService");
-            assertNotNull(clazz, "MembershipService interface should exist.");
-            assertTrue(clazz.isInterface(), "MembershipService should be an interface.");
+            Class<?> clazz = Class.forName("com.examly.springapp.service.DishService");
+            assertNotNull(clazz, "DishService interface should exist.");
+            assertTrue(clazz.isInterface(), "DishService should be an interface.");
         } catch (ClassNotFoundException e) {
-            fail("MembershipService interface not found.");
+            fail("DishService interface not found.");
         }
     }
 
     @Test
-     void testQueryAnnotationPresentInMembershipRepo() {
+     void testQueryAnnotationPresentInDishRepo() {
         try {
-            Class<?> membershipRepoClass = Class.forName("com.examly.springapp.repository.MembershipRepo");
+            Class<?> dishRepoClass = Class.forName("com.examly.springapp.repository.DishRepo");
 
-            Method[] methods = membershipRepoClass.getMethods();
+            Method[] methods = dishRepoClass.getMethods();
 
             boolean hasQueryAnnotation = Arrays.stream(methods)
                     .anyMatch(method -> Arrays.stream(method.getDeclaredAnnotations())
                             .anyMatch(annotation -> annotation.annotationType().equals(Query.class)));
 
             assertTrue(hasQueryAnnotation,
-                    "@Query annotation should be present on at least one method in MembershipRepo");
+                    "@Query annotation should be present on at least one method in DishRepo");
         } catch (ClassNotFoundException e) {
-            fail("MembershipRepo class not found. Ensure the class name and package are correct.");
+            fail("DishRepo class not found. Ensure the class name and package are correct.");
         }
     }
 
     @Test
-     void testOneToManyAnnotationPresentInGym() {
+     void testOneToManyAnnotationPresentInRestaurant() {
         try {
-            Class<?> gymClass = Class.forName("com.examly.springapp.model.Gym");
-            Field membershipsField = gymClass.getDeclaredField("memberships");
-            OneToMany oneToManyAnnotation = membershipsField.getAnnotation(OneToMany.class);
+            Class<?> restaurantClass = Class.forName("com.examly.springapp.model.Restaurant");
+            Field dishField = restaurantClass.getDeclaredField("dishes");
+            OneToMany oneToManyAnnotation = dishField.getAnnotation(OneToMany.class);
+
             assertNotNull(oneToManyAnnotation,
-                    "@OneToMany annotation should be present on 'memberships' field in Gym class");
+                    "@OneToMany annotation should be present on 'dishes' field in Restaurant class");
         } catch (ClassNotFoundException e) {
-            fail("Gym class not found");
+            fail("Restaurant class not found");
         } catch (NoSuchFieldException e) {
-            fail("Field 'memberships' not found in Gym class");
+            fail("Field 'dishes' not found in Restaurant class");
         }
     }
 }
