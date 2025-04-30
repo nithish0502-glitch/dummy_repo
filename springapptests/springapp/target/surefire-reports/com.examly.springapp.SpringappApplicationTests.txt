@@ -1,8 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.examly.springapp.SpringappApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 17, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 5.141 s <<< FAILURE! - in com.examly.springapp.SpringappApplicationTests
-com.examly.springapp.SpringappApplicationTests.testRenewExpiredMembership  Time elapsed: 0.016 s  <<< FAILURE!
-java.lang.AssertionError: Response content expected:<Membership with ID:99 not found.> but was:<Membership with ID:99not found.>
-	at com.examly.springapp.SpringappApplicationTests.testRenewExpiredMembership(SpringappApplicationTests.java:176)
-
+Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.346 s - in com.examly.springapp.SpringappApplicationTests
