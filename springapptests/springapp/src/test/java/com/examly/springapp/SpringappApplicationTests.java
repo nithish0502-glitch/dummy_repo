@@ -7,6 +7,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+
 
 import java.io.File;
 import java.util.Arrays;
@@ -147,30 +149,32 @@ public class SpringappApplicationTests {
     @Test
     @Order(10)
      void testRenewMembership() throws Exception {
-        String renewalJson = "{ \"newEndDate\": \"2024-12-31\" }";
+        String renewalJson = "{ \"memberName\": \"John Doe\", \"startDate\": \"2023-01-01\", \"endDate\": \"2045-12-31\", \"type\": \"Premium\" }";
 
         // Assuming a membership with ID 1 exists and is not expired
         mockMvc.perform(put("/api/membership/renew/1")
         .contentType(MediaType.APPLICATION_JSON)
         .content(renewalJson))
         .andExpect(status().isOk()) 
-        //.andExpect(jsonPath("$.newEndDate").value("2024-12-31"));
-        .andExpect(jsonPath("$.endDate").value("2024-12-31"));
+        .andExpect(jsonPath("$.endDate").value("2045-12-31"));
      }
 
-    // Test renewing an expired membership
-    // @Test
-    // @Order(11)
-    //  void testRenewExpiredMembership() throws Exception {
-    //     String renewalJson = "{ \"newEndDate\": \"2024-12-31\" }";
 
-    //     // Assuming a membership with ID 2 exists and is expired
-    //     mockMvc.perform(post("/api/membership/renew/2")
-    //         .contentType(MediaType.APPLICATION_JSON)
-    //         .content(renewalJson))
-    //         .andExpect(status().isBadRequest())
-    //         .andExpect(content().string("Membership has expired and cannot be renewed."));
-    // }
+
+
+    // Test renewing an expired membership
+     @Test
+     @Order(11)
+      void testRenewExpiredMembership() throws Exception {
+         String renewalJson = "{ \"newEndDate\": \"2024-12-31\" }";
+
+         // Assuming a membership with ID 2 exists and is expired
+         mockMvc.perform(put("/api/membership/renew/2")
+             .contentType(MediaType.APPLICATION_JSON)
+            .content(renewalJson))
+            .andExpect(status().isBadRequest())
+             .andExpect(content().string("Membership has expired and cannot be renewed."));
+     }
 
     private MockHttpServletRequestBuilder put(String string) {
         // TODO Auto-generated method stub

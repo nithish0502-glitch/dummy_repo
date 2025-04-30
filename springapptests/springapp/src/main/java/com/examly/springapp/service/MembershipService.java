@@ -10,6 +10,5 @@ public interface MembershipService {
         List<Membership> getMembershipsByGymId(Long gymId);
         Membership renewMembership(Long membershipId, Membership membership);
         List<Membership> getExpiredMemberships();
-        Membership renewMembership(Membership membership);
         //LocalDate parsedDate = LocalDate.parse(newEndDate);
 }
