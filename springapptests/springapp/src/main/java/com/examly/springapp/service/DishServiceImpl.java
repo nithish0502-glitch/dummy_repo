@@ -28,7 +28,6 @@ public class DishServiceImpl implements DishService {
         dish.setRestaurant(restaurant);
         return dishRepo.save(dish);
     }
-
     @Override
     public List<Dish> getDishesBelowPrice(double price) {
         List<Dish> dishes = dishRepo.findDishesBelowPrice(price);
@@ -45,3 +44,4 @@ public class DishServiceImpl implements DishService {
         dishRepo.delete(dish);
     }
 }
+ 
