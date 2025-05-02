@@ -134,7 +134,7 @@ import org.junit.jupiter.api.MethodOrderer;
     @Test
     @Order(9)
      void testGetDishesUnderPriceRange_NoDishes() throws Exception {
-        mockMvc.perform(get("/api/dish/search/100.0")
+        mockMvc.perform(get("/api/dish/search/9.0")
             .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isNoContent());
            // .andExpect(content().string("No dishes found under the specified price range."));

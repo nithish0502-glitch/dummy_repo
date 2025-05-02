@@ -30,18 +30,15 @@ public class DishServiceImpl implements DishService {
     }
     @Override
     public List<Dish> getDishesBelowPrice(double price) {
-        List<Dish> dishes = dishRepo.findDishesBelowPrice(price);
-        if (dishes.isEmpty()) {
-            throw new RuntimeException("No dishes found under the specified price range.");
-        }
-        return dishes;
-    }
+    return dishRepo.findDishesBelowPrice(price);
+}
 
-    @Override
-    public void deleteDish(Long id) {
-        Dish dish = dishRepo.findById(id)
-                .orElseThrow(() -> new RuntimeException("Dish not found with ID: " + id));
-        dishRepo.delete(dish);
-    }
+
+@Override
+public void deleteDish(Long id) {
+    Optional<Dish> optionalDish = dishRepo.findById(id);
+    optionalDish.ifPresent(dishRepo::delete);
+}
+
 }
  

@@ -23,13 +23,14 @@ public class DishController {
     }
 
     @GetMapping("/search/{price}")
-public ResponseEntity<List<Dish>> getDishesUnderPrice(@PathVariable double price) {
-    List<Dish> dishes = dishService.getDishesBelowPrice(price);
-    if (dishes.isEmpty()) {
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    public ResponseEntity<List<Dish>> getDishesUnderPrice(@PathVariable double price) {
+        List<Dish> dishes = dishService.getDishesBelowPrice(price);
+        if (dishes.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(dishes, HttpStatus.OK);
     }
-    return new ResponseEntity<>(dishes, HttpStatus.OK);
-}
+    
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteDish(@PathVariable Long id) {
         dishService.deleteDish(id);

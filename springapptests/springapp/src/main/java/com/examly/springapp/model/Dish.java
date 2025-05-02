@@ -1,5 +1,7 @@
 package com.examly.springapp.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -16,7 +18,9 @@ public class Dish {
 
     @ManyToOne
     @JoinColumn(name = "restaurant_id")
+    @JsonBackReference
     private Restaurant restaurant;
+
 
     // Getters and Setters
 

@@ -3,6 +3,8 @@ package com.examly.springapp.model;
 import jakarta.persistence.*;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Restaurant {
 
@@ -14,8 +16,10 @@ public class Restaurant {
     private String location;
     private String description;
 
-    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
-    private List<Dish> dishes;
+   @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
+   @JsonManagedReference
+   private List<Dish> dishes;
+
 
     // Getters and Setters
 
