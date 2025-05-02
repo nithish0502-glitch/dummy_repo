@@ -8,6 +8,7 @@ import com.examly.springapp.repository.DishRepo;
 import com.examly.springapp.repository.RestaurantRepo;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DishServiceImpl implements DishService {
@@ -35,10 +36,16 @@ public class DishServiceImpl implements DishService {
 
 
 @Override
-public void deleteDish(Long id) {
+public boolean deleteDish(Long id) {
     Optional<Dish> optionalDish = dishRepo.findById(id);
-    optionalDish.ifPresent(dishRepo::delete);
+    if (optionalDish.isPresent()) {
+        dishRepo.delete(optionalDish.get());
+        return true; // deleted
+    } else {
+        return false; 
+    }
 }
 
 }
+
  

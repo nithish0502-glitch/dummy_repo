@@ -8,6 +8,7 @@ import com.examly.springapp.model.Dish;
 import com.examly.springapp.service.DishService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/dish")
@@ -30,10 +31,17 @@ public class DishController {
         }
         return new ResponseEntity<>(dishes, HttpStatus.OK);
     }
-    
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteDish(@PathVariable Long id) {
-        dishService.deleteDish(id);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<String> deleteDish(@PathVariable Long id) {
+    boolean deleted = dishService.deleteDish(id);
+    if (deleted) {
+        return ResponseEntity.ok("Dish deleted successfully.");
+    } else {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Dish with ID " + id + " not found.");
     }
+
+    
 }
+
+}
+

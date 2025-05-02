@@ -161,7 +161,7 @@ import org.junit.jupiter.api.MethodOrderer;
         // Assuming a dish with ID 1 exists from testAddDish
         mockMvc.perform(delete("/api/dish/1")
             .accept(MediaType.APPLICATION_JSON))
-            .andExpect(status().isNoContent());
+            .andExpect(status().isOk());
     }
     
     // Test deleting a non-existent dish

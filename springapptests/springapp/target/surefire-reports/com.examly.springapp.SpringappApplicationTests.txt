@@ -1,16 +1,18 @@
 -------------------------------------------------------------------------------
 Test set: com.examly.springapp.SpringappApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 17, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 4.747 s <<< FAILURE! - in com.examly.springapp.SpringappApplicationTests
-com.examly.springapp.SpringappApplicationTests.testDishOutOfStockException  Time elapsed: 0.01 s  <<< ERROR!
+Tests run: 17, Failures: 2, Errors: 1, Skipped: 0, Time elapsed: 4.726 s <<< FAILURE! - in com.examly.springapp.SpringappApplicationTests
+com.examly.springapp.SpringappApplicationTests.testDishOutOfStockException  Time elapsed: 0.009 s  <<< ERROR!
 jakarta.servlet.ServletException: Request processing failed: java.lang.RuntimeException: Dish is currently out of stock.
 	at com.examly.springapp.SpringappApplicationTests.testDishOutOfStockException(SpringappApplicationTests.java:150)
 Caused by: java.lang.RuntimeException: Dish is currently out of stock.
 	at com.examly.springapp.SpringappApplicationTests.testDishOutOfStockException(SpringappApplicationTests.java:150)
 
-com.examly.springapp.SpringappApplicationTests.testDeleteDish_NotFound  Time elapsed: 0.007 s  <<< ERROR!
-jakarta.servlet.ServletException: Request processing failed: java.lang.RuntimeException: Dish not found with ID: 999
-	at com.examly.springapp.SpringappApplicationTests.testDeleteDish_NotFound(SpringappApplicationTests.java:171)
-Caused by: java.lang.RuntimeException: Dish not found with ID: 999
-	at com.examly.springapp.SpringappApplicationTests.testDeleteDish_NotFound(SpringappApplicationTests.java:171)
+com.examly.springapp.SpringappApplicationTests.testDeleteDish  Time elapsed: 0.019 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<204> but was:<200>
+	at com.examly.springapp.SpringappApplicationTests.testDeleteDish(SpringappApplicationTests.java:164)
+
+com.examly.springapp.SpringappApplicationTests.testDeleteDish_NotFound  Time elapsed: 0.011 s  <<< FAILURE!
+java.lang.AssertionError: Response content expected:<Dish not found with ID: 999> but was:<Dish with ID 999 not found.>
+	at com.examly.springapp.SpringappApplicationTests.testDeleteDish_NotFound(SpringappApplicationTests.java:174)
 
