@@ -18,10 +18,17 @@ public class DishController {
     private DishService dishService;
 
     @PostMapping("/{restaurantId}")
-    public ResponseEntity<Dish> addDish(@PathVariable Long restaurantId, @RequestBody Dish dish) {
-        Dish saved = dishService.addDish(restaurantId, dish);
-        return new ResponseEntity<>(saved, HttpStatus.CREATED);
+     public ResponseEntity<?> addDish(@PathVariable Long restaurantId, @RequestBody Dish dish) {
+    Optional<Dish> saved = dishService.addDish(restaurantId, dish);
+    if (saved.isPresent()) {
+        return new ResponseEntity<>(saved.get(), HttpStatus.CREATED);
+    } else if (dish.getStock() <= 0) {
+        return new ResponseEntity<>("Dish is currently out of stock.", HttpStatus.BAD_REQUEST);
+    } else {
+        return new ResponseEntity<>("Restaurant with ID " + restaurantId + " not found.", HttpStatus.NOT_FOUND);
     }
+}
+
 
     @GetMapping("/search/{price}")
     public ResponseEntity<List<Dish>> getDishesUnderPrice(@PathVariable double price) {
@@ -37,7 +44,7 @@ public class DishController {
     if (deleted) {
         return ResponseEntity.ok("Dish deleted successfully.");
     } else {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Dish with ID " + id + " not found.");
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Dish not found with ID: "+id);
     }
 
     

@@ -20,15 +20,23 @@ public class DishServiceImpl implements DishService {
     private RestaurantRepo restaurantRepo;
 
     @Override
-    public Dish addDish(Long restaurantId, Dish dish) {
-        if (dish.getStock() <= 0) {
-            throw new RuntimeException("Dish is currently out of stock.");
-        }        
-        Restaurant restaurant = restaurantRepo.findById(restaurantId)
-                .orElseThrow(() -> new RuntimeException("Restaurant with ID " + restaurantId + " not found."));
-        dish.setRestaurant(restaurant);
-        return dishRepo.save(dish);
+    public Optional<Dish> addDish(Long restaurantId, Dish dish) {
+    if (dish.getStock() <= 0) {
+        System.out.println("Dish is currently out of stock.");
+        return Optional.empty();
     }
+
+    Optional<Restaurant> optionalRestaurant = restaurantRepo.findById(restaurantId);
+    if (optionalRestaurant.isPresent()) {
+        dish.setRestaurant(optionalRestaurant.get());
+        return Optional.of(dishRepo.save(dish));
+    } else {
+        System.out.println("Restaurant with ID " + restaurantId + " not found.");
+        return Optional.empty();
+    }
+}
+
+
     @Override
     public List<Dish> getDishesBelowPrice(double price) {
     return dishRepo.findDishesBelowPrice(price);
