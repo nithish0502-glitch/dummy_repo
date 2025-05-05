@@ -13,7 +13,7 @@ import { AddFitnessPlanComponent } from './add-fp/add-fp.component';
   declarations: [
     AppComponent,
     fpListComponent,
-    AddfpComponent,
+    AddFpComponent,
   ],
   imports: [
     BrowserModule,
