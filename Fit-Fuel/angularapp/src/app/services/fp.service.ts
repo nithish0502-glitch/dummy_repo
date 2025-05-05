@@ -6,7 +6,7 @@ import { FitnessPlan } from '../model/fp.model';
 @Injectable({
   providedIn: 'root'
 })
-export class FitnessPlannerService {
+export class FitnessService {
   private backendUrl = 'https://ide-fddbbedbb327214235bfdebbddcaecone.premiumproject.examly.io/proxy/3001/'; // Replace with your actual backend URL
 
   constructor(private http: HttpClient) { }

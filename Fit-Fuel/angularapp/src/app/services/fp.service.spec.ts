@@ -1,10 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { FitnessPlannerService } from './fp.service';
+import { FitnessService } from './fp.service';
 import { FitnessPlan } from '../model/fp.model';
 
 describe('FitnessPlannerService', () => {
-  let service: FitnessPlannerService;
+  let service: FitnessService;
   let httpTestingController: HttpTestingController;
 
   const mockPlans: FitnessPlan[] = [
@@ -35,9 +35,9 @@ describe('FitnessPlannerService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [FitnessPlannerService],
+      providers: [FitnessService],
     });
-    service = TestBed.inject(FitnessPlannerService);
+    service = TestBed.inject(FitnessService);
     httpTestingController = TestBed.inject(HttpTestingController);
   });
 
