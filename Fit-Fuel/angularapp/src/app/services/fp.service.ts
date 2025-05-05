@@ -7,18 +7,22 @@ import { FitnessPlan } from '../model/fp.model';
   providedIn: 'root'
 })
 export class FitnessService {
-  private backendUrl = 'https://ide-fddbbedbb327214235bfdebbddcaecone.premiumproject.examly.io/proxy/3001/'; // Replace with your actual backend URL
+  // Replace this URL with your actual backend endpoint
+  private backendUrl = 'https://ide-fddbbedbb327214235bfdebbddcaecone.premiumproject.examly.io/proxy/3001/plans';
 
   constructor(private http: HttpClient) { }
 
+  // Get all fitness plans
   getPlans(): Observable<FitnessPlan[]> {
     return this.http.get<FitnessPlan[]>(this.backendUrl);
   }
 
+  // Add a new fitness plan
   addPlan(plan: FitnessPlan): Observable<FitnessPlan> {
     return this.http.post<FitnessPlan>(this.backendUrl, plan);
   }
 
+  // Delete a fitness plan by ID
   deletePlan(id: number): Observable<void> {
     const url = `${this.backendUrl}/${id}`;
     return this.http.delete<void>(url);
