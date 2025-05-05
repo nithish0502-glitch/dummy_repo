@@ -1,8 +1,8 @@
 export interface FitnessPlan {
-    id?: number;                 // Unique identifier
-    user?: string;              // User's name
-    age?: number;               // User's age
-    goal?: string;              // Fitness goal (e.g., Weight Loss, Muscle Gain)
+    id?: number;                 
+    user?: string;              
+    age?: number;               
+    goal?: string;              
     workoutType?: string;       
     durationPerDay?: string;    
     dietPlan?: string;          
