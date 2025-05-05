@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
-import { AddFitnessPlanComponent } from './add-fitness-plan.component';
-import { FitnessService } from '../services/fitness.service';
+import { AddFitnessPlanComponent } from './add-fp.component';
+import { FitnessService } from '../services/fp.service';
 import { of } from 'rxjs';
 import { Router } from '@angular/router';
 import { DebugElement } from '@angular/core';

@@ -1,0 +1,34 @@
+<div>
+    <button (click)="sortByCalories()">Sort by Calories</button>
+  </div>
+  <br>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>User</th>
+        <th>Age</th>
+        <th>Goal</th>
+        <th>Workout Type</th>
+        <th>Duration Per Day</th>
+        <th>Diet Plan</th>
+        <th>Calories Per Day</th>
+        <th>Contact Number</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let plan of fitnessPlans">
+        <td>{{ plan.id }}</td>
+        <td>{{ plan.user }}</td>
+        <td>{{ plan.age }}</td>
+        <td>{{ plan.goal }}</td>
+        <td>{{ plan.workoutType }}</td>
+        <td>{{ plan.durationPerDay }}</td>
+        <td>{{ plan.dietPlan }}</td>
+        <td>{{ plan.caloriesPerDay }}</td>
+        <td>{{ plan.contactNumber }}</td>
+        <td><button (click)="deleteFitnessPlan(plan.id)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>  
