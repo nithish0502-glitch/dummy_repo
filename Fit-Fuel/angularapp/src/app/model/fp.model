@@ -3,9 +3,9 @@ export interface FitnessPlan {
     user?: string;              // User's name
     age?: number;               // User's age
     goal?: string;              // Fitness goal (e.g., Weight Loss, Muscle Gain)
-    workoutType?: string;       // Type of workout (e.g., HIIT, Strength Training)
-    durationPerDay?: string;    // Daily workout duration (e.g., "45 mins")
-    dietPlan?: string;          // Diet type (e.g., Low Carb, High Protein)
-    caloriesPerDay?: number;    // Target calorie intake per day
-    contactNumber?: string;     // User's contact number
+    workoutType?: string;       
+    durationPerDay?: string;    
+    dietPlan?: string;          
+    caloriesPerDay?: number;    
+    contactNumber?: string;     
 }

@@ -7,12 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FitnessListComponent } from './fp-list/fp-list.component';
 import { AddFitnessPlanComponent } from './add-fp/add-fp.component';
+import { Fp } from './model/fp.model/fp.model.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FitnessListComponent,
-    AddFitnessPlanComponent
+    AddFitnessPlanComponent,
+    Fp.ModelComponent
   ],
   imports: [
     BrowserModule,

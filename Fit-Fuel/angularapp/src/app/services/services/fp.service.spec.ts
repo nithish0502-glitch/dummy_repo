@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { FitnessPlannerService } from './fitness-planner.service';
-import { FitnessPlan } from '../model/fitness-plan.model';
+import { FitnessPlannerService } from './fp.service';
+import { FitnessPlan } from '../model/fp.model';
 
 describe('FitnessPlannerService', () => {
   let service: FitnessPlannerService;
