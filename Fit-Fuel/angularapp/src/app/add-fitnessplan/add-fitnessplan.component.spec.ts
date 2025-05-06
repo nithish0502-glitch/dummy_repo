@@ -48,7 +48,7 @@ describe('AddFitnessPlanComponent', () => {
       contactNumber: '9876543210'
     };
 
-    spyOn(service as any, 'addFitnessPlan').and.returnValue(of(mockPlan));
+    spyOn(service as any, 'addPlan').and.returnValue(of(mockPlan));
 
     (component as any).fitnessForm.setValue(mockPlan);
     (component as any).addNewPlan();
