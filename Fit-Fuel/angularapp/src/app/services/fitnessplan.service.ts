@@ -7,9 +7,6 @@ import { FitnessPlan } from '../model/fitnessplan.model';
   providedIn: 'root'
 })
 export class FitnessService {
-  addFitnessPlan(value: any) {
-    throw new Error('Method not implemented.');
-  }
   // Replace this URL with your actual backend endpoint
   private backendUrl = 'https://ide-fddbbedbb327214235bfdebbddcaecone.premiumproject.examly.io/proxy/3001/fitnessPlans';
 
