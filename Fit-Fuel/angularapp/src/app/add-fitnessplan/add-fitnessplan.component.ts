@@ -9,7 +9,7 @@ import { FitnessService } from '../services/fitnessplan.service';
   styleUrls: ['./add-fitnessplan.component.css']
 })
 export class AddFitnessPlanComponent implements OnInit {
-
+  title = 'Fitness-App';
   fitnessForm: FormGroup;
 
   constructor(

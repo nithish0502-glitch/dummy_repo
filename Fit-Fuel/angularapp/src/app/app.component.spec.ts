@@ -1,10 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AddFitnessPlanComponent } from './add-fitnessplan/add-fitnessplan.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing'; 
+import { FitnessService } from '../services/fitnessplan.service';
 
 describe('AddFitnessPlanComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    imports: [RouterTestingModule],
+    imports: [RouterTestingModule, ReactiveFormsModule,  HttpClientTestingModule],
     declarations: [AddFitnessPlanComponent]
   }));
 
