@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { FitnessService } from '../services/fitnessplan.service';
 
 @Component({
-  selector: 'app-add-fitness-plan',
+  selector: 'app-add-fitnessplan',
   templateUrl: './add-fitnessplan.component.html',
   styleUrls: ['./add-fitnessplan.component.css']
 })

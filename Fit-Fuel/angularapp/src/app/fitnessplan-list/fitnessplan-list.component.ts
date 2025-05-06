@@ -3,7 +3,7 @@ import { FitnessPlan } from '../model/fitnessplan.model';
 import { FitnessService } from '../services/fitnessplan.service';
 
 @Component({
-  selector: 'app-fitness-list',
+  selector: 'app-fitnessplan-list',
   templateUrl: './fitnessplan-list.component.html',
   styleUrls: ['./fitnessplan-list.component.css']
 })
