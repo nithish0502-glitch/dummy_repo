@@ -5,7 +5,7 @@ import { FitnessService } from '../services/fitnessplan.service';
 @Component({
   selector: 'app-fitness-list',
   templateUrl: './fitnessplan-list.component.html',
-  styleUrls: ['./fp-list.component.css']
+  styleUrls: ['./fitnessplan-list.component.css']
 })
 export class FitnessListComponent implements OnInit {
   fitnessPlans: FitnessPlan[] = [];

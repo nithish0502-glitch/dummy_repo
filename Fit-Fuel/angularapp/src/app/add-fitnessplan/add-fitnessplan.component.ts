@@ -6,7 +6,7 @@ import { FitnessService } from '../services/fitnessplan.service';
 @Component({
   selector: 'app-add-fitness-plan',
   templateUrl: './add-fitnessplan.component.html',
-  styleUrls: ['./add-fp.component.css']
+  styleUrls: ['./add-fitnessplan.component.css']
 })
 export class AddFitnessPlanComponent implements OnInit {
 
