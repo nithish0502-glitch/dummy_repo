@@ -6,14 +6,18 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FitnessListComponent } from './fp-list/fp-list.component';
-import { AddFitnessPlanComponent } from './add-fp/add-fp.component';
-//import { Fp } from './model/fp.model/fp.model.component';
+import { AddFitnessPlanComponent } from './add-fitness-plan/add-fitness-plan.component';
+import { AddFitnessplanComponent } from './add-fitnessplan/add-fitnessplan.component';
+import { FitnessplanListComponent } from './fitnessplan-list/fitnessplan-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     fpListComponent,
     AddFpComponent,
+    AddFitnessPlanComponent,
+    AddFitnessplanComponent,
+    FitnessplanListComponent,
   ],
   imports: [
     BrowserModule,

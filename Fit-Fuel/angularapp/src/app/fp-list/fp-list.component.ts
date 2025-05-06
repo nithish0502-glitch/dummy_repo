@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FitnessPlan } from '../model/fp.model.ts'; // Assuming you have a fitness plan model
+import { FitnessPlan } from '../model/fp.model'; 
 import { FitnessService } from '../services/fp.service';
 
 @Component({
   selector: 'app-fitness-list',
-  templateUrl: './fitness-list.component.html',
-  styleUrls: ['./fitness-list.component.css']
+  templateUrl: './fp-list.component.html',
+  styleUrls: ['./fp-list.component.css']
 })
 export class FitnessListComponent implements OnInit {
   fitnessPlans: FitnessPlan[] = [];
@@ -18,7 +18,7 @@ export class FitnessListComponent implements OnInit {
   }
 
   getFitnessPlans(): void {
-    this.fitnessService.getFitnessPlans()
+    this.fitnessService.getPlans()
       .subscribe(
         (res) => {
           console.log(res);
@@ -31,7 +31,7 @@ export class FitnessListComponent implements OnInit {
   }
 
   deleteFitnessPlan(id: any): void {
-    this.fitnessService.deleteFitnessPlan(id)
+    this.fitnessService.deletePlan(id)
       .subscribe(
         () => {
           // Remove the deleted fitness plan from the list
