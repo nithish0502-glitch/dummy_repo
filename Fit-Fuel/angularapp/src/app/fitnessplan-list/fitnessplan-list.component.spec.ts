@@ -51,18 +51,18 @@ describe('FitnessListComponent', () => {
   });
 
   fit('should call getFitnessPlans', () => {
-    spyOn((service as any), 'getFitnessPlans').and.returnValue(of(mockFitnessPlans));
+    spyOn((service as any), 'getPlans').and.returnValue(of(mockFitnessPlans));
     (component as any).getFitnessPlans();
     expect((component as any).getFitnessPlans).toBeDefined();
     expect((component as any).getFitnessPlans instanceof Function).toBeTruthy();
-    expect((service as any).getFitnessPlans).toHaveBeenCalled();
+    expect((service as any).getPlans).toHaveBeenCalled();
   });
 
   fit('should call deleteFitnessPlan', () => {
-    spyOn((service as any), 'deleteFitnessPlan').and.returnValue(of());
+    spyOn((service as any), 'deletePlan').and.returnValue(of());
     (component as any).deleteFitnessPlan(1); // You can pass a valid fitness plan ID
     expect((component as any).deleteFitnessPlan).toBeDefined();
     expect((component as any).deleteFitnessPlan instanceof Function).toBeTruthy();
-    expect((service as any).deleteFitnessPlan).toHaveBeenCalledWith(1);
+    expect((service as any).deletePlan).toHaveBeenCalledWith(1);
   });
 });

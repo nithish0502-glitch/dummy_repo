@@ -54,7 +54,7 @@ describe('AddFitnessPlanComponent', () => {
     (component as any).addNewPlan();
 
     expect((component as any).fitnessForm.valid).toBeTruthy();
-    expect((service as any).addFitnessPlan).toHaveBeenCalledWith(mockPlan);
+    expect((service as any).addPlan).toHaveBeenCalledWith(mockPlan);
     expect(router.navigateByUrl).toHaveBeenCalledWith('/plans');
   });
 
