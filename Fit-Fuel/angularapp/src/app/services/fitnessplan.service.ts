@@ -11,7 +11,7 @@ export class FitnessService {
     throw new Error('Method not implemented.');
   }
   // Replace this URL with your actual backend endpoint
-  private backendUrl = 'https://ide-fddbbedbb327214235bfdebbddcaecone.premiumproject.examly.io/proxy/3001/plans';
+  private backendUrl = 'https://ide-fddbbedbb327214235bfdebbddcaecone.premiumproject.examly.io/proxy/8081/plans';
 
   constructor(private http: HttpClient) { }
 
