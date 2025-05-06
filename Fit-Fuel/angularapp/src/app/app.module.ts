@@ -5,17 +5,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FitnessListComponent } from './fp-list/fp-list.component';
-import { AddFitnessPlanComponent } from './add-fitness-plan/add-fitnessplan.component';
-import { AddFitnessplanComponent } from './add-fitnessplan/add-fitnessplan.component';
-import { FitnessplanListComponent } from './fitnessplan-list/fitnessplan-list.component';
+import { AddFitnessPlanComponent } from './add-fitnessplan/add-fitnessplan.component';
+import { FitnessListComponent } from './fitnessplan-list/fitnessplan-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddFitnessPlanComponent,
-    fitnessplanListComponent,
-    FitnessplanListComponent,
+    FitnessListComponent,
   ],
   imports: [
     BrowserModule,
