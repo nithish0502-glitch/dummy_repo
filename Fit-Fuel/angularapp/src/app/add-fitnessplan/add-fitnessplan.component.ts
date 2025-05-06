@@ -18,12 +18,14 @@ export class AddFitnessPlanComponent implements OnInit {
     private router: Router
   ) {
     this.fitnessForm = this.formBuilder.group({
-      planName: ['', Validators.required],
-      durationInWeeks: ['', [Validators.required, Validators.min(1)]],
-      intensityLevel: ['', Validators.required], // e.g., Low, Medium, High
-      description: ['', Validators.required],
-      price: ['', [Validators.required, Validators.min(0)]],
-      contactEmail: ['', [Validators.required, Validators.email]],
+      user: ['', Validators.required],
+      age: ['', Validators.required],
+      goal: ['', Validators.required],
+      workoutType: ['', Validators.required],
+      durationPerDay: ['', Validators.required],
+      dietPlan: ['', Validators.required],
+      caloriesPerDay: ['', Validators.required],
+      contactNumber: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]]
     });
   }
 
@@ -35,7 +37,7 @@ export class AddFitnessPlanComponent implements OnInit {
       this.fitnessService.addPlan(this.fitnessForm.value).subscribe(
         (res) => {
           console.log(res);
-          this.router.navigateByUrl('/fitness-plans');
+          this.router.navigateByUrl('/plans');
         },
         (err) => {
           console.error(err);
@@ -44,4 +46,3 @@ export class AddFitnessPlanComponent implements OnInit {
     }
   }
 }
-

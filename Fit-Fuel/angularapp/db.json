@@ -1,37 +1,37 @@
 {
-    "fitnessPlans": [
-      {
-        "user": "John Doe",
-        "age": 28,
-        "goal": "Weight Loss",
-        "workoutType": "HIIT",
-        "durationPerDay": "45 mins",
-        "dietPlan": "Low Carb",
-        "caloriesPerDay": 1800,
-        "contactNumber": "1234567890",
-        "id": 1
-      },
-      {
-        "user": "Emma Smith",
-        "age": 32,
-        "goal": "Muscle Gain",
-        "workoutType": "Strength Training",
-        "durationPerDay": "60 mins",
-        "dietPlan": "High Protein",
-        "caloriesPerDay": 2500,
-        "contactNumber": "9876543210",
-        "id": 2
-      },
-      {
-        "user": "Alex Johnson",
-        "age": 25,
-        "goal": "Endurance",
-        "workoutType": "Cardio + Yoga",
-        "durationPerDay": "50 mins",
-        "dietPlan": "Balanced Diet",
-        "caloriesPerDay": 2200,
-        "contactNumber": "5678901234",
-        "id": 3
-      }
-    ]
-  }  
+  "fitnessPlans": [
+    {
+      "user": "John Doe",
+      "age": 28,
+      "goal": "Weight Loss",
+      "workoutType": "HIIT",
+      "durationPerDay": "45 mins",
+      "dietPlan": "Low Carb",
+      "caloriesPerDay": 1800,
+      "contactNumber": "1234567890",
+      "id": 1
+    },
+    {
+      "user": "Emma Smith",
+      "age": 32,
+      "goal": "Muscle Gain",
+      "workoutType": "Strength Training",
+      "durationPerDay": "60 mins",
+      "dietPlan": "High Protein",
+      "caloriesPerDay": 2500,
+      "contactNumber": "9876543210",
+      "id": 2
+    },
+    {
+      "user": "Alex Johnson",
+      "age": 25,
+      "goal": "Endurance",
+      "workoutType": "Cardio + Yoga",
+      "durationPerDay": "50 mins",
+      "dietPlan": "Balanced Diet",
+      "caloriesPerDay": 2200,
+      "contactNumber": "5678901234",
+      "id": 3
+    }
+  ]
+}
