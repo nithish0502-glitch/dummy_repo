@@ -45,11 +45,11 @@ describe('FitnessPlannerService', () => {
     httpTestingController.verify();
   });
 
-  fit('should create FitnessPlannerService', () => {
+  fit('should_create_FitnessPlannerService', () => {
     expect(service).toBeTruthy();
   });
 
-  fit('should retrieve fitness plans via GET', () => {
+  fit('should_retrieve_fitness_plans_via_GET', () => {
     spyOn(service as any, 'getPlans').and.callThrough();
     (service as any).getPlans().subscribe((plans: FitnessPlan[]) => {
       expect(plans).toEqual(mockPlans);
@@ -61,7 +61,7 @@ describe('FitnessPlannerService', () => {
     expect((service as any).getPlans).toHaveBeenCalled();
   });
 
-  fit('should add a fitness plan via POST', () => {
+  fit('should_add_a_fitness_plan_via_POST', () => {
     const newPlan: FitnessPlan = {
       user: 'Alex Johnson',
       age: 25,
@@ -82,7 +82,7 @@ describe('FitnessPlannerService', () => {
     req.flush(newPlan);
   });
 
-  fit('should delete a fitness plan via DELETE', () => {
+  fit('should_delete_a_fitness_plan_+via_DELETE', () => {
     const planId = 1;
 
     (service as any).deletePlan(planId).subscribe(() => {});
