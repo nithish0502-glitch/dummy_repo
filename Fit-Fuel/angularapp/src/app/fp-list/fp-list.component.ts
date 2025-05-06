@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FitnessPlan } from '../model/fp.model'; // Assuming you have a fitness plan model
+import { FitnessPlan } from '../model/fp.model.ts'; // Assuming you have a fitness plan model
 import { FitnessService } from '../services/fp.service';
 
 @Component({
