@@ -82,7 +82,7 @@ describe('FitnessPlannerService', () => {
     req.flush(newPlan);
   });
 
-  fit('should_delete_a_fitness_plan_+via_DELETE', () => {
+  fit('should_delete_a_fitness_plan_via_DELETE', () => {
     const planId = 1;
 
     (service as any).deletePlan(planId).subscribe(() => {});
