@@ -13,7 +13,7 @@ import { FitnessplanListComponent } from './fitnessplan-list/fitnessplan-list.co
 @NgModule({
   declarations: [
     AppComponent,
-    fpListComponent,
+    fitnessplsListComponent,
     AddFpComponent,
     AddFitnessPlanComponent,
     AddFitnessplanComponent,
