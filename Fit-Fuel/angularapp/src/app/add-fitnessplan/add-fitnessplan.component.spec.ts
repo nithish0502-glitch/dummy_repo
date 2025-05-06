@@ -32,11 +32,11 @@ describe('AddFitnessPlanComponent', () => {
     spyOn(router, 'navigateByUrl').and.returnValue(Promise.resolve(true));
   });
 
-  fit('should create AddFitnessPlanComponent', () => {
+  fit('should_create_AddFitnessPlanComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  fit('should add a new fitness plan when form is valid', () => {
+  fit('should_add_a_new_fitness_plan_when_form_is_valid', () => {
     const mockPlan = {
       user: 'Emma Smith',
       age: 32,
@@ -58,7 +58,7 @@ describe('AddFitnessPlanComponent', () => {
     expect(router.navigateByUrl).toHaveBeenCalledWith('/plans');
   });
 
-  fit('should require all form fields to be filled in', () => {
+  fit('should_require_all_form_fields_to_be_filled_in', () => {
     const form = component.fitnessForm;
 
     form.setValue({
@@ -83,7 +83,7 @@ describe('AddFitnessPlanComponent', () => {
     expect(form.get('contactNumber')?.hasError('required')).toBeTruthy();
   });
 
-  fit('should validate contact number format', () => {
+  fit('should_validate_contact_number_format', () => {
     const form = component.fitnessForm;
 
     form.setValue({

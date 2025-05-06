@@ -31,8 +31,8 @@ export class FitnessListComponent implements OnInit {
   }
 
   deleteFitnessPlan(id: any): void {
-    this.fitnessService.(id)
-      .subscribe(deletePlan
+    this.fitnessService.deletePlan(id)
+      .subscribe(
         () => {
           // Remove the deleted fitness plan from the list
           this.fitnessPlans = this.fitnessPlans.filter(plan => plan.id !== id);

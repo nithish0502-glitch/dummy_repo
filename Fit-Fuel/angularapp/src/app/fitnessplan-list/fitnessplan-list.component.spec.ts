@@ -46,11 +46,11 @@ describe('FitnessListComponent', () => {
     service = TestBed.inject(FitnessService);
   });
 
-  fit('should create FitnessListComponent', () => {
+  fit('should_create_FitnessListComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  fit('should call getFitnessPlans', () => {
+  fit('should_call_getFitnessPlans', () => {
     spyOn((service as any), 'getPlans').and.returnValue(of(mockFitnessPlans));
     (component as any).getFitnessPlans();
     expect((component as any).getFitnessPlans).toBeDefined();
@@ -58,7 +58,7 @@ describe('FitnessListComponent', () => {
     expect((service as any).getPlans).toHaveBeenCalled();
   });
 
-  fit('should call deleteFitnessPlan', () => {
+  fit('should_call_deleteFitnessPlan', () => {
     spyOn((service as any), 'deletePlan').and.returnValue(of());
     (component as any).deleteFitnessPlan(1); // You can pass a valid fitness plan ID
     expect((component as any).deleteFitnessPlan).toBeDefined();
