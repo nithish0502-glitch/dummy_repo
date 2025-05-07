@@ -1,0 +1,51 @@
+/* Basic page styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Header styles */
+  header {
+    background-color: #333;
+    padding: 10px 20px;
+  }
+  
+  /* Navigation styles */
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+  }
+  
+  /* Navigation list items */
+  nav li {
+    display: inline;
+  }
+  
+  /* Heading and link styles */
+  nav h1 {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #fff;
+    padding: 8px 12px;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Hover effect for links */
+  nav a:hover {
+    background-color: #575757;
+    border-radius: 4px;
+  }
+  
+  /* Main content area */
+  main {
+    padding: 20px;
+  }
+  
