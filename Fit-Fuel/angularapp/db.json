@@ -1,37 +1,40 @@
 {
-  "fitnessPlans": [
+  "cricketPlayers": [
     {
-      "user": "John Doe",
-      "age": 28,
-      "goal": "Weight Loss",
-      "workoutType": "HIIT",
-      "durationPerDay": "45 mins",
-      "dietPlan": "Low Carb",
-      "caloriesPerDay": 1800,
-      "contactNumber": "1234567890",
-      "id": 1
+      "id": 1,
+      "name": "Virat Kohli",
+      "age": 35,
+      "team": "India",
+      "position": "Batsman",
+      "battingStyle": "Right-handed",
+      "bowlingStyle": "Right-arm medium",
+      "totalRuns": 12000,
+      "totalWickets": 5,
+      "totalMatches": 275
     },
     {
-      "user": "Emma Smith",
-      "age": 32,
-      "goal": "Muscle Gain",
-      "workoutType": "Strength Training",
-      "durationPerDay": "60 mins",
-      "dietPlan": "High Protein",
-      "caloriesPerDay": 2500,
-      "contactNumber": "9876543210",
-      "id": 2
+      "id": 2,
+      "name": "Jasprit Bumrah",
+      "age": 31,
+      "team": "India",
+      "position": "Bowler",
+      "battingStyle": "Right-handed",
+      "bowlingStyle": "Right-arm fast",
+      "totalRuns": 200,
+      "totalWickets": 250,
+      "totalMatches": 85
     },
     {
-      "user": "Alex Johnson",
+      "id": 3,
+      "name": "Rishabh Pant",
       "age": 25,
-      "goal": "Endurance",
-      "workoutType": "Cardio + Yoga",
-      "durationPerDay": "50 mins",
-      "dietPlan": "Balanced Diet",
-      "caloriesPerDay": 2200,
-      "contactNumber": "5678901234",
-      "id": 3
+      "team": "India",
+      "position": "Wicketkeeper",
+      "battingStyle": "Left-handed",
+      "bowlingStyle": "N/A",
+      "totalRuns": 2500,
+      "totalWickets": 0,
+      "totalMatches": 60
     }
   ]
 }

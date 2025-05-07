@@ -1,1 +1,72 @@
-<p>add-cricketplayer works!</p>
+<form [formGroup]="playerForm" (ngSubmit)="addNewPlayer()">
+    <table>
+      <tr>
+        <td>Name:</td>
+        <td><input class="form-control" type="text" placeholder="Enter player name" formControlName="name"></td>
+        <div *ngIf="playerForm.get('name')!.invalid && playerForm.get('name')!.touched">
+          <div *ngIf="playerForm.get('name')!.hasError('required')">Player name is required.</div>
+        </div>
+      </tr>
+      <tr>
+        <td>Age:</td>
+        <td><input class="form-control" type="number" placeholder="Enter age" formControlName="age"></td>
+        <div *ngIf="playerForm.get('age')!.invalid && playerForm.get('age')!.touched">
+          <div *ngIf="playerForm.get('age')!.hasError('required')">Age is required.</div>
+        </div>
+      </tr>
+      <tr>
+        <td>Team:</td>
+        <td><input class="form-control" type="text" placeholder="Enter team" formControlName="team"></td>
+        <div *ngIf="playerForm.get('team')!.invalid && playerForm.get('team')!.touched">
+          <div *ngIf="playerForm.get('team')!.hasError('required')">Team is required.</div>
+        </div>
+      </tr>
+      <tr>
+        <td>Position:</td>
+        <td>
+          <select class="form-control" formControlName="position">
+            <option value="">Select Position</option>
+            <option value="Batsman">Batsman</option>
+            <option value="Bowler">Bowler</option>
+            <option value="All-rounder">All-rounder</option>
+            <option value="Wicketkeeper">Wicketkeeper</option>
+          </select>
+        </td>
+        <div *ngIf="playerForm.get('position')!.invalid && playerForm.get('position')!.touched">
+          <div *ngIf="playerForm.get('position')!.hasError('required')">Position is required.</div>
+        </div>
+      </tr>
+      <tr>
+        <td>Batting Style:</td>
+        <td><input class="form-control" type="text" placeholder="Enter batting style" formControlName="battingStyle"></td>
+        <div *ngIf="playerForm.get('battingStyle')!.invalid && playerForm.get('battingStyle')!.touched">
+          <div *ngIf="playerForm.get('battingStyle')!.hasError('required')">Batting style is required.</div>
+        </div>
+      </tr>
+      <tr>
+        <td>Bowling Style:</td>
+        <td><input class="form-control" type="text" placeholder="Enter bowling style" formControlName="bowlingStyle"></td>
+        <div *ngIf="playerForm.get('bowlingStyle')!.invalid && playerForm.get('bowlingStyle')!.touched">
+          <div *ngIf="playerForm.get('bowlingStyle')!.hasError('required')">Bowling style is required.</div>
+        </div>
+      </tr>
+      <tr>
+        <td>Total Runs:</td>
+        <td><input class="form-control" type="number" placeholder="Enter total runs" formControlName="totalRuns"></td>
+      </tr>
+      <tr>
+        <td>Total Wickets:</td>
+        <td><input class="form-control" type="number" placeholder="Enter total wickets" formControlName="totalWickets"></td>
+      </tr>
+      <tr>
+        <td>Total Matches:</td>
+        <td><input class="form-control" type="number" placeholder="Enter total matches" formControlName="totalMatches"></td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <button class="btn btn-primary" type="submit" [disabled]="playerForm.invalid">Add Player</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+  
