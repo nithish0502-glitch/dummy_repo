@@ -28,3 +28,4 @@ export class FitnessService {
     return this.http.delete<void>(url);
   }
 }
+
