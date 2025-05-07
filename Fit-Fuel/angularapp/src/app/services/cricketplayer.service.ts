@@ -1,31 +1,30 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { FitnessPlan } from '../model/fitnessplan.model'; 
+import { CricketPlayer } from '../model/cricketplayer.model';  // Update the path if necessary
 
 @Injectable({
   providedIn: 'root'
 })
-export class FitnessService {
-  // Replace this URL with your actual backend endpoint
-  private backendUrl = 'https://ide-fddbbedbb327214235bfdebbddcaecone.premiumproject.examly.io/proxy/3001/fitnessPlans';
+export class CricketPlayerService {
+  // Replace with your actual backend endpoint for cricket players
+  private backendUrl = 'https://your-backend-url.com/api/cricketPlayers';
 
   constructor(private http: HttpClient) { }
 
-  // Get all fitness plans
-  getPlans(): Observable<FitnessPlan[]> {
-    return this.http.get<FitnessPlan[]>(this.backendUrl);
+  // Get all cricket players
+  getPlayers(): Observable<CricketPlayer[]> {
+    return this.http.get<CricketPlayer[]>(this.backendUrl);
   }
 
-  // Add a new fitness plan
-  addPlan(plan: FitnessPlan): Observable<FitnessPlan> {
-    return this.http.post<FitnessPlan>(this.backendUrl, plan);
+  // Add a new cricket player
+  addPlayer(player: CricketPlayer): Observable<CricketPlayer> {
+    return this.http.post<CricketPlayer>(this.backendUrl, player);
   }
 
-  // Delete a fitness plan by ID
-  deletePlan(id: number): Observable<void> {
+  // Delete a cricket player by ID
+  deletePlayer(id: number): Observable<void> {
     const url = `${this.backendUrl}/${id}`;
     return this.http.delete<void>(url);
   }
 }
-
