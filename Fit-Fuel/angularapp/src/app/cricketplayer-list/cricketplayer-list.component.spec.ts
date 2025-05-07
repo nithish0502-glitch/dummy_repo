@@ -48,7 +48,7 @@ describe('CricketPlayerListComponent', () => {
     service = TestBed.inject(CricketPlayerService);
   });
 
-  fit('should create CricketPlayerListComponent', () => {
+  fit('should_create_CricketPlayerListComponent', () => {
     expect(component).toBeTruthy();
   });
 
@@ -60,7 +60,7 @@ describe('CricketPlayerListComponent', () => {
     expect((service as any).getPlayers).toHaveBeenCalled();
   });
 
-  fit('should call deletePlayer', () => {
+  fit('should_call_deletePlayer', () => {
     spyOn((service as any), 'deletePlayer').and.returnValue(of());
     (component as any).players = [...mockPlayers];
     (component as any).deletePlayer(1);

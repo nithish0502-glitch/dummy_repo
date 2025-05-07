@@ -32,11 +32,11 @@ describe('AddCricketPlayerComponent', () => {
     fixture.detectChanges();
   });
 
-  fit('should create AddCricketPlayerComponent', () => {
+  fit('should_create_AddCricketPlayerComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  fit('should add a new cricket player when form is valid', () => {
+  fit('should_add_a_new_cricket_player_when_form_is_valid', () => {
     const mockPlayer = {
       name: 'Virat Kohli',
       age: 35,
@@ -59,7 +59,7 @@ describe('AddCricketPlayerComponent', () => {
     expect(router.navigateByUrl).toHaveBeenCalledWith('/players');
   });
 
-  fit('should require all mandatory form fields', () => {
+  fit('should_require_all_mandatory_form_fields', () => {
     const form = component.playerForm;
 
     form.setValue({
@@ -83,7 +83,7 @@ describe('AddCricketPlayerComponent', () => {
     expect(form.get('bowlingStyle')?.hasError('required')).toBeTrue();
   });
 
-  fit('should accept valid form even if optional stats are missing', () => {
+  fit('should_accept_valid_form_even_if_optional_stats_are_missing', () => {
     const form = component.playerForm;
 
     form.setValue({
