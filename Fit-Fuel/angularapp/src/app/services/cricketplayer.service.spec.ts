@@ -64,7 +64,7 @@ describe('CricketPlayerService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should retrieve players from the API via GET', () => {
+  fit('should_retrieve_players_from_the_API_via_GET', () => {
     spyOn(service, 'getPlayers').and.callThrough();
     service.getPlayers().subscribe((players: CricketPlayer[]) => {
       expect(players).toEqual(mockPlayers);
@@ -76,7 +76,7 @@ describe('CricketPlayerService', () => {
     expect(service.getPlayers).toHaveBeenCalled();
   });
 
-  it('should add a player via POST', () => {
+  fit('should_add_a_player_via_POST', () => {
     const newPlayer: CricketPlayer = {
       name: 'Shubman Gill',
       age: 23,
@@ -98,7 +98,7 @@ describe('CricketPlayerService', () => {
     req.flush(newPlayer);
   });
 
-  it('should delete a player via DELETE', () => {
+  fit('should_delete_a_player_via_DELETE', () => {
     const playerId = 1;
 
     service.deletePlayer(playerId).subscribe(() => {});
