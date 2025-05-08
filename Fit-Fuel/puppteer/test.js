@@ -7,31 +7,7 @@ const BASE_URL = 'https://8081-fddbbedbb327214235bfdebbddcaecone.premiumproject.
     headless: false,
     args: ['--headless', '--disable-gpu', '--remote-debugging-port=9222', '--no-sandbox', '--disable-setuid-sandbox'],
   });
-
-  // **1. Verify Job Listings Table Exists and Has Rows**
-  //const page1 = await browser.newPage();
-  //try {
-    //await page1.goto(`${BASE_URL}/viewJobs`);
-    //await page1.waitForSelector('table tbody tr', { timeout: 2000 });
-
-    // Fetch all rows in the table
-   // const rows = await page1.$$eval('table tbody tr', rows =>
-     // rows.map(row => Array.from(row.querySelectorAll('td')).map(td => td.textContent.trim()))
-    //);
-
-    //if (rows.length > 0) {
-      //console.log('TESTCASE:job_table_contains_rows:success');
-    //} else {
-      //console.log('TESTCASE:job_table_contains_rows:failure');
-    //}
-  //} catch (e) {
-    //console.log('TESTCASE:job_table_contains_rows:failure');
-  //}
-// **1. Verify Cricket Player Table Exists and Has Rows**
-
-
- // Change if different
- const page1 = await browser.newPage();
+  const page = await browser.newPage()
   try {
     // Go to the add cricket player form
     await page.goto(`${BASE_URL}/addPlayer`, { waitUntil: 'networkidle2' });
@@ -71,48 +47,69 @@ const BASE_URL = 'https://8081-fddbbedbb327214235bfdebbddcaecone.premiumproject.
   } finally {
     await browser.close();
   }
-})();
+
 
 
 
   // **2. Verify Add Job Form Exists with All Required Fields**
-  const page2 = await browser.newPage();
+  const page2 = await browser.newPage()  
   try {
-    await page2.goto(`${BASE_URL}/addNewJob`);
-    const formExists = await page2.evaluate(() => {
+    await page.goto(`${BASE_URL}/addCricketPlayer`); // adjust route if it's different
+    const formExists = await page.evaluate(() => {
       const form = document.querySelector('form');
-      const inputFields = ['title', 'company', 'location', 'salaryPackage', 'description', 'jobType', 'requirements', 'isRemote'];
+      const inputFields = [
+        'name',
+        'age',
+        'team',
+        'position',
+        'battingStyle',
+        'bowlingStyle',
+        'totalRuns',
+        'totalWickets',
+        'totalMatches'
+      ];
       return !!form && inputFields.every(field => !!form.querySelector(`[name="${field}"]`));
     });
 
     if (formExists) {
-      console.log('TESTCASE:addJob_form_exists_and_input_fields_present:success');
+      console.log('TESTCASE:addCricketPlayer_form_exists_and_input_fields_present:success');
     } else {
-      console.log('TESTCASE:addJob_form_exists_and_input_fields_present:failure');
+      console.log('TESTCASE:addCricketPlayer_form_exists_and_input_fields_present:failure');
     }
   } catch (e) {
-    console.log('TESTCASE:addJob_form_exists_and_input_fields_present:failure');
+    console.log('TESTCASE:addCricketPlayer_form_exists_and_input_fields_present:failure');
+  } finally {
+    await browser.close();
   }
+
+
 
   // **3. Verify Search Functionality (Partial Match)**
   const page3 = await browser.newPage();
   try {
-    await page3.goto(`${BASE_URL}/viewJobs`);
-    await page3.waitForSelector('#searchJob', { timeout: 2000 });
-    await page3.type('#searchJob', 'Manager'); // Searching for any job containing 'Manager'
+    await page.goto(`${BASE_URL}/viewCricketPlayers`);
+    await page.waitForSelector('#searchPlayer', { timeout: 2000 });
 
-    // Wait for results to update
-    await page3.waitForTimeout(1000);
-    const searchResults = await page3.evaluate(() => document.body.textContent.includes('Manager'));
+    await page.type('#searchPlayer', 'Virat Kohli'); // Searching for 'Virat Kohli'
+
+    // Wait for the filtered results to render
+    await page.waitForTimeout(1000);
+
+    const searchResults = await page.evaluate(() =>
+      document.body.textContent.includes('Virat Kohli')
+    );
 
     if (searchResults) {
-      console.log('TESTCASE:search_functionality_displays_correct_job_listing:success');
+      console.log('TESTCASE:search_functionality_displays_correct_cricket_player:success');
     } else {
-      console.log('TESTCASE:search_functionality_displays_correct_job_listing:failure');
+      console.log('TESTCASE:search_functionality_displays_correct_cricket_player:failure');
     }
   } catch (e) {
-    console.log('TESTCASE:search_functionality_displays_correct_job_listing:failure');
+    console.log('TESTCASE:search_functionality_displays_correct_cricket_player:failure');
+  } finally {
+    await browser.close();
   }
+
 
   // **4. Verify Required Field Validation on Add Job Listing**
   const page4 = await browser.newPage();
@@ -237,4 +234,4 @@ const BASE_URL = 'https://8081-fddbbedbb327214235bfdebbddcaecone.premiumproject.
   }
 
   await browser.close();
-
+}) ();
