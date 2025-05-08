@@ -3,7 +3,7 @@ export interface CricketPlayer {
     name: string;
     age: number;
     team: string;
-    position: string; // Batsman, Bowler, All-rounder, Wicketkeeper
+    position: string; 
     battingStyle: string;
     bowlingStyle: string;
     totalRuns?: number;

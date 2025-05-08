@@ -30,7 +30,7 @@ describe('CricketPlayerService', () => {
       bowlingStyle: 'Right-arm fast',
       totalRuns: 200,
       totalWickets: 250,
-      totalMatches: 85  
+      totalMatches: 100  
     },
     {
       id: 3,

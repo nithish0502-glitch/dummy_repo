@@ -20,7 +20,7 @@ describe('CricketPlayerListComponent', () => {
       bowlingStyle: 'Right-arm medium',
       totalRuns: 12000,
       totalWickets: 5,
-      totalMatches: 250
+      totalMatches: 275
     },
     {
       id: 2,
@@ -31,7 +31,7 @@ describe('CricketPlayerListComponent', () => {
       battingStyle: 'Right-hand bat',
       bowlingStyle: 'Right-arm fast',
       totalRuns: 200,
-      totalWickets: 200,
+      totalWickets: 250,
       totalMatches: 100
     }
   ];
