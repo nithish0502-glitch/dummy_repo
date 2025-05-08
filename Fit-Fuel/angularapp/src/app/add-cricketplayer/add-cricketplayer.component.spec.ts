@@ -46,7 +46,7 @@ describe('AddCricketPlayerComponent', () => {
       bowlingStyle: 'Right-arm medium',
       totalRuns: 12000,
       totalWickets: 5,
-      totalMatches: 250
+      totalMatches: 275
     };
 
     spyOn(service, 'addPlayer').and.returnValue(of(mockPlayer));
