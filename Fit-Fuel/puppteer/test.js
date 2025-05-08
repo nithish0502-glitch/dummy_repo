@@ -5,6 +5,7 @@ const BASE_URL = 'https://8081-fddbbedbb327214235bfdebbddcaecone.premiumproject.
 (async () => {
   const browser = await puppeteer.launch({
     headless: false,
+    timeout: 10000,
     args: ['--headless', '--disable-gpu', '--remote-debugging-port=9222', '--no-sandbox', '--disable-setuid-sandbox'],
   });
   const page = await browser.newPage()
