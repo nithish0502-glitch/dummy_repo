@@ -12,11 +12,7 @@ const BASE_URL = 'https://8081-fddbbedbb327214235bfdebbddcaecone.premiumproject.
   try {
     // Go to the add cricket player form
     await page.goto(`${BASE_URL}/addPlayer`, { waitUntil: 'networkidle2' });
-
-    // Wait for the form to be visible
     await page.waitForSelector('form');
-
-    // Fill required input fields
     await page.type('input[formControlName="name"]', 'Virat Kohli');
     await page.type('input[formControlName="age"]', '35');
     await page.type('input[formControlName="team"]', 'India');
@@ -49,9 +45,6 @@ const BASE_URL = 'https://8081-fddbbedbb327214235bfdebbddcaecone.premiumproject.
     await browser.close();
   }
 
-
-
-
   // **2. Verify Add Job Form Exists with All Required Fields**
   const page2 = await browser.newPage()  
   try {
@@ -82,7 +75,6 @@ const BASE_URL = 'https://8081-fddbbedbb327214235bfdebbddcaecone.premiumproject.
   } finally {
     await browser.close();
   }
-
 
 
   // **3. Verify Search Functionality (Partial Match)**
