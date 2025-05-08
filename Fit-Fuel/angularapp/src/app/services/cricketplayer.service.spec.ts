@@ -11,19 +11,19 @@ describe('CricketPlayerService', () => {
     {
       id: 1,
       name: 'Virat Kohli',
-      age: 34,  
+      age: 35,  
       team: 'India',
       position: 'Batsman',
       battingStyle: 'Right-handed',
       bowlingStyle: 'Right-arm medium',
       totalRuns: 12000,
-      totalWickets: 150,
+      totalWickets: 5,
       totalMatches: 275  
     },
     {
       id: 2,
       name: 'Jasprit Bumrah',
-      age: 29,  
+      age: 31,  
       team: 'India',
       position: 'Bowler',
       battingStyle: 'Right-handed',
@@ -60,7 +60,7 @@ describe('CricketPlayerService', () => {
     httpTestingController.verify();
   });
 
-  it('should create CricketPlayerService', () => {
+  fit('should_create_CricketPlayerService', () => {
     expect(service).toBeTruthy();
   });
 

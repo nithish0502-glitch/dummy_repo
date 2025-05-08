@@ -52,7 +52,7 @@ describe('CricketPlayerListComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  fit('should call getPlayers', () => {
+  fit('should_call_getPlayers', () => {
     spyOn((service as any), 'getPlayers').and.returnValue(of(mockPlayers));
     (component as any).getPlayers();
     expect((component as any).getPlayers).toBeDefined();
