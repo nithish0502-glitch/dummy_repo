@@ -11,7 +11,7 @@ const BASE_URL = 'https://8081-fddbbedbb327214235bfdebbddcaecone.premiumproject.
   const page = await browser.newPage()
   try {
     // Go to the add cricket player form
-    await page.goto(`${BASE_URL}/addPlayer`, { waitUntil: 'networkidle2' });
+    await page.goto(`${BASE_URL}/add-Player`, { waitUntil: 'networkidle2' });
     await page.waitForSelector('form');
     await page.type('input[formControlName="name"]', 'Virat Kohli');
     await page.type('input[formControlName="age"]', '35');
@@ -75,7 +75,6 @@ const BASE_URL = 'https://8081-fddbbedbb327214235bfdebbddcaecone.premiumproject.
   } finally {
     await browser.close();
   }
-
 
   // **3. Verify Search Functionality (Partial Match)**
   const page3 = await browser.newPage();
