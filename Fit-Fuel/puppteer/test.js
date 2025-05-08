@@ -9,24 +9,71 @@ const BASE_URL = 'https://8081-fddbbedbb327214235bfdebbddcaecone.premiumproject.
   });
 
   // **1. Verify Job Listings Table Exists and Has Rows**
-  const page1 = await browser.newPage();
-  try {
-    await page1.goto(`${BASE_URL}/viewJobs`);
-    await page1.waitForSelector('table tbody tr', { timeout: 2000 });
+  //const page1 = await browser.newPage();
+  //try {
+    //await page1.goto(`${BASE_URL}/viewJobs`);
+    //await page1.waitForSelector('table tbody tr', { timeout: 2000 });
 
     // Fetch all rows in the table
-    const rows = await page1.$$eval('table tbody tr', rows =>
-      rows.map(row => Array.from(row.querySelectorAll('td')).map(td => td.textContent.trim()))
-    );
+   // const rows = await page1.$$eval('table tbody tr', rows =>
+     // rows.map(row => Array.from(row.querySelectorAll('td')).map(td => td.textContent.trim()))
+    //);
 
-    if (rows.length > 0) {
-      console.log('TESTCASE:job_table_contains_rows:success');
+    //if (rows.length > 0) {
+      //console.log('TESTCASE:job_table_contains_rows:success');
+    //} else {
+      //console.log('TESTCASE:job_table_contains_rows:failure');
+    //}
+  //} catch (e) {
+    //console.log('TESTCASE:job_table_contains_rows:failure');
+  //}
+// **1. Verify Cricket Player Table Exists and Has Rows**
+
+
+ // Change if different
+ const page1 = await browser.newPage();
+  try {
+    // Go to the add cricket player form
+    await page.goto(`${BASE_URL}/addPlayer`, { waitUntil: 'networkidle2' });
+
+    // Wait for the form to be visible
+    await page.waitForSelector('form');
+
+    // Fill required input fields
+    await page.type('input[formControlName="name"]', 'Virat Kohli');
+    await page.type('input[formControlName="age"]', '35');
+    await page.type('input[formControlName="team"]', 'India');
+    await page.select('select[formControlName="position"]', 'Batsman');
+    await page.type('input[formControlName="battingStyle"]', 'Right-hand bat');
+    await page.type('input[formControlName="bowlingStyle"]', 'Right-arm medium');
+
+    // Optional fields
+    await page.type('input[formControlName="totalRuns"]', '12000');
+    await page.type('input[formControlName="totalWickets"]', '5');
+    await page.type('input[formControlName="totalMatches"]', '275');
+
+    // Submit the form
+    await Promise.all([
+      page.click('button[type="submit"]'),
+      page.waitForNavigation({ waitUntil: 'networkidle2' })
+    ]);
+
+    // Check if redirected to /players page
+    const url = page.url();
+    if (url.includes('/players')) {
+      console.log('TESTCASE:add_cricket_player_form_submission:success');
     } else {
-      console.log('TESTCASE:job_table_contains_rows:failure');
+      console.log('TESTCASE:add_cricket_player_form_submission:failure');
     }
-  } catch (e) {
-    console.log('TESTCASE:job_table_contains_rows:failure');
+  } catch (error) {
+    console.log('TESTCASE:add_cricket_player_form_submission:failure');
+    console.error(error);
+  } finally {
+    await browser.close();
   }
+})();
+
+
 
   // **2. Verify Add Job Form Exists with All Required Fields**
   const page2 = await browser.newPage();
@@ -190,4 +237,4 @@ const BASE_URL = 'https://8081-fddbbedbb327214235bfdebbddcaecone.premiumproject.
   }
 
   await browser.close();
-})();
+
