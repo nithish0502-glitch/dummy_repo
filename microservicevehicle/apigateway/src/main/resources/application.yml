@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/api/users/**
+        - id: insurance-service
+          uri: lb://INSURANCE-SERVICE
+          predicates:
+            - Path=/api/insurances/**
+        - id: insurance-service-insuranceclaims
+          uri: lb://INSURANCE-SERVICE
+          predicates:
+            - Path=/api/insuranceclaims/**
+        - id: insurance-service-notifications
+          uri: lb://INSURANCE-SERVICE
+          predicates:
+            - Path=/api/notifications/**
+        - id: insurance-service-policyapplications
+          uri: lb://INSURANCE-SERVICE
+          predicates:
+            - Path=/api/policyapplications/**
+        - id: feedback-service
+          uri: lb://FEEDBACK-SERVICE
+          predicates:
+            - Path=/api/feedback/**
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: https://ide-cbdaecefcf316620805facaadcacdfone.premiumproject.examly.io/proxy/8761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: gateway, health, info
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    org.springframework.web: DEBUG
