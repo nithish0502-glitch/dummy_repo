@@ -1,0 +1,93 @@
+/* Container for the search bar and button */
+div {
+    margin: 20px 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  /* Styling for the search input field */
+  input {
+    padding: 8px 12px;
+    font-size: 16px;
+    margin-right: 10px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+  }
+  
+  /* Styling for the search button */
+  button {
+    padding: 8px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  /* Button hover effect */
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Styling for the table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Table header styling */
+  th {
+    padding: 12px;
+    background-color: #f4f4f4;
+    text-align: left;
+    border-bottom: 2px solid #ddd;
+  }
+  
+  /* Table cell styling */
+  td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Table row hover effect */
+  tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Button inside the table for delete action */
+  td button {
+    padding: 6px 12px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  /* Delete button hover effect */
+  td button:hover {
+    background-color: #e53935;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    table {
+      font-size: 14px;
+    }
+  
+    input {
+      width: 180px;
+    }
+    
+    button {
+      padding: 6px 12px;
+    }
+  }
+  

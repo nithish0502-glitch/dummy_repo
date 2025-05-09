@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CricketPlayerListComponent } from './cricketplayer-list/cricketplayer-list.component';
-import { AddCricketPlayerComponent } from './add-cricketplayer/add-cricketplayer.component';
+import { MovieListComponent } from './movie-list/movie-list.component';
+import { AddMovieComponent } from './add-movie/add-movie.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/players', pathMatch: 'full' },
-  { path: 'players', component: CricketPlayerListComponent },
-  { path: 'add-player', component: AddCricketPlayerComponent }
+  { path: '', redirectTo: '/movies', pathMatch: 'full' },
+  { path: 'movies', component: MovieListComponent },
+  { path: 'add-movie', component: AddMovieComponent }
 ];
 
 @NgModule({
@@ -14,5 +14,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-
-
