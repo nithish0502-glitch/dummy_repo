@@ -7,12 +7,14 @@ import { AddCricketPlayerComponent } from './add-cricketplayer/add-cricketplayer
 import { CricketPlayerListComponent } from './cricketplayer-list/cricketplayer-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AddMovieComponent } from './add-movie/add-movie.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddCricketPlayerComponent,
-    CricketPlayerListComponent
+    CricketPlayerListComponent,
+    AddMovieComponent
   ],
   imports: [
     BrowserModule,
