@@ -1,40 +1,31 @@
 {
-  "cricketPlayers": [
+  "movies": [
     {
       "id": 1,
-      "name": "Virat Kohli",
-      "age": 35,
-      "team": "India",
-      "position": "Batsman",
-      "battingStyle": "Right-handed",
-      "bowlingStyle": "Right-arm medium",
-      "totalRuns": 12000,
-      "totalWickets": 5,
-      "totalMatches": 275
+      "title": "Fast and Furious",
+      "director": "Rob Cohen",
+      "genre": "Action",
+      "releaseYear": 2001,
+      "rating": 6.8,
+      "duration": 106
     },
     {
       "id": 2,
-      "name": "Jasprit Bumrah",
-      "age": 31,
-      "team": "India",
-      "position": "Bowler",
-      "battingStyle": "Right-handed",
-      "bowlingStyle": "Right-arm fast",
-      "totalRuns": 200,
-      "totalWickets": 250,
-      "totalMatches": 100
+      "title": "Avatar",
+      "director": "James Cameron",
+      "genre": "Sci-Fi",
+      "releaseYear": 2009,
+      "rating": 7.8,
+      "duration": 162
     },
     {
       "id": 3,
-      "name": "Rishabh Pant",
-      "age": 25,
-      "team": "India",
-      "position": "Wicketkeeper",
-      "battingStyle": "Left-handed",
-      "bowlingStyle": "N/A",
-      "totalRuns": 2500,
-      "totalWickets": 0,
-      "totalMatches": 60
+      "title": "Deadpool",
+      "director": "Tim Miller",
+      "genre": "Action",
+      "releaseYear": 2016,
+      "rating": 8.0,
+      "duration": 108
     }
   ]
 }
