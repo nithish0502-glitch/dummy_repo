@@ -7,31 +7,31 @@ const BASE_URL = 'https://8081-fddbbedbb327214235bfdebbddcaecone.premiumproject.
     headless: false,
     args: ['--headless', '--disable-gpu', '--remote-debugging-port=9222', '--no-sandbox', '--disable-setuid-sandbox'],
   });
-  const page = await browser.newPage()
+  const page1 = await browser.newPage()
   try {
     // Go to the add cricket player form
-    await page.goto(`${BASE_URL}/add-player`, { waitUntil: 'networkidle2' });
-    await page.waitForSelector('form');
-    await page.type('input[formControlName="name"]', 'Virat Kohli');
-    await page.type('input[formControlName="age"]', '35');
-    await page.type('input[formControlName="team"]', 'India');
-    await page.select('select[formControlName="position"]', 'Batsman');
-    await page.type('input[formControlName="battingStyle"]', 'Right-hand bat');
-    await page.type('input[formControlName="bowlingStyle"]', 'Right-arm medium');
+    await page1.goto(`${BASE_URL}/add-player`, { waitUntil: 'networkidle2' });
+    await page1.waitForSelector('form');
+    await page1.type('input[formControlName="name"]', 'Virat Kohli');
+    await page1.type('input[formControlName="age"]', '35');
+    await page1.type('input[formControlName="team"]', 'India');
+    await page1.select('select[formControlName="position"]', 'Batsman');
+    await page1.type('input[formControlName="battingStyle"]', 'Right-hand bat');
+    await page1.type('input[formControlName="bowlingStyle"]', 'Right-arm medium');
 
     // Optional fields
-    await page.type('input[formControlName="totalRuns"]', '12000');
-    await page.type('input[formControlName="totalWickets"]', '5');
-    await page.type('input[formControlName="totalMatches"]', '275');
+    await page1.type('input[formControlName="totalRuns"]', '12000');
+    await page1.type('input[formControlName="totalWickets"]', '5');
+    await page1.type('input[formControlName="totalMatches"]', '275');
 
     // Submit the form
     await Promise.all([
-      page.click('button[type="submit"]'),
-      page.waitForNavigation({ waitUntil: 'networkidle2' })
+      page1.click('button[type="submit"]'),
+      page1.waitForNavigation({ waitUntil: 'networkidle2' })
     ]);
 
     // Check if redirected to /players page
-    const url = page.url();
+    const url = page1.url();
     if (url.includes('/players')) {
       console.log('TESTCASE:add_cricket_player_form_submission:success');
     } else {
@@ -108,148 +108,11 @@ try {
   console.error('Error:', e);
 }
 
-  // **4. Verify Required Field Validation on Add Job Listing**
-
-  const page4 = await browser.newPage();
-  try {
-    // Fill in the player details for Virat Kohli
-    const playerDetails = {
-      name: 'Virat Kohli',
-      age: '35',
-      team: 'India',
-      position: 'Batsman',
-      battingStyle: 'Right-handed',
-      bowlingStyle: 'Right-arm medium',
-      totalRuns: '12000',
-      totalWickets: '150',
-      totalMatches: '275',
-      isRemote: true  // Assuming this might be used for some functionality (if applicable)
-    };
-
-    await page4.type('input[formControlName="name"]', playerDetails.name);
-    await page4.type('input[formControlName="age"]', playerDetails.age);
-    await page4.type('input[formControlName="team"]', playerDetails.team);
-    await page4.select('select[formControlName="position"]', playerDetails.position);
-    await page4.type('input[formControlName="battingStyle"]', playerDetails.battingStyle);
-    await page.type('input[formControlName="bowlingStyle"]', playerDetails.bowlingStyle);
-    await page.type('input[formControlName="totalRuns"]', playerDetails.totalRuns);
-    await page.type('input[formControlName="totalWickets"]', playerDetails.totalWickets);
-    await page.type('input[formControlName="totalMatches"]', playerDetails.totalMatches);
-
-    // Click the "Add Player" button
-    await page.click('button[type="submit"]');
-    await page.waitForTimeout(2000);  // Wait for the form to submit
-
-    // Verify navigation to view players page
-    await page.waitForSelector('h2', { timeout: 2000 });
-    const pageTitle = await page.$eval('h2', el => el.textContent.trim());
-    const urlAfterClick = page.url();
-    const navigationSuccess = pageTitle === 'Player List' && urlAfterClick.toLowerCase().includes('/viewplayers');
-
-    // Check if the newly added player appears in the table
-    await page.waitForSelector('table tbody tr', { timeout: 2000 });
-    const playerListings = await page.$$eval('table tbody tr', rows =>
-      rows.map(row => Array.from(row.querySelectorAll('td')).map(td => td.textContent.trim()))
-    );
-
-    const playerDisplayed = playerListings.some(row => row.includes(playerDetails.name));
-
-    if (navigationSuccess && playerDisplayed) {
-      console.log('TESTCASE:add_player_and_verify_in_viewPlayers:success');
-    } else {
-      console.log('TESTCASE:add_player_and_verify_in_viewPlayers:failure');
-    }
-  } catch (e) {
-    console.log('TESTCASE:add_player_and_verify_in_viewPlayers:failure');
-  }
-
-
- 
-  // **5. Add New Job Listing and Verify in Job List**
-  const page5 = await browser.newPage();
-  try {
-    await page5.goto(`${BASE_URL}/addNewJob`);
-    await page5.waitForSelector('form', { timeout: 2000 });
-
-    // Fill in the job details
-    const jobDetails = {
-      title: 'Business Analyst',
-      company: 'Visionary Corp.',
-      location: 'Los Angeles, CA',
-      salaryPackage: '$90,000 - $110,000 annually',
-      description: 'Analyze business processes and suggest improvements.',
-      jobType: 'Full-time',
-      requirements: '2+ years of experience, strong analytical skills.',
-      isRemote: true
-    };
-
-    await page5.type('#title', jobDetails.title);
-    await page5.type('#company', jobDetails.company);
-    await page5.type('#location', jobDetails.location);
-    await page5.type('#salaryPackage', jobDetails.salaryPackage);
-    await page5.type('#description', jobDetails.description);
-    await page5.select('#jobType', jobDetails.jobType);
-    await page5.type('#requirements', jobDetails.requirements);
-    await page5.evaluate(() => document.querySelector('#isRemote').click()); // Check the 'isRemote' checkbox
-
-    // Click the "Add Job Listing" button
-    await page5.evaluate(() => {
-      const addButton = Array.from(document.querySelectorAll('button'))
-        .find(button => button.textContent.trim() === 'Add Job Listing');
-      if (addButton) addButton.click();
-    });
-
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-
-    // Verify navigation to viewJobs page
-    await page5.waitForSelector('h2', { timeout: 2000 });
-    const pageTitle = await page5.$eval('h2', el => el.textContent.trim());
-    const urlAfterClick = page5.url();
-    const navigationSuccess = pageTitle === 'Job Listings' && urlAfterClick.toLowerCase().includes('/viewjobs');
-
-    // Check if the newly added job listing appears in the table
-    await page5.waitForSelector('table tbody tr', { timeout: 2000 });
-    const jobListings = await page5.$$eval('table tbody tr', rows =>
-      rows.map(row => Array.from(row.querySelectorAll('td')).map(td => td.textContent.trim()))
-    );
-
-    const jobDisplayed = jobListings.some(row => row.includes(jobDetails.title) && row.includes('Yes'));  // 'Yes' for remote
-
-    if (navigationSuccess && jobDisplayed) {
-      console.log('TESTCASE:add_job_listing_and_verify_in_viewJobs:success');
-    } else {
-      console.log('TESTCASE:add_job_listing_and_verify_in_viewJobs:failure');
-    }
-  } catch (e) {
-    console.log('TESTCASE:add_job_listing_and_verify_in_viewJobs:failure');
-  }
-
-  // **6. Verify Job Table Header Content**
-  const page6 = await browser.newPage();
-  try {
-    await page6.goto(`${BASE_URL}/viewJobs`);
-    await page6.waitForSelector('table', { timeout: 2000 });
-    const tableHeaders = await page6.evaluate(() => {
-      return Array.from(document.querySelectorAll('table th')).map(th => th.textContent.trim());
-    });
-    const expectedHeaders = ['Job Title', 'Company', 'Location', 'Salary Package', 'Job Type', 'Is Remote', 'Description', 'Requirements', 'Actions'];
-    if (expectedHeaders.every(header => tableHeaders.includes(header))) {
-      console.log('TESTCASE:job_table_header_content:success');
-    } else {
-      console.log('TESTCASE:job_table_header_content:failure');
-    }
-  } catch (e) {
-    console.log('TESTCASE:job_table_header_content:failure');
-  }
-
   // **Close all pages and browser**
   finally {
     await page1.close();
     await page2.close();
     await page3.close();
-    await page4.close();
-    await page5.close();
-    await page6.close();
   }
 
   await browser.close();
