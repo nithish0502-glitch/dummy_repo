@@ -8,13 +8,15 @@ import { CricketPlayerListComponent } from './cricketplayer-list/cricketplayer-l
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AddMovieComponent } from './add-movie/add-movie.component';
+import { MovieListComponent } from './movie-list/movie-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddCricketPlayerComponent,
     CricketPlayerListComponent,
-    AddMovieComponent
+    AddMovieComponent,
+    MovieListComponent
   ],
   imports: [
     BrowserModule,
