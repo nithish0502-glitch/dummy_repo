@@ -3,17 +3,17 @@
     <tr>
       <td>Name:</td>
       <td>
-        <input class="form-control" type="text" formControlName="name" placeholder="Enter player name">
-        <div *ngIf="playerForm.get('name')!.invalid && playerForm.get('name')!.touched" style="color: red;">
-          Player name is required.
+        <input type="text" formControlName="name" placeholder="Enter name" class="form-control">
+        <div *ngIf="playerForm.get('name')!.touched && playerForm.get('name')!.invalid" style="color: red;">
+          Name is required.
         </div>
       </td>
     </tr>
     <tr>
       <td>Age:</td>
       <td>
-        <input class="form-control" type="number" formControlName="age" placeholder="Enter age">
-        <div *ngIf="playerForm.get('age')!.invalid && playerForm.get('age')!.touched" style="color: red;">
+        <input type="number" formControlName="age" placeholder="Enter age" class="form-control">
+        <div *ngIf="playerForm.get('age')!.touched && playerForm.get('age')!.invalid" style="color: red;">
           Age is required.
         </div>
       </td>
@@ -21,8 +21,8 @@
     <tr>
       <td>Team:</td>
       <td>
-        <input class="form-control" type="text" formControlName="team" placeholder="Enter team">
-        <div *ngIf="playerForm.get('team')!.invalid && playerForm.get('team')!.touched" style="color: red;">
+        <input type="text" formControlName="team" placeholder="Enter team" class="form-control">
+        <div *ngIf="playerForm.get('team')!.touched && playerForm.get('team')!.invalid" style="color: red;">
           Team is required.
         </div>
       </td>
@@ -30,14 +30,14 @@
     <tr>
       <td>Position:</td>
       <td>
-        <select class="form-control" formControlName="position">
+        <select formControlName="position" class="form-control">
           <option value="">Select Position</option>
           <option value="Batsman">Batsman</option>
           <option value="Bowler">Bowler</option>
           <option value="All-rounder">All-rounder</option>
           <option value="Wicketkeeper">Wicketkeeper</option>
         </select>
-        <div *ngIf="playerForm.get('position')!.invalid && playerForm.get('position')!.touched" style="color: red;">
+        <div *ngIf="playerForm.get('position')!.touched && playerForm.get('position')!.invalid" style="color: red;">
           Position is required.
         </div>
       </td>
@@ -45,8 +45,8 @@
     <tr>
       <td>Batting Style:</td>
       <td>
-        <input class="form-control" type="text" formControlName="battingStyle" placeholder="Enter batting style">
-        <div *ngIf="playerForm.get('battingStyle')!.invalid && playerForm.get('battingStyle')!.touched" style="color: red;">
+        <input type="text" formControlName="battingStyle" placeholder="Enter batting style" class="form-control">
+        <div *ngIf="playerForm.get('battingStyle')!.touched && playerForm.get('battingStyle')!.invalid" style="color: red;">
           Batting style is required.
         </div>
       </td>
@@ -54,15 +54,27 @@
     <tr>
       <td>Bowling Style:</td>
       <td>
-        <input class="form-control" type="text" formControlName="bowlingStyle" placeholder="Enter bowling style">
-        <div *ngIf="playerForm.get('bowlingStyle')!.invalid && playerForm.get('bowlingStyle')!.touched" style="color: red;">
+        <input type="text" formControlName="bowlingStyle" placeholder="Enter bowling style" class="form-control">
+        <div *ngIf="playerForm.get('bowlingStyle')!.touched && playerForm.get('bowlingStyle')!.invalid" style="color: red;">
           Bowling style is required.
         </div>
       </td>
     </tr>
     <tr>
+      <td>Total Runs:</td>
+      <td><input type="number" formControlName="totalRuns" class="form-control"></td>
+    </tr>
+    <tr>
+      <td>Total Wickets:</td>
+      <td><input type="number" formControlName="totalWickets" class="form-control"></td>
+    </tr>
+    <tr>
+      <td>Total Matches:</td>
+      <td><input type="number" formControlName="totalMatches" class="form-control"></td>
+    </tr>
+    <tr>
       <td colspan="2">
-        <button class="btn btn-primary" type="submit" [disabled]="playerForm.invalid">Add Player</button>
+        <button type="submit" class="btn btn-primary">Add Player</button>
       </td>
     </tr>
   </table>
