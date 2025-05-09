@@ -32,7 +32,6 @@ const BASE_URL = 'https://8081-fddbbedbb327214235bfdebbddcaecone.premiumproject.
 
     // Check if redirected to /players page
     const url = page.url();
-    console.log(url.includes('/players'));
     if (url.includes('/players')) {
       console.log('TESTCASE:add_cricket_player_form_submission:success');
     } else {
@@ -47,7 +46,7 @@ const BASE_URL = 'https://8081-fddbbedbb327214235bfdebbddcaecone.premiumproject.
   const page2 = await browser.newPage()  
   try {
     await page2.goto(`${BASE_URL}/add-player`,{timeout:3000}); // adjust route if it's different
-    const formExists = await page.evaluate(() => {
+    const formExists = await page2.evaluate(() => {
       const form = document.querySelector('form');
       const inputFields = [
         'name',
@@ -75,7 +74,7 @@ const BASE_URL = 'https://8081-fddbbedbb327214235bfdebbddcaecone.premiumproject.
   // **3. Verify Search Functionality (Partial Match)**
   const page3 = await browser.newPage();
   try {
-    await page.goto(`${BASE_URL}/viewCricketPlayers`);
+    await page.goto(`${BASE_URL}/players`);
     await page.waitForSelector('#searchPlayer', { timeout: 2000 });
 
     await page.type('#searchPlayer', 'Virat Kohli'); // Searching for 'Virat Kohli'
