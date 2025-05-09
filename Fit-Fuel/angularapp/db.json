@@ -35,6 +35,18 @@
       "totalRuns": 2500,
       "totalWickets": 0,
       "totalMatches": 60
+    },
+    {
+      "name": "Virat Kohli",
+      "age": 35,
+      "team": "India",
+      "position": "Batsman",
+      "battingStyle": "Right-hand bat",
+      "bowlingStyle": "Right-arm medium",
+      "totalRuns": 12000,
+      "totalWickets": 5,
+      "totalMatches": 275,
+      "id": 4
     }
   ]
 }

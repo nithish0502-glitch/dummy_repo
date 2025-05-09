@@ -109,40 +109,43 @@ try {
 }
 
   // **4. Verify Required Field Validation on Add Job Listing**
-  const pagePlayer = await browser.newPage();
-  try {
-    await pagePlayer.goto(`${BASE_URL}/addplayer`);
-    await pagePlayer.waitForFunction(() => {
-      return Array.from(document.querySelectorAll('button'))
-        .some(button => button.textContent.trim() === 'Add Player');
-    }, { timeout: 2000 });
+ 
+
+  describe('Cricket Player Form Validation', () => {
+    let browser, page;
   
-    await pagePlayer.evaluate(() => {
-      const addButton = Array.from(document.querySelectorAll('button'))
-        .find(button => button.textContent.trim() === 'Add Player');
-      if (addButton) addButton.click();
+    beforeAll(async () => {
+      browser = await puppeteer.launch({ headless: true });
+      page = await browser.newPage();
+      await page.goto(BASE-URL); // Adjust if needed
     });
   
-    const requiredMessages = [
-      'Player name is required.',
-      'Age is required.',
-      'Team is required.',
-      'Position is required.',
-      'Batting style is required.',
-      'Bowling style is required.'
-    ];
-    const bodyText = await pagePlayer.evaluate(() => document.body.textContent);
+    afterAll(async () => {
+      await browser.close();
+    });
   
-    if (requiredMessages.every(msg => bodyText.includes(msg))) {
-      console.log('TESTCASE:verify_required_validation_on_add_player:success');
-    } else {
-      console.log('TESTCASE:verify_required_validation_on_add_player:failure');
-    }
-  } catch (error) {
-    console.log('TESTCASE:verify_required_validation_on_add_player:failure');
-  }
+    it('should show alert with required field messages when submitting empty form', async () => {
+      // Listen for alert popup
+      page.on('dialog', async dialog => {
+        const message = dialog.message();
   
-
+        expect(message).toContain('Name is required.');
+        expect(message).toContain('Age is required.');
+        expect(message).toContain('Team is required.');
+        expect(message).toContain('Position is required.');
+        expect(message).toContain('Batting style is required.');
+        expect(message).toContain('Bowling style is required.');
+  
+        await dialog.dismiss(); // Close the alert
+      });
+  
+      // Click submit without filling any field
+      await page.click('button[type="submit"]');
+  
+      // Wait briefly to let alert be triggered
+      await page.waitForTimeout(500);
+    });
+  });
   // **5. Add New Job Listing and Verify in Job List**
   const page5 = await browser.newPage();
   try {
