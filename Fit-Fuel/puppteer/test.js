@@ -109,43 +109,62 @@ try {
 }
 
   // **4. Verify Required Field Validation on Add Job Listing**
- 
 
-  describe('Cricket Player Form Validation', () => {
-    let browser, page;
-  
-    beforeAll(async () => {
-      browser = await puppeteer.launch({ headless: true });
-      page = await browser.newPage();
-      await page.goto(BASE-URL); // Adjust if needed
-    });
-  
-    afterAll(async () => {
-      await browser.close();
-    });
-  
-    it('should show alert with required field messages when submitting empty form', async () => {
-      // Listen for alert popup
-      page.on('dialog', async dialog => {
-        const message = dialog.message();
-  
-        expect(message).toContain('Name is required.');
-        expect(message).toContain('Age is required.');
-        expect(message).toContain('Team is required.');
-        expect(message).toContain('Position is required.');
-        expect(message).toContain('Batting style is required.');
-        expect(message).toContain('Bowling style is required.');
-  
-        await dialog.dismiss(); // Close the alert
-      });
-  
-      // Click submit without filling any field
-      await page.click('button[type="submit"]');
-  
-      // Wait briefly to let alert be triggered
-      await page.waitForTimeout(500);
-    });
-  });
+  const page4 = await browser.newPage();
+  try {
+    // Fill in the player details for Virat Kohli
+    const playerDetails = {
+      name: 'Virat Kohli',
+      age: '35',
+      team: 'India',
+      position: 'Batsman',
+      battingStyle: 'Right-handed',
+      bowlingStyle: 'Right-arm medium',
+      totalRuns: '12000',
+      totalWickets: '150',
+      totalMatches: '275',
+      isRemote: true  // Assuming this might be used for some functionality (if applicable)
+    };
+
+    await page4.type('input[formControlName="name"]', playerDetails.name);
+    await page4.type('input[formControlName="age"]', playerDetails.age);
+    await page4.type('input[formControlName="team"]', playerDetails.team);
+    await page4.select('select[formControlName="position"]', playerDetails.position);
+    await page4.type('input[formControlName="battingStyle"]', playerDetails.battingStyle);
+    await page.type('input[formControlName="bowlingStyle"]', playerDetails.bowlingStyle);
+    await page.type('input[formControlName="totalRuns"]', playerDetails.totalRuns);
+    await page.type('input[formControlName="totalWickets"]', playerDetails.totalWickets);
+    await page.type('input[formControlName="totalMatches"]', playerDetails.totalMatches);
+
+    // Click the "Add Player" button
+    await page.click('button[type="submit"]');
+    await page.waitForTimeout(2000);  // Wait for the form to submit
+
+    // Verify navigation to view players page
+    await page.waitForSelector('h2', { timeout: 2000 });
+    const pageTitle = await page.$eval('h2', el => el.textContent.trim());
+    const urlAfterClick = page.url();
+    const navigationSuccess = pageTitle === 'Player List' && urlAfterClick.toLowerCase().includes('/viewplayers');
+
+    // Check if the newly added player appears in the table
+    await page.waitForSelector('table tbody tr', { timeout: 2000 });
+    const playerListings = await page.$$eval('table tbody tr', rows =>
+      rows.map(row => Array.from(row.querySelectorAll('td')).map(td => td.textContent.trim()))
+    );
+
+    const playerDisplayed = playerListings.some(row => row.includes(playerDetails.name));
+
+    if (navigationSuccess && playerDisplayed) {
+      console.log('TESTCASE:add_player_and_verify_in_viewPlayers:success');
+    } else {
+      console.log('TESTCASE:add_player_and_verify_in_viewPlayers:failure');
+    }
+  } catch (e) {
+    console.log('TESTCASE:add_player_and_verify_in_viewPlayers:failure');
+  }
+
+
+ 
   // **5. Add New Job Listing and Verify in Job List**
   const page5 = await browser.newPage();
   try {
