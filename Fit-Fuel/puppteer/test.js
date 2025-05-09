@@ -32,6 +32,7 @@ const BASE_URL = 'https://8081-fddbbedbb327214235bfdebbddcaecone.premiumproject.
 
     // Check if redirected to /players page
     const url = page.url();
+    console.log(url.includes('/players'));
     if (url.includes('/players')) {
       console.log('TESTCASE:add_cricket_player_form_submission:success');
     } else {
@@ -40,14 +41,12 @@ const BASE_URL = 'https://8081-fddbbedbb327214235bfdebbddcaecone.premiumproject.
   } catch (error) {
     console.log('TESTCASE:add_cricket_player_form_submission:failure');
     console.error(error);
-  } finally {
-    await browser.close();
   }
 
   // **2. Verify Add Job Form Exists with All Required Fields**
   const page2 = await browser.newPage()  
   try {
-    await page.goto(`${BASE_URL}/add-player`,{timeout:3000}); // adjust route if it's different
+    await page2.goto(`${BASE_URL}/add-player`,{timeout:3000}); // adjust route if it's different
     const formExists = await page.evaluate(() => {
       const form = document.querySelector('form');
       const inputFields = [
@@ -71,9 +70,7 @@ const BASE_URL = 'https://8081-fddbbedbb327214235bfdebbddcaecone.premiumproject.
     }
   } catch (e) {
     console.log('TESTCASE:addCricketPlayer_form_exists_and_input_fields_present:failure');
-  } finally {
-    await browser.close();
-  }
+  } 
 
   // **3. Verify Search Functionality (Partial Match)**
   const page3 = await browser.newPage();
@@ -97,9 +94,7 @@ const BASE_URL = 'https://8081-fddbbedbb327214235bfdebbddcaecone.premiumproject.
     }
   } catch (e) {
     console.log('TESTCASE:search_functionality_displays_correct_cricket_player:failure');
-  } finally {
-    await browser.close();
-  }
+  } 
 
 
   // **4. Verify Required Field Validation on Add Job Listing**
