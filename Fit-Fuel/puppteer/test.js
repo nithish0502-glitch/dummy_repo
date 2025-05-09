@@ -73,28 +73,40 @@ const BASE_URL = 'https://8081-fddbbedbb327214235bfdebbddcaecone.premiumproject.
 
   // **3. Verify Search Functionality (Partial Match)**
   const page3 = await browser.newPage();
-  try {
-    await page.goto(`${BASE_URL}/players`);
-    await page.waitForSelector('#searchPlayer', { timeout: 2000 });
 
-    await page.type('#searchPlayer', 'Virat Kohli'); // Searching for 'Virat Kohli'
+try {
+  await page3.goto(`${BASE_URL}/players`, { timeout: 10000, waitUntil: 'domcontentloaded' });
+  await page3.waitForSelector('table', { timeout: 3000 });
 
-    // Wait for the filtered results to render
-    await page.waitForTimeout(1000);
+  // Extract the Total Runs column before sorting
+  const runsBeforeSort = await page3.evaluate(() => {
+    const rows = Array.from(document.querySelectorAll('tbody tr'));
+    return rows.map(row => parseInt(row.children[7].textContent.trim(), 10));
+  });
 
-    const searchResults = await page.evaluate(() =>
-      document.body.textContent.includes('Virat Kohli')
-    );
+  // Click the sort button
+  await page3.click('button'); // Adjust if there are multiple buttons
+  await page3.waitForTimeout(1000); // Wait for DOM to update
 
-    if (searchResults) {
-      console.log('TESTCASE:search_functionality_displays_correct_cricket_player:success');
-    } else {
-      console.log('TESTCASE:search_functionality_displays_correct_cricket_player:failure');
-    }
-  } catch (e) {
-    console.log('TESTCASE:search_functionality_displays_correct_cricket_player:failure');
-  } 
+  // Extract the Total Runs column after sorting
+  const runsAfterSort = await page3.evaluate(() => {
+    const rows = Array.from(document.querySelectorAll('tbody tr'));
+    return rows.map(row => parseInt(row.children[7].textContent.trim(), 10));
+  });
 
+  const isSorted = runsAfterSort.every((val, i, arr) => i === 0 || arr[i - 1] <= val);
+
+  if (isSorted) {
+    console.log('TESTCASE:sortByRuns_button_sorts_table_correctly:success');
+  } else {
+    console.log('TESTCASE:sortByRuns_button_sorts_table_correctly:failure');
+    console.log('Before Sort:', runsBeforeSort);
+    console.log('After Sort:', runsAfterSort);
+  }
+} catch (e) {
+  console.log('TESTCASE:sortByRuns_button_sorts_table_correctly:failure');
+  console.error('Error:', e);
+}
 
   // **4. Verify Required Field Validation on Add Job Listing**
   const page4 = await browser.newPage();
