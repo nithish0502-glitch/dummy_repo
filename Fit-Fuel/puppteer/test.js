@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 
-const BASE_URL = 'https://api.example.com';
+const BASE_URL = 'https://ide-fddbbedbb327214235bfdebbddcaecone.premiumproject.examly.io/proxy/3001//movies'; 
 
 (async () => {
   const browser = await puppeteer.launch({

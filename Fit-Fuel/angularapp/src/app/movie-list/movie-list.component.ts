@@ -10,8 +10,8 @@ import { MovieService } from '../services/movie.service';
 export class MovieListComponent implements OnInit {
   movies: Movie[] = [];
   searchQuery: string = ''; // Store the search query
-searchTerm: any;
-filteredMovies: any;
+  searchTerm: any;
+  filteredMovies: any;
 
   constructor(private movieService: MovieService) { }
 
