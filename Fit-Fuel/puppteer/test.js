@@ -61,7 +61,7 @@ const BASE_URL = 'https://8081-fddbbedbb327214235bfdebbddcaecone.premiumproject.
         'totalWickets',
         'totalMatches'
       ];
-      return !!form && inputFields.every(field => !!form.querySelector(`[name="${field}"]`));
+      return !!form && inputFields.every(field => !!form.querySelector(`[formControlName="${field}"]`));
     });
 
     if (formExists) {
