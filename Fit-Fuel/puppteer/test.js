@@ -109,39 +109,39 @@ try {
 }
 
   // **4. Verify Required Field Validation on Add Job Listing**
-  const page4 = await browser.newPage();
+  const pagePlayer = await browser.newPage();
   try {
-    await page4.goto(`${BASE_URL}/addNewJob`);
-    await page4.waitForFunction(() => {
+    await pagePlayer.goto(`${BASE_URL}/addplayer`);
+    await pagePlayer.waitForFunction(() => {
       return Array.from(document.querySelectorAll('button'))
-        .some(button => button.textContent.trim() === 'Add Job Listing');
+        .some(button => button.textContent.trim() === 'Add Player');
     }, { timeout: 2000 });
-
-    await page4.evaluate(() => {
+  
+    await pagePlayer.evaluate(() => {
       const addButton = Array.from(document.querySelectorAll('button'))
-        .find(button => button.textContent.trim() === 'Add Job Listing');
+        .find(button => button.textContent.trim() === 'Add Player');
       if (addButton) addButton.click();
     });
-
+  
     const requiredMessages = [
-      'Job title is required',
-      'Company is required',
-      'Location is required',
-      'Salary package is required',
-      'Description is required',
-      'Job type is required',
-      'Requirements are required'
+      'Player name is required.',
+      'Age is required.',
+      'Team is required.',
+      'Position is required.',
+      'Batting style is required.',
+      'Bowling style is required.'
     ];
-    const bodyText = await page4.evaluate(() => document.body.textContent);
-
+    const bodyText = await pagePlayer.evaluate(() => document.body.textContent);
+  
     if (requiredMessages.every(msg => bodyText.includes(msg))) {
-      console.log('TESTCASE:verify_required_validation_on_add_job_listing:success');
+      console.log('TESTCASE:verify_required_validation_on_add_player:success');
     } else {
-      console.log('TESTCASE:verify_required_validation_on_add_job_listing:failure');
+      console.log('TESTCASE:verify_required_validation_on_add_player:failure');
     }
   } catch (error) {
-    console.log('TESTCASE:verify_required_validation_on_add_job_listing:failure');
+    console.log('TESTCASE:verify_required_validation_on_add_player:failure');
   }
+  
 
   // **5. Add New Job Listing and Verify in Job List**
   const page5 = await browser.newPage();
