@@ -10,7 +10,7 @@ const BASE_URL = 'https://8081-fddbbedbb327214235bfdebbddcaecone.premiumproject.
   const page = await browser.newPage()
   try {
     // Go to the add cricket player form
-    await page.goto(`${BASE_URL}/add-Player`, { waitUntil: 'networkidle2' });
+    await page.goto(`${BASE_URL}/add-player`, { waitUntil: 'networkidle2' });
     await page.waitForSelector('form');
     await page.type('input[formControlName="name"]', 'Virat Kohli');
     await page.type('input[formControlName="age"]', '35');
@@ -47,7 +47,7 @@ const BASE_URL = 'https://8081-fddbbedbb327214235bfdebbddcaecone.premiumproject.
   // **2. Verify Add Job Form Exists with All Required Fields**
   const page2 = await browser.newPage()  
   try {
-    await page.goto(`${BASE_URL}/addCricketPlayer`); // adjust route if it's different
+    await page.goto(`${BASE_URL}/add-player`,{timeout:3000}); // adjust route if it's different
     const formExists = await page.evaluate(() => {
       const form = document.querySelector('form');
       const inputFields = [
