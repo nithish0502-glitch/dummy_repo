@@ -2,79 +2,69 @@
   <table>
     <tr>
       <td>Name:</td>
-      <td>
-        <input type="text" formControlName="name" placeholder="Enter name" class="form-control">
-        <div *ngIf="playerForm.get('name')!.touched && playerForm.get('name')!.invalid" style="color: red;">
-          Name is required.
-        </div>
-      </td>
+      <td><input class="form-control" type="text" placeholder="Enter player name" formControlName="name"></td>
+      <div *ngIf="playerForm.get('name')!.invalid && playerForm.get('name')!.touched">
+        <div *ngIf="playerForm.get('name')!.hasError('required')">Player name is required.</div>
+      </div>
     </tr>
     <tr>
       <td>Age:</td>
-      <td>
-        <input type="number" formControlName="age" placeholder="Enter age" class="form-control">
-        <div *ngIf="playerForm.get('age')!.touched && playerForm.get('age')!.invalid" style="color: red;">
-          Age is required.
-        </div>
-      </td>
+      <td><input class="form-control" type="number" placeholder="Enter age" formControlName="age"></td>
+      <div *ngIf="playerForm.get('age')!.invalid && playerForm.get('age')!.touched">
+        <div *ngIf="playerForm.get('age')!.hasError('required')">Age is required.</div>
+      </div>
     </tr>
     <tr>
       <td>Team:</td>
-      <td>
-        <input type="text" formControlName="team" placeholder="Enter team" class="form-control">
-        <div *ngIf="playerForm.get('team')!.touched && playerForm.get('team')!.invalid" style="color: red;">
-          Team is required.
-        </div>
-      </td>
+      <td><input class="form-control" type="text" placeholder="Enter team" formControlName="team"></td>
+      <div *ngIf="playerForm.get('team')!.invalid && playerForm.get('team')!.touched">
+        <div *ngIf="playerForm.get('team')!.hasError('required')">Team is required.</div>
+      </div>
     </tr>
     <tr>
       <td>Position:</td>
       <td>
-        <select formControlName="position" class="form-control">
+        <select class="form-control" formControlName="position">
           <option value="">Select Position</option>
           <option value="Batsman">Batsman</option>
           <option value="Bowler">Bowler</option>
           <option value="All-rounder">All-rounder</option>
           <option value="Wicketkeeper">Wicketkeeper</option>
         </select>
-        <div *ngIf="playerForm.get('position')!.touched && playerForm.get('position')!.invalid" style="color: red;">
-          Position is required.
-        </div>
       </td>
+      <div *ngIf="playerForm.get('position')!.invalid && playerForm.get('position')!.touched">
+        <div *ngIf="playerForm.get('position')!.hasError('required')">Position is required.</div>
+      </div>
     </tr>
     <tr>
       <td>Batting Style:</td>
-      <td>
-        <input type="text" formControlName="battingStyle" placeholder="Enter batting style" class="form-control">
-        <div *ngIf="playerForm.get('battingStyle')!.touched && playerForm.get('battingStyle')!.invalid" style="color: red;">
-          Batting style is required.
-        </div>
-      </td>
+      <td><input class="form-control" type="text" placeholder="Enter batting style" formControlName="battingStyle"></td>
+      <div *ngIf="playerForm.get('battingStyle')!.invalid && playerForm.get('battingStyle')!.touched">
+        <div *ngIf="playerForm.get('battingStyle')!.hasError('required')">Batting style is required.</div>
+      </div>
     </tr>
     <tr>
       <td>Bowling Style:</td>
-      <td>
-        <input type="text" formControlName="bowlingStyle" placeholder="Enter bowling style" class="form-control">
-        <div *ngIf="playerForm.get('bowlingStyle')!.touched && playerForm.get('bowlingStyle')!.invalid" style="color: red;">
-          Bowling style is required.
-        </div>
-      </td>
+      <td><input class="form-control" type="text" placeholder="Enter bowling style" formControlName="bowlingStyle"></td>
+      <div *ngIf="playerForm.get('bowlingStyle')!.invalid && playerForm.get('bowlingStyle')!.touched">
+        <div *ngIf="playerForm.get('bowlingStyle')!.hasError('required')">Bowling style is required.</div>
+      </div>
     </tr>
     <tr>
       <td>Total Runs:</td>
-      <td><input type="number" formControlName="totalRuns" class="form-control"></td>
+      <td><input class="form-control" type="number" placeholder="Enter total runs" formControlName="totalRuns"></td>
     </tr>
     <tr>
       <td>Total Wickets:</td>
-      <td><input type="number" formControlName="totalWickets" class="form-control"></td>
+      <td><input class="form-control" type="number" placeholder="Enter total wickets" formControlName="totalWickets"></td>
     </tr>
     <tr>
       <td>Total Matches:</td>
-      <td><input type="number" formControlName="totalMatches" class="form-control"></td>
+      <td><input class="form-control" type="number" placeholder="Enter total matches" formControlName="totalMatches"></td>
     </tr>
     <tr>
       <td colspan="2">
-        <button type="submit" class="btn btn-primary">Add Player</button>
+        <button class="btn btn-primary" type="submit" [disabled]="playerForm.invalid">Add Player</button>
       </td>
     </tr>
   </table>
