@@ -7,7 +7,7 @@ import { Movie } from '../model/movie.model';
   providedIn: 'root'
 })
 export class MovieService {
-  private backendUrl = 'https://your-backend-url.com/api/movies'; // Replace with your backend URL
+  private backendUrl = 'https://ide-fddbbedbb327214235bfdebbddcaecone.premiumproject.examly.io/proxy/3001//movies'; // Replace with your backend URL
 
   constructor(private http: HttpClient) { }
 

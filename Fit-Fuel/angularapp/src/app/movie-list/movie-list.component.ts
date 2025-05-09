@@ -10,6 +10,8 @@ import { MovieService } from '../services/movie.service';
 export class MovieListComponent implements OnInit {
   movies: Movie[] = [];
   searchQuery: string = ''; // Store the search query
+searchTerm: any;
+filteredMovies: any;
 
   constructor(private movieService: MovieService) { }
 
@@ -47,7 +49,7 @@ export class MovieListComponent implements OnInit {
     // Filter movies based on search query (case-insensitive search)
     if (this.searchQuery.trim()) {
       this.movies = this.movies.filter(movie =>
-        movie.name.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+        movie.title.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
         movie.director.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
         movie.genre.toLowerCase().includes(this.searchQuery.toLowerCase())
       );
