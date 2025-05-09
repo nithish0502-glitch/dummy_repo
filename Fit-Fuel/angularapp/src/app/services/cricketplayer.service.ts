@@ -8,7 +8,7 @@ import { CricketPlayer } from '../model/cricketplayer.model';  // Update the pat
 })
 export class CricketPlayerService {
   // Replace with your actual backend endpoint for cricket players
-  private backendUrl = 'https://ide-fddbbedbb327214235bfdebbddcaecone.premiumproject.examly.io/proxy/3001/cricketplayer';
+  private backendUrl = 'https://ide-fddbbedbb327214235bfdebbddcaecone.premiumproject.examly.io/proxy/3001/cricketPlayers';
 
   constructor(private http: HttpClient) { }
 
